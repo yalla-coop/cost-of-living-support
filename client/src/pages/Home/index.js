@@ -13,7 +13,7 @@ import { stageTypes } from './../../constants/data-types';
 import Icon from '../../components/Icon';
 import HelpButton from '../../components/HelpButton';
 import TextWithIcon from '../../components/TextWithIcon';
-
+import  { Translation }  from '../../api-calls';
 import * as S from './style';
 
 const afterClaimContent = {
@@ -27,7 +27,7 @@ const afterClaimContent = {
   },
 };
 
-const Home = () => {
+const CoLHome = () => {
   const { lang } = useLang();
   const {
     steps,
@@ -227,4 +227,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CoLHome;
