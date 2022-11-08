@@ -184,6 +184,7 @@ const Home = () => {
             <TextWithIcon
               icon="bulletArrow"
               iconColor="primaryMain"
+              href=""
               isButton
               handleClick={() => setShowAfterClaim(true)}
               text="View steps"
