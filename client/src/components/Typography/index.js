@@ -12,13 +12,22 @@ const weights = {
   light: '300 !important',
 };
 
-const commonStyle = ({ theme, color, caps, ta, ...props }) => `
+const commonStyle = ({ theme, color, caps, ta, taT, taM, ...props }) => {
+  return `
   font-style: normal !important;
   letter-spacing: 0.2px !important;
   color: ${theme.colors[color] || color || theme.colors.black} !important;
   text-transform: ${caps ? 'uppercase' : 'initial'} !important;
   text-align: ${ta || 'left'} !important;
+
+  ${theme.media.tablet} {
+    text-align: ${taT || ta || 'left'} !important;
+  };
+  ${theme.media.mobile} {
+    text-align: ${taM || taT || ta || 'left'} !important;
+  };
 `;
+};
 
 const Head1 = styled(Title)`
   ${setMargin};
