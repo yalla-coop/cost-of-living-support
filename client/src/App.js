@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@emotion/react';
 import { Global } from '@emotion/react';
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route as RouterRoute,
 } from 'react-router-dom';
@@ -14,12 +14,13 @@ import LangProvider from './context/lang';
 import StepsProvider from './context/steps';
 import { AuthProvider } from './context/auth';
 import { PublicOrgProvider } from './context/public-org';
+import { createBrowserHistory } from 'history'
 
 // import CookieBot from 'react-cookiebot';
 
 import 'antd/dist/antd.css';
 
-// const domainGroupId = process.env.REACT_APP_COOKIEBOT_DOMAIN_ID;
+export const history = createBrowserHistory({ basename: window.BASE_URL })
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <LangProvider>
           <StepsProvider>
             <AuthProvider>
-              <Router basename={process.env.PUBLIC_URL}>
+              <Router basename={process.env.PUBLIC_URL} history={history}>
                 <ScrollToTop />
                 <Switch>
                   <Route
@@ -37,7 +38,6 @@ function App() {
                     Component={() => 'Page Not Found'}
                     layout="general"
                   />
-
                   <Route
                     exact
                     path={navRoutes.ADMIN.LOGIN}
