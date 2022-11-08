@@ -8,6 +8,8 @@ import * as T from '../Typography';
 const TextWithIcon = ({
   color = 'neutralMain',
   iconColor = 'secondaryMain',
+  bgColor,
+  size,
   to,
   icon = 'phone',
   text = 'Stuck? Call us for advice',
@@ -48,7 +50,7 @@ const TextWithIcon = ({
 
   if (isText)
     return (
-      <S.Wrapper {...props}>
+      <S.Wrapper bgColor={bgColor} size={size} {...props}>
         {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
         <T.H3
           to={to}
@@ -63,7 +65,7 @@ const TextWithIcon = ({
     );
 
   return (
-    <S.Wrapper {...props} {...m}>
+    <S.Wrapper bgColor={bgColor} size={size} {...props} {...m}>
       {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
       <T.Link
         to={to}
