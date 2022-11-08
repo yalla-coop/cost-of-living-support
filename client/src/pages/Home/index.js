@@ -17,19 +17,7 @@ import HelpButton from '../../components/HelpButton';
 import * as S from './style';
 const { Col, Row } = Grid;
 
-// const cardsData = [
-//   { cardId: 1, text: 'Paying for housing', to: '/' },
-//   { cardId: 2, text: 'Paying for my bills', to: '/' },
-//   {
-//     cardId: 3,
-//     text: 'Paying for essentials (Food, transport, medication)',
-//     to: '/',
-//   },
-//   { cardId: 4, text: 'Dealing with debts', to: '/' },
-//   { cardId: 5, text: 'How to maximise my income', to: '/' },
-// ];
-
-const NewHome = () => {
+const Home = () => {
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
 
@@ -134,4 +122,4 @@ const NewHome = () => {
   );
 };
 
-export default NewHome;
+export default Home;
