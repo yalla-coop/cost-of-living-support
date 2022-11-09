@@ -4,23 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cross-env DEBUG=server nodemon --exec babel-node ./server/index.js\"",
-    "dev:server": "cross-env DEBUG=server nodemon --exec babel-node ./server/index.js",
-    "dev:client": "cd client && npm start",
+    "dev": "cross-env DEBUG=server nodemon --exec babel-node ./index.js",
     "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
     "build:server": "cross-env DEBUG=server babel server --out-dir dist",
     "build": "npm run clean && npm run build:server",
-    "migrate:up": "db-migrate -m server/database/migrations up",
-    "migrate:down": "db-migrate -m server/database/migrations down",
-    "migrate:create": "func() { db-migrate -m server/database/migrations create \"$1\" --sql-file; }; func",
+    "migrate:up": "db-migrate -m database/migrations up",
+    "migrate:down": "db-migrate -m database/migrations down",
+    "migrate:create": "func() { db-migrate -m database/migrations create \"$1\" --sql-file; }; func",
     "clean": "rm -rf dist && mkdir dist",
-    "lint:server": "eslint server",
-    "test": "jest --silent=false",
+    "lint": "eslint",
+    "test": "jest",
     "cover": "nyc npm t",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "build:db": "babel-node ./server/database/build.script.js",
-    "build:db:prod": "babel-node ./server/database/dummy-data-prod/build.script.js",
+    "build:db": "babel-node ./database/build.script.js",
+    "build:db:prod": "babel-node ./database/dummy-data-prod/build.script.js",
     "init:both": "npm i && cd client && npm i && npm run build",
     "heroku-postbuild": "npm run init:both && npm run build"
   },
@@ -72,9 +70,9 @@
   },
   "nodemonConfig": {
     "watch": [
-      "./server",
+      ".",
       "./package.json",
-      "./client/src/constants"
+      "../client/src/constants"
     ]
   },
   "author": "",
