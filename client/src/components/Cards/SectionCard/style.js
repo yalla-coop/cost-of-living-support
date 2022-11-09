@@ -11,6 +11,10 @@ export const Wrapper = styled(RouterLink)`
   border-radius: 8px;
   box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
   filter: drop-shadow(0px 1px 3px rgba(16, 24, 40, 0.1));
+  align-self: flex-start;
+  ${({ theme }) => theme.media.mobile} {
+    max-width: 100%;
+  }
 `;
 
 export const CardHead = styled.div`
@@ -27,7 +31,7 @@ export const CardHead = styled.div`
 
 export const CardFooter = styled.div`
   width: 100%;
-  padding: 16px 26px;
+  padding: 16px 24px;
   background: ${({ theme: { colors }, bg }) =>
     bg ? colors[bg] : colors.neutralSurface};
   display: flex;
