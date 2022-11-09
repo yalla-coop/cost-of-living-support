@@ -5,7 +5,7 @@ import { whereDoYouNeedToGoTypes } from '../constants/data-types';
 
 const URLregex =
   /^((https?):\/\/)?(www.)?[a-z0-9-_]+(\.[a-z-_]{2,}){1,3}(#?\/?[a-zA-Z0-9#-_]+)*\/?(\?[a-zA-Z0-9-_.-]+=[a-zA-Z0-9-%?&=.-_]+&?)?$/;
-const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+// const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 const URLSlugRegex = /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/;
 
 export const requiredText = string()
