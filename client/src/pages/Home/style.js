@@ -108,13 +108,17 @@ export const LogoContainer = styled(Link)`
 export const FullSection = styled.div`
   width: 100%;
   max-width: 1200px;
-  margin-top: 40px;
-  padding: ${({ theme }) => `${theme.spacings[6]} 37.5px`};
+  margin-top: 56px;
+  padding: ${({ theme }) => `${theme.spacings[6]} ${theme.spacings[7]}`};
   background: red;
   display: flex;
   justify-content: center;
   align-items: center;
   background: ${({ theme }) => theme.colors.neutralSurface};
+  ${({ theme }) => theme.media.mobile} {
+    margin-top: 24px;
+    padding: ${({ theme }) => `${theme.spacings[5]} 37.5px`};
+  }
 `;
 
 export const NeedHelpWrapper = styled.div`
@@ -129,10 +133,19 @@ export const ButtonsContainer = styled.div`
   padding-right: 0;
   ${({ theme }) => theme.media.mobile} {
     max-width: 100%;
-    padding-left: 33.5px;
-    padding-right: 33.5px;
+    padding-left: 37.5px;
+    padding-right: 37.5px;
     #buttons_text {
       max-width: 200px;
     }
+  }
+`;
+
+export const pageTitle = styled(T.H1)`
+  font-size: 40px !important;
+  line-height: 55.88px !important;
+  ${({ theme }) => theme.media.mobile} {
+    font-size: 22px !important;
+    line-height: 32px !important;
   }
 `;

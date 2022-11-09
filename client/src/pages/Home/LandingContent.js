@@ -13,9 +13,9 @@ const LandingContent = () => {
             <img src={Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>
-            <T.H1 ta="center" weight="bold" color="white">
+            <S.pageTitle ta="center" weight="bold" color="white">
               Cost of Living Helper
-            </T.H1>
+            </S.pageTitle>
           </S.HeaderText>
         </S.HeaderContent>
       </S.PageHead>

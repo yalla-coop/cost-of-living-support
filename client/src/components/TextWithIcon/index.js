@@ -51,7 +51,7 @@ const TextWithIcon = ({
   if (isText)
     return (
       <S.Wrapper bgColor={bgColor} size={size} {...props}>
-        {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+        {icon && <Icon icon={icon} color={iconColor} mr={mr || '11.5px'} />}
         <T.H3
           to={to}
           color={color}
@@ -66,7 +66,7 @@ const TextWithIcon = ({
 
   return (
     <S.Wrapper bgColor={bgColor} size={size} {...props} {...m}>
-      {icon && <Icon icon={icon} color={iconColor} mr="11.5px" />}
+      {icon && <Icon icon={icon} color={iconColor} mr={mr || '11.5px'} />}
       <T.Link
         to={to}
         color={color}

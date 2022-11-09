@@ -62,8 +62,8 @@ const Home = () => {
                 cardId={item.cardId}
                 text={item.text}
                 to={item.to} // still to do decide if its route or sub-route
-                mb={5}
-                mbT={4}
+                mb={2}
+                mbM={'0'}
               />
             );
           })}
@@ -87,11 +87,12 @@ const Home = () => {
             iconColor="tertiaryDark"
             jc="center"
             jcT="flex-start"
+            mr="6px"
           />
         </S.NeedHelpWrapper>
       </S.FullSection>
       <Row jc="center" jcM="flex-start">
-        <Col w={[4, 6, 4]} jc="center" jcM="flex-start" mt="8" mtM="6" mb="5">
+        <Col w={[4, 6, 4]} jc="center" jcM="flex-start" mt="8" mtM="6" mb="0">
           <S.ButtonsContainer>
             <T.H2
               id="buttons_text"
