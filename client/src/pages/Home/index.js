@@ -29,13 +29,8 @@ const afterClaimContent = {
 
 const Home = () => {
   const { lang } = useLang();
-  const {
-    steps,
-    justCompletedId,
-    setJustCompletedId,
-    loadingSteps,
-    stepsObj,
-  } = useSteps();
+  const { steps, justCompletedId, setJustCompletedId, loadingSteps, stepsObj } =
+    useSteps();
 
   const [showAfterClaim, setShowAfterClaim] = useState(false);
 
