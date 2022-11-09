@@ -1,71 +1,71 @@
 const Calculator = ({ width, height, color, ...props }) => (
   <svg
-    width={width || '83'}
-    height={height || '106'}
-    viewBox="0 0 83 106"
+    width={width || '120'}
+    height={height || '120'}
+    viewBox="0 0 120 120"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <path
-      d="M70.1125 4.25H12.8875C7.97907 4.25 4 8.22907 4 13.1375V92.8625C4 97.7709 7.97907 101.75 12.8875 101.75H70.1125C75.0209 101.75 79 97.7709 79 92.8625V13.1375C79 8.22907 75.0209 4.25 70.1125 4.25Z"
-      stroke="#1A202B"
+      d="M88.6125 11.25H31.3875C26.4791 11.25 22.5 15.2291 22.5 20.1375V99.8625C22.5 104.771 26.4791 108.75 31.3875 108.75H88.6125C93.5209 108.75 97.5 104.771 97.5 99.8625V20.1375C97.5 15.2291 93.5209 11.25 88.6125 11.25Z"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M59.575 19.25H23.425C20.9811 19.25 19 21.2311 19 23.675V37.325C19 39.7689 20.9811 41.75 23.425 41.75H59.575C62.0189 41.75 64 39.7689 64 37.325V23.675C64 21.2311 62.0189 19.25 59.575 19.25Z"
-      stroke="#1A202B"
+      d="M78.075 26.25H41.925C39.4811 26.25 37.5 28.2311 37.5 30.675V44.325C37.5 46.7689 39.4811 48.75 41.925 48.75H78.075C80.5189 48.75 82.5 46.7689 82.5 44.325V30.675C82.5 28.2311 80.5189 26.25 78.075 26.25Z"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M64 56.75V86.75"
-      stroke="#1A202B"
+      d="M82.5 63.75V93.75"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M52.75 56.75H41.5"
-      stroke="#1A202B"
+      d="M71.25 63.75H60"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M30.25 56.75H19"
-      stroke="#1A202B"
+      d="M48.75 63.75H37.5"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M52.75 71.75H41.5"
-      stroke="#1A202B"
+      d="M71.25 78.75H60"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M30.25 71.75H19"
-      stroke="#1A202B"
+      d="M48.75 78.75H37.5"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M52.75 86.75H41.5"
-      stroke="#1A202B"
+      d="M71.25 93.75H60"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
-      d="M30.25 86.75H19"
-      stroke="#1A202B"
+      d="M48.75 93.75H37.5"
+      stroke={color || '#1A202B'}
       strokeWidth="7.5"
       strokeLinecap="round"
       strokeLinejoin="round"
