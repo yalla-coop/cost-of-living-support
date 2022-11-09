@@ -1,9 +1,8 @@
 import { query } from '../../../database';
 
-const updateStep = async ({
+const updateSection = async ({
   id,
   stage,
-  stepOrder,
   title,
   description,
   pageTitle,
@@ -18,29 +17,27 @@ const updateStep = async ({
   userId,
 }) => {
   const sql = `
-    UPDATE steps
+    UPDATE sections
     SET
       stage = $2,
-      step_order = $3,
-      title = $4,
-      description = $5,
-      page_title = $6,
-      page_description = $7,
-      how_long_does_it_take = $8,
-      where_do_you_need_to_go = $9,
-      things_you_will_need = $10,
-      what_you_will_need_to_know = $11,
-      top_tip = $12,
-      other_tips = $13,
-      is_optional = $14,
-      updated_by = $15
+      title = $3,
+      description = $4,
+      page_title = $5,
+      page_description = $6,
+      how_long_does_it_take = $7,
+      where_do_you_need_to_go = $8,
+      things_you_will_need = $9,
+      what_you_will_need_to_know = $10,
+      top_tip = $11,
+      other_tips = $12,
+      is_optional = $13,
+      updated_by = $14
     WHERE id = $1
   `;
 
   const res = await query(sql, [
     id,
     stage,
-    stepOrder,
     title,
     description,
     pageTitle,
@@ -57,4 +54,4 @@ const updateStep = async ({
   return res.rows[0];
 };
 
-export { updateStep };
+export { updateSection };

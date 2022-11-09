@@ -1,11 +1,10 @@
 import { query } from '../../../database';
 
-const getSteps = async () => {
+const getSections = async () => {
   const sql = `
     SELECT
       s.id,
       s.stage,
-      s.step_order,
       s.title,
       s.description,
       s.page_title,
@@ -17,20 +16,19 @@ const getSteps = async () => {
       s.top_tip,
       s.other_tips,
       s.is_optional
-    FROM steps AS s
-    ORDER BY step_order ASC
+    FROM sections AS s
+    ORDER BY position ASC
   `;
 
   const res = await query(sql);
   return res.rows;
 };
 
-const getStepById = async (id) => {
+const getSectionById = async (id) => {
   const sql = `
     SELECT
       s.id,
       s.stage,
-      s.step_order,
       s.title,
       s.description,
       s.page_title,
@@ -42,7 +40,7 @@ const getStepById = async (id) => {
       s.top_tip,
       s.other_tips,
       s.is_optional
-    FROM steps AS s
+    FROM sections AS s
     WHERE id = $1
   `;
 
@@ -50,4 +48,4 @@ const getStepById = async (id) => {
   return res.rows[0];
 };
 
-export { getSteps, getStepById };
+export { getSections, getSectionById };

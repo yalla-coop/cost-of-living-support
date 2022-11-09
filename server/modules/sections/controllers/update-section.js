@@ -1,11 +1,10 @@
-import * as steps from '../use-cases';
+import * as Sections from '../use-cases';
 
-const updateStep = async (req, res, next) => {
+const updateSection = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
       stage,
-      stepOrder,
       title,
       description,
       pageTitle,
@@ -21,10 +20,9 @@ const updateStep = async (req, res, next) => {
 
     const { id: userId } = req.user;
 
-    const step = await steps.updateStep({
+    const section = await Sections.updateSection({
       id,
       stage,
-      stepOrder,
       title,
       description,
       pageTitle,
@@ -39,10 +37,10 @@ const updateStep = async (req, res, next) => {
       userId,
     });
 
-    res.json(step);
+    res.json(section);
   } catch (error) {
     next(error);
   }
 };
 
-export default updateStep;
+export default updateSection;

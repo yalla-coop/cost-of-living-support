@@ -1,9 +1,8 @@
-import * as Steps from '../model';
+import * as Sections from '../model';
 
-const updateStep = async ({
+const updateSection = async ({
   id,
   stage,
-  stepOrder,
   title,
   description,
   pageTitle,
@@ -17,10 +16,9 @@ const updateStep = async ({
   isOptional,
   userId,
 }) => {
-  const step = await Steps.updateStep({
+  const section = await Sections.updateSection({
     id,
     stage,
-    stepOrder,
     title,
     description,
     pageTitle,
@@ -35,7 +33,7 @@ const updateStep = async ({
     userId,
   });
 
-  return step;
+  return section;
 };
 
-export default updateStep;
+export default updateSection;
