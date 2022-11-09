@@ -7,7 +7,7 @@
     "dev": "cross-env DEBUG=server nodemon --exec babel-node ./index.js",
     "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
-    "build:server": "cross-env DEBUG=server babel server --out-dir dist",
+    "build:server": "cross-env DEBUG=server babel . --out-dir ../dist",
     "build": "npm run clean && npm run build:server",
     "migrate:up": "db-migrate -m database/migrations up",
     "migrate:down": "db-migrate -m database/migrations down",

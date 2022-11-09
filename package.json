@@ -7,8 +7,8 @@
     "npm": "6.x"
   },
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cross-env DEBUG=server nodemon --exec babel-node ./server/index.js\"",
-    "dev:server": "cross-env DEBUG=server nodemon --exec babel-node ./server/index.js",
+    "dev": "concurrently --kill-others-on-fail \"cd client && npm start\" \"cd server && npm run dev\"",
+    "dev:server": "cd server && npm run start",
     "dev:client": "cd client && npm start",
     "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
@@ -19,7 +19,8 @@
     "migrate:create": "func() { db-migrate -m server/database/migrations create \"$1\" --sql-file; }; func",
     "clean": "rm -rf dist && mkdir dist",
     "lint:server": "eslint server",
-    "test": "cross-env NODE_ENV=test mocha \"server/**/*.spec.js\" --exclude \"server/services/dataTestingRunner/*.spec.js\"",
+    "test:client": "cd client && npm run test",
+    "test:server": "cd server && npm run test",
     "cover": "nyc npm t",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "build:db": "babel-node ./server/database/build.script.js",
