@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
   [data-name='title'],
   [data-name='strikethrough'],
   [data-name='image'],
+  [data-name='italic'],
   .w-md-editor-toolbar-divider,
   .w-md-editor-bar {
     display: none;

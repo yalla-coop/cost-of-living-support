@@ -28,7 +28,6 @@ const Template = (args) => {
             // mr: 4,
             // mb: 3,
             color: 'secondaryMain',
-            weight: 'bold',
           },
         }}
       />
