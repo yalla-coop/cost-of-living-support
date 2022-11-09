@@ -1,16 +1,20 @@
 DROP TABLE IF EXISTS "content_audit_log" CASCADE;
 
+-- When super admin updates the default sections
 CREATE TABLE "content_audit_log" (
   "id" SERIAL PRIMARY KEY,
   "user_id" INTEGER REFERENCES users(id),
-  "step_id" INTEGER REFERENCES steps(id),
+  "section_id" INTEGER REFERENCES sections(id),
   "type" content_audit_log_types NOT NULL,
-  "updated_content" JSON,
+  "updated_content" JSONB,
+  "topics" JSONB,
     -- {
-    --   type: 'STEP', // ['STEP', 'LANDING']
-    --   content_id: '',
-    --   title: '',
-    --   ...all_setp_or_landing_content_here
+    --   title
+    --   topics: [
+    --     {
+    --       title
+    --       content
+    --       ...all the fields in the topics table
     -- }
 
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),

@@ -5,7 +5,7 @@ const getChangesLog = async () => {
     SELECT
       cal.id,
       cal.user_id,
-      cal.landing_page_content_id,
+      cal.section_id,
       cal.type,
       cal.updated_content,
       cal.created_at,

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { message } from 'antd';
 
 import { Typography as T } from '../../components';
-import { LandingPage } from '../../api-calls';
 import { t } from '../../helpers';
 import { useLang } from '../../context/lang';
 import { usePublicOrg } from '../../context/public-org';
@@ -35,7 +34,7 @@ const LandingContent = ({ uniqueSlug }) => {
     let mounted = true;
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
-      const { data, error } = await LandingPage.getLandingPageContent({});
+      const { data, error } = {};
       if (mounted) {
         if (error) {
           setFetchError(t(`generalError`, lang));
