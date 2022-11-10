@@ -109,7 +109,7 @@ export const FullSection = styled.div`
   width: 100%;
   max-width: 1200px;
   margin-top: 56px;
-  padding: ${({ theme }) => `${theme.spacings[6]} ${theme.spacings[7]}`};
+  padding: ${({ theme }) => `${theme.spacings[7]}`};
   background: red;
   display: flex;
   justify-content: center;

@@ -49,7 +49,7 @@ const Head2 = styled(Title)`
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
   font-size: 20px !important;
-  line-height: 24px !important;
+  line-height: 28px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
 `;
 export const H2 = (props) => <Head2 {...props} level={2} />;
@@ -59,7 +59,7 @@ const Head3 = styled(Title)`
   ${commonStyle};
   font-family: hero-new-hairline, sans-serif;
   font-size: 16px !important;
-  line-height: 28px !important;
+  line-height: 24px !important;
   font-weight: ${({ weight }) => (weight ? weights[weight] : '600 !important')};
   text-decoration: ${({ td }) => td || 'none'};
 `;
