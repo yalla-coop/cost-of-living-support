@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tips, Checklist } from '.';
+import { Tips, Checklist, Action } from '.';
 import * as T from '../Typography';
 
 export default {
@@ -68,3 +68,21 @@ checklist.args = {
     'Tips 2',
   ],
 };
+
+const ActionExamples = (args) => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <div style={{ width: '300px', margin: '20px' }}>
+      <Action
+        {...args}
+        m="2"
+        handleChange={() => setChecked(!checked)}
+        completed={checked}
+      />
+    </div>
+  );
+};
+
+export const actionCard = ActionExamples.bind({});
+actionCard.args = {};
