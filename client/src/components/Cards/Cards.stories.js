@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tips, Checklist, Action } from '.';
+import { Tips, Checklist, Action, SectionCard } from '.';
 import * as T from '../Typography';
 
 export default {
@@ -83,6 +83,46 @@ const ActionExamples = (args) => {
     </div>
   );
 };
+const SectionCardExample = (args) => {
+  return (
+    <div style={{ width: '300px', margin: '20px' }}>
+      <SectionCard {...args} m="2" />
+    </div>
+  );
+};
 
 export const actionCard = ActionExamples.bind({});
 actionCard.args = {};
+export const sectionCard = SectionCardExample.bind({});
+export const sectionCard2 = SectionCardExample.bind({});
+export const sectionCard3 = SectionCardExample.bind({});
+export const sectionCard4 = SectionCardExample.bind({});
+export const sectionCard5 = SectionCardExample.bind({});
+
+sectionCard.args = {
+  cardId: 1,
+  to: '/',
+  text: 'Paying for housing',
+};
+sectionCard2.args = {
+  cardId: 2,
+  to: '/',
+  text: 'Paying for my bills',
+};
+sectionCard3.args = {
+  cardId: 3,
+  to: '/',
+  text: 'Paying for essentials (Food, transport, medication)',
+};
+
+sectionCard4.args = {
+  cardId: 4,
+  to: '/',
+  text: 'Dealing with debts',
+};
+
+sectionCard5.args = {
+  cardId: 5,
+  to: '/',
+  text: 'How to maximise my income',
+};
