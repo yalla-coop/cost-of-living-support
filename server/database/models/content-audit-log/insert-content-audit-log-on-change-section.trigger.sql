@@ -17,7 +17,7 @@ CREATE OR REPLACE FUNCTION insert_content_audit_log_fn()
         WHEN TG_OP = 'INSERT' THEN 'ADD'
         WHEN TG_OP = 'DELETE' THEN 'DELETE'
         ELSE 'UPDATE'
-      END::content_audit_log_types,
+      END::content_audit_log_operations,
       row_to_json(NEW.*),
       (SELECT jsonb_agg(topics.*) FROM topics WHERE section_id = NEW.id)
     );

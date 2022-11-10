@@ -5,7 +5,7 @@ CREATE TABLE "organisations_sections_orders" (
   "section_id" INTEGER REFERENCES sections(id),
   "organisation_id" INTEGER REFERENCES organisations(id),
   "position" INTEGER NOT NULL,
-  "hiden" BOOLEAN DEFAULT FALSE,
+  "hidden" BOOLEAN DEFAULT FALSE,
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );

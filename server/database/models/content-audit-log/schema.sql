@@ -5,7 +5,7 @@ CREATE TABLE "content_audit_log" (
   "id" SERIAL PRIMARY KEY,
   "user_id" INTEGER REFERENCES users(id),
   "section_id" INTEGER REFERENCES sections(id),
-  "type" content_audit_log_types NOT NULL,
+  "type" content_audit_log_operations NOT NULL,
   "updated_content" JSONB,
   "topics" JSONB,
     -- {
