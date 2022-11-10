@@ -23,7 +23,6 @@ export default {
   error: formatColor(primaryMain),
   borderPrimary: formatColor(primaryMain),
   borderSecondary: 'hsl(195, 8%, 38%)',
-  gray9: 'hsl(224, 11%, 26%)',
   primaryMainObj: primaryMain,
   secondaryMainObj: secondaryMain,
   facebookBlue: 'hsla(214, 89%, 52%, 1)',
