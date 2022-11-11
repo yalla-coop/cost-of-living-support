@@ -18,9 +18,7 @@
     "cover": "nyc npm t",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "build:db": "babel-node ./database/build.script.js",
-    "build:db:prod": "babel-node ./database/dummy-data-prod/build.script.js",
-    "init:both": "npm i && cd client && npm i && npm run build",
-    "heroku-postbuild": "npm run init:both && npm run build"
+    "build:db:prod": "babel-node ./database/dummy-data-prod/build.script.js"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.3",
