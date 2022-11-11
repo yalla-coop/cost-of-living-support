@@ -23,9 +23,9 @@
     "test:server": "cd server && npm run test",
     "cover": "nyc npm t",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "build:db": "cd server && babel-node ./database/build.script.js",
+    "build:db": "cd server && npm run build:db",
     "build:db:prod": "cd server && babel-node ./database/dummy-data-prod/build.script.js",
-    "init:both": "npm i && cd client && npm i && npm run build",
+    "init:both": "npm i && cd server && npm i && cd ../client && npm i && npm run build",
     "heroku-postbuild": "npm run init:both && npm run build"
   },
   "dependencies": {},
