@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test -- --config=jest.config.js",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -104,6 +104,8 @@
     "eslint-plugin-react": "^7.31.10",
     "history": "^5.3.0",
     "http-proxy-middleware": "^2.0.6",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "prettier": "^2.7.1",
     "react-error-overlay": "6.0.9",
     "ts-jest": "^29.0.3",
