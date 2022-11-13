@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tips, Checklist, Action, SectionCard, TopicCard } from '.';
+import { Tips, Checklist, SectionCard, TopicCard } from '.';
 import * as T from '../Typography';
 
 export default {
@@ -69,19 +69,6 @@ checklist.args = {
   ],
 };
 
-const ActionExamples = (args) => {
-  const [topic, setTopic] = useState({
-    title: '',
-    description: '',
-    tips: [{ content: '', key: Math.random() * 1000 }],
-  });
-
-  return (
-    <div style={{ width: '300px', margin: '20px' }}>
-      <Action {...args} m="2" topic={topic} setTopic={setTopic} />
-    </div>
-  );
-};
 const SectionCardExample = (args) => {
   return (
     <div style={{ width: '300px', margin: '20px' }}>
@@ -90,8 +77,6 @@ const SectionCardExample = (args) => {
   );
 };
 
-export const actionCard = ActionExamples.bind({});
-actionCard.args = {};
 export const sectionCard = SectionCardExample.bind({});
 export const sectionCard2 = SectionCardExample.bind({});
 export const sectionCard3 = SectionCardExample.bind({});

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import * as S from './style';
-import { BasicInput, Textarea } from '../../Inputs';
-import * as T from '../../Typography';
+import { BasicInput, Textarea } from '../Inputs';
+import * as T from '../Typography';
 import TipInput from './TipInput';
-import TextWithIcon from '../../TextWithIcon';
+import TextWithIcon from '../TextWithIcon';
 
 const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
   const [expanded, setExpanded] = useState(false);
@@ -15,7 +15,7 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
   return (
     <S.Wrapper>
       <T.H2 mb="4" color="neutralMain">
-        Topic {1 + topicIndex}
+        Topic {1 + (topicIndex || 0)}
       </T.H2>
       <S.Section mb="3">
         <S.TopSection>
@@ -38,7 +38,6 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
               direction={expanded ? 'up' : 'down'}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}
-              ml="6"
             />
           )}
         </S.TopSection>
@@ -47,6 +46,7 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
             <Textarea
               label="Description"
               value={topic.description}
+              rows="3"
               handleChange={(value) =>
                 setTopic({ ...topic, description: value })
               }
@@ -63,23 +63,26 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
                   />
                 );
               })}
-            <TextWithIcon
-              text="Add another tip"
-              icon="add"
-              isButton
-              mt="4"
-              iconColor="primaryMain"
-              handleClick={() => {
-                handleSetTips([...topic.tips, { content: '' }]);
-              }}
-              mb={'5'}
-            />
+            {topic?.tips?.length < 2 && (
+              <TextWithIcon
+                text="Add another tip"
+                icon="add"
+                isButton
+                mt="4"
+                iconColor="primaryMain"
+                handleClick={() => {
+                  handleSetTips([...topic.tips, { content: '' }]);
+                }}
+              />
+            )}
           </S.CollapseContent>
         )}
       </S.Section>
       <TextWithIcon
         text="Remove"
         icon="close"
+        weight="medium"
+        pointer
         isButton
         mt="4"
         iconColor="primaryMain"

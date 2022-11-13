@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Action } from '.';
+import ActionCard from '.';
 import * as T from '../Typography';
 import TextWithIcon from '../TextWithIcon';
 import { BasicInput } from '../Inputs';
@@ -55,7 +55,7 @@ const TopicForm = ({ topic, topicIndex, setTopics }) => {
     <>
       <Row>
         <Col w={[4, 4, 4]}>
-          <Action
+          <ActionCard
             topic={topic}
             topicIndex={topicIndex}
             setTopic={handleUpdateTopic}

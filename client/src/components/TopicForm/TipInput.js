@@ -1,5 +1,5 @@
-import { Textarea } from '../../Inputs';
-import Icon from '../../Icon';
+import { Textarea } from '../Inputs';
+import Icon from '../Icon';
 
 import * as S from './style';
 
@@ -9,6 +9,7 @@ const TipInput = ({ setTips, tips, index, tip }) => {
       <Textarea
         label="Tips"
         optional
+        rows="3"
         value={tip.content}
         handleChange={(value) => {
           const newTips = tips.map((t, idx) =>
@@ -24,7 +25,7 @@ const TipInput = ({ setTips, tips, index, tip }) => {
           setTips(newTips);
         }}
       >
-        <Icon icon="close" color="primaryMain" />
+        <Icon icon="close" pointer color="primaryMain" />
       </S.CloseTipButton>
     </S.TipInputWrapper>
   );

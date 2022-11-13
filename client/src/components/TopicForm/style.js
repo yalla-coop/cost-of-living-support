@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import setMargin from './../../../helpers/set-margin';
+import setMargin from './../../helpers/set-margin';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -39,7 +39,8 @@ export const CloseTipButton = styled.button`
 `;
 
 export const CollapseContent = styled.div`
-  padding-left: 19px;
-  padding-right: 16px;
+  padding-left: ${({ theme: { spacings } }) => spacings[5]};
+  padding-right: ${({ theme: { spacings } }) => spacings[5]};
+  padding-bottom: ${({ theme: { spacings } }) => spacings[5]};
   margin-top: ${({ theme }) => theme.spacings[4]};
 `;
