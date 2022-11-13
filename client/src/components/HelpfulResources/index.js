@@ -1,28 +1,24 @@
-import TextWithIcon from '../TextWithIcon';
+import Icon from '../Icon';
+import * as T from '../Typography';
 
 import * as S from './style';
 
 const HelpfulResources = ({ resources = [], ...props }) => {
   return (
     <S.Wrapper {...props}>
-      <TextWithIcon
-        iconColor="primaryMain"
-        icon="discover"
-        text="Helpful resources"
-        mb="3"
-        ai="flex-start"
-      />
+      <S.Title>
+        <Icon icon="discover" color="primaryMain" />
+        <T.H2 ml="2" color="neutralMain">
+          Helpful resources
+        </T.H2>
+      </S.Title>
 
       {resources.map((r, index) => (
-        <S.LinkWrapper key={r.label + index}>
-          <TextWithIcon
-            iconColor="primaryMain"
-            icon="open"
-            text={r.label}
-            to={r.link}
-            external
-            underline
-          />
+        <S.LinkWrapper href={r.link} target="_blank" key={r.label + index}>
+          <Icon icon="open" pointer color="primaryMain" />
+          <T.P weight="medium" ml="2" underline>
+            {r.label}
+          </T.P>
         </S.LinkWrapper>
       ))}
     </S.Wrapper>
