@@ -70,16 +70,15 @@ checklist.args = {
 };
 
 const ActionExamples = (args) => {
-  const [checked, setChecked] = useState(false);
+  const [topic, setTopic] = useState({
+    title: '',
+    description: '',
+    tips: [{ content: '', key: Math.random() * 1000 }],
+  });
 
   return (
     <div style={{ width: '300px', margin: '20px' }}>
-      <Action
-        {...args}
-        m="2"
-        handleChange={() => setChecked(!checked)}
-        completed={checked}
-      />
+      <Action {...args} m="2" topic={topic} setTopic={setTopic} />
     </div>
   );
 };

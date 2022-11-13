@@ -45,12 +45,22 @@ const ResourcesSection = ({ resource, setResources, index }) => {
 
 const TopicForm = ({ topic, topicIndex, setTopics }) => {
   const [resources, setResources] = useState([{ link: '', label: '' }]);
+  const handleUpdateTopic = (updatedTopic) => {
+    setTopics((old) =>
+      old.map((t, idx) => (idx === topicIndex ? updatedTopic : t))
+    );
+  };
 
   return (
     <>
       <Row>
         <Col w={[4, 4, 4]}>
-          <Action topic={topic} topicIndex={topicIndex} setTopics={setTopics} />
+          <Action
+            topic={topic}
+            topicIndex={topicIndex}
+            setTopic={handleUpdateTopic}
+            setTopics={setTopics}
+          />
         </Col>
       </Row>
       <Row mb="4">

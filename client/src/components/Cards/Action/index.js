@@ -5,13 +5,12 @@ import * as T from '../../Typography';
 import TipInput from './TipInput';
 import TextWithIcon from '../../TextWithIcon';
 
-const Action = ({ topic, topicIndex, setTopics }) => {
+const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
   const [expanded, setExpanded] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [tips, setTips] = useState([
-    { content: '', key: Math.random() * 1000 },
-  ]);
+
+  const handleSetTips = (tips) => {
+    setTopic({ ...topic, tips });
+  };
 
   return (
     <S.Wrapper>
@@ -24,8 +23,8 @@ const Action = ({ topic, topicIndex, setTopics }) => {
             name="title"
             placeholder="Type title here..."
             label="Title"
-            value={title}
-            handleChange={setTitle}
+            value={topic.title}
+            handleChange={(value) => setTopic({ ...topic, title: value })}
           />
 
           {!expanded && (
@@ -47,26 +46,32 @@ const Action = ({ topic, topicIndex, setTopics }) => {
           <S.CollapseContent>
             <Textarea
               label="Description"
-              value={description}
-              handleChange={setDescription}
+              value={topic.description}
+              handleChange={(value) =>
+                setTopic({ ...topic, description: value })
+              }
             />
-            {tips.map((t, index) => {
-              return (
-                <TipInput
-                  key={t + index}
-                  tip={t}
-                  setTips={setTips}
-                  index={index}
-                />
-              );
-            })}
+            {topic?.tips?.length &&
+              topic.tips.map((t, index) => {
+                return (
+                  <TipInput
+                    key={t + index}
+                    tip={t}
+                    tips={topic.tips}
+                    setTips={handleSetTips}
+                    index={index}
+                  />
+                );
+              })}
             <TextWithIcon
               text="Add another tip"
               icon="add"
               isButton
               mt="4"
               iconColor="primaryMain"
-              handleClick={() => setTips((old) => [...old, { content: '' }])}
+              handleClick={() => {
+                handleSetTips([...topic.tips, { content: '' }]);
+              }}
               mb={'5'}
             />
           </S.CollapseContent>
