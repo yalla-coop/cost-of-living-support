@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Main = styled.main`
   width: 100%;
   display: flex;
+  flex-direction: column;
   flex: 1;
   ${({ theme }) => theme.media.mobile} {
     padding: 24px 10vw;
