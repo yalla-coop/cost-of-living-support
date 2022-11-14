@@ -51,7 +51,7 @@ const Action = ({ topic, setTopic, topicIndex, setTopics }) => {
                 setTopic({ ...topic, description: value })
               }
             />
-            {topic?.tips?.length &&
+            {topic?.tips?.length > 0 &&
               topic.tips.map((t, index) => {
                 return (
                   <TipInput
