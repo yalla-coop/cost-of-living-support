@@ -55,10 +55,10 @@ const MentalHeath = () => {
               them about anything that is upsetting or worrying you.
               <br />
               <br />
-              Samaritans Helpline:
+              Samaritans Helpline:{' '}
               <T.Link weight="bold" external href={`tel:116123`} underline>
                 116 123
-              </T.Link>
+              </T.Link>{' '}
               (Monday to Sunday at any time)
             </T.P>
           </Col>
