@@ -1,152 +1,25 @@
 import { useState } from 'react';
-import ActionCard from '.';
-import * as T from '../Typography';
-import TextWithIcon from '../TextWithIcon';
-import { BasicInput } from '../Inputs';
-import { Col, Row } from '../Grid';
+
+import TopicForm from '.';
 
 export default {
-  title: 'Common Components/ActionSection',
+  title: 'Common Components/TopicForm',
   argTypes: {},
 };
 
-const ResourcesSection = ({ resource, setResources, index }) => {
+const TopicFormExamples = (args) => {
+  const [topic, setTopic] = useState({
+    title: '',
+    description: '',
+    tips: [{ content: '', key: Math.random() * 1000 }],
+  });
+
   return (
-    <Row mb="4">
-      <Col w={[4, 4, 4]}>
-        <BasicInput
-          label="Resource link"
-          value={resource.link}
-          handleChange={(value) =>
-            setResources((old) =>
-              old.map((r, idx) => (idx === index ? { ...r, link: value } : r))
-            )
-          }
-          placeholder="Type/paste link here..."
-          helper="Enter your preferred resource link"
-        />
-      </Col>
-      <Col w={[4, 4, 4]}>
-        <BasicInput
-          label="Resource label"
-          value={resource.label}
-          handleChange={(value) =>
-            setResources((old) =>
-              old.map((r, idx) => (idx === index ? { ...r, label: value } : r))
-            )
-          }
-          placeholder="e.g. Our budgeting tool"
-          helper="Enter your preferred button label here"
-        />
-      </Col>
-    </Row>
+    <div style={{ width: '300px', margin: '20px' }}>
+      <TopicForm {...args} m="2" topic={topic} setTopic={setTopic} />
+    </div>
   );
 };
 
-const TopicForm = ({ topic, topicIndex, setTopics }) => {
-  const [resources, setResources] = useState([{ link: '', label: '' }]);
-  const handleUpdateTopic = (updatedTopic) => {
-    setTopics((old) =>
-      old.map((t, idx) => (idx === topicIndex ? updatedTopic : t))
-    );
-  };
-
-  return (
-    <>
-      <Row>
-        <Col w={[4, 4, 4]}>
-          <ActionCard
-            topic={topic}
-            topicIndex={topicIndex}
-            setTopic={handleUpdateTopic}
-            setTopics={setTopics}
-          />
-        </Col>
-      </Row>
-      <Row mb="4">
-        <Col w={[4, 4, 4]}>
-          <T.H3 color="neutralMain">Helpful resources</T.H3>
-        </Col>
-      </Row>
-      {resources.map((r, index) => (
-        <ResourcesSection
-          resource={r}
-          setResources={setResources}
-          index={index}
-        />
-      ))}
-      <Row>
-        <Col w={[4, 4, 4]}>
-          <TextWithIcon
-            text="Add another resource"
-            icon="add"
-            isButton
-            mt="9px"
-            iconColor="primaryMain"
-            handleClick={() =>
-              setResources((old) => [...old, { link: '', value: '' }])
-            }
-            mb={'57px'}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col w={[4, 8, 8]}>
-          <div
-            style={{ height: 2, width: '100%', background: '#D9D6CC', mb: 41 }}
-          />
-        </Col>
-      </Row>
-    </>
-  );
-};
-
-const ActionsSectionExamples = (args) => {
-  const [topics, setTopics] = useState([
-    {
-      title: '',
-      resources: [{ link: '', label: '' }],
-      tips: [{ content: '', key: Math.random() * 1000 }],
-      key: Math.random() * 1000,
-    },
-  ]);
-
-  return (
-    <>
-      {topics.map((p, topicIndex) => (
-        <TopicForm
-          topic={p}
-          setTopics={setTopics}
-          topicIndex={topicIndex}
-          key={p.key}
-        />
-      ))}
-      <Row>
-        <Col w={[4, 4, 4]}>
-          <TextWithIcon
-            text="Add another topic"
-            icon="add"
-            isButton
-            mt="33px"
-            iconColor="primaryMain"
-            handleClick={() =>
-              setTopics((old) => [
-                ...old,
-                {
-                  title: '',
-                  resources: [{ link: '', label: '' }],
-                  tips: [{ content: '', key: Math.random() * 1000 }],
-                  key: Math.random() * 1000,
-                },
-              ])
-            }
-            mb={'57px'}
-          />
-        </Col>
-      </Row>
-    </>
-  );
-};
-
-export const actionsSection = ActionsSectionExamples.bind({});
-ActionsSectionExamples.args = {};
+export const actionCard = TopicFormExamples.bind({});
+TopicFormExamples.args = {};
