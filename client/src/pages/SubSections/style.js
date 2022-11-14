@@ -1,13 +1,10 @@
 import styled from '@emotion/styled';
 import * as T from '../../components/Typography';
 
-export const PageContent = styled.div`
+export const Container = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: ${({ theme }) => theme.spacings[4]};
-  padding-left: 37.5px;
-  padding-right: 37.5px;
 `;
 
 export const ButtonWrapper = styled(T.Link)`
@@ -16,5 +13,4 @@ export const ButtonWrapper = styled(T.Link)`
   background: none;
   cursor: pointer;
   width: 100%;
-  border: 1px solid red;
 `;

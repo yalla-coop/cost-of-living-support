@@ -33,7 +33,7 @@ const getSubSectionsBySectionIdForPublic = async (id) => {
         SELECT
             ARRAY_AGG (
             jsonb_build_object(
-              'id,',  s.id,
+              'id',  s.id,
             'title', s.title,
             'position', s.default_position
             )

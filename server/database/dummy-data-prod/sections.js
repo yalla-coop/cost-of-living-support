@@ -46,12 +46,12 @@ const addSections = async () => {
     defaultPosition: 2,
   });
   const payingForHousingHomeowner = await createSections({
-    title: 'Homeowner',
+    title: 'Home owner',
     parentSectionId: payingForHousing.id,
     defaultPosition: 3,
   });
   const payingForHousingSharedOwner = await createSections({
-    title: 'Shared Owner',
+    title: 'Shared owner',
     parentSectionId: payingForHousing.id,
     defaultPosition: 4,
   });

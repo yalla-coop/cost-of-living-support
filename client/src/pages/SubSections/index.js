@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Sections } from '../../api-calls';
 import { Typography as T, TextWithIcon, Grid } from '../../components';
 import PageHeader from '../../components/PageHeader';
+import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
 import { navRoutes } from '../../constants';
 
 import * as S from './style';
@@ -44,21 +45,23 @@ const SubSections = () => {
     'neutralMain',
   ];
   return (
-    <>
+    <S.Container>
       <PageHeader title={data.title} />
-      <S.PageContent>
+      <GeneralPaddingSection>
         <Row jc="center" mb="4">
-          <Col w={[4, 6, 6]}>
+          <Col w={[4, 8, 6]}>
             <T.H2>
               So we can show you the best information, which one of these best
               describes you?
             </T.H2>
           </Col>
         </Row>
-        {data.childrenSections.map((item, index) => (
+        {data?.childrenSections?.map((item, index) => (
           <Row jc="center" mb="2">
-            <Col w={[4, 6, 6]}>
-              <S.ButtonWrapper to={navRoutes.GENERAL.BUDGETING}>
+            <Col w={[4, 8, 6]}>
+              <S.ButtonWrapper
+                to={navRoutes.GENERAL.SECTION.replace(':id', item.id)}
+              >
                 <TextWithIcon
                   size="large"
                   bgColor="neutralLight"
@@ -74,8 +77,8 @@ const SubSections = () => {
             </Col>
           </Row>
         ))}
-      </S.PageContent>
-    </>
+      </GeneralPaddingSection>
+    </S.Container>
   );
 };
 
