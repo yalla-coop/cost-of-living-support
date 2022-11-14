@@ -1,5 +1,5 @@
 import Home from './Home';
-import Step from './Step';
+import Section from './Section';
 import Login from './Login';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
@@ -10,7 +10,7 @@ import SubSections from './SubSections';
 export {
   Admin,
   Home,
-  Step,
+  Section,
   Login,
   Signup,
   ForgotPassword,
