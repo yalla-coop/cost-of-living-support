@@ -5,5 +5,15 @@ import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
 import Admin from './Admin';
+import MentalHeath from './MentalHeath';
 
-export { Admin, Home, Section, Login, Signup, ForgotPassword, ResetPassword };
+export {
+  Admin,
+  Home,
+  Section,
+  Login,
+  Signup,
+  ForgotPassword,
+  ResetPassword,
+  MentalHeath,
+};

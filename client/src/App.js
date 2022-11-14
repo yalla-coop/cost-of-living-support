@@ -136,6 +136,16 @@ function App() {
                     <CustomRoute Component={Pages.Home} layout="general" />
                   }
                 />
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.MENTAL_HEALTH}
+                  element={
+                    <CustomRoute
+                      Component={Pages.MentalHeath}
+                      layout="general"
+                    />
+                  }
+                />
               </Routes>
             </Router>
           </AuthProvider>
