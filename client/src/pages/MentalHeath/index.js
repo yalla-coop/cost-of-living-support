@@ -71,7 +71,7 @@ const MentalHeath = () => {
             </T.P>
           </Col>
         </Row>
-        <Row mt="4" mb="7">
+        <Row mt="4" mb="5">
           <Col w={[4, 8, 6]}>
             <GoBack
               text="Go back"
