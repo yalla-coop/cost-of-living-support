@@ -6,6 +6,7 @@ import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
 import Admin from './Admin';
 import MentalHeath from './MentalHeath';
+import SubSections from './SubSections';
 
 export {
   Admin,
@@ -16,4 +17,5 @@ export {
   ForgotPassword,
   ResetPassword,
   MentalHeath,
+  SubSections,
 };

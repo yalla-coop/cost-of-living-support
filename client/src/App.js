@@ -66,6 +66,7 @@ function App() {
 
               {/* ALL ADMIN PAGES */}
               <Pages.Admin />
+
               <Routes>
                 <Route
                   path={navRoutes.GENERAL.HOME}
@@ -158,6 +159,16 @@ function App() {
                   path={navRoutes.GENERAL.ORG}
                   element={
                     <CustomRoute Component={Pages.Home} layout="general" />
+                  }
+                />
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.SUBSECTIONS}
+                  element={
+                    <CustomRoute
+                      Component={Pages.SubSections}
+                      layout="general"
+                    />
                   }
                 />
               </Routes>
