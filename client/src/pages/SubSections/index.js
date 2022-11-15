@@ -64,7 +64,7 @@ const SubSections = () => {
               >
                 <TextWithIcon
                   size="large"
-                  bgColor="neutralLight"
+                  bgColor="neutralSurface"
                   text={item.title}
                   icon="forwardArrow"
                   iconColor={colorArr[index % colorArr.length]}
