@@ -94,6 +94,30 @@ function App() {
                     </PublicOrgProvider>
                   }
                 />
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.MENTAL_HEALTH}
+                  element={
+                    <PublicOrgProvider>
+                      <CustomRoute
+                        Component={Pages.MentalHeath}
+                        layout="general"
+                      />
+                    </PublicOrgProvider>
+                  }
+                />
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.MENTAL_HEALTH_ORG}
+                  element={
+                    <PublicOrgProvider>
+                      <CustomRoute
+                        Component={Pages.MentalHeath}
+                        layout="general"
+                      />
+                    </PublicOrgProvider>
+                  }
+                />
 
                 {/* <Route
                   path={navRoutes.GENERAL.STEP_ORG}
@@ -134,16 +158,6 @@ function App() {
                   path={navRoutes.GENERAL.ORG}
                   element={
                     <CustomRoute Component={Pages.Home} layout="general" />
-                  }
-                />
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.MENTAL_HEALTH}
-                  element={
-                    <CustomRoute
-                      Component={Pages.MentalHeath}
-                      layout="general"
-                    />
                   }
                 />
               </Routes>
