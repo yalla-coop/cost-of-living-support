@@ -112,7 +112,10 @@ const Home = () => {
               mb="6"
               to={
                 uniqueSlug
-                  ? navRoutes.GENERAL.MENTAL_HEALTH_ORG
+                  ? navRoutes.GENERAL.MENTAL_HEALTH_ORG.replace(
+                      ':uniqueSlug',
+                      uniqueSlug
+                    )
                   : navRoutes.GENERAL.MENTAL_HEALTH
               }
             />
