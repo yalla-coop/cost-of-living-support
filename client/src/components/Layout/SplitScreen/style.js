@@ -31,7 +31,7 @@ export const ContentHalf = styled.div`
   flex: 1;
   background: ${({ theme }) => theme.colors.white};
   padding: ${({ theme: { spacings: s } }) =>
-    `${s[9]} ${s[0]} ${s[0]} ${s[11]}`};
+    `${s[9]} ${s[0]} ${s[11]} ${s[11]}`};
   ${({ theme }) => theme.media.mobile} {
     padding: ${({ theme: { spacings } }) =>
       `${spacings[6]} 37px ${spacings[7]} 38px`};
