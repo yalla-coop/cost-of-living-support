@@ -84,11 +84,8 @@ const PublicOrgProvider = (props) => {
   };
 
   useEffect(() => {
-    if (uniqueSlug) {
-      getPublicOrgInfo(uniqueSlug);
-    } else {
-      getPublicOrgInfo('hyde');
-    }
+    getPublicOrgInfo(uniqueSlug);
+
     return () => _setPublicOrg(initialPublicOrgState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uniqueSlug]);
