@@ -2,12 +2,30 @@ import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection
 import { Typography as T, Grid, GoBack } from '../../components';
 import PageHeader from '../../components/PageHeader';
 import HelpfulResources from '../../components/HelpfulResources';
+import { usePublicOrg } from '../../context/public-org';
 
 import * as S from './style';
 
 const { Row, Col } = Grid;
 
+const defaultMentalHealthResources = [
+  {
+    label: 'Mental Health & Money Advice',
+    link: 'https://www.mentalhealthandmoneyadvice.org/en/how-can-we-help/advice-for-someone-whos-mental-health-is-being-affected-by-money/',
+  },
+  {
+    label: 'Mind Information & Support',
+    link: 'https://www.mind.org.uk/information-support/tips-for-everyday-living/money-and-mental-health/',
+  },
+  {
+    label: 'NHS Every Mind Matters',
+    link: 'https://www.nhs.uk/every-mind-matters/',
+  },
+];
+
 const MentalHeath = () => {
+  const { publicOrg } = usePublicOrg();
+
   return (
     <S.Container>
       <PageHeader
@@ -30,20 +48,10 @@ const MentalHeath = () => {
         <Row mt="6" mb="5">
           <Col w={[4, 8, 6]}>
             <HelpfulResources
-              resources={[
-                {
-                  label: 'Mental Health & Money Advice',
-                  link: 'https://www.mentalhealthandmoneyadvice.org/en/how-can-we-help/advice-for-someone-whos-mental-health-is-being-affected-by-money/',
-                },
-                {
-                  label: 'Mind Information & Support',
-                  link: 'https://www.mind.org.uk/information-support/tips-for-everyday-living/money-and-mental-health/',
-                },
-                {
-                  label: 'NHS Every Mind Matters',
-                  link: 'https://www.nhs.uk/every-mind-matters/',
-                },
-              ]}
+              resources={
+                publicOrg.mentalHealthSupportResources ||
+                defaultMentalHealthResources
+              }
             />
           </Col>
         </Row>
