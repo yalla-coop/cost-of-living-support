@@ -12,3 +12,14 @@ export const defaultMentalHealthResources = [
     link: 'https://www.nhs.uk/every-mind-matters/',
   },
 ];
+
+export const defaultBudgetResources = [
+  {
+    label: 'Budget Planner',
+    link: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+  },
+  {
+    label: 'Budget Printable PDF',
+    link: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+  },
+];
