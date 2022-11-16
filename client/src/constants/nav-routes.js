@@ -9,6 +9,7 @@ const GENERAL = {
   RESET_PASSWORD: '/reset-password/:token',
   NOT_FOUND: '/not-found',
   BUDGETING: '/budgeting',
+  BUDGETING_ORG: '/:uniqueSlug/budgeting',
   MENTAL_HEALTH: '/mental-health',
   MENTAL_HEALTH_ORG: '/:uniqueSlug/mental-health',
 };

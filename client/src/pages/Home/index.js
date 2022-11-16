@@ -79,7 +79,16 @@ const Home = () => {
             You know how much is going in and out but if you need a hand, we can
             help you work it out.
           </T.P>
-          <S.ReadMoreLink to={navRoutes.GENERAL.BUDGETING}>
+          <S.ReadMoreLink
+            to={
+              uniqueSlug
+                ? navRoutes.GENERAL.BUDGETING_ORG.replace(
+                    ':uniqueSlug',
+                    uniqueSlug
+                  )
+                : navRoutes.GENERAL.BUDGETING
+            }
+          >
             <TextWithIcon
               size="large"
               bgColor="neutralLight"

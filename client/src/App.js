@@ -119,7 +119,30 @@ function App() {
                     </PublicOrgProvider>
                   }
                 />
-
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.BUDGETING}
+                  element={
+                    <PublicOrgProvider>
+                      <CustomRoute
+                        Component={Pages.BudgetingPage}
+                        layout="general"
+                      />
+                    </PublicOrgProvider>
+                  }
+                />
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.BUDGETING_ORG}
+                  element={
+                    <PublicOrgProvider>
+                      <CustomRoute
+                        Component={Pages.BudgetingPage}
+                        layout="general"
+                      />
+                    </PublicOrgProvider>
+                  }
+                />
                 {/* <Route
                   path={navRoutes.GENERAL.STEP_ORG}
                   exact
