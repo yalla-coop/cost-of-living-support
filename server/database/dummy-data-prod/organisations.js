@@ -65,9 +65,9 @@ const createOrganisations = async () => {
     benefitCalcLabel: '',
     logoId: null,
     colors: {
-      main: '#FC6244',
-      secondary: '#3B557A',
-      neutral: '#1A202B',
+      main: { h: '10', s: '0.97', l: '0.63' },
+      secondary: { h: '215', s: '0.35', l: '0.35' },
+      neutral: { h: '219', s: '0.25', l: '0.14' },
     },
   };
   const HydeOrganisation = await createOrganisation(superAdminOrganisationData);
