@@ -1,11 +1,9 @@
 import { query } from '../connect';
-import * as T from '../../constants';
 
 const createOrganisation = async ({
   organisationName,
   typeOfOrganisation,
   uniqueSlug,
-  mentalHealthSupportResources,
   logoId,
   colors,
 }) => {
@@ -14,9 +12,8 @@ const createOrganisation = async ({
     type_of_organisation,
     unique_slug,
     logo_id,
-    colors,
-    mental_health_support_resources
-  ) VALUES (
+    colors
+   ) VALUES (
     $1,
     $2,
     $3,
@@ -30,7 +27,6 @@ const createOrganisation = async ({
     uniqueSlug,
     logoId,
     colors,
-    mentalHealthSupportResources,
   ]);
   return res.rows[0];
 };
@@ -40,7 +36,6 @@ const createOrganisations = async () => {
     organisationName: 'Hyde',
     typeOfOrganisation: 'A',
     uniqueSlug: 'hyde',
-    mentalHealthSupportResources: T.mentalHealthLinks,
     logoId: null,
     colors: {
       main: '#FC6244',

@@ -182,7 +182,7 @@ const addTopics = async ({ sections }) => {
         {
           type: 'external',
           label: 'Find local council',
-          url: 'https://www.gov.uk/find-local-council ',
+          url: 'https://www.gov.uk/find-local-council',
         },
       ],
     },
@@ -446,9 +446,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/use-our-debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -567,9 +566,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/use-our-debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -662,9 +660,8 @@ const addTopics = async ({ sections }) => {
       tip2: "Make sure you review your budget, and check again if you're eligible for benefits, if your circumstances change. For example if you change jobs, your household change, or if you move house.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.gov.uk/benefits-calculators',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },

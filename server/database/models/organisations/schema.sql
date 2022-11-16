@@ -7,7 +7,6 @@ CREATE TABLE "organisations" (
   "unique_slug" VARCHAR UNIQUE NOT NULL,
   "still_need_help_phone_number" VARCHAR(50),
   "still_need_help_label" VARCHAR(50),
-  "mental_health_support_resources" JSONB[],
   "logo_id" INTEGER REFERENCES media(id),
   "colors" JSON,
     -- { 

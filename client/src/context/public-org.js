@@ -16,7 +16,6 @@ const initialPublicOrgState = {
   uniqueSlug: '',
   colors: colors,
   organisationName: '',
-  mentalHealthSupportResources: [],
   resources: [],
 };
 

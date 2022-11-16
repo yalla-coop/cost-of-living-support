@@ -1,11 +1,9 @@
 import { query } from '../connect';
-import * as T from '../../constants';
 
 const createOrganisation = async ({
   organisationName,
   typeOfOrganisation,
   uniqueSlug,
-  mentalHealthSupportResources,
   logoId,
   colors,
 }) => {
@@ -14,15 +12,13 @@ const createOrganisation = async ({
     type_of_organisation,
     unique_slug,
     logo_id,
-    colors,
-    mental_health_support_resources
+    colors
   ) VALUES (
     $1,
     $2,
     $3,
     $4,
-    $5,
-    $6
+    $5
   ) RETURNING *`;
   const res = await query(sql, [
     organisationName,
@@ -30,7 +26,6 @@ const createOrganisation = async ({
     uniqueSlug,
     logoId,
     colors,
-    mentalHealthSupportResources,
   ]);
   return res.rows[0];
 };
@@ -40,7 +35,6 @@ const createOrganisations = async () => {
     organisationName: 'Hyde',
     typeOfOrganisation: 'A',
     uniqueSlug: 'hyde',
-    mentalHealthSupportResources: T.mentalHealthLinks,
     logoId: null,
     colors: {
       main: '#FC6244',
@@ -53,7 +47,6 @@ const createOrganisations = async () => {
     organisationName: 'org1',
     typeOfOrganisation: 'A',
     uniqueSlug: 'orr1-link',
-    mentalHealthSupportResources: T.mentalHealthLinks,
     colors: {
       main: '#FC6244',
       secondary: '#3B557A',

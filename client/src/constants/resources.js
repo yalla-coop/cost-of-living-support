@@ -10,7 +10,7 @@ export const defaultResources = [
     key: 'BENEFIT_CALCULATOR',
     category: 'BENEFIT_CALCULATOR',
     label: 'Benefit Calculator',
-    value: 'https://benefits-calculator.turn2us.org.uk/',
+    value: 'https://www.gov.uk/benefits-calculators/',
   },
   {
     key: 'DEBT_ADVICE',
