@@ -1,36 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import B from '../../constants/benefit-calculator';
-import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
-import {
-  TextWithIcon,
-  Icon,
-  Typography as T,
-  Button,
-  Grid,
-  HelpButton,
-  Cards,
-  OrganisationLogo,
-} from '../../components';
-import { useLang } from '../../context/lang';
-import { t } from '../../helpers';
-import { navRoutes as n, types } from '../../constants';
-import PageHeader from '../../components/PageHeader';
+import { useParams } from 'react-router-dom';
+import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
+
+import PageHeader from '../../../components/PageHeader';
 import * as S from './style';
-import { Sections } from './../../api-calls';
-import { usePublicOrg } from '../../context/public-org';
-import { TopicCard } from './../../components/Cards';
+import { Sections } from '../../../api-calls';
+import { usePublicOrg } from '../../../context/public-org';
+import { TopicCard } from '../../../components/Cards';
 import useTopics from './useTopics';
-import StillNeedHelp from './../../components/StillNeedHelp';
+import StillNeedHelp from '../../../components/StillNeedHelp';
 
 const Section = () => {
-  const [stuck, setStuck] = useState(false);
   const { publicOrg } = usePublicOrg();
   const { id } = useParams();
-  const { lang } = useLang();
-  const navigate = useNavigate();
+
   const [sectionData, setSectionData] = useState({});
-  const { topics, toggleMark } = useTopics(id);
+  const { topics, toggleMark } = useTopics(id, publicOrg?.resources);
 
   useEffect(() => {
     const fetchSectionData = async () => {
@@ -46,13 +31,6 @@ const Section = () => {
 
     fetchSectionData();
   }, [id]);
-
-  const formatLink = (link, type) => {
-    if (type === types.linkTypes.PHONE) {
-      return `tel:${link}`;
-    }
-    return link;
-  };
 
   const { title, parentSectionTitle } = sectionData;
   const pageTitle = parentSectionTitle

@@ -1,5 +1,4 @@
 import { query } from '../connect';
-import * as T from '../../constants';
 
 const createOrganisationResources = async ({
   organisationId,
@@ -25,8 +24,10 @@ const createOrganisationResources = async ({
   return res.rows[0];
 };
 
-const createOrganisations = async () => {
-  const resources = [
+const createOrganisations = async ({ organisations }) => {
+  const { organisation1 } = organisations;
+
+  const org1Resources = [
     {
       key: 'BUDGET_PLANNER',
       category: 'BUDGET',
@@ -60,13 +61,13 @@ const createOrganisations = async () => {
   ];
 
   await Promise.all(
-    resources.map((resource) => {
+    org1Resources.map((resource) => {
       return createOrganisationResources({
-        organisationId: T.HYDE_ORGANISATION_ID,
         key: resource.key,
         category: resource.category,
         label: resource.label,
         url: resource.url,
+        organisationId: organisation1.id,
       });
     }),
   );

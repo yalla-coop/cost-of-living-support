@@ -21,16 +21,16 @@ const TopicCard = ({
     <>
       <S.Section mb="3">
         <S.TopSection>
-          <S.MarkButton onClick={toggleMark}>
-            <S.IconWrapper>
+          <S.MarkButton>
+            <S.IconWrapper onClick={toggleMark}>
               <Icon
                 color={marked ? 'secondaryMain' : 'secondaryLight'}
                 icon="bookMark"
                 pointer
                 mr="6px"
               />
-              <T.H3>{title}</T.H3>
             </S.IconWrapper>
+            <T.H3>{title}</T.H3>
           </S.MarkButton>
 
           {(description || tips?.length > 0) && (

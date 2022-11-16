@@ -1,11 +1,11 @@
-import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
-import { Typography as T, Grid, GoBack } from '../../components';
-import PageHeader from '../../components/PageHeader';
-import HelpfulResources from '../../components/HelpfulResources';
-import { usePublicOrg } from '../../context/public-org';
+import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
+import { Typography as T, Grid, GoBack } from '../../../components';
+import PageHeader from '../../../components/PageHeader';
+import HelpfulResources from '../../../components/HelpfulResources';
+import { usePublicOrg } from '../../../context/public-org';
 
 import * as S from './style';
-import { resources } from '../../constants';
+import { resources } from '../../../constants';
 
 const { Row, Col } = Grid;
 

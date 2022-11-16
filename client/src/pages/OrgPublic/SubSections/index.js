@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
 import { useParams } from 'react-router-dom';
-import { Sections } from '../../api-calls';
-import { Typography as T, TextWithIcon, Grid } from '../../components';
-import PageHeader from '../../components/PageHeader';
-import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
-import { navRoutes } from '../../constants';
+import { Sections } from '../../../api-calls';
+import { Typography as T, TextWithIcon, Grid } from '../../../components';
+import PageHeader from '../../../components/PageHeader';
+import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
+import { navRoutes } from '../../../constants';
 
 import * as S from './style';
 const { Col, Row } = Grid;
@@ -60,7 +60,7 @@ const SubSections = () => {
           <Row jc="center" mb="2">
             <Col w={[4, 8, 6]}>
               <S.ButtonWrapper
-                to={navRoutes.GENERAL.SECTION.replace(':id', item.id)}
+                to={navRoutes.PUBLIC_ORG.SECTION.replace(':id', item.id)}
               >
                 <TextWithIcon
                   size="large"

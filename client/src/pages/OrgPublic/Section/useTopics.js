@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Sections } from './../../api-calls';
+import { Sections } from '../../../api-calls';
 
-const useTopics = (id) => {
+const useTopics = (id, resources) => {
   const [topics, setTopics] = useState([]);
   const [markedTopics, setMarkedTopics] = useState([]);
 
@@ -13,12 +13,24 @@ const useTopics = (id) => {
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {
-        setTopics(data);
+        const replacedData = data.map((topic) => ({
+          ...topic,
+          content: {
+            ...topic.content,
+            resources: topic.content.resources.map((resource) => {
+              if (resource.type === 'CUSTOM') {
+                return resources.find((r) => r.key === resource.key);
+              }
+              return resource;
+            }),
+          },
+        }));
+        setTopics(replacedData);
       }
     };
 
     fetchTopics();
-  }, [id]);
+  }, [id, resources]);
 
   useEffect(() => {
     const markedTopicsFromStorage =

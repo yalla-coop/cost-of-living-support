@@ -1,16 +1,27 @@
+const ORG = '/:uniqueSlug';
+
 const GENERAL = {
-  HOME: '/',
-  HOME_ORG: '/:uniqueSlug/home',
-  ORG: '/:uniqueSlug',
-  SUBSECTIONS: '/sections/:id/sub-sections',
-  SECTION: '/sections/:id',
-  UNAUTHORIZED: '/unauthorized',
-  FORGET_PASSWORD: '/forget-password',
-  RESET_PASSWORD: '/reset-password/:token',
-  NOT_FOUND: '/not-found',
-  BUDGETING: '/budgeting',
-  MENTAL_HEALTH: '/mental-health',
-  MENTAL_HEALTH_ORG: '/:uniqueSlug/mental-health',
+  UNAUTHORIZED: `/unauthorized`,
+  FORGET_PASSWORD: `/forget-password`,
+  RESET_PASSWORD: `/reset-password/:token`,
+  NOT_FOUND: `/not-found`,
+};
+
+const PUBLIC_ORG = {
+  HOME: `/`,
+  HOME_ORG: `${ORG}`,
+
+  SECTION: `/sections/:id`,
+  SECTION_ORG: `${ORG}/sections/:id`,
+
+  SUBSECTIONS: `/sections/:id/sub-sections`,
+  SUBSECTIONS_ORG: `${ORG}/sections/:id/sub-sections`,
+
+  BUDGETING: `/budgeting`,
+  BUDGETING_ORG: `${ORG}/budgeting`,
+
+  MENTAL_HEALTH: `/mental-health`,
+  MENTAL_HEALTH_ORG: `${ORG}/mental-health`,
 };
 
 const admin = '/admin';
@@ -51,7 +62,6 @@ const EXTERNAL = {
   PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
 
   CALL_US: '//www.google.com/',
-  ELIGIBILITY_CALCULATOR: 'https://benefits-calculator.turn2us.org.uk/',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
@@ -69,4 +79,4 @@ const STEPS = {
   STEP_ORG: '/:uniqueSlug/steps/:id',
 };
 
-export { GENERAL, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };
+export { GENERAL, PUBLIC_ORG, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };
