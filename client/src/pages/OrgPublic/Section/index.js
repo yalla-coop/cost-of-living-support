@@ -37,6 +37,10 @@ const Section = () => {
     ? `${parentSectionTitle.replace(/\*\*/g, '')} **${title}**`
     : title;
 
+  const stillNeedHelp = publicOrg?.resources?.find(
+    (resource) => resource.key === 'STILL_NEED_HELP'
+  );
+
   return (
     <S.Container>
       <PageHeader title={pageTitle} />
@@ -57,7 +61,10 @@ const Section = () => {
             ))}
           </S.Topics>
           <S.HelpSection>
-            <StillNeedHelp />
+            <StillNeedHelp
+              name={stillNeedHelp?.label}
+              phoneNumber={stillNeedHelp?.value}
+            />
           </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>

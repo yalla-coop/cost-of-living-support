@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-import { useParams } from 'react-router-dom';
+import { generatePath } from 'react-router-dom';
 import { Sections } from '../../../api-calls';
+import { usePublicOrg } from '../../../context/public-org';
 import {
   Cards,
   Typography as T,
@@ -20,8 +21,8 @@ const { Col, Row } = Grid;
 const Home = () => {
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
-
-  const { uniqueSlug } = useParams();
+  const { publicOrg } = usePublicOrg();
+  const uniqueSlug = publicOrg?.uniqueSlug;
 
   useEffect(() => {
     let mounted = true;
@@ -60,8 +61,14 @@ const Home = () => {
                 text={item.title.replaceAll('*', '')}
                 to={
                   item.hasSubSections
-                    ? navRoutes.PUBLIC_ORG.SUBSECTIONS.replace(':id', item.id)
-                    : navRoutes.PUBLIC_ORG.SECTION.replace(':id', item.id)
+                    ? generatePath(navRoutes.PUBLIC_ORG.SUBSECTIONS, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
+                    : generatePath(navRoutes.PUBLIC_ORG.SECTION, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
                 }
                 mb={2}
                 mbM={'0'}
@@ -79,7 +86,11 @@ const Home = () => {
             You know how much is going in and out but if you need a hand, we can
             help you work it out.
           </T.P>
-          <S.ReadMoreLink to={navRoutes.PUBLIC_ORG.BUDGETING}>
+          <S.ReadMoreLink
+            to={generatePath(navRoutes.PUBLIC_ORG.BUDGETING, {
+              uniqueSlug,
+            })}
+          >
             <TextWithIcon
               size="large"
               bgColor="neutralLight"
@@ -110,14 +121,9 @@ const Home = () => {
               variant="primary"
               text="See advice"
               mb="6"
-              to={
-                uniqueSlug
-                  ? navRoutes.PUBLIC_ORG.MENTAL_HEALTH_ORG.replace(
-                      ':uniqueSlug',
-                      uniqueSlug
-                    )
-                  : navRoutes.PUBLIC_ORG.MENTAL_HEALTH
-              }
+              to={generatePath(navRoutes.PUBLIC_ORG.MENTAL_HEALTH, {
+                uniqueSlug,
+              })}
             />
             <TextWithIcon
               text="Stuck? Talk to someone"

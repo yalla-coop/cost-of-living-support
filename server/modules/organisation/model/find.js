@@ -42,7 +42,7 @@ const findOrganisationForPublicBySlug = async (uniqueSlug) => {
             'key', orr.key,
             'category', orr.category,
             'label', orr.label,
-            'url', orr.url
+            'value', orr.value
       ) ORDER BY orr.id ASC)
         FROM organisations_resources AS orr
         WHERE orr.organisation_id = o.id

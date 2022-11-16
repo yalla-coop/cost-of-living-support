@@ -34,10 +34,9 @@ const MentalHeath = () => {
         <Row mt="6" mb="5">
           <Col w={[4, 8, 6]}>
             <HelpfulResources
-              resources={
-                publicOrg.mentalHealthSupportResources ||
-                resources.defaultMentalHealthResources
-              }
+              resources={publicOrg?.resources?.filter(
+                (r) => r.category === 'MENTAL_HEALTH'
+              )}
             />
           </Col>
         </Row>

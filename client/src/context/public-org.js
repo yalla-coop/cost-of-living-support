@@ -8,6 +8,8 @@ import formatColor from '../helpers/format-color';
 import updateGradients from '../helpers/update-gradients';
 import colors from '../theme/colors';
 import { PUBLIC_ORG } from './../constants/nav-routes';
+import { defaultResources } from '../constants/resources';
+
 const initialPublicOrgState = {
   id: null,
   logoUrl: '',
@@ -22,6 +24,7 @@ const PublicOrgContext = createContext({
   publicOrg: initialPublicOrgState,
   setPublicOrg: () => {},
   logout: () => {},
+  uniqueSlug: '',
 });
 
 const adjustedTheme = (ancestorTheme, updatedColors) => ({
@@ -30,10 +33,6 @@ const adjustedTheme = (ancestorTheme, updatedColors) => ({
   gradients: updateGradients(updatedColors),
 });
 
-const isValidSlug = (pathname) => {
-  return !Object.values(PUBLIC_ORG).includes(pathname);
-};
-
 // get help details/logo/colors
 const PublicOrg = (props) => {
   const location = useLocation();
@@ -41,7 +40,8 @@ const PublicOrg = (props) => {
     { path: `${PUBLIC_ORG.HOME_ORG}/*`, exact: false, strict: false },
     location.pathname
   );
-  const { uniqueSlug } = match?.params || {};
+  let { uniqueSlug } = match?.params || {};
+  uniqueSlug = uniqueSlug || 'hyde';
   const [publicOrg, setPublicOrg] = useState(initialPublicOrgState);
 
   const _setPublicOrg = (data) => {
@@ -82,6 +82,7 @@ const PublicOrg = (props) => {
     if (data) {
       _setPublicOrg({
         ...data,
+        resources: data.resources?.length ? data.resources : defaultResources,
         colors: updatedColors(data.colors || defaultColors),
       });
     } else {
@@ -90,9 +91,7 @@ const PublicOrg = (props) => {
   };
 
   useEffect(() => {
-    const validSlug = isValidSlug(location.pathname);
-
-    getPublicOrgInfo(validSlug && uniqueSlug ? uniqueSlug : 'hyde');
+    getPublicOrgInfo(uniqueSlug);
     return () => _setPublicOrg(initialPublicOrgState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uniqueSlug]);
@@ -101,6 +100,7 @@ const PublicOrg = (props) => {
     publicOrg,
     getPublicOrgInfo,
     setPublicOrg: _setPublicOrg,
+    uniqueSlug,
   };
 
   return (

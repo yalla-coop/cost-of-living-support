@@ -6,7 +6,7 @@ CREATE TABLE "organisations_resources" (
   "key" TEXT NOT NULL, -- eg. "BENEFIT_CALCULATOR", "BUDGET_PLANNER",...
   "category" TEXT NOT NULL, -- eg. "MENTAL_HEALTH", "DEBT_ADVICE", "BIDGET",...
   "label" VARCHAR NOT NULL,
-  "url" VARCHAR NOT NULL,
+  "value" VARCHAR NOT NULL, -- url or phone number
   "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );

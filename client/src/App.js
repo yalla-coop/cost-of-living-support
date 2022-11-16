@@ -102,26 +102,10 @@ function App() {
                       <CustomRoute Component={Pages.Section} layout="general" />
                     }
                   />
-                  <Route
-                    exact
-                    path={navRoutes.PUBLIC_ORG.SECTION_ORG}
-                    element={
-                      <CustomRoute Component={Pages.Section} layout="general" />
-                    }
-                  />
+
                   <Route
                     exact
                     path={navRoutes.PUBLIC_ORG.SUBSECTIONS}
-                    element={
-                      <CustomRoute
-                        Component={Pages.SubSections}
-                        layout="general"
-                      />
-                    }
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.PUBLIC_ORG.SUBSECTIONS_ORG}
                     element={
                       <CustomRoute
                         Component={Pages.SubSections}
@@ -133,16 +117,6 @@ function App() {
                   <Route
                     exact
                     path={navRoutes.PUBLIC_ORG.MENTAL_HEALTH}
-                    element={
-                      <CustomRoute
-                        Component={Pages.MentalHeath}
-                        layout="general"
-                      />
-                    }
-                  />
-                  <Route
-                    exact
-                    path={navRoutes.PUBLIC_ORG.MENTAL_HEALTH_ORG}
                     element={
                       <CustomRoute
                         Component={Pages.MentalHeath}

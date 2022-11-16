@@ -58,7 +58,7 @@ const TopicCard = ({
         <Tips tips={tips} mb="5" inner startingColor={topicIndex} />
       )}
       {expanded && resources?.length > 0 && (
-        <HelpfulResources resources={resources} mb="5" mt="6" />
+        <HelpfulResources resources={resources} mb="6" mt="6" />
       )}
     </>
   );

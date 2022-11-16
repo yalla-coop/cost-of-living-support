@@ -4,7 +4,6 @@ import { Sections } from '../../../api-calls';
 const useTopics = (id, resources) => {
   const [topics, setTopics] = useState([]);
   const [markedTopics, setMarkedTopics] = useState([]);
-
   useEffect(() => {
     const fetchTopics = async () => {
       const { data, error } = await Sections.getTopics({
@@ -17,14 +16,17 @@ const useTopics = (id, resources) => {
           ...topic,
           content: {
             ...topic.content,
-            resources: topic.content.resources.map((resource) => {
-              if (resource.type === 'CUSTOM') {
-                return resources.find((r) => r.key === resource.key);
-              }
-              return resource;
-            }),
+            resources: topic?.content?.resources
+              ?.map((resource) => {
+                if (resource.type === 'CUSTOM') {
+                  return resources?.find((r) => r.key === resource.key);
+                }
+                return resource;
+              })
+              .filter((r) => !!r),
           },
         }));
+
         setTopics(replacedData);
       }
     };

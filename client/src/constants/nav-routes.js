@@ -10,18 +10,10 @@ const GENERAL = {
 const PUBLIC_ORG = {
   HOME: `/`,
   HOME_ORG: `${ORG}`,
-
-  SECTION: `/sections/:id`,
-  SECTION_ORG: `${ORG}/sections/:id`,
-
-  SUBSECTIONS: `/sections/:id/sub-sections`,
-  SUBSECTIONS_ORG: `${ORG}/sections/:id/sub-sections`,
-
-  BUDGETING: `/budgeting`,
-  BUDGETING_ORG: `${ORG}/budgeting`,
-
-  MENTAL_HEALTH: `/mental-health`,
-  MENTAL_HEALTH_ORG: `${ORG}/mental-health`,
+  SECTION: `${ORG}/sections/:id`,
+  SUBSECTIONS: `${ORG}/sections/:id/sub-sections`,
+  BUDGETING: `${ORG}/budgeting`,
+  MENTAL_HEALTH: `${ORG}/mental-health`,
 };
 
 const admin = '/admin';
@@ -74,9 +66,4 @@ const EXTERNAL = {
   ACCESSABILITY_GUIDELINES: 'https://webaim.org/resources/contrastchecker/',
 };
 
-const STEPS = {
-  STEP: '/steps/:id',
-  STEP_ORG: '/:uniqueSlug/steps/:id',
-};
-
-export { GENERAL, PUBLIC_ORG, EXTERNAL, STEPS, ADMIN, SUPER_ADMIN };
+export { GENERAL, PUBLIC_ORG, EXTERNAL, ADMIN, SUPER_ADMIN };

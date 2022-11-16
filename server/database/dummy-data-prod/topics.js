@@ -36,9 +36,8 @@ const addTopics = async ({ sections }) => {
       tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
-          type: 'internal',
-          label: 'Budget Planner',
-          url: '/budget-planner',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
