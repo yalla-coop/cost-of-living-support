@@ -70,19 +70,21 @@ const createOrganisations = async ({ organisations }) => {
       key: 'MENTAL_HEALTH_1',
       category: 'MENTAL_HEALTH',
       label: 'Mental Health & Money Advice',
-      url: 'https://www.mentalhealthandmoneyadvice.org/en/how-can-we-help/advice-for-someone-whos-mental-health-is-being-affected-by-money/',
+      value:
+        'https://www.mentalhealthandmoneyadvice.org/en/how-can-we-help/advice-for-someone-whos-mental-health-is-being-affected-by-money/',
     },
     {
       key: 'MENTAL_HEALTH_2',
       category: 'MENTAL_HEALTH',
       label: 'Mind Information & Support',
-      url: 'https://www.mind.org.uk/information-support/tips-for-everyday-living/money-and-mental-health/',
+      value:
+        'https://www.mind.org.uk/information-support/tips-for-everyday-living/money-and-mental-health/',
     },
     {
       key: 'MENTAL_HEALTH_3',
       category: 'MENTAL_HEALTH',
       label: 'NHS Every Mind Matters',
-      url: 'https://www.nhs.uk/every-mind-matters/',
+      value: 'https://www.nhs.uk/every-mind-matters/',
     },
   ];
 

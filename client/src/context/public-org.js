@@ -82,7 +82,10 @@ const PublicOrg = (props) => {
     if (data) {
       _setPublicOrg({
         ...data,
-        resources: data.resources?.length ? data.resources : defaultResources,
+        resources: defaultResources.map((r) => {
+          const resource = data?.resources?.find((res) => res.key === r.key);
+          return resource || r;
+        }),
         colors: updatedColors(data.colors || defaultColors),
       });
     } else {
