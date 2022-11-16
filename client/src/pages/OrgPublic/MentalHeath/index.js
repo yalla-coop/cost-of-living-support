@@ -5,7 +5,6 @@ import HelpfulResources from '../../../components/HelpfulResources';
 import { usePublicOrg } from '../../../context/public-org';
 
 import * as S from './style';
-import { resources } from '../../../constants';
 
 const { Row, Col } = Grid;
 

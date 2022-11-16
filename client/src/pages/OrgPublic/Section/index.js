@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
+import GoBack from '../../../components/GoBack';
 
 import PageHeader from '../../../components/PageHeader';
 import * as S from './style';
@@ -65,6 +66,7 @@ const Section = () => {
               name={stillNeedHelp?.label}
               phoneNumber={stillNeedHelp?.value}
             />
+            <GoBack mt={4} />
           </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>
