@@ -86,7 +86,7 @@ const ForgotPassword = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <T.H1 weight="bold">Reset Password</T.H1>
+      <T.H1>Reset Password</T.H1>
       {showEmailInput ? (
         <>
           <Row mt="6" inner>
