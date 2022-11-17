@@ -1,4 +1,3 @@
-import { Row, Col } from '../../Grid';
 import SingleTip from './SingleTip';
 
 const colorArray = [
@@ -35,25 +34,20 @@ const getColor = (index, startingColor) => {
 };
 
 const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
-  return (
-    <Row {...props} inner={inner}>
-      {tips
-        .filter((t) => !!t)
-        .map((tip, index) => (
-          <Col w={cols || [4, 12, 12]} key={index} inner>
-            <SingleTip
-              bgColor={getColor(index, startingColor).bg}
-              borderColor={getColor(index, startingColor).border}
-              icon={'bulb'}
-              iconColor={getColor(index, startingColor).icon}
-              tip={tip}
-              textColor={getColor(index, startingColor).text}
-              mb="3"
-            />
-          </Col>
-        ))}
-    </Row>
-  );
+  return tips
+    .filter((t) => !!t)
+    .map((tip, index) => (
+      <SingleTip
+        key={index}
+        bgColor={getColor(index, startingColor).bg}
+        borderColor={getColor(index, startingColor).border}
+        icon={'bulb'}
+        iconColor={getColor(index, startingColor).icon}
+        tip={tip}
+        textColor={getColor(index, startingColor).text}
+        mb="3"
+      />
+    ));
 };
 
 export { SingleTip };
