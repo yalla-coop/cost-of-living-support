@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import GoBack from '../../../components/GoBack';
+import { contentColors } from '../../../constants';
 
 import PageHeader from '../../../components/PageHeader';
 import * as S from './style';
@@ -42,9 +43,17 @@ const Section = () => {
     (resource) => resource.key === 'STILL_NEED_HELP'
   );
 
+  const colors = contentColors[sectionData.id] || contentColors[1];
   return (
     <S.Container>
-      <PageHeader title={pageTitle} />
+      <PageHeader
+        title={pageTitle}
+        bgColor={colors.bg}
+        icon={colors.icon}
+        iconColor={colors.iconColor}
+        borderColor={colors.borderColor}
+        textColor={colors.textColor}
+      />
       <GeneralPaddingSection>
         <S.Content>
           <S.Topics>
