@@ -18,6 +18,7 @@ import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
 import { t } from '../../../helpers';
 
+import { organisationTypes } from '../../../constants/data-types';
 // TODO: use from constants
 const contactLinksTypes = {
   PHONE: 'PHONE',
@@ -80,7 +81,9 @@ const EditDetails = () => {
       firstName,
       lastName,
       email,
+      backupEmail,
       organisationName,
+      organisationType,
       uniqueSlug,
       contactLinks,
       benefitCalculatorLink,
@@ -317,6 +320,16 @@ const EditDetails = () => {
             error={validationErrs?.email}
           />
         </Col>
+        <Col w={[4, 6, 4]} mt={isMobile ? 6 : 0}>
+          <I.BasicInput
+            label="Back up email address"
+            type="email"
+            placeholder="Type email here..."
+            value={backupEmail}
+            handleChange={(backupEmail) => setFormData({ backupEmail })}
+            error={validationErrs?.backupEmail}
+          />
+        </Col>
       </Row>
       <Row mt={6}>
         <Col w={[4, 6, 4]}>
@@ -329,6 +342,25 @@ const EditDetails = () => {
               setFormData({ organisationName })
             }
             error={validationErrs?.organisationName}
+          />
+        </Col>
+        <Col>
+          <I.Dropdown
+            label="Type of organisation"
+            options={Object.entries(organisationType).map(([key, value]) => ({
+              label: value,
+              value: key,
+            }))}
+            value={organisationType}
+            handleChange={(selectValue) =>
+              setState({
+                organisationType: {
+                  ...organisationType,
+                  type: selectValue,
+                },
+              })
+            }
+            error={validationErrs?.organisationType?.type}
           />
         </Col>
       </Row>
