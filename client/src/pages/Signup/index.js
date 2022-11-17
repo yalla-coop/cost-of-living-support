@@ -208,7 +208,7 @@ const SignUp = () => {
             value={backupEmail}
             handleChange={(input) => setState({ backupEmail: input })}
             error={validationErrs.backupEmail}
-            helper="Enter a back up email address that can be used to recover your organisation's information"
+            helper="Enter your prefer back up email address in the event you leave the organisation"
           />
         </Col>
       </Row>
@@ -295,7 +295,7 @@ const SignUp = () => {
                   underline
                   color="neutralMain"
                   weight="semi"
-                  to={R.EXTERNAL.TERMS_OF_USE}
+                  to={R.EXTERNAL.PRIVACY_POLICY}
                 >
                   Privacy Policy
                 </T.Link>
