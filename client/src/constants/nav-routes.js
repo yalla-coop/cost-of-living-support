@@ -33,6 +33,8 @@ const ADMIN = {
   MANAGE_STEPS: `${admin}/edit-steps`,
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
+  ADD_UPDATE_CONTENT: `${admin}/content`,
+  CUSTOMISE_LINKS: `${admin}/customise-links`,
   LOG_OUT: '/log-out',
 };
 
@@ -47,6 +49,7 @@ const SUPER_ADMIN = {
   CUSTOMISE: `${admin}/customise`,
   MANAGE_STEPS: `${admin}/manage-steps`,
   CHANGES: `${admin}/changes`,
+  CONTENT_REQUESTS: `${admin}/content-requests`,
 };
 
 const EXTERNAL = {

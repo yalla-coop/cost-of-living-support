@@ -1,5 +1,4 @@
 import { SUPER_ADMIN, ADMIN } from '../../constants/nav-routes';
-import t from '../../constants/translations';
 import R from '../../constants/roles';
 import * as S from './style';
 import { useAuth } from '../../context/auth';
@@ -20,7 +19,7 @@ const DecideRoutes = ({ setOpen }) => {
 
   const handleLogout = async () => {
     handleClick(setOpen);
-    await logout();
+    logout();
 
     navigate(ADMIN.LOGIN);
   };
@@ -31,22 +30,38 @@ const DecideRoutes = ({ setOpen }) => {
         <>
           <S.Link to={ADMIN.DASHBOARD} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['HOME']}
+              Home
             </S.Head3>
           </S.Link>
           <S.Link to={ADMIN.EDIT_DETAILS} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['EDIT_DETAILS']}
+              Edit account details
+            </S.Head3>
+          </S.Link>
+          <S.Link
+            to={ADMIN.ADD_UPDATE_CONTENT}
+            onClick={() => handleClick(setOpen)}
+          >
+            <S.Head3 weight="bold" color="neutralMain">
+              Add/update content
+            </S.Head3>
+          </S.Link>
+          <S.Link
+            to={ADMIN.CUSTOMISE_LINKS}
+            onClick={() => handleClick(setOpen)}
+          >
+            <S.Head3 weight="bold" color="neutralMain">
+              Customise resources and phone numbers
             </S.Head3>
           </S.Link>
           <S.Link to={ADMIN.CUSTOMISE} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CUSTOMISE']}
+              Add/update brand colours
             </S.Head3>
           </S.Link>
           <S.Link onClick={handleLogout} to={ADMIN.LOG_OUT}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['LOG_OUT']}
+              Log out
             </S.Head3>
           </S.Link>
         </>
@@ -59,7 +74,7 @@ const DecideRoutes = ({ setOpen }) => {
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['HOME']}
+              Home
             </S.Head3>
           </S.Link>
           <S.Link
@@ -67,7 +82,7 @@ const DecideRoutes = ({ setOpen }) => {
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['EDIT_CONTENT']}
+              Edit content
             </S.Head3>
           </S.Link>
           <S.Link
@@ -75,12 +90,20 @@ const DecideRoutes = ({ setOpen }) => {
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['ORGANISATIONS']}
+              Organisations
+            </S.Head3>
+          </S.Link>
+          <S.Link
+            to={SUPER_ADMIN.CONTENT_REQUESTS}
+            onClick={() => handleClick(setOpen)}
+          >
+            <S.Head3 weight="bold" color="neutralMain">
+              Content requests
             </S.Head3>
           </S.Link>
           <S.Link to={SUPER_ADMIN.CHANGES} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CHANGES']}
+              Changes
             </S.Head3>
           </S.Link>
           <S.Link
@@ -88,7 +111,7 @@ const DecideRoutes = ({ setOpen }) => {
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['EDIT_DETAILS']}
+              Edit details
             </S.Head3>
           </S.Link>
           <S.Link
@@ -96,12 +119,12 @@ const DecideRoutes = ({ setOpen }) => {
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CUSTOMISE']}
+              Customise
             </S.Head3>
           </S.Link>
           <S.Link onClick={handleLogout} to={ADMIN.LOG_OUT}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['LOG_OUT']}
+              Log out
             </S.Head3>
           </S.Link>
         </>
@@ -111,7 +134,7 @@ const DecideRoutes = ({ setOpen }) => {
         <>
           <S.Link to={ADMIN.LOGIN} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['LOGIN']}
+              log in
             </S.Head3>
           </S.Link>
         </>
