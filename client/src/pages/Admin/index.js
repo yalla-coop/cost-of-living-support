@@ -26,22 +26,10 @@ function AdminRouter() {
     <AdminOrgProvider>
       <Routes>
         <Route
-          path={navRoutes.ADMIN.WELCOME1}
+          path={navRoutes.ADMIN.WELCOME}
           element={
             <CustomRoute
-              Component={Welcome.Welcome1}
-              layout="splitScreen"
-              side="left"
-              gradient="secondary"
-              publicOnly
-            />
-          }
-        />
-        <Route
-          path={navRoutes.ADMIN.WELCOME2}
-          element={
-            <CustomRoute
-              Component={Welcome.Welcome2}
+              Component={Welcome}
               layout="splitScreen"
               side="left"
               gradient="secondary"
