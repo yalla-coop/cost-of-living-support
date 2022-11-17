@@ -16,6 +16,9 @@ const { Row, Col } = Grid;
 const { SingleTip } = Cards;
 const BudgetingPage = () => {
   const { publicOrg } = usePublicOrg();
+  const stillNeedHelp = publicOrg?.resources?.find(
+    (resource) => resource.key === 'STILL_NEED_HELP'
+  );
 
   return (
     <S.Container>
@@ -121,7 +124,10 @@ const BudgetingPage = () => {
         </Row>
         <Row mb="4">
           <Col w={[4, 8, 6]}>
-            <StillNeedHelp phoneNumber={'0800 138 7777'} />
+            <StillNeedHelp
+              name={stillNeedHelp?.label}
+              phoneNumber={stillNeedHelp?.value}
+            />
           </Col>
         </Row>
         <Row mt="4" mb="5">
