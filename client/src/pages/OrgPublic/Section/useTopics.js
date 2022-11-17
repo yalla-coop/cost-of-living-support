@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Sections } from '../../../api-calls';
+import { message } from 'antd';
 
 const useTopics = (id, resources) => {
   const [topics, setTopics] = useState([]);
@@ -10,7 +11,7 @@ const useTopics = (id, resources) => {
         sectionId: id,
       });
       if (error) {
-        // message.error('Something went wrong, please try again later');
+        message.error('Something went wrong, please try again later');
       } else {
         const replacedData = data.map((topic) => ({
           ...topic,

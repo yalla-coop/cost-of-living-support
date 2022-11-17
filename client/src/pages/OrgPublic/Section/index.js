@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import GoBack from '../../../components/GoBack';
 import { contentColors } from '../../../constants';
@@ -11,10 +11,13 @@ import { usePublicOrg } from '../../../context/public-org';
 import { TopicCard } from '../../../components/Cards';
 import useTopics from './useTopics';
 import StillNeedHelp from '../../../components/StillNeedHelp';
+import { navRoutes } from '../../../constants';
+import { message } from 'antd';
 
 const Section = () => {
   const { publicOrg } = usePublicOrg();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [sectionData, setSectionData] = useState({});
   const { topics, toggleMark } = useTopics(id, publicOrg?.resources);
@@ -25,14 +28,17 @@ const Section = () => {
         id,
       });
       if (error) {
-        // message.error('Something went wrong, please try again later');
+        if (error.statusCode === 404) {
+          return navigate(navRoutes.GENERAL.NOT_FOUND);
+        }
+        message.error('Something went wrong, please try again later');
       } else {
         setSectionData(data);
       }
     };
 
     fetchSectionData();
-  }, [id]);
+  }, [id, navigate]);
 
   const { title, parentSectionTitle } = sectionData;
   const pageTitle = parentSectionTitle
