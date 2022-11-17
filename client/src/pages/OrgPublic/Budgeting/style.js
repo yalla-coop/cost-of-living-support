@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import setMargin from '../../helpers/set-margin';
+import setMargin from '../../../helpers/set-margin';
 
 export const Container = styled.div`
   width: 100%;

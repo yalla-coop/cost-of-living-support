@@ -118,7 +118,7 @@ function App() {
                     path={navRoutes.PUBLIC_ORG.BUDGETING}
                     element={
                       <CustomRoute
-                        Component={Pages.BudgetingPage}
+                        Component={Pages.Budgeting}
                         layout="general"
                       />
                     }

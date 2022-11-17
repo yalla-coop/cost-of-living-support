@@ -1,4 +1,4 @@
-import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
+import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import {
   Typography as T,
   Grid,
@@ -7,11 +7,11 @@ import {
   PageHeader,
   Cards,
   StillNeedHelp,
-} from '../../components';
-import { usePublicOrg } from '../../context/public-org';
+} from '../../../components';
+import { usePublicOrg } from '../../../context/public-org';
 
 import * as S from './style';
-import { resources } from '../../constants';
+import { resources } from '../../../constants';
 
 const { Row, Col } = Grid;
 const { SingleTip } = Cards;
