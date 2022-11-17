@@ -15,7 +15,7 @@ export const defaultResources = [
   {
     key: 'DEBT_ADVICE',
     category: 'DEBT_ADVICE',
-    label: 'Debt Advice',
+    label: 'Debt Advice Locator',
     value:
       'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/debt-advice-locator',
   },
