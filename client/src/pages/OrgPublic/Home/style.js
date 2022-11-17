@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
-import setMargin from '../../helpers/set-margin';
-import * as T from '../../components/Typography';
-import backgroundLogo from '../../components/assets/BackgroundHydeLogo.svg';
+import setMargin from '../../../helpers/set-margin';
+import * as T from '../../../components/Typography';
+import backgroundLogo from '../../../components/assets/BackgroundHydeLogo.svg';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 export const PageHead = styled.header`
@@ -148,4 +149,11 @@ export const pageTitle = styled(T.H1)`
     font-size: 22px !important;
     line-height: 32px !important;
   }
+`;
+export const ReadMoreLink = styled(T.Link)`
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
 `;

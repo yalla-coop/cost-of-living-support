@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Sections } from '../../api-calls';
+import { generatePath } from 'react-router-dom';
+import { Sections } from '../../../api-calls';
+import { usePublicOrg } from '../../../context/public-org';
 import {
   Cards,
   Typography as T,
   TextWithIcon,
   Grid,
   Button,
-} from '../../components';
-import { navRoutes as n } from '../../constants';
+} from '../../../components';
+import { navRoutes } from '../../../constants';
 import LandingContent from './LandingContent';
 
-import HelpButton from '../../components/HelpButton';
+import HelpButton from '../../../components/HelpButton';
 
 import * as S from './style';
 const { Col, Row } = Grid;
@@ -20,20 +21,17 @@ const { Col, Row } = Grid;
 const Home = () => {
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
+  const { publicOrg } = usePublicOrg();
+  const uniqueSlug = publicOrg?.uniqueSlug;
 
-  const { org } = useParams();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (org) {
-      navigate(n.GENERAL.HOME_ORG.replace(':org', org));
-    }
-  }, [org, navigate]);
   useEffect(() => {
     let mounted = true;
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
-      const { data, error } = await Sections.getSections({});
+      const { data, error } = await Sections.getSections({
+        uniqueSlug,
+        forPublic: true,
+      });
       if (mounted) {
         if (error) {
           message.error('Something went wrong, please try again later');
@@ -48,7 +46,7 @@ const Home = () => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [uniqueSlug]);
 
   return (
     <S.Container>
@@ -58,10 +56,20 @@ const Home = () => {
           {cardsData.map((item) => {
             return (
               <Cards.SectionCard
-                key={item.cardId}
-                cardId={item.cardId}
-                text={item.text}
-                to={item.to} // still to do decide if its route or sub-route
+                key={item.id}
+                id={item.id}
+                text={item.title.replaceAll('*', '')}
+                to={
+                  item.hasSubSections
+                    ? generatePath(navRoutes.PUBLIC_ORG.SUBSECTIONS, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
+                    : generatePath(navRoutes.PUBLIC_ORG.SECTION, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
+                }
                 mb={2}
                 mbM={'0'}
               />
@@ -78,17 +86,23 @@ const Home = () => {
             You know how much is going in and out but if you need a hand, we can
             help you work it out.
           </T.P>
-          <TextWithIcon
-            size="large"
-            bgColor="neutralLight"
-            to="/"
-            text="Read more"
-            icon="forwardArrow"
-            iconColor="tertiaryDark"
-            jc="center"
-            jcT="flex-start"
-            mr="6px"
-          />
+          <S.ReadMoreLink
+            to={generatePath(navRoutes.PUBLIC_ORG.BUDGETING, {
+              uniqueSlug,
+            })}
+          >
+            <TextWithIcon
+              size="large"
+              bgColor="neutralLight"
+              text="Read more"
+              icon="forwardArrow"
+              iconColor="tertiaryDark"
+              jc="center"
+              jcT="flex-start"
+              mr="6px"
+              isText
+            />
+          </S.ReadMoreLink>
         </S.NeedHelpWrapper>
       </S.FullSection>
       <Row jc="center" jcM="flex-start">
@@ -103,7 +117,14 @@ const Home = () => {
             >
               Feeling stressed or overwhelmed
             </T.H2>
-            <Button variant="primary" text="See advice" mb="6" />
+            <Button
+              variant="primary"
+              text="See advice"
+              mb="6"
+              to={generatePath(navRoutes.PUBLIC_ORG.MENTAL_HEALTH, {
+                uniqueSlug,
+              })}
+            />
             <TextWithIcon
               text="Stuck? Talk to someone"
               isButton
