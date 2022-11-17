@@ -12,6 +12,7 @@ import EditDetails from './EditDetails';
 import Customise from './Customise';
 import Changes from './Changes';
 import EditContent from './EditContent';
+import SuccessSignup from './SuccessSignup';
 
 import { Routes, Route } from 'react-router-dom';
 import { Route as CustomRoute } from './../../components';
@@ -34,6 +35,20 @@ function AdminRouter() {
               side="left"
               gradient="secondary"
               publicOnly
+            />
+          }
+        />
+
+        <Route
+          path={navRoutes.ADMIN.SUCCESS_SIGNUP}
+          element={
+            <CustomRoute
+              Component={SuccessSignup}
+              layout="splitScreen"
+              side="left"
+              gradient="secondary"
+              isPrivate
+              allowedRoles={[userRoles.ADMIN, userRoles.SUPER_ADMIN]}
             />
           }
         />

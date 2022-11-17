@@ -138,7 +138,7 @@ const SignUp = () => {
       }
     } else {
       setUser(data);
-      navigate(R.ADMIN.CREATE_ORG_DETAILS_FIRST_STEP);
+      navigate(R.ADMIN.SUCCESS_SIGNUP);
     }
   };
 

@@ -16,7 +16,7 @@ export const BlockSpan = styled.span`
 export const ButtonWrapper = styled.div`
   width: 100%;
   max-width: 300px;
-  margin-top: 30px;
+  margin-top: ${({ theme }) => theme.spacings[5]};
   flex: 1;
   display: flex;
   align-items: flex-start;
