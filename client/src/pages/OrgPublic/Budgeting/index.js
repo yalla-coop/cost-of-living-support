@@ -11,12 +11,12 @@ import {
 import { usePublicOrg } from '../../../context/public-org';
 
 import * as S from './style';
-import { resources } from '../../../constants';
 
 const { Row, Col } = Grid;
 const { SingleTip } = Cards;
 const BudgetingPage = () => {
   const { publicOrg } = usePublicOrg();
+
   return (
     <S.Container>
       <PageHeader
@@ -113,9 +113,9 @@ const BudgetingPage = () => {
         <Row mb="6">
           <Col w={[4, 8, 6]}>
             <HelpfulResources
-              resources={
-                publicOrg.budgetResources || resources.defaultBudgetResources
-              }
+              resources={publicOrg?.resources?.filter(
+                (r) => r.category === 'BUDGET'
+              )}
             />
           </Col>
         </Row>

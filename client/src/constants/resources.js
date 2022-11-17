@@ -7,6 +7,13 @@ export const defaultResources = [
       'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
   },
   {
+    key: 'BUDGET_PRINTABLE_PDF',
+    category: 'BUDGET',
+    label: 'Budget Printable PDF',
+    value:
+      'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
+  },
+  {
     key: 'BENEFIT_CALCULATOR',
     category: 'BENEFIT_CALCULATOR',
     label: 'Benefit Calculator',
@@ -56,16 +63,5 @@ export const defaultResources = [
     category: 'MENTAL_HEALTH',
     label: 'NHS Every Mind Matters',
     value: 'https://www.nhs.uk/every-mind-matters/',
-  },
-];
-
-export const defaultBudgetResources = [
-  {
-    label: 'Budget Planner',
-    link: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
-  },
-  {
-    label: 'Budget Printable PDF',
-    link: 'https://www.moneyhelper.org.uk/en/everyday-money/budgeting/use-our-budget-planner.html',
   },
 ];
