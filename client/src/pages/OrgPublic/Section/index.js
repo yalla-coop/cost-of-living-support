@@ -49,7 +49,7 @@ const Section = () => {
     (resource) => resource.key === 'STILL_NEED_HELP'
   );
 
-  const colors = contentColors[sectionData.id] || contentColors[1];
+  const colors = contentColors[id] || contentColors[1];
   return (
     <S.Container>
       <PageHeader
