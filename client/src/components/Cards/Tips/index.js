@@ -39,7 +39,12 @@ const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
   return tips
     .filter((t) => !!t)
     .map((tip, index) => (
-      <S.Tip key={index} color={getColor(index, startingColor)} mb="3">
+      <S.Tip
+        key={index}
+        color={getColor(index, startingColor)}
+        mb="3"
+        {...props}
+      >
         <Icon icon="bulb" color={getColor(index, startingColor).icon} mr="2" />
         {typeof tip === 'string' ? (
           <T.H3 color={getColor(index, startingColor).text}>Tip! {tip}</T.H3>
