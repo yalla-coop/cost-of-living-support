@@ -37,6 +37,7 @@ import Edit from './icons/Edit';
 import BookMark from './icons/BookMark';
 import Discover from './icons/Discover';
 import BackwardArrow from './icons/BackwardArrow';
+import Refresh from './icons/Refresh';
 
 export const IconMap = {
   goBack: GoBack,
@@ -69,6 +70,7 @@ export const IconMap = {
   bookMark: BookMark,
   discover: Discover,
   backwardArrow: BackwardArrow,
+  refresh: Refresh,
 };
 
 const Parent = styled.div`
