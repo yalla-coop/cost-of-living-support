@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { message } from 'antd';
 import { useParams } from 'react-router-dom';
@@ -18,6 +19,7 @@ import * as S from './style';
 const { Col, Row } = Grid;
 
 const Home = () => {
+  const { i18n } = useTranslation();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
 
@@ -46,6 +48,13 @@ const Home = () => {
       mounted = false;
     };
   }, [uniqueSlug]);
+
+  i18n.loadNamespaces('topicNS', (err) => {
+    /* resources have been loaded */
+    console.log(err);
+  });
+
+  console.log(i18n.t('topicNS:topics', { returnObjects: true }));
 
   return (
     <S.Container>
