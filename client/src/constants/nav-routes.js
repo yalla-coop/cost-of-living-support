@@ -55,10 +55,10 @@ const SUPER_ADMIN = {
 const EXTERNAL = {
   TERMS_OF_USE: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
   PRIVACY_POLICY: 'https://www.hyde-housing.co.uk/privacy/disclaimer/',
-
-  CALL_US: '//www.google.com/',
+  PRODUCT_SUPPORT: 'https://www.universal-credit.service.gov.uk',
   CREATE_UNIVERSAL_CREDIT_ACCOUNT:
     'https://www.universal-credit.service.gov.uk',
+  CALL_US: '//www.google.com/',
   // GOV_UK_VERIFY: '//www.google.com/GOV_UK_VERIFY',
   ONLINE_APPLICATION_FORM: 'https://www.universal-credit.service.gov.uk',
   MAKE_YOUR_CLAIM: 'https://www.universal-credit.service.gov.uk/sign-in',

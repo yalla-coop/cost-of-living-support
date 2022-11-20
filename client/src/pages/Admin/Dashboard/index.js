@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import {
   Typography as T,
   Grid,
   TextWithIcon,
   Cards as C,
+  HelpButton,
 } from '../../../components';
 import * as S from './style';
 import { navRoutes as R, roles } from '../../../constants';
@@ -12,6 +14,7 @@ import { useAdminOrg } from '../../../context/admin-org';
 const { Col, Row } = Grid;
 
 const Dashboard = () => {
+  const [open, setOpen] = useState(false);
   const { adminOrg } = useAdminOrg();
   const { user } = useAuth();
 
@@ -97,6 +100,11 @@ const Dashboard = () => {
           </S.CardWrapper>
         </Col>
       </Row>
+      <HelpButton
+        adminHelp
+        parentState={open}
+        parentFunc={() => setOpen(false)}
+      />
     </>
   );
 };
