@@ -89,11 +89,11 @@ const Dashboard = () => {
             <C.Tips
               style={{ width: '100%' }}
               tips={[
-                <a href="mailto:hydefoundation@hyde-housing.co.uk">
+                <a href={`mailto:${R.EXTERNAL.HYDE_EMAIL}`}>
                   <T.H3 color="neutralMain">
                     Interested in more specific statistics? Get in touch with{' '}
                     <span style={{ lineBreak: 'anywhere' }}>
-                      hydefoundation@hyde-housing.co.uk
+                      {R.EXTERNAL.HYDE_EMAIL}
                     </span>
                   </T.H3>
                 </a>,
@@ -107,10 +107,10 @@ const Dashboard = () => {
               <C.Tips
                 style={{ width: '100%' }}
                 tips={[
-                  <a href="mailto:ucdigital@hyde-housing.co.uk">
+                  <a href={`mailto:${R.EXTERNAL.HYDE_EMAIL}`}>
                     <T.H3 color="secondaryMain">
                       Want to have access rights to change any of the content on
-                      the tool? Then contact ucdigital@hyde-housing.co.uk
+                      the tool? Then contact {R.EXTERNAL.HYDE_EMAIL}
                     </T.H3>
                   </a>,
                 ]}
