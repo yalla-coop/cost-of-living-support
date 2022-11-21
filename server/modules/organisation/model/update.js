@@ -1,16 +1,7 @@
 import { query } from '../../../database';
 
 const updateOrganisation = async (
-  {
-    id,
-    organisationName,
-    uniqueSlug,
-    contactLinks,
-    benefitCalculatorLink,
-    benefitCalculatorLabel,
-    colors,
-    logoId,
-  },
+  { id, organisationName, uniqueSlug, colors, logoId },
   client,
 ) => {
   const sql = `
@@ -18,28 +9,38 @@ const updateOrganisation = async (
       SET
         organisation_name = COALESCE($2, o.organisation_name),
         unique_slug = COALESCE($3, o.unique_slug),
-        contact_links = COALESCE($4, o.contact_links),
-        benefit_calculator_link = COALESCE($5, o.benefit_calculator_link),
-        benefit_calculator_label = COALESCE($6, o.benefit_calculator_label),
-        colors = COALESCE($7, o.colors),
-        logo_id = COALESCE($8, o.logo_id)
+        colors = COALESCE($4, o.colors),
+        logo_id = COALESCE($5, o.logo_id)
     FROM organisations AS old_org
     WHERE o.id = old_org.id AND o.id = $1
     RETURNING old_org.*
   `;
-  const values = [
-    id,
-    organisationName,
-    uniqueSlug,
-    contactLinks,
-    benefitCalculatorLink,
-    benefitCalculatorLabel,
-    colors,
-    logoId,
-  ];
+  const values = [id, organisationName, uniqueSlug, colors, logoId];
 
   const res = await query(sql, values, client);
   return res.rows[0];
 };
 
-export { updateOrganisation };
+const updateOrganisationResources = async ({ organisationId, resources }) => {
+  const sql = `
+    INSERT INTO organisations_resources (organisation_id, key, category, label, value)
+    SELECT * FROM UNNEST($1::INTEGER[], $2::VARCHAR[], $3::VARCHAR[], $4::VARCHAR[], $5::VARCHAR[])
+    ON CONFLICT (organisation_id, key) DO UPDATE SET
+      category = EXCLUDED.category,
+      label = EXCLUDED.label,
+      value = EXCLUDED.value
+    RETURNING *
+    ;
+  `;
+  const values = [
+    resources.map(() => organisationId),
+    resources.map((r) => r.key),
+    resources.map((r) => r.category),
+    resources.map((r) => r.label),
+    resources.map((r) => r.value),
+  ];
+  const res = await query(sql, values);
+  return res.rows;
+};
+
+export { updateOrganisation, updateOrganisationResources };
