@@ -26,7 +26,9 @@ const initialState = {
     firstName: '',
     lastName: '',
     email: '',
+    backupEmail: '',
     organisationName: '',
+    typeOfOrganisation: '',
     uniqueSlug: '',
   },
   httpError: '',
@@ -57,7 +59,7 @@ const EditDetails = () => {
       email,
       backupEmail,
       organisationName,
-      organisationType,
+      typeOfOrganisation,
       uniqueSlug,
     },
     loading,
@@ -91,12 +93,16 @@ const EditDetails = () => {
   };
 
   useEffect(() => {
-    if (adminOrg.id) {
-      setFormData({
-        organisationName: adminOrg.organisationName,
-        uniqueSlug: adminOrg.uniqueSlug,
-      });
+    async function setOrganisation() {
+      if (adminOrg.id) {
+        setFormData({
+          organisationName: adminOrg.organisationName,
+          typeOfOrganisation: adminOrg.typeOfOrganisation,
+          uniqueSlug: adminOrg.uniqueSlug,
+        });
+      }
     }
+    setOrganisation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adminOrg.id]);
 
@@ -106,6 +112,7 @@ const EditDetails = () => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        backupEmail: user.backupEmail,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,7 +123,7 @@ const EditDetails = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [firstName, lastName, email, organisationName, uniqueSlug]);
+  }, [firstName, lastName, email, backupEmail, organisationName, uniqueSlug]);
 
   const handleUpdate = async () => {
     setState({ loading: true });
@@ -146,7 +153,7 @@ const EditDetails = () => {
       }
     } else {
       getAdminOrgInfo();
-      setUser({ ...user, firstName, lastName, email });
+      setUser({ ...user, firstName, lastName, email, backupEmail });
       setState({ isModalVisible: true });
     }
   };
@@ -238,23 +245,21 @@ const EditDetails = () => {
             error={validationErrs?.organisationName}
           />
         </Col>
-        <Col>
+        <Col w={[4, 6, 4]}>
           <I.Dropdown
             label="Type of organisation"
-            options={Object.entries(organisationType).map(([key, value]) => ({
+            options={Object.entries(organisationTypes).map(([key, value]) => ({
               label: value,
               value: key,
             }))}
-            value={organisationType}
+            selected={typeOfOrganisation}
             handleChange={(selectValue) =>
-              setState({
-                organisationType: {
-                  ...organisationType,
-                  type: selectValue,
-                },
+              setFormData({
+                typeOfOrganisation: selectValue,
               })
             }
-            error={validationErrs?.organisationType?.type}
+            allowClear={false}
+            error={validationErrs?.typeOfOrganisation?.type}
           />
         </Col>
       </Row>
@@ -280,14 +285,6 @@ const EditDetails = () => {
             handleChange={handleUniqueLink}
             error={validationErrs?.uniqueSlug}
           />
-        </Col>
-      </Row>
-
-      <Row mt={6}>
-        <Col w={[4, 6, 4]}>
-          <T.H2 mb={5} weight="bold">
-            {t('contact.title', lang)}
-          </T.H2>
         </Col>
       </Row>
 
