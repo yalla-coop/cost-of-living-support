@@ -25,9 +25,9 @@ const Dashboard = () => {
           <T.H1 mtM="5" style={{ width: '100%' }}>
             Welcome back
           </T.H1>
-          <T.P mt="7" mtM="4" style={{ maxWidth: 420 }}>
-            This is the link you will need to share with your customers to
-            access the tool
+          <T.P mt="42px" color="neutralDark" style={{ maxWidth: 420 }}>
+            This is the link you will need to share with your clients to access
+            the tool
           </T.P>
           <S.LinkWrapper>
             <TextWithIcon
@@ -63,8 +63,10 @@ const Dashboard = () => {
           )}
         </Col>
         <Col w={[4, 12, 4]}>
-          {/* <T.H2 mtT="7">Analytics</T.H2> */}
-          {/* <S.AnalysisCardsWrapper>
+          {/* <T.H2 mt="3" mtT="7">
+            Analytics
+          </T.H2>
+          <S.AnalysisCardsWrapper>
             <S.AnalysisCard bgColor="neutralLight">
               <T.H1 color="neutralMain">836</T.H1>
               <T.P color="neutralDark">
@@ -86,11 +88,11 @@ const Dashboard = () => {
           <S.CardWrapper>
             <C.Tips
               tips={[
-                <a href="mailto:ucdigital@hyde-housing.co.uk">
+                <a href="mailto:hydefoundation@hyde-housing.co.uk">
                   <T.H3 color="neutralMain">
                     Interested in more specific statistics? Get in touch with{' '}
                     <span style={{ lineBreak: 'anywhere' }}>
-                      ucdigital@hyde-housing.co.uk
+                      hydefoundation@hyde-housing.co.uk
                     </span>
                   </T.H3>
                 </a>,

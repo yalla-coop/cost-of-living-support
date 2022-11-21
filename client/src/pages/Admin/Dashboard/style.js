@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 
 export const LinkWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutralSurface};
+  background-color: ${({ theme }) => theme.colors.neutralLight};
   display: flex;
   border-radius: 12px;
-  padding: ${({ theme }) => theme.spacings[3]};
-  margin-top: ${({ theme }) => theme.spacings[7]};
-  margin-bottom: ${({ theme }) => theme.spacings[7]};
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 45px;
   padding-left: ${({ theme }) => theme.spacings[5]};
   width: 100%;
 
