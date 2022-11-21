@@ -20,6 +20,7 @@ const BasicInput = ({
   showPasswordInfo,
   optional,
   resetValue,
+  suffix,
   ...props
 }) => {
   const decideColor = () => {
@@ -57,6 +58,7 @@ const BasicInput = ({
           disabled={disabled}
           autoComplete={autoComplete || 'on'}
           error={error}
+          suffix={suffix}
           {...props}
         />
         {resetValue && (
