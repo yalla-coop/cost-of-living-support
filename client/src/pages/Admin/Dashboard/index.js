@@ -11,21 +11,31 @@ import { navRoutes as R, roles } from '../../../constants';
 import { useAuth } from '../../../context/auth';
 import { useAdminOrg } from '../../../context/admin-org';
 
+import DashboardLinks from './DashboardLinks';
+import PendingDashboard from './PendingDashboard';
+
 const { Col, Row } = Grid;
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const { adminOrg } = useAdminOrg();
   const { user } = useAuth();
-
+  const isSuperAdmin = user.role === roles.SUPER_ADMIN;
+  const isPending = adminOrg.status === 'PENDING';
+  if (isPending) {
+    return <PendingDashboard />;
+  }
   return (
     <>
       <Row jc="space-between">
-        <Col w={[4, 12, 7]}>
-          <T.H1 mtM="5" style={{ width: '100%' }}>
-            Welcome back
-          </T.H1>
-          <T.P mt="42px" color="neutralDark" style={{ maxWidth: 420 }}>
+        <Col w={[4, 12, 7]} dir="column" ai="flex-start">
+          <T.H1 mtM="5">Welcome back</T.H1>
+          <T.P
+            mt={isSuperAdmin ? '42px' : 6}
+            mb={isSuperAdmin ? '40px' : 4}
+            color="neutralDark"
+            style={{ maxWidth: isSuperAdmin ? 420 : 'auto' }}
+          >
             This is the link you will need to share with your clients to access
             the tool
           </T.P>
@@ -34,33 +44,23 @@ const Dashboard = () => {
               iconColor="primaryMain"
               to={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               icon="open"
+              mr={isSuperAdmin ? '15px' : '20px'}
               text={`${window.location.origin}/${adminOrg.uniqueSlug}`}
               external
               underline
             />
           </S.LinkWrapper>
 
-          <TextWithIcon
-            to={R.ADMIN.EDIT_DETAILS}
-            text="Edit my organisation details"
-            icon="forwardArrow"
-            iconColor="primaryMain"
-          />
-          {user.role === roles.ADMIN && (
-            <S.CardWrapper>
-              <C.Tips
-                tips={[
-                  <a href="mailto:ucdigital@hyde-housing.co.uk">
-                    <T.H3 color="secondaryMain">
-                      Want to have access rights to change any of the content on
-                      the tool? Then contact ucdigital@hyde-housing.co.uk
-                    </T.H3>
-                  </a>,
-                ]}
-                startingColor={1}
-              />
-            </S.CardWrapper>
+          {isSuperAdmin && (
+            <TextWithIcon
+              mt="45px"
+              to={R.ADMIN.EDIT_DETAILS}
+              text="Edit my organisation details"
+              icon="forwardArrow"
+              iconColor="primaryMain"
+            />
           )}
+          {!isSuperAdmin && <DashboardLinks />}
         </Col>
         <Col w={[4, 12, 4]}>
           {/* <T.H2 mt="3" mtT="7">
@@ -87,6 +87,7 @@ const Dashboard = () => {
           </S.AnalysisCardsWrapper> */}
           <S.CardWrapper>
             <C.Tips
+              style={{ width: '100%' }}
               tips={[
                 <a href="mailto:hydefoundation@hyde-housing.co.uk">
                   <T.H3 color="neutralMain">
@@ -98,8 +99,25 @@ const Dashboard = () => {
                 </a>,
               ]}
               startingColor={3}
+              mb="0"
             />
           </S.CardWrapper>
+          {user.role === roles.ADMIN && (
+            <S.CardWrapper>
+              <C.Tips
+                style={{ width: '100%' }}
+                tips={[
+                  <a href="mailto:ucdigital@hyde-housing.co.uk">
+                    <T.H3 color="secondaryMain">
+                      Want to have access rights to change any of the content on
+                      the tool? Then contact ucdigital@hyde-housing.co.uk
+                    </T.H3>
+                  </a>,
+                ]}
+                startingColor={1}
+              />
+            </S.CardWrapper>
+          )}
         </Col>
       </Row>
       <HelpButton
