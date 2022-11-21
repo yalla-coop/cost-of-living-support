@@ -21,6 +21,7 @@ const ADMIN = {
   BASE: `${admin}`,
   EDIT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
+  CUSTOMISE_RESOURCES: `${admin}/customise-resources`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
   CREATE_UNIQUE_LINK_SUCCESS: `${admin}/create-unique-link/success`,
   SIGNUP: `${admin}/signup`,
@@ -34,7 +35,6 @@ const ADMIN = {
   CREATE_ORG_DETAILS_FIRST_STEP: `${admin}/set-organisation/1`,
   CREATE_ORG_DETAILS_SECOND_STEP: `${admin}/set-organisation/2`,
   ADD_UPDATE_CONTENT: `${admin}/content`,
-  CUSTOMISE_LINKS: `${admin}/customise-links`,
   LOG_OUT: '/log-out',
 };
 

@@ -46,7 +46,7 @@ const PendingDashboard = () => {
               />
             </S.ButtonWrapper>
 
-            <S.ButtonWrapper to={R.ADMIN.CUSTOMISE_LINKS}>
+            <S.ButtonWrapper to={R.ADMIN.CUSTOMISE_RESOURCES}>
               <TextWithIcon
                 size="large"
                 bgColor="neutralSurface"

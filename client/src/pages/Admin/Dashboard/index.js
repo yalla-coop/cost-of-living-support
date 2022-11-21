@@ -98,7 +98,7 @@ const Dashboard = () => {
                   </T.H3>
                 </a>,
               ]}
-              startingColor={3}
+              startingColor={2}
               mb="0"
             />
           </S.CardWrapper>

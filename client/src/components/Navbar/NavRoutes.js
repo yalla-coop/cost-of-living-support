@@ -48,16 +48,24 @@ const DecideRoutes = ({ setOpen }) => {
             </S.Head3>
           </S.Link>
           <S.Link
-            to={ADMIN.CUSTOMISE_LINKS}
+            to={ADMIN.CUSTOMISE_RESOURCES}
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CUSTOMISE_LINKS']}
+              {t.english['CUSTOMISE_RESOURCES']}
             </S.Head3>
           </S.Link>
           <S.Link to={ADMIN.CUSTOMISE} onClick={() => handleClick(setOpen)}>
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['CUSTOMISE_COLORS']}
+            </S.Head3>
+          </S.Link>
+          <S.Link
+            to={ADMIN.CUSTOMISE_RESOURCES}
+            onClick={() => handleClick(setOpen)}
+          >
+            <S.Head3 weight="bold" color="neutralMain">
+              {t.english['CUSTOMISE_RESOURCES']}
             </S.Head3>
           </S.Link>
           <S.Link onClick={handleLogout} to={ADMIN.LOG_OUT}>
@@ -121,6 +129,14 @@ const DecideRoutes = ({ setOpen }) => {
           >
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['CUSTOMISE']}
+            </S.Head3>
+          </S.Link>
+          <S.Link
+            to={ADMIN.CUSTOMISE_RESOURCES}
+            onClick={() => handleClick(setOpen)}
+          >
+            <S.Head3 weight="bold" color="neutralMain">
+              {t.english['CUSTOMISE_RESOURCES']}
             </S.Head3>
           </S.Link>
           <S.Link onClick={handleLogout} to={ADMIN.LOG_OUT}>

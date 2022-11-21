@@ -6,7 +6,7 @@ export default {
   EDIT_DETAILS: 'Edit details',
   ORGANISATIONS: 'Organisations',
   CUSTOMISE: 'Customise',
-  CUSTOMISE_LINKS: 'Customise resources and phone numbers',
+  CUSTOMISE_RESOURCES: 'Customise resources and phone numbers',
   CUSTOMISE_COLORS: 'Add/update brand colours',
   CHANGES: 'Changes',
   CONTENT_REQUESTS: 'Content requests',
