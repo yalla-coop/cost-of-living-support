@@ -172,7 +172,7 @@ const CustomiseResources = () => {
           </T.H1>
         </Col>{' '}
         <Col w={[4, 12, 10]}>
-          <T.P isSmall color="neutralDark" mt={4} mb={6}>
+          <T.P isSmall color="neutralDark" mb={6}>
             Below are the default resource links used in the app. You can type
             in your own ones below and click the reset icon to restore to
             default.{' '}
@@ -183,7 +183,7 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Still need help</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Phone number"
             type="text"
@@ -196,7 +196,7 @@ const CustomiseResources = () => {
             error={validationErrs?.STILL_NEED_HELP?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
             label="Phone number label"
             type="text"
@@ -215,7 +215,7 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Benefit Calculator</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Benefit calculator link"
             type="text"
@@ -228,7 +228,7 @@ const CustomiseResources = () => {
             error={validationErrs?.BENEFIT_CALCULATOR?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
             label="Benefit calculator button label"
             type="text"
@@ -247,7 +247,7 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Debt advice</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Debt advice link"
             type="text"
@@ -258,7 +258,7 @@ const CustomiseResources = () => {
             error={validationErrs?.DEBT_ADVICE?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
             label="Debt advice button label"
             type="text"
@@ -275,7 +275,7 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Budget</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Online budgeting tool link"
             type="text"
@@ -288,7 +288,7 @@ const CustomiseResources = () => {
             error={validationErrs?.BUDGET_PLANNER?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
             label="Online budgeting tool button label"
             type="text"
@@ -301,7 +301,7 @@ const CustomiseResources = () => {
             error={validationErrs?.BUDGET_PLANNER?.label}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4}>
           <I.BasicInput
             label="Printable budgeting pdf link"
             type="text"
@@ -314,7 +314,7 @@ const CustomiseResources = () => {
             error={validationErrs?.BUDGET_PLANNER_PDF?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4} mtT={4}>
           <I.BasicInput
             label="Printable budgeting pdf button label"
             type="text"
@@ -333,7 +333,7 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Employment services</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Employment services link"
             type="text"
@@ -346,7 +346,7 @@ const CustomiseResources = () => {
             error={validationErrs?.EMPLOYMENT_SERVICES?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
             label="Employment services button label"
             type="text"
@@ -365,7 +365,7 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Grant search</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
             label="Grant search link"
             type="text"
@@ -378,7 +378,7 @@ const CustomiseResources = () => {
             error={validationErrs?.GRANT_SEARCH?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
             label="Grant search button label"
             type="text"
@@ -397,9 +397,9 @@ const CustomiseResources = () => {
         <Col w={[4, 12, 12]} mb={4}>
           <S.SectionTitle weight="semi">Mental health</S.SectionTitle>
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]}>
           <I.BasicInput
-            label="Mental health link 1"
+            label="Mental health link"
             type="text"
             value={MENTAL_HEALTH_1?.value}
             helper="Enter your preferred mental health link here"
@@ -410,9 +410,9 @@ const CustomiseResources = () => {
             error={validationErrs?.MENTAL_HEALTH_1?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 12, 6]} mtT={4}>
           <I.BasicInput
-            label="Mental health button label 1"
+            label="Mental health button label"
             type="text"
             helper="Enter your preferred button label here"
             value={MENTAL_HEALTH_1?.label}
@@ -423,7 +423,7 @@ const CustomiseResources = () => {
             error={validationErrs?.MENTAL_HEALTH_1?.label}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4}>
           <I.BasicInput
             label="Mental health link 2"
             type="text"
@@ -436,7 +436,7 @@ const CustomiseResources = () => {
             error={validationErrs?.MENTAL_HEALTH_2?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4} mtT={4}>
           <I.BasicInput
             label="Mental health button label 2"
             type="text"
@@ -450,7 +450,7 @@ const CustomiseResources = () => {
           />
         </Col>
 
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4}>
           <I.BasicInput
             label="Mental health link 3"
             type="text"
@@ -463,7 +463,7 @@ const CustomiseResources = () => {
             error={validationErrs?.MENTAL_HEALTH_3?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4} mtT={4}>
           <I.BasicInput
             label="Mental health button label 3"
             type="text"
@@ -477,7 +477,7 @@ const CustomiseResources = () => {
           />
         </Col>
 
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4}>
           <I.BasicInput
             label="Mental health link 4"
             type="text"
@@ -490,7 +490,7 @@ const CustomiseResources = () => {
             error={validationErrs?.MENTAL_HEALTH_4?.value}
           />
         </Col>
-        <Col w={[4, 6, 6]} mt={4}>
+        <Col w={[4, 12, 6]} mt={4} mtT={4}>
           <I.BasicInput
             label="Mental health button label 4"
             type="text"
@@ -505,22 +505,22 @@ const CustomiseResources = () => {
         </Col>
       </S.Section>
       <Row mt={7} style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
-        <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
-          {httpError && (
+        {httpError && (
+          <Col w={[4, 12, 12]}>
             <T.P mb={2} color="error">
               {httpError}
             </T.P>
-          )}
-          {validationErrs?.hasError?.length ? (
-            <Col w={[4, 12, 12]}>
-              <T.P mb="2" color="error">
-                At least one of the input fields has not been filled in or
-                details entered incorrectly. Please check the form above for
-                more details.
-              </T.P>
-            </Col>
-          ) : null}
-
+          </Col>
+        )}
+        {validationErrs?.hasError ? (
+          <Col w={[4, 12, 12]}>
+            <T.P mb="2" color="error">
+              At least one of the input fields has not been filled in or details
+              entered incorrectly. Please check the form above for more details.
+            </T.P>
+          </Col>
+        ) : null}
+        <Col w={[4, 12, 6]}>
           <Button
             variant="primary"
             disabled={false}
