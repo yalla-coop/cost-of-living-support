@@ -39,7 +39,7 @@ const Dashboard = () => {
             This is the link you will need to share with your clients to access
             the tool
           </T.P>
-          <S.LinkWrapper>
+          <S.LinkWrapper mb={isSuperAdmin && '45px'}>
             <TextWithIcon
               iconColor="primaryMain"
               to={`${window.location.origin}/${adminOrg.uniqueSlug}`}
@@ -53,7 +53,6 @@ const Dashboard = () => {
 
           {isSuperAdmin && (
             <TextWithIcon
-              mt="45px"
               to={R.ADMIN.EDIT_DETAILS}
               text="Edit my organisation details"
               icon="forwardArrow"
