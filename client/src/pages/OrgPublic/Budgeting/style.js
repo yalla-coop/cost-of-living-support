@@ -37,6 +37,5 @@ export const HelpSection = styled.div`
   width: 33%;
   ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    margin-top: ${({ theme }) => theme.spacings[7]};
   }
 `;
