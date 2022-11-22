@@ -63,14 +63,14 @@ export const Field = styled.div`
   .ant-select-arrow,
   .ant-select-clear,
   .ant-select-selection-item-remove {
-    color: ${({ theme }) => theme.colors.secondaryMain};
-    width: 20px;
+    color: ${({ theme }) => theme.colors.neutralMain};
+    width: 16px;
     display: flex;
     align-items: center;
 
     svg {
-      width: 16px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       transition: all ease 0.5s;
       transform: ${({ open, multi, search }) =>
         open && !multi && !search && 'rotate(180deg)'};

@@ -5,6 +5,8 @@ import createOrganisation from './create-organisation';
 import getOrganisation from './get-organisation';
 import updateOrganisation from './update-organisation';
 import getOrganisationByUniqueSlug from './get-organisation-by-unique-slug';
+import updateResources from './update-resources';
+import getOrganisations from './get-organisations';
 
 import {
   authenticate,
@@ -16,6 +18,13 @@ import { userRoles } from '../../../constants';
 // import getCSRFToken from './get-csrf-token';
 
 const router = Router();
+
+router.get(
+  '/',
+  authenticate(),
+  authorize([userRoles.SUPER_ADMIN]),
+  getOrganisations,
+);
 
 router.get('/unique-slug/:uniqueSlug', getOrganisationByUniqueSlug);
 
@@ -31,6 +40,13 @@ router.patch(
   authenticate(),
   authorize([userRoles.SUPER_ADMIN, userRoles.ADMIN]),
   updateOrganisation,
+);
+router.patch(
+  '/:id/resources',
+  csrfProtection,
+  authenticate(),
+  authorize([userRoles.SUPER_ADMIN, userRoles.ADMIN]),
+  updateResources,
 );
 router.post(
   '/:id',
