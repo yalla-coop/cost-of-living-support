@@ -6,6 +6,8 @@ import createTopics from '../dummy-data-prod/topics';
 import createTopicsI18n from '../dummy-data-prod/topics-i18n';
 import updateTheDefaultSectionsLogs from '../dummy-data-prod/update-the-default-sections-logs';
 import organisationsSectionsOrders from './organisations-sections-orders';
+import createCommon from '../dummy-data-prod/common';
+import createCommonI18n from '../dummy-data-prod/common-i18n';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -18,6 +20,8 @@ const buildData = async () => {
   createdData.sections = await createSections();
   createdData.topics = await createTopics(createdData);
   createdData.topicsi18n = await createTopicsI18n();
+  createdData.topicsi18n = await createCommon();
+  createdData.topicsi18n = await createCommonI18n();
   createdData.organisationsSectionsOrders = await organisationsSectionsOrders(
     createdData,
   );
