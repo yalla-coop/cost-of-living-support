@@ -7,7 +7,7 @@ export const Tip = styled.div`
   border-radius: ${({ theme: { borders } }) => borders.radiusLarge};
   display: flex;
   align-items: flex-start;
-  padding: ${({ theme: { spacings } }) => `${spacings[5]} ${spacings[4]}`};
+  padding: ${({ theme: { spacings } }) => `${spacings[5]} ${spacings[4]} 17px`};
   background-image: ${({ theme: { colors }, borderColor }) => {
     return `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='${
       colors[borderColor] || borderColor
