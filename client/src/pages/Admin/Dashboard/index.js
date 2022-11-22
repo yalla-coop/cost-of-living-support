@@ -22,7 +22,7 @@ const Dashboard = () => {
   const { user } = useAuth();
   const isSuperAdmin = user.role === roles.SUPER_ADMIN;
   const isPending = adminOrg.status === 'PENDING';
-  if (!isPending) {
+  if (isPending) {
     return <PendingDashboard />;
   }
   return (
@@ -101,22 +101,6 @@ const Dashboard = () => {
               mb="0"
             />
           </S.CardWrapper>
-          {user.role === roles.ADMIN && (
-            <S.CardWrapper>
-              <C.Tips
-                style={{ width: '100%' }}
-                tips={[
-                  <a href={`mailto:${R.EXTERNAL.HYDE_EMAIL}`}>
-                    <T.H3 color="secondaryMain">
-                      Want to have access rights to change any of the content on
-                      the tool? Then contact {R.EXTERNAL.HYDE_EMAIL}
-                    </T.H3>
-                  </a>,
-                ]}
-                startingColor={1}
-              />
-            </S.CardWrapper>
-          )}
         </Col>
       </Row>
       <HelpButton
