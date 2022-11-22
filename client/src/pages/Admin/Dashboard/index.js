@@ -28,7 +28,7 @@ const Dashboard = () => {
   return (
     <>
       <Row jc="space-between">
-        <Col w={[4, 12, 7]} dir="column" ai="flex-start">
+        <Col w={[4, 12, 7.5]} dir="column" ai="flex-start">
           <T.H1 mtM="5">Welcome back</T.H1>
           <T.P
             mt={isSuperAdmin ? '42px' : 6}

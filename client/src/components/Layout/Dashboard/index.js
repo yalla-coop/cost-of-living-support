@@ -30,8 +30,10 @@ const Dashboard = ({
 
       <MobileNav />
       <S.ContentHalf>
-        <OrganisationLogo logoUrl={publicOrg?.logoUrl} />
-        {children}
+        <S.MaxWidth>
+          <OrganisationLogo logoUrl={publicOrg?.logoUrl} />
+          {children}
+        </S.MaxWidth>
       </S.ContentHalf>
     </S.Main>
   );
