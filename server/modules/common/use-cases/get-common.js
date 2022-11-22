@@ -1,7 +1,7 @@
 import * as Common from '../model';
 
-const getCommon = async ({ lang }) => {
-  const common = await Common.getCommon(lang);
+const getCommon = async ({ lng }) => {
+  const common = await Common.getCommon(lng);
 
   return common;
 };

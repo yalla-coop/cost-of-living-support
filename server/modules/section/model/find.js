@@ -68,7 +68,7 @@ const findSectionById = async (id) => {
   return res.rows[0];
 };
 
-const findTopicsBySectionId = async (id, lang) => {
+const findTopicsBySectionId = async (id, lng) => {
   const sql = `
   SELECT
     topics.id,
@@ -81,7 +81,7 @@ const findTopicsBySectionId = async (id, lang) => {
   WHERE topics.section_id = $1
   ORDER BY position ASC`;
 
-  const res = await query(sql, [id, lang]);
+  const res = await query(sql, [id, lng]);
   return res.rows;
 };
 

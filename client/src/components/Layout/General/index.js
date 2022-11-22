@@ -4,6 +4,7 @@ import * as S from './style';
 import Button from '../../../components/Button';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
+import { useCommon } from '../../../context/common';
 import { OrganisationLogo } from '../../../components';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
@@ -12,8 +13,14 @@ import { types } from '../../../constants';
 
 const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const { i18n } = useTranslation();
+  const { language: lng } = i18n;
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
+  const { common } = useCommon();
+
+  i18n.addResourceBundle(lng, 'com', {
+    common,
+  });
 
   return (
     <S.Container>

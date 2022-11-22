@@ -2,9 +2,8 @@ import * as Common from '../use-cases';
 
 const getCommon = async (req, res, next) => {
   try {
-    console.log('Common controller running');
-    const { lang } = req.query;
-    const common = await Common.getCommon({ lang });
+    const { lng } = req.query;
+    const common = await Common.getCommon({ lng });
 
     res.json(common);
   } catch (error) {

@@ -1,6 +1,6 @@
 import { query } from '../../../database';
 
-const getCommon = async (lang) => {
+const getCommon = async (lng) => {
   const sql = `
   SELECT
     common.id,
@@ -12,7 +12,7 @@ const getCommon = async (lang) => {
    AND common_i18n.language_code = $2
   WHERE common.id = $1
 `;
-  const res = await query(sql, [1, lang]);
+  const res = await query(sql, [1, lng]);
   return res.rows;
 };
 

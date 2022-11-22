@@ -1,7 +1,7 @@
 import * as Section from '../model';
 
-const getTopicsBySectionId = async ({ id, lang }) => {
-  const topics = await Section.findTopicsBySectionId(id, lang);
+const getTopicsBySectionId = async ({ id, lng }) => {
+  const topics = await Section.findTopicsBySectionId(id, lng);
 
   return topics;
 };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Sections } from './../../api-calls';
 
-const useTopics = (id, lang) => {
+const useTopics = (id, lng) => {
   const [topics, setTopics] = useState([]);
   const [markedTopics, setMarkedTopics] = useState([]);
 
@@ -9,9 +9,8 @@ const useTopics = (id, lang) => {
     const fetchTopics = async () => {
       const { data, error } = await Sections.getTopics({
         sectionId: id,
-        lang,
+        lng,
       });
-      console.log(data, 'TOPIC data');
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {
@@ -20,7 +19,7 @@ const useTopics = (id, lang) => {
     };
 
     fetchTopics();
-  }, [id, lang]);
+  }, [id, lng]);
 
   useEffect(() => {
     const markedTopicsFromStorage =

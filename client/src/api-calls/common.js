@@ -3,10 +3,10 @@ import handleError from './format-error';
 
 const COMMON_BASE = '/common';
 
-const getCommon = async ({ options, lang }) => {
+const getCommon = async ({ options, lng }) => {
   try {
     const { data } = await axios.get(`${COMMON_BASE}/`, {
-      params: { lang },
+      params: { lng },
     });
 
     return { data };
