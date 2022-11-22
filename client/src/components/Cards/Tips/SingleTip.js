@@ -20,7 +20,7 @@ const SingleTip = ({
           Tip! {tip}
         </T.H3>
       ) : (
-        tip
+        <S.TipContent>{tip}</S.TipContent>
       )}
     </S.Tip>
   );

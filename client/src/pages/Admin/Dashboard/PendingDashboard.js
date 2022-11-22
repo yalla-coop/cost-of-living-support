@@ -30,9 +30,7 @@ const PendingDashboard = () => {
             mt={6}
             mb="0"
             tip={
-              <T.H3 color="neutralMain" mt="1">
-                Your account is being reviewed
-              </T.H3>
+              <T.H3 color="neutralMain">Your account is being reviewed</T.H3>
             }
           ></SingleTip>
           <S.ButtonsContainer>

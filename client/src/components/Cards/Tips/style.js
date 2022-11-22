@@ -14,3 +14,7 @@ export const Tip = styled.div`
     }' stroke-width='4' stroke-dasharray='10%2c 15' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`;
   }};
 `;
+
+export const TipContent = styled.div`
+  margin-bottom: 7px;
+`;

@@ -46,6 +46,4 @@ export const ButtonWrapper = styled(T.Link)`
   width: 100%;
 `;
 
-export const TipsList = styled.div`
-  margin-bottom: 7px;
-`;
+export const TipsList = styled.div``;
