@@ -6,6 +6,7 @@ import {
   Cards as C,
   HelpButton,
 } from '../../../components';
+import { SingleTip } from '../../../components/Cards/Tips';
 import * as S from './style';
 import { navRoutes as R } from '../../../constants';
 const { Row, Col } = Grid;
@@ -21,15 +22,19 @@ const PendingDashboard = () => {
             Once your account is approved you will be provided with a link to
             share with your clients
           </T.P>
-          <C.Tips
+          <SingleTip
             style={{ width: '100%' }}
-            startingColor={3}
+            bgColor="primaryLight"
+            borderColor="primaryMain"
+            iconColor="primaryMain"
             mt={6}
             mb="0"
-            tips={[
-              <T.H3 color="neutralMain">Your account is being reviewed</T.H3>,
-            ]}
-          />
+            tip={
+              <T.H3 color="neutralMain" mt="1">
+                Your account is being reviewed
+              </T.H3>
+            }
+          ></SingleTip>
           <S.ButtonsContainer>
             <S.ButtonWrapper to={R.ADMIN.EDIT_DETAILS}>
               <TextWithIcon
@@ -78,7 +83,7 @@ const PendingDashboard = () => {
             mt={6}
             mb="0"
             tips={[
-              <div>
+              <S.TipsList>
                 <T.H3 color="secondaryMain" mb="2">
                   Customise resources includes
                 </T.H3>
@@ -100,7 +105,7 @@ const PendingDashboard = () => {
                 <T.P weight="400" color="secondaryMain">
                   - Mental health links
                 </T.P>
-              </div>,
+              </S.TipsList>,
             ]}
           />
         </Col>

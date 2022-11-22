@@ -45,3 +45,7 @@ export const ButtonWrapper = styled(T.Link)`
   cursor: pointer;
   width: 100%;
 `;
+
+export const TipsList = styled.div`
+  margin-bottom: 7px;
+`;

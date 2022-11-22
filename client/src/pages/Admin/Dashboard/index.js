@@ -22,7 +22,7 @@ const Dashboard = () => {
   const { user } = useAuth();
   const isSuperAdmin = user.role === roles.SUPER_ADMIN;
   const isPending = adminOrg.status === 'PENDING';
-  if (isPending) {
+  if (!isPending) {
     return <PendingDashboard />;
   }
   return (

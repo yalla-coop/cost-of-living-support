@@ -66,7 +66,7 @@ const DashboardLinks = () => {
         mt={6}
         mb="0"
         tips={[
-          <div>
+          <S.TipsList>
             <T.H3 color="secondaryMain" mb="2">
               Customise resources includes
             </T.H3>
@@ -88,7 +88,7 @@ const DashboardLinks = () => {
             <T.P weight="400" color="secondaryMain">
               - Mental health links
             </T.P>
-          </div>,
+          </S.TipsList>,
         ]}
       />
     </>
