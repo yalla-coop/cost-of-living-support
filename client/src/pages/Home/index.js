@@ -14,7 +14,7 @@ import { navRoutes } from '../../constants';
 import LandingContent from './LandingContent';
 import { Trans } from 'react-i18next';
 import HelpButton from '../../components/HelpButton';
-
+import { useCommon } from '../../context/common';
 import * as S from './style';
 const { Col, Row } = Grid;
 
@@ -22,6 +22,8 @@ const Home = () => {
   const { i18n } = useTranslation();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
+
+  useCommon();
 
   const { uniqueSlug } = useParams();
 
@@ -48,13 +50,6 @@ const Home = () => {
       mounted = false;
     };
   }, [uniqueSlug]);
-
-  i18n.loadNamespaces('topicNS', (err) => {
-    /* resources have been loaded */
-    console.log(err);
-  });
-
-  console.log(i18n.t('topicNS:topics', { returnObjects: true }));
 
   return (
     <S.Container>

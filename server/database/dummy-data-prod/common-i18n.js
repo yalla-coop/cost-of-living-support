@@ -45,16 +45,15 @@ const addCommonI18n = async () => {
           description:
             'نحتاج جميعًا إلى التحدث إلى شخص ما في بعض الأحيان! استخدم أيًا من تفاصيل الاتصال أدناه للعثور على شخص للدردشة معه.',
           govHelpline: 'خط مساعدة الحكومة',
-          govOpeningTimes: 'انظر النصيحة0',
+          govOpeningTimes: 'انظر النصيحة',
           govPhone: 'انظر النصيحة1',
         },
         helpBudget: {
-          title: 'انظر النصيحة2',
-          description: 'انظر النصيحة3',
+          title: 'انظر النصيحة',
+          description: 'انظر النصيحة',
         },
         stressedOrOverwhelmed: {
-          title: 'انظر النصيحة4',
-          description: 'انظر النصيحة3',
+          title: 'انظر النصيحة',
         },
       },
     },

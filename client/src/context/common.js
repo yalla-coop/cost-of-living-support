@@ -14,21 +14,18 @@ const CommonProvider = ({ children }) => {
       const { data, error } = await Common.getCommon({
         lng,
       });
-      const [_data] = data;
+      const _data = data[0].content;
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {
         setCommon(_data);
       }
     };
-
     fetchCommon();
   }, [lng]);
 
-  const value = { common };
-
   return (
-    <CommonContextData.Provider value={value}>
+    <CommonContextData.Provider value={{ common }}>
       {children}
     </CommonContextData.Provider>
   );

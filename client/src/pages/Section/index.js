@@ -40,8 +40,6 @@ const Section = () => {
     topics,
   });
 
-  const tr = i18n.store.getResourceBundle(lng, 'com'); //<-- will return the entire namespace
-
   return (
     <S.Container>
       <PageHeader title={pageTitle} />
@@ -61,11 +59,8 @@ const Section = () => {
                   resources={content.resources}
                 />
               ))}
-            <Trans
-              i18nKey="common.content.section.stressedOrOverwhelmed.title"
-              ns="com"
-            >
-              Feeling sstressed or overwhelmed
+            <Trans i18nKey="section.stressedOrOverwhelmed.title" ns="common">
+              Feeling stressed or overwhelmed
             </Trans>
           </S.Topics>
           <S.HelpSection>

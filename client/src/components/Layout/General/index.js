@@ -18,8 +18,8 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const { adminOrg } = useAdminOrg();
   const { common } = useCommon();
 
-  i18n.addResourceBundle(lng, 'com', {
-    common,
+  i18n.addResourceBundle(lng, 'common', {
+    ...common,
   });
 
   return (
