@@ -18,7 +18,7 @@ const PendingDashboard = () => {
       <Row jc="space-between">
         <Col w={[4, 12, 7]} dir="column" ai="flex-start">
           <T.H1 mtM="5">Welcome</T.H1>
-          <T.P mt={6} mb={4} color="neutralDark">
+          <T.P mt={6} color="neutralDark">
             Once your account is approved you will be provided with a link to
             share with your clients
           </T.P>
