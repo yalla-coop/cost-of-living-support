@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Typography as T,
   Grid,
   TextWithIcon,
   Cards as C,
   HelpButton,
+  Modal,
 } from '../../../components';
 import * as S from './style';
 import { navRoutes as R, roles } from '../../../constants';
@@ -18,8 +20,10 @@ const { Col, Row } = Grid;
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
+  const [orgModalOpen, setOrgModalOpen] = useState(false);
   const { adminOrg } = useAdminOrg();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const isSuperAdmin = user.role === roles.SUPER_ADMIN;
   const isPending = adminOrg.status === 'PENDING';
   if (isPending) {
@@ -108,6 +112,18 @@ const Dashboard = () => {
         parentState={open}
         parentFunc={() => setOpen(false)}
       />
+      {isSuperAdmin && (
+        <Modal
+          visible={orgModalOpen}
+          setIsModalVisible={setOrgModalOpen}
+          parentFunc={() => navigate(R.SUPER_ADMIN.ORGANISATIONS)}
+          title={'Organisations to approve'}
+          description={
+            'You have organisations awaiting for approval. Please click to review them below. '
+          }
+          btnText="Review"
+        />
+      )}
     </>
   );
 };
