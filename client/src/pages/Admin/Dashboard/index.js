@@ -53,7 +53,7 @@ const Dashboard = () => {
 
           {isSuperAdmin && (
             <TextWithIcon
-              to={R.ADMIN.EDIT_DETAILS}
+              to={R.ADMIN.EDIT_ACCOUNT_DETAILS}
               text="Edit my organisation details"
               icon="forwardArrow"
               iconColor="primaryMain"

@@ -19,7 +19,7 @@ const PUBLIC_ORG = {
 const admin = '/admin';
 const ADMIN = {
   BASE: `${admin}`,
-  EDIT_DETAILS: `${admin}/edit-details`,
+  EDIT_ACCOUNT_DETAILS: `${admin}/edit-details`,
   CUSTOMISE: `${admin}/customise`,
   CUSTOMISE_RESOURCES: `${admin}/customise-resources`,
   CREATE_UNIQUE_LINK: `${admin}/create-unique-link`,
@@ -42,14 +42,15 @@ const SUPER_ADMIN = {
   DASHBOARD: `${admin}/dashboard`,
   EDIT_STEP: `${admin}/edit-step/:id`,
   HOME: `${admin}/home`,
-  EDIT_CONTENT: `${admin}/edit-content`,
+  ADD_UPDATE_CONTENT: `${admin}/content`,
   EDIT_LANDING_PAGE: `${admin}/edit-landing-page`,
-  EDIT_DETAILS: `${admin}/edit-details`,
+  EDIT_ACCOUNT_DETAILS: `${admin}/edit-details`,
   ORGANISATIONS: `${admin}/organisations`,
   CUSTOMISE: `${admin}/customise`,
   MANAGE_STEPS: `${admin}/manage-steps`,
   CHANGES: `${admin}/changes`,
-  CONTENT_REQUESTS: `${admin}/content-requests`,
+  // CONTENT_REQUESTS: `${admin}/content-requests`,
+  CONTENT_REVIEW: `${admin}/content-review`,
 };
 
 const EXTERNAL = {

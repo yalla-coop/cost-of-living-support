@@ -36,7 +36,7 @@ const PendingDashboard = () => {
             }
           ></SingleTip>
           <S.ButtonsContainer>
-            <S.ButtonWrapper to={R.ADMIN.EDIT_DETAILS}>
+            <S.ButtonWrapper to={R.ADMIN.EDIT_ACCOUNT_DETAILS}>
               <TextWithIcon
                 size="large"
                 bgColor="neutralSurface"

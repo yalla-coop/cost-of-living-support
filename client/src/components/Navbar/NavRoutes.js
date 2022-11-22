@@ -34,7 +34,10 @@ const DecideRoutes = ({ setOpen }) => {
               {t.english['HOME']}
             </S.Head3>
           </S.Link>
-          <S.Link to={ADMIN.EDIT_DETAILS} onClick={() => handleClick(setOpen)}>
+          <S.Link
+            to={ADMIN.EDIT_ACCOUNT_DETAILS}
+            onClick={() => handleClick(setOpen)}
+          >
             <S.Head3 weight="bold" color="neutralMain">
               {t.english['EDIT_ACCOUNT_DETAILS']}
             </S.Head3>
@@ -87,11 +90,11 @@ const DecideRoutes = ({ setOpen }) => {
             </S.Head3>
           </S.Link>
           <S.Link
-            to={SUPER_ADMIN.EDIT_CONTENT}
+            to={SUPER_ADMIN.ADD_UPDATE_CONTENT}
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['EDIT_CONTENT']}
+              {t.english['ADD_UPDATE_CONTENT']}
             </S.Head3>
           </S.Link>
           <S.Link
@@ -103,11 +106,11 @@ const DecideRoutes = ({ setOpen }) => {
             </S.Head3>
           </S.Link>
           <S.Link
-            to={SUPER_ADMIN.CONTENT_REQUESTS}
+            to={SUPER_ADMIN.CONTENT_REVIEW}
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CONTENT_REQUESTS']}
+              {t.english['CONTENT_REVIEW']}
             </S.Head3>
           </S.Link>
           <S.Link to={SUPER_ADMIN.CHANGES} onClick={() => handleClick(setOpen)}>
@@ -116,11 +119,11 @@ const DecideRoutes = ({ setOpen }) => {
             </S.Head3>
           </S.Link>
           <S.Link
-            to={SUPER_ADMIN.EDIT_DETAILS}
+            to={SUPER_ADMIN.EDIT_ACCOUNT_DETAILS}
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['EDIT_DETAILS']}
+              {t.english['EDIT_ACCOUNT_DETAILS']}
             </S.Head3>
           </S.Link>
           <S.Link
@@ -128,7 +131,7 @@ const DecideRoutes = ({ setOpen }) => {
             onClick={() => handleClick(setOpen)}
           >
             <S.Head3 weight="bold" color="neutralMain">
-              {t.english['CUSTOMISE']}
+              {t.english['CUSTOMISE_COLORS']}
             </S.Head3>
           </S.Link>
           <S.Link
