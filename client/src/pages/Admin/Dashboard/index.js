@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Typography as T,
@@ -12,7 +12,7 @@ import * as S from './style';
 import { navRoutes as R, roles } from '../../../constants';
 import { useAuth } from '../../../context/auth';
 import { useAdminOrg } from '../../../context/admin-org';
-
+import { Organisations } from '../../../api-calls';
 import DashboardLinks from './DashboardLinks';
 import PendingDashboard from './PendingDashboard';
 
@@ -25,10 +25,29 @@ const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const isSuperAdmin = user.role === roles.SUPER_ADMIN;
-  const isPending = adminOrg.status === 'PENDING';
-  if (isPending) {
+  const isPending = adminOrg.status === 'AWAITING_APPROVAL';
+
+  useEffect(() => {
+    const getAwaitingApprovalOrganisations = async () => {
+      const { data } = await Organisations.getAwaitingApprovalOrganisations();
+      if (data) {
+        if (data?.length > 0) {
+          setOrgModalOpen(true);
+        } else {
+          setOrgModalOpen(false);
+        }
+      }
+    };
+
+    if (isSuperAdmin) {
+      getAwaitingApprovalOrganisations();
+    }
+  }, [isSuperAdmin]);
+
+  if (isPending && !isSuperAdmin) {
     return <PendingDashboard />;
   }
+
   return (
     <>
       <Row jc="space-between">
