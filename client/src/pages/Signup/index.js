@@ -237,7 +237,9 @@ const SignUp = () => {
             error={validationErrs.password}
           />
 
-          {passwordTipVisible && <Cards.Tips tips={[PasswordTipsContent]} />}
+          {passwordTipVisible && (
+            <Cards.Tips startingColor="3" tips={[PasswordTipsContent]} />
+          )}
         </Col>
       </Row>
       <Row mt="4">
