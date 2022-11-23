@@ -8,6 +8,7 @@ import {
   Inputs as I,
   Button,
   Modal,
+  TextWithIcon,
 } from '../../../components';
 import * as S from './style';
 import { editDetails as validate } from '../../../validation/schemas';
@@ -281,7 +282,16 @@ const EditDetails = () => {
 
       <Row mt={7}>
         <Col w={[4, 6, 6]}>
-          <T.P isSmall color="neutralDark">
+          <S.Divider />
+          <TextWithIcon
+            icon="close"
+            iconColor="primaryMain"
+            text="Delete my account"
+            isButton
+            pointer
+            handleClick={() => {}}
+          />
+          {/* <T.P isSmall color="neutralDark">
             {t('accountDelete', lang)}{' '}
             <T.Link
               to="mailto:ucdigital@hyde-housing.co.uk"
@@ -292,7 +302,7 @@ const EditDetails = () => {
             >
               {t('hydeHousing', lang)}
             </T.Link>
-          </T.P>
+          </T.P> */}
         </Col>
       </Row>
       <Modal
