@@ -133,6 +133,7 @@ const EditDetails = () => {
       withUserDetails: true,
       body: {
         ...state.formData,
+        userId: user.id,
       },
     });
 
@@ -314,7 +315,7 @@ const EditDetails = () => {
                 review your profile again
               </T.H3>,
             ]}
-            startingColor={3}
+            startingColor={2}
           />
 
           <Button

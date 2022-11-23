@@ -35,6 +35,7 @@ const updateOrganisation = async ({
   const client = await getClient();
 
   const user = await User.findUserWithOrgDetails(userId);
+  const emailHasChanged = email && email !== user.email;
 
   if (
     (Number(userOrganisationId) !== Number(id) &&
@@ -90,6 +91,10 @@ const updateOrganisation = async ({
         colors,
         logoId: createdMedia && createdMedia.id,
         typeOfOrganisation,
+        status:
+          loggedInUserRole === userRoles.ADMIN && emailHasChanged
+            ? 'AWAITING_APPROVAL'
+            : null,
       },
       client,
     );
@@ -105,9 +110,10 @@ const updateOrganisation = async ({
         client,
       );
     }
+
     await client.query('COMMIT');
 
-    if (isSuperAdminEditingAnotherOrg && email && email !== user.email) {
+    if (isSuperAdminEditingAnotherOrg && emailHasChanged) {
       sendEmail(
         templatesId.ORG_EMAIL_UPDATED,
         { to: email },
