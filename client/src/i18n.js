@@ -7,8 +7,9 @@ i18n
   .use(initReactI18next)
   .init({
     ns: ['common'],
+    resources: {},
     defaultNS: 'common',
-    fallbackLng: 'en',
+    fallbackLng: 'EN',
     debug: true,
     interpolation: {
       escapeValue: false,

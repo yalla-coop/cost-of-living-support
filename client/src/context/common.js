@@ -18,6 +18,9 @@ const CommonProvider = ({ children }) => {
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {
+        i18n.addResourceBundle(lng, 'common', {
+          ..._data,
+        });
         setCommon(_data);
       }
     };
@@ -25,7 +28,7 @@ const CommonProvider = ({ children }) => {
   }, [lng]);
 
   return (
-    <CommonContextData.Provider value={{ common }}>
+    <CommonContextData.Provider value={common}>
       {children}
     </CommonContextData.Provider>
   );

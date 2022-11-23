@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { navRoutes } from '../../constants';
 import { Typography as T } from '../../components';
-import { useTranslation, Trans } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import Logo from '../../components/assets/Logo.png';
 
 import * as S from './style';

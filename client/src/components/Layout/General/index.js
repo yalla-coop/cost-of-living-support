@@ -1,30 +1,25 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import * as S from './style';
-import Button from '../../../components/Button';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
-import { useCommon } from '../../../context/common';
 import { OrganisationLogo } from '../../../components';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
+
+// Uncomment to test language translation
+import Button from '../../../components/Button';
 import { types } from '../../../constants';
-// import Navbar from '../../Navbar';
 
 const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
   const { i18n } = useTranslation();
-  const { language: lng } = i18n;
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
-  const { common } = useCommon();
-
-  i18n.addResourceBundle(lng, 'common', {
-    ...common,
-  });
 
   return (
     <S.Container>
-      accessability header goes here
+      uncomment to check language translation
       <Button
         handleClick={() => i18n.changeLanguage(types.languageCodes.ENGLISH)}
         text="English"

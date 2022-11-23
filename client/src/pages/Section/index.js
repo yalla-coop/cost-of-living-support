@@ -10,7 +10,7 @@ import useTopics from './useTopics';
 import StillNeedHelp from './../../components/StillNeedHelp';
 
 const Section = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { language: lng } = i18n;
   const { id } = useParams();
   const [sectionData, setSectionData] = useState({});
@@ -40,25 +40,25 @@ const Section = () => {
     topics,
   });
 
+  const _topics = t('topics', { ns: 'topicNS', returnObjects: true });
+
   return (
     <S.Container>
       <PageHeader title={pageTitle} />
       <GeneralPaddingSection>
         <S.Content>
           <S.Topics>
-            {i18n
-              .t('topicNS:topics', { returnObjects: true })
-              .map(({ id, content }, i) => (
-                <TopicCard
-                  topicIndex={i}
-                  key={id}
-                  title={content.title}
-                  description={content.content}
-                  tips={[content.tip1, content.tip2]}
-                  toggleMark={() => toggleMark(id)}
-                  resources={content.resources}
-                />
-              ))}
+            {_topics.map(({ id, content }, i) => (
+              <TopicCard
+                topicIndex={i}
+                key={id}
+                title={content.title}
+                description={content.content}
+                tips={[content.tip1, content.tip2]}
+                toggleMark={() => toggleMark(id)}
+                resources={content.resources}
+              />
+            ))}
             <Trans i18nKey="section.stressedOrOverwhelmed.title" ns="common">
               Feeling stressed or overwhelmed
             </Trans>
