@@ -19,9 +19,10 @@ import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
 import { t } from '../../../helpers';
 
-// import { navRoutes } from '../../../constants';
+import { navRoutes } from '../../../constants';
 
 import { organisationTypes } from '../../../constants/data-types';
+import { useNavigate } from 'react-router-dom';
 
 const { Tips } = Cards;
 const { Row, Col } = Grid;
@@ -55,8 +56,10 @@ const EditDetails = () => {
   const { lang } = useLang();
   const { adminOrg, getAdminOrgInfo } = useAdminOrg();
   const submitAttempt = useRef(false);
-  const { user, setUser } = useAuth();
   const [state, setState] = useReducer(reducer, initialState);
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
+
   const {
     formData: {
       firstName,
@@ -174,6 +177,10 @@ const EditDetails = () => {
   const handleUniqueLink = (value) => {
     const uniqueSlug = value.trimStart().replace(' ', '-').toLowerCase();
     setFormData({ uniqueSlug });
+  };
+
+  const handleDelete = async () => {
+    navigate(navRoutes.ADMIN.CONFIRM_DELETION);
   };
 
   return (
@@ -330,28 +337,18 @@ const EditDetails = () => {
       </Row>
 
       <Row mt={7}>
-        <Col w={[4, 6, 6]}>
+        <Col w={[4, 8, 8]}>
           <S.Divider />
+        </Col>
+        <Col w={[4, 6, 6]}>
           <TextWithIcon
             icon="close"
             iconColor="primaryMain"
             text="Delete my account"
             isButton
             pointer
-            handleClick={() => {}}
+            handleClick={handleDelete}
           />
-          {/* <T.P isSmall color="neutralDark">
-            {t('accountDelete', lang)}{' '}
-            <T.Link
-              to="mailto:ucdigital@hyde-housing.co.uk"
-              color="neutralDark"
-              weight="bold"
-              underline
-              external
-            >
-              {t('hydeHousing', lang)}
-            </T.Link>
-          </T.P> */}
         </Col>
       </Row>
       <Modal
