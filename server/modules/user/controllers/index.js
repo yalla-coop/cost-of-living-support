@@ -43,7 +43,7 @@ router.delete(
   '/',
   csrfProtection,
   authenticate(),
-  authorize([userRoles.SUPER_ADMIN]),
+  authorize([userRoles.SUPER_ADMIN, userRoles.ADMIN]),
   deleteUser,
 );
 
