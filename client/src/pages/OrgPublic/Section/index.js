@@ -13,6 +13,7 @@ import useTopics from './useTopics';
 import StillNeedHelp from '../../../components/StillNeedHelp';
 import { navRoutes } from '../../../constants';
 import { message } from 'antd';
+import SocialBanner from '../../../components/SocialBanner';
 
 const Section = () => {
   const { publicOrg } = usePublicOrg();
@@ -85,6 +86,7 @@ const Section = () => {
           </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>
+      <SocialBanner title={pageTitle} />
     </S.Container>
   );
 };

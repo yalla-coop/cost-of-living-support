@@ -7,6 +7,7 @@ import PageHeader from '../../../components/PageHeader';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import { navRoutes } from '../../../constants';
 import { usePublicOrg } from '../../../context/public-org';
+import SocialBanner from '../../../components/SocialBanner';
 
 import * as S from './style';
 const { Col, Row } = Grid;
@@ -83,6 +84,7 @@ const SubSections = () => {
           </Row>
         ))}
       </GeneralPaddingSection>
+      <SocialBanner title={data.title} />
     </S.Container>
   );
 };

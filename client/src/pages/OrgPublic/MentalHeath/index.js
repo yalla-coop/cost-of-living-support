@@ -3,6 +3,7 @@ import { Typography as T, Grid, GoBack } from '../../../components';
 import PageHeader from '../../../components/PageHeader';
 import HelpfulResources from '../../../components/HelpfulResources';
 import { usePublicOrg } from '../../../context/public-org';
+import SocialBanner from '../../../components/SocialBanner';
 
 import * as S from './style';
 
@@ -65,6 +66,7 @@ const MentalHeath = () => {
           </Col>
         </Row>
       </GeneralPaddingSection>
+      <SocialBanner title="Mental Health Support" />
     </S.Container>
   );
 };

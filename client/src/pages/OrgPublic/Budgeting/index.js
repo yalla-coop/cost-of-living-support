@@ -9,7 +9,7 @@ import {
   StillNeedHelp,
 } from '../../../components';
 import { usePublicOrg } from '../../../context/public-org';
-
+import SocialBanner from '../../../components/SocialBanner';
 import * as S from './style';
 
 const { Row, Col } = Grid;
@@ -135,6 +135,7 @@ const BudgetingPage = () => {
           </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>
+      <SocialBanner title={'Budgeting'} />
     </S.Container>
   );
 };
