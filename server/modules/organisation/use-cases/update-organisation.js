@@ -5,6 +5,10 @@ import * as Media from '../../media/model';
 import { errorMsgs } from '../../../services/error-handler';
 import { moveFile } from '../../../services/files-storage';
 import { getClient } from '../../../database/connect';
+import { userRoles } from '../../../constants';
+
+import sendEmail from '../../../services/mailing';
+import * as templatesId from '../../../services/mailing/templates/templates-constants';
 
 const updateOrganisation = async ({
   id,
@@ -13,18 +17,31 @@ const updateOrganisation = async ({
   uniqueSlug,
   colors,
   logoFile,
-  userId,
+  userId, // user id to update details for
+  loggedInUserId, // user id of logged in user
   userOrganisationId,
   firstName,
   lastName,
   email,
   backupEmail,
   withUserDetails,
+  loggedInUserRole,
 }) => {
   let createdMedia;
+  const isSuperAdminEditingAnotherOrg =
+    loggedInUserRole === userRoles.SUPER_ADMIN &&
+    Number(userOrganisationId) !== Number(id);
+
   const client = await getClient();
 
-  if (Number(userOrganisationId) !== Number(id)) {
+  const user = await User.findUserWithOrgDetails(userId);
+
+  if (
+    (Number(userOrganisationId) !== Number(id) &&
+      !isSuperAdminEditingAnotherOrg) ||
+    !user ||
+    Number(user.organisationId) !== Number(id) // userId provided is not part of the organisation
+  ) {
     throw Boom.forbidden();
   }
 
@@ -57,21 +74,22 @@ const updateOrganisation = async ({
             key: newKey,
             bucket,
             bucketRegion,
-            createdBy: userId,
+            createdBy: loggedInUserId,
             fileCategory,
           },
           client,
         );
       }
     }
+
     const orgBeforeUpdate = await Organisation.updateOrganisation(
       {
         id,
         organisationName,
-        typeOfOrganisation,
         uniqueSlug,
         colors,
         logoId: createdMedia && createdMedia.id,
+        typeOfOrganisation,
       },
       client,
     );
@@ -82,9 +100,22 @@ const updateOrganisation = async ({
     }
 
     if (withUserDetails) {
-      await User.updateUser({ id: userId, firstName, lastName, email, backupEmail }, client);
+      await User.updateUser(
+        { id: userId, firstName, lastName, email, backupEmail },
+        client,
+      );
     }
     await client.query('COMMIT');
+
+    if (isSuperAdminEditingAnotherOrg && email && email !== user.email) {
+      sendEmail(
+        templatesId.ORG_EMAIL_UPDATED,
+        { to: email },
+        {
+          name: user.firstName,
+        },
+      );
+    }
   } catch (error) {
     await client.query('ROLLBACK');
 
@@ -104,6 +135,7 @@ const updateOrganisation = async ({
         field: 'email',
       });
     }
+
     throw error;
   } finally {
     client.release();
