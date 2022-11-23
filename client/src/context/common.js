@@ -28,7 +28,7 @@ const CommonProvider = ({ children }) => {
   }, [lng]);
 
   return (
-    <CommonContextData.Provider value={common}>
+    <CommonContextData.Provider value={{ common }}>
       {children}
     </CommonContextData.Provider>
   );
