@@ -2,17 +2,26 @@ import { query } from '../../../database';
 import { organisationStatuses } from '../../../constants';
 
 const updateOrganisation = async (
-  { id, organisationName, typeOfOrganisation, uniqueSlug, colors, logoId },
+  {
+    id,
+    organisationName,
+    uniqueSlug,
+    colors,
+    logoId,
+    typeOfOrganisation,
+    status,
+  },
   client,
 ) => {
   const sql = `
     UPDATE organisations AS o
       SET
         organisation_name = COALESCE($2, o.organisation_name),
-        type_of_organisation = COALESCE($6, o.type_of_organisation),
         unique_slug = COALESCE($3, o.unique_slug),
         colors = COALESCE($4, o.colors),
-        logo_id = COALESCE($5, o.logo_id)
+        logo_id = COALESCE($5, o.logo_id),
+        type_of_organisation = COALESCE($6, o.type_of_organisation),
+        status = COALESCE($7, o.status)
     FROM organisations AS old_org
     WHERE o.id = old_org.id AND o.id = $1
     RETURNING old_org.*
@@ -24,6 +33,7 @@ const updateOrganisation = async (
     colors,
     logoId,
     typeOfOrganisation,
+    status,
   ];
 
   const res = await query(sql, values, client);
@@ -73,8 +83,23 @@ const updateOrganisationToDeleted = async (id, client) => {
   return res.rows[0];
 };
 
+const updateOrganisationStatus = async ({ id, status }) => {
+  const sql = `
+    UPDATE organisations
+      SET
+        status = $2
+    WHERE id = $1
+    RETURNING *
+  `;
+  const values = [id, status];
+
+  const res = await query(sql, values);
+  return res.rows[0];
+};
+
 export {
   updateOrganisation,
   updateOrganisationResources,
   updateOrganisationToDeleted,
+  updateOrganisationStatus,
 };

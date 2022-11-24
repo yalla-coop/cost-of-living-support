@@ -36,7 +36,6 @@ const ADMIN = {
   ADD_UPDATE_CONTENT: `${admin}/content`,
   SUCCESS_SIGNUP: `${admin}/success-signup`,
   CONFIRM_DELETION: `${admin}/confirm-deletion`,
-  LOG_OUT: '/log-out',
 };
 
 const SUPER_ADMIN = {
@@ -52,6 +51,8 @@ const SUPER_ADMIN = {
   CHANGES: `${admin}/changes`,
   // CONTENT_REQUESTS: `${admin}/content-requests`,
   CONTENT_REVIEW: `${admin}/content-review`,
+  ORGANISATION_DETAILS: `${admin}/org-user/:id`, // use user id not org id
+  REJECT_ORGANISATION: `${admin}/organisation/:id/reject`,
 };
 
 const EXTERNAL = {
