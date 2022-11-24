@@ -8,6 +8,7 @@ import editDetails from './edit-details';
 import customise from './customise';
 import customiseResources from './customise-resources';
 import rejectOrganisation from './reject-organisation';
+import EditOrganisation from './edit-organisation';
 
 export {
   signup,
@@ -20,4 +21,5 @@ export {
   customise,
   customiseResources,
   rejectOrganisation,
+  EditOrganisation,
 };
