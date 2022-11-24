@@ -46,7 +46,7 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
             {...props}
           />
           <TextWithIcon
-            handleClick={() => navigate(R.GENERAL.Accessibility)}
+            handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
             text="Accessibility"
             icon="accessibility"
             {...props}
@@ -93,7 +93,7 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
           {...props}
         />
         <TextWithIcon
-          handleClick={() => null}
+          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text="نموذج"
           icon="accessibility"
           {...props}
@@ -109,6 +109,10 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
 };
 
 const Tablet = ({ dir, showBack, handleHide }) => {
+  const navigate = useNavigate();
+  const [isFontLarge, setIsFontLarge] = useState(() => {
+    return localStorage.getItem('isLarge') || false;
+  });
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
@@ -116,12 +120,27 @@ const Tablet = ({ dir, showBack, handleHide }) => {
       )}
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => null}
+          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text="Accessibility"
           icon="accessibility"
           {...props}
         />
-        <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
+        <TextWithIcon
+          handleClick={() => {
+            if (!isFontLarge) {
+              document.getElementsByTagName('html')[0].style.fontSize =
+                '1.25rem';
+              localStorage.setItem('isFontLarge', 'true');
+              setIsFontLarge(true);
+            } else {
+              document.getElementsByTagName('html')[0].style.fontSize = '1rem';
+              localStorage.removeItem('isFontLarge');
+              setIsFontLarge(false);
+            }
+          }}
+          icon="textSize"
+          {...props}
+        />
         <TextWithIcon
           handleClick={handleHide}
           text="EN"
@@ -141,10 +160,25 @@ const Tablet = ({ dir, showBack, handleHide }) => {
           icon="arabic"
           {...props}
         />
-        <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
+        <TextWithIcon
+          handleClick={() => {
+            if (!isFontLarge) {
+              document.getElementsByTagName('html')[0].style.fontSize =
+                '1.25rem';
+              localStorage.setItem('isFontLarge', 'true');
+              setIsFontLarge(true);
+            } else {
+              document.getElementsByTagName('html')[0].style.fontSize = '1rem';
+              localStorage.removeItem('isFontLarge');
+              setIsFontLarge(false);
+            }
+          }}
+          icon="textSize"
+          {...props}
+        />
         <TextWithIcon
           text="نموذج"
-          handleClick={() => null}
+          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           icon="accessibility"
           {...props}
         />
