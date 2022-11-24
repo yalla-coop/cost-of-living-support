@@ -31,7 +31,6 @@ const labels = {
 };
 
 const UserRow = ({
-  name,
   email,
   role,
   setUsers,
@@ -55,7 +54,11 @@ const UserRow = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (selectedRole === 'REMOVE_ACCOUNT') {
+    if (selectedRole === 'REJECTED') {
+      return navigate(
+        navRoutes.SUPER_ADMIN.REJECT_ORGANISATION.replace(':id', id)
+      );
+    } else if (selectedRole === 'REMOVE_ACCOUNT') {
       setConfirmDeleteUser({ id });
     } else if (selectedRole !== role) {
       setSubmitRole({ role: selectedRole, id });
@@ -127,8 +130,6 @@ const UserRow = ({
       setError('');
     }
   };
-
-  console.log('submitRole', submitRole);
 
   return (
     <>

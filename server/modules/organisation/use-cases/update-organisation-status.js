@@ -1,7 +1,7 @@
 import * as Organisation from '../model';
 
-const updateOrganisationStatus = async ({ id, status }) => {
-  return Organisation.updateOrganisationStatus({ id, status });
+const updateOrganisationStatus = async ({ id, status, explanation }) => {
+  return Organisation.updateOrganisationStatus({ id, status, explanation });
 };
 
 export default updateOrganisationStatus;

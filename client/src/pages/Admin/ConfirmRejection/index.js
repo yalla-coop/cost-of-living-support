@@ -79,11 +79,10 @@ const ConfirmRejection = () => {
 
   const handleReject = async () => {
     setState({ loading: true });
-    const { error } = await Organisations.rejectOrganisation({
+    const { error } = await Organisations.updateOrganisationStatus({
       id,
-      body: {
-        ...state.formData,
-      },
+      status: 'REJECTED',
+      explanation,
     });
 
     setState({ loading: false });

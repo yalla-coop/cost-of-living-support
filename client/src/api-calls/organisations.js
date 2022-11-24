@@ -35,9 +35,17 @@ const updateOrganisation = async ({ id, body, withUserDetails, options }) => {
   }
 };
 
-const updateOrganisationStatus = async ({ id, status, options }) => {
+const updateOrganisationStatus = async ({
+  id,
+  status,
+  explanation,
+  options,
+}) => {
   try {
-    const { data } = await axios.patch(`${ORGS_BASE}/${id}/status`, { status });
+    const { data } = await axios.patch(`${ORGS_BASE}/${id}/status`, {
+      status,
+      explanation,
+    });
     return { data };
   } catch (error) {
     const err = handleError(error, options);
@@ -50,17 +58,6 @@ const updateOrganisationResources = async ({ id, resources, options }) => {
     const { data } = await axios.patch(`${ORGS_BASE}/${id}/resources`, {
       resources,
     });
-    return { data };
-  } catch (error) {
-    const err = handleError(error, options);
-    return { error: err };
-  }
-};
-
-const rejectOrganisation = async ({ id, body, options }) => {
-  try {
-    // const { data } = await axios.patch(`${ORGS_BASE}/reject/${id}`, body);
-    const data = {};
     return { data };
   } catch (error) {
     const err = handleError(error, options);
@@ -86,6 +83,5 @@ export {
   getOrganisationByUniqueSlug,
   updateOrganisationResources,
   getAwaitingApprovalOrganisations,
-  rejectOrganisation,
   updateOrganisationStatus,
 };

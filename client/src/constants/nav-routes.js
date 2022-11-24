@@ -52,7 +52,6 @@ const SUPER_ADMIN = {
   // CONTENT_REQUESTS: `${admin}/content-requests`,
   CONTENT_REVIEW: `${admin}/content-review`,
   ORGANISATION_DETAILS: `${admin}/org-user/:id`, // use user id not org id
-  REJECT_ORGANISATION: `${admin}/organisation/:id/reject`,
 };
 
 const EXTERNAL = {
