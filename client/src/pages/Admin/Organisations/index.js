@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Users } from '../../../api-calls';
 import { Typography as T, Grid, Inputs, Modal } from '../../../components';
+import { navRoutes } from '../../../constants';
 import * as S from './style';
 
 const { Row, Col } = Grid;
@@ -10,6 +12,7 @@ const options = [
   { label: 'Admin', value: 'ADMIN' },
   { label: 'Super Admin', value: 'SUPER_ADMIN' },
   { label: 'Remove account', value: 'REMOVE_ACCOUNT' },
+  { label: 'Reject account', value: 'REJECT_ACCOUNT' },
 ];
 
 const UserRow = ({
@@ -27,9 +30,13 @@ const UserRow = ({
   const [confirmUpdateRole, setConfirmUpdateRole] = useState(false);
   const [confirmDeleteUser, setConfirmDeleteUser] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
-    if (selected === 'REMOVE_ACCOUNT') {
+    if (selected === 'REJECT_ACCOUNT') {
+      return navigate(
+        navRoutes.SUPER_ADMIN.REJECT_ORGANISATION.replace(':id', id)
+      );
+    } else if (selected === 'REMOVE_ACCOUNT') {
       setConfirmDeleteUser({ id });
     } else if (selected !== role) {
       setSubmitRole({ role: selected, id });

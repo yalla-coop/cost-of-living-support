@@ -59,6 +59,12 @@ export default {
       'Below you can edit details for your customers such as your adviser contact line',
   },
 
+  confirmRejection: {
+    title: 'Confirm rejection',
+    subtitle:
+      'Are you sure you wish to reject this organisation? If so, please write a message below that will be emailed to them and click confirm. ',
+  },
+
   contact: {
     title: 'Contact Details',
   },

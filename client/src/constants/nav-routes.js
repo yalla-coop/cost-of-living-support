@@ -49,6 +49,7 @@ const SUPER_ADMIN = {
   CUSTOMISE: `${admin}/customise`,
   MANAGE_STEPS: `${admin}/manage-steps`,
   CHANGES: `${admin}/changes`,
+  REJECT_ORGANISATION: `${admin}/reject/:id`,
   // CONTENT_REQUESTS: `${admin}/content-requests`,
   CONTENT_REVIEW: `${admin}/content-review`,
 };
