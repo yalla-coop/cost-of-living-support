@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { message } from 'antd';
-import { useParams } from 'react-router-dom';
-import { Sections } from '../../api-calls';
-import { navRoutes, common } from '../../constants';
+import { navRoutes, common } from '../../../constants';
+import { generatePath, useParams } from 'react-router-dom';
+import { Sections } from '../../../api-calls';
+import { usePublicOrg } from '../../../context/public-org';
 import {
   Cards,
   Typography as T,
   TextWithIcon,
   Grid,
   Button,
-} from '../../components';
+} from '../../../components';
 import LandingContent from './LandingContent';
-import HelpButton from '../../components/HelpButton';
+import HelpButton from '../../../components/HelpButton';
 import * as S from './style';
 const { Col, Row } = Grid;
 
@@ -20,7 +21,8 @@ const Home = () => {
   const { t } = useTranslation();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
-  const { uniqueSlug } = useParams();
+  const { publicOrg } = usePublicOrg();
+  const uniqueSlug = publicOrg?.uniqueSlug;
 
   useEffect(() => {
     let mounted = true;
@@ -59,8 +61,14 @@ const Home = () => {
                 text={item.title.replaceAll('*', '')}
                 to={
                   item.hasSubSections
-                    ? navRoutes.GENERAL.SUBSECTIONS.replace(':id', item.id)
-                    : navRoutes.GENERAL.SECTION.replace(':id', item.id)
+                    ? generatePath(navRoutes.PUBLIC_ORG.SUBSECTIONS, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
+                    : generatePath(navRoutes.PUBLIC_ORG.SECTION, {
+                        uniqueSlug,
+                        id: item.id,
+                      })
                 }
                 mb={2}
                 mbM={'0'}
@@ -83,7 +91,11 @@ const Home = () => {
               common.section.helpBudget.description
             )}
           </T.P>
-          <S.ReadMoreLink to={navRoutes.GENERAL.BUDGETING}>
+          <S.ReadMoreLink
+            to={generatePath(navRoutes.PUBLIC_ORG.BUDGETING, {
+              uniqueSlug,
+            })}
+          >
             <TextWithIcon
               size="large"
               bgColor="neutralLight"
@@ -117,14 +129,9 @@ const Home = () => {
               variant="primary"
               text={t('common.buttons.seeAdvice', common.buttons.seeAdvice)}
               mb="6"
-              to={
-                uniqueSlug
-                  ? navRoutes.GENERAL.MENTAL_HEALTH_ORG.replace(
-                      ':uniqueSlug',
-                      uniqueSlug
-                    )
-                  : navRoutes.GENERAL.MENTAL_HEALTH
-              }
+              to={generatePath(navRoutes.PUBLIC_ORG.MENTAL_HEALTH, {
+                uniqueSlug,
+              })}
             />
             <TextWithIcon
               text={t(
@@ -142,7 +149,6 @@ const Home = () => {
           </S.ButtonsContainer>
         </Col>
       </Row>
-
       <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
     </S.Container>
   );

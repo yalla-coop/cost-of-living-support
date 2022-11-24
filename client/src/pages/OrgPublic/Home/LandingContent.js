@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { navRoutes } from '../../constants';
-import { Typography as T } from '../../components';
-import Logo from '../../components/assets/Logo.png';
-import { common } from '../../constants';
-
+import { Typography as T } from '../../../components';
+import Logo from '../../../components/assets/Logo.png';
+import { navRoutes, common } from '../../../constants';
 import * as S from './style';
 
 const LandingContent = () => {
@@ -12,7 +10,7 @@ const LandingContent = () => {
     <>
       <S.PageHead showBGImage>
         <S.HeaderContent>
-          <S.LogoContainer to={navRoutes.GENERAL.HOME}>
+          <S.LogoContainer to={navRoutes.PUBLIC_ORG.HOME}>
             <img src={Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>

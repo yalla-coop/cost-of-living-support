@@ -17,6 +17,7 @@
     "eslint-config-react-app": "^7.0.1",
     "i18next": "^22.0.4",
     "i18next-browser-languagedetector": "^7.0.1",
+    "google-libphonenumber": "^3.2.31",
     "markdown-to-jsx": "^7.1.7",
     "moment": "^2.29.4",
     "react": "^18.2.0",

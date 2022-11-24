@@ -37,9 +37,8 @@ const addTopics = async ({ sections }) => {
       tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
-          type: 'internal',
-          label: 'Budget Planner',
-          url: '/budget-planner',
+          type: 'CUSTOM',
+          key: 'BUDGET_PLANNER',
         },
       ],
     },
@@ -75,7 +74,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'CUSTOM',
-          key: 'GRANT_ADVICE',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -108,12 +107,12 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
       ],
@@ -167,7 +166,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'CUSTOM',
-          key: 'GRANT_ADVICE',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -184,7 +183,7 @@ const addTopics = async ({ sections }) => {
         {
           type: 'external',
           label: 'Find local council',
-          url: 'https://www.gov.uk/find-local-council ',
+          url: 'https://www.gov.uk/find-local-council',
         },
       ],
     },
@@ -200,12 +199,12 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
       ],
@@ -259,7 +258,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'CUSTOM',
-          key: 'GRANT_ADVICE',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -276,12 +275,12 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
       ],
@@ -336,7 +335,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'CUSTOM',
-          key: 'GRANT_ADVICE',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -353,12 +352,12 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Find out where to get the right advice',
           url: 'https://england.shelter.org.uk/get_help',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Citizens Advice',
           url: 'https://www.citizensadvice.org.uk/',
         },
       ],
@@ -431,7 +430,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'USwitch',
           url: 'https://www.uswitch.com/',
         },
       ],
@@ -448,9 +447,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/use-our-debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -468,17 +466,17 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Trussell Trust Foodbanks',
           url: 'https://www.trusselltrust.org/get-help/',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Your Local Pantry',
           url: 'https://www.yourlocalpantry.co.uk/',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'NHS Health Start',
           url: 'https://services.nhsbsa.nhs.uk/apply-for-healthy-start/',
         },
       ],
@@ -495,7 +493,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Living in squeezed income',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/squeezed-income',
         },
       ],
@@ -529,7 +527,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'NHS Low Income Scheme',
           url: 'https://www.nhs.uk/nhs-services/help-with-health-costs/nhs-low-income-scheme-lis/',
         },
       ],
@@ -546,12 +544,12 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Railcards',
           url: 'https://www.railcard.co.uk/',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Find Local Council',
           url: 'https://www.gov.uk/find-local-council',
         },
       ],
@@ -569,9 +567,8 @@ const addTopics = async ({ sections }) => {
       tip2: "If you're working with a debt advisor, you may be able to access 'Breathing Space' which pauses debt collection and evictions for up to 60 days to give you time to find the right solution.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/use-our-debt-advice-locator',
+          type: 'CUSTOM',
+          key: 'DEBT_ADVICE',
         },
       ],
     },
@@ -603,7 +600,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Bill Prioritiser',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/bill-prioritiser',
         },
       ],
@@ -621,7 +618,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Talking to your creditors',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/way-forward/talking-to-your-creditor',
         },
       ],
@@ -645,7 +642,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Debt Advice Locator',
           url: 'https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt/help-if-youre-struggling-with-debt',
         },
       ],
@@ -664,9 +661,8 @@ const addTopics = async ({ sections }) => {
       tip2: "Make sure you review your budget, and check again if you're eligible for benefits, if your circumstances change. For example if you change jobs, your household change, or if you move house.",
       resources: [
         {
-          type: 'external',
-          label: 'TODO: get this',
-          url: 'https://www.gov.uk/benefits-calculators',
+          type: 'CUSTOM',
+          key: 'BENEFIT_CALCULATOR',
         },
       ],
     },
@@ -696,7 +692,7 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'USw',
           url: 'https://www.uswitch.com/',
         },
       ],
@@ -714,17 +710,17 @@ const addTopics = async ({ sections }) => {
       resources: [
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Money Saving Expert tips on boosting income',
           url: 'https://www.moneysavingexpert.com/family/boost-your-income/',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Repair Cafe',
           url: 'https://www.repaircafe.org/',
         },
         {
           type: 'external',
-          label: 'TODO: get this',
+          label: 'Freecycle',
           url: 'https://www.freecycle.org/find-towns',
         },
       ],

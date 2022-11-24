@@ -1,10 +1,12 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import * as S from './style';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
 import { OrganisationLogo } from '../../../components';
+import Language from '../../Language';
+
+// import Navbar from '../../Navbar';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
@@ -32,6 +34,7 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
       {/*   handleClick={() => i18n.changeLanguage(types.languageCodes.FRENCH)} */}
       {/*   text="French" */}
       {/* /> */}
+      <Language />
       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
       <S.Content maxWidth={maxWidth}>
         {goBack && (

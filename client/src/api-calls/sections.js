@@ -44,7 +44,6 @@ const getTopics = async ({ options, sectionId, lng }) => {
     const { data } = await axios.get(`${SECTIONS_BASE}/${sectionId}/topics`, {
       params: { lng },
     });
-
     return { data };
   } catch (error) {
     const err = handleError(error, options);

@@ -16,8 +16,7 @@ const buildTables = async () => {
   await models.topics.createTable();
   await models.topicsi18n.createTable();
   await models.organisationsSectionsOrders.createTable();
-  // await models.organisationsCustomResources.createTable();
-
+  await models.organisationsResources.createTable();
   await models.contentAuditLog.createTable();
   await models.contentAuditLog.createTriggers();
 };

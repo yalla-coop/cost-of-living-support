@@ -130,19 +130,13 @@ export const content = array().of(
 
 export const optionalPhoneNumber = string().when((value, schema) => {
   if (value) {
-    return schema
-      .phone()
-      .min(9, errMsgs.INVALID_PHONE)
-      .max(12, errMsgs.INVALID_PHONE)
-      .typeError(errMsgs.INVALID_PHONE);
+    return schema.phone();
   }
   return schema.nullable();
 });
 
 export const phoneNumber = string()
   .required(errMsgs.DEFAULT_REQUIRED)
-  .min(9, errMsgs.INVALID_PHONE)
-  .max(12, errMsgs.INVALID_PHONE)
   .when((value, schema) => {
     return schema.phone().typeError(errMsgs.INVALID_PHONE);
   });
@@ -225,33 +219,18 @@ export const thingsContent = array().of(
     tips: array().of(string().nullable()).nullable(),
   })
 );
-export const contactLinks = array()
-  .of(
-    object().shape({
-      type: requiredText,
-      availability: requiredText,
-      description: requiredText,
-      link: string().when('type', {
-        is: (v) => v === 'WEBCHAT_LINK',
-        then: urlRequired,
-        otherwise: string().nullable(),
-      }),
-      phoneNumber: string().when('type', {
-        is: (v) => v === 'PHONE',
-        then: phoneNumber,
-        otherwise: string().nullable(),
-      }),
-      email: string().when('type', {
-        is: (v) => v === 'EMAIL',
-        then: email,
-        otherwise: string().nullable(),
-      }),
-    })
-  )
-  .nullable();
 
 export const hexColorOptional = string().when((value, schema) => {
   return schema.nullable();
 });
 
 export const hexColor = string().required(errMsgs.DEFAULT_REQUIRED);
+
+export const resourceObjLink = object().shape({
+  label: requiredText,
+  value: urlRequired,
+});
+export const resourceObjPhone = object().shape({
+  label: requiredText,
+  value: phoneNumber,
+});
