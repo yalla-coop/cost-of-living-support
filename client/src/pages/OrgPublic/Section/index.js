@@ -13,10 +13,9 @@ import useTopics from './useTopics';
 import StillNeedHelp from '../../../components/StillNeedHelp';
 import { navRoutes } from '../../../constants';
 import { message } from 'antd';
-import SocialBanner from '../../../components/SocialBanner';
 
 const Section = () => {
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -35,10 +34,12 @@ const Section = () => {
         message.error('Something went wrong, please try again later');
       } else {
         setSectionData(data);
+        setPageTitle(data.title);
       }
     };
 
     fetchSectionData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, navigate]);
 
   const { title, parentSectionTitle } = sectionData;
@@ -86,7 +87,6 @@ const Section = () => {
           </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>
-      <SocialBanner title={pageTitle} />
     </S.Container>
   );
 };

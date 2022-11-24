@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import {
   Typography as T,
@@ -9,17 +10,20 @@ import {
   StillNeedHelp,
 } from '../../../components';
 import { usePublicOrg } from '../../../context/public-org';
-import SocialBanner from '../../../components/SocialBanner';
 import * as S from './style';
 
 const { Row, Col } = Grid;
 const { SingleTip } = Cards;
 const BudgetingPage = () => {
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
   const stillNeedHelp = publicOrg?.resources?.find(
     (resource) => resource.key === 'STILL_NEED_HELP'
   );
 
+  useEffect(() => {
+    setPageTitle('Budgeting');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <S.Container>
       <PageHeader
@@ -135,7 +139,6 @@ const BudgetingPage = () => {
           </S.HelpSection>
         </S.Content>
       </GeneralPaddingSection>
-      <SocialBanner title={'Budgeting'} />
     </S.Container>
   );
 };

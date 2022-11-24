@@ -7,14 +7,13 @@ import PageHeader from '../../../components/PageHeader';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import { navRoutes } from '../../../constants';
 import { usePublicOrg } from '../../../context/public-org';
-import SocialBanner from '../../../components/SocialBanner';
 
 import * as S from './style';
 const { Col, Row } = Grid;
 
 const SubSections = () => {
   const [data, setData] = useState({});
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
 
   const { id } = useParams();
 
@@ -31,6 +30,7 @@ const SubSections = () => {
           message.error('Something went wrong, please try again later');
         } else {
           setData(_data);
+          setPageTitle(_data.title);
         }
         hideMessage();
       }
@@ -84,7 +84,6 @@ const SubSections = () => {
           </Row>
         ))}
       </GeneralPaddingSection>
-      <SocialBanner title={data.title} />
     </S.Container>
   );
 };

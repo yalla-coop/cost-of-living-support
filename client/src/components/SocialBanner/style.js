@@ -7,16 +7,12 @@ export const Box = styled.div`
   align-items: center;
   padding: 16px 164px;
   gap: 8px;
-  width: 105%;
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.neutralSurface};
   ${({ theme }) => theme.media.tablet} {
     justify-content: center;
     padding: 16px 24px;
-    margin-left: -12px;
-    margin-right: -12px;
   }
-  margin-left: -12px;
-  margin-right: -24px;
 `;
 
 export const SocialImg = styled.img`
@@ -25,6 +21,7 @@ export const SocialImg = styled.img`
   object-fit: cover;
   border-radius: 6.66667px;
   margin-right: ${({ mr }) => mr || '6px'};
+  cursor: pointer;
 `;
 
 export const SocialWrapper = styled.div`

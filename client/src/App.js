@@ -99,7 +99,11 @@ function App() {
                     exact
                     path={navRoutes.PUBLIC_ORG.SECTION}
                     element={
-                      <CustomRoute Component={Pages.Section} layout="general" />
+                      <CustomRoute
+                        Component={Pages.Section}
+                        layout="general"
+                        showSocialBanner
+                      />
                     }
                   />
 
@@ -110,6 +114,7 @@ function App() {
                       <CustomRoute
                         Component={Pages.SubSections}
                         layout="general"
+                        showSocialBanner
                       />
                     }
                   />
@@ -120,6 +125,7 @@ function App() {
                       <CustomRoute
                         Component={Pages.Budgeting}
                         layout="general"
+                        showSocialBanner
                       />
                     }
                   />
@@ -130,6 +136,7 @@ function App() {
                       <CustomRoute
                         Component={Pages.MentalHeath}
                         layout="general"
+                        showSocialBanner
                       />
                     }
                   />
