@@ -58,8 +58,6 @@ const Section = () => {
     topics,
   });
 
-  const _topics = t('topics', { ns: 'topicNS', returnObjects: true });
-
   return (
     <S.Container>
       <PageHeader

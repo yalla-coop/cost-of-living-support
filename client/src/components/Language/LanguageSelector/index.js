@@ -53,10 +53,10 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         {languages
-          .map(([lng]) => {
+          .map(([lng, code]) => {
             const _lng = lng.toLowerCase();
             return (
-              <S.Button onClick={() => changeLanguage({ lng })}>
+              <S.Button onClick={() => changeLanguage({ lng })} key={code}>
                 <TextWithIcon
                   text={lng}
                   icon={FlagMap[_lng] !== undefined ? _lng : null}
