@@ -5,7 +5,8 @@ import { BasicInput } from '../../Inputs/index';
 import * as S from './style';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
-import { types } from '../../../constants/';
+import { useTranslation } from 'react-i18next';
+import { types } from '../../../constants';
 
 const props = {
   weight: 'medium',
@@ -14,6 +15,7 @@ const props = {
 };
 
 export const LanguageSelector = ({ hide, handleHide }) => {
+  const { i18n } = useTranslation();
   const [search, setSearch] = useState('');
 
   const sliceTo =
@@ -32,9 +34,8 @@ export const LanguageSelector = ({ hide, handleHide }) => {
     }
   );
 
-  const changeLanguage = ({ code, lang }) => {
-    // i18n language changer
-    console.log('Language changed to: ' + lang);
+  const changeLanguage = ({ lang }) => {
+    i18n.changeLanguage(types.languageCodes[lang]);
     handleHide();
   };
 
@@ -52,7 +53,7 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         {languages
-          .map(([lang, code]) => {
+          .map(([lang]) => {
             const lng = lang.toLowerCase();
             return (
               <S.Button>

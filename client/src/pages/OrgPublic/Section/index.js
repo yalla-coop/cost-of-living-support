@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import GoBack from '../../../components/GoBack';
 import { contentColors } from '../../../constants';
-
 import PageHeader from '../../../components/PageHeader';
 import * as S from './style';
 import { Sections } from '../../../api-calls';
@@ -13,14 +12,17 @@ import useTopics from './useTopics';
 import StillNeedHelp from '../../../components/StillNeedHelp';
 import { navRoutes } from '../../../constants';
 import { message } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const Section = () => {
+  const { i18n, t } = useTranslation();
+  const { language: lng } = i18n;
   const { publicOrg } = usePublicOrg();
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [sectionData, setSectionData] = useState({});
-  const { topics, toggleMark } = useTopics(id, publicOrg?.resources);
+  const { topics, toggleMark } = useTopics(id, lng, publicOrg?.resources);
 
   useEffect(() => {
     const fetchSectionData = async () => {
@@ -50,6 +52,13 @@ const Section = () => {
   );
 
   const colors = contentColors[id] || contentColors[1];
+
+  i18n.addResourceBundle(lng, 'topicNS', {
+    topics,
+  });
+
+  const _topics = t('topics', { ns: 'topicNS', returnObjects: true });
+
   return (
     <S.Container>
       <PageHeader

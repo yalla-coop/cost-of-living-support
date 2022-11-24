@@ -67,19 +67,6 @@ const findSectionById = async (id) => {
   const res = await query(sql, [id]);
   return res.rows[0];
 };
-const findTopicsBySectionId = async (id) => {
-  const sql = `
-    SELECT
-      id,
-      content
-    FROM topics
-    WHERE section_id = $1
-    ORDER BY position ASC
-  `;
-
-  const res = await query(sql, [id]);
-  return res.rows;
-};
 
 const findTopicsBySectionId = async (id, lng) => {
   const sql = `

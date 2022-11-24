@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import * as S from './style';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
@@ -10,30 +9,12 @@ import Language from '../../Language';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
-// Uncomment to test language translation
-// import Button from '../../../components/Button';
-// import { types } from '../../../constants';
-
 const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
-  const { i18n } = useTranslation();
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
 
   return (
     <S.Container>
-      {/* uncomment to check language translation */}
-      {/* <Button */}
-      {/*   handleClick={() => i18n.changeLanguage(types.languageCodes.ENGLISH)} */}
-      {/*   text="English" */}
-      {/* /> */}
-      {/* <Button */}
-      {/*   handleClick={() => i18n.changeLanguage(types.languageCodes.ARABIC)} */}
-      {/*   text="Arabic" */}
-      {/* /> */}
-      {/* <Button */}
-      {/*   handleClick={() => i18n.changeLanguage(types.languageCodes.FRENCH)} */}
-      {/*   text="French" */}
-      {/* /> */}
       <Language />
       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
       <S.Content maxWidth={maxWidth}>

@@ -62,11 +62,6 @@ const Section = () => {
                 resources={content.resources}
               />
             ))}
-            {/* Possible to use common namespace anywhere on site */}
-            {/* {t( */}
-            {/*   'common.section.helpBudget.title', */}
-            {/*   common.section.helpBudget.title */}
-            {/* )} */}
           </S.Topics>
           <S.HelpSection>
             <StillNeedHelp />

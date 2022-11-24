@@ -10,7 +10,7 @@ i18n
     resources: {},
     defaultNS: 'common',
     fallbackLng: 'EN',
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false,
     },

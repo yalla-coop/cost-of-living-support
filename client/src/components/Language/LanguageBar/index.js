@@ -3,6 +3,8 @@ import { Row } from '../../Grid';
 import { TextWithIcon } from '../../../components';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
+import { useTranslation } from 'react-i18next';
+import { types } from '../../../constants';
 
 const props = {
   weight: 'medium',
@@ -11,7 +13,7 @@ const props = {
   iconColor: 'neutralMain',
 };
 
-const Desktop = ({ dir, showBack, largeText, handleHide }) => {
+const Desktop = ({ dir, showBack, largeText, handleHide, flag, langFull }) => {
   const LTR = (
     <Row>
       <S.DesktopWrapper>
@@ -35,8 +37,8 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
         <S.ButtonWrapper>
           <TextWithIcon
             handleClick={handleHide}
-            text="English"
-            icon="english"
+            text={langFull}
+            icon={flag}
             {...props}
           />
         </S.ButtonWrapper>
@@ -49,8 +51,8 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text="Arabic"
-          icon="arabic"
+          text={langFull}
+          icon={flag}
           {...props}
         />
       </S.ButtonWrapper>
@@ -77,7 +79,7 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
   return dir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ dir, showBack, handleHide }) => {
+const Tablet = ({ dir, showBack, handleHide, flag, langCode }) => {
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
@@ -93,8 +95,8 @@ const Tablet = ({ dir, showBack, handleHide }) => {
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
         <TextWithIcon
           handleClick={handleHide}
-          text="EN"
-          icon="english"
+          text={langCode}
+          icon={flag}
           {...props}
         />
       </S.ButtonWrapper>
@@ -106,8 +108,8 @@ const Tablet = ({ dir, showBack, handleHide }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text="AR"
-          icon="arabic"
+          text={langCode}
+          icon={flag}
           {...props}
         />
         <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
@@ -128,7 +130,25 @@ const Tablet = ({ dir, showBack, handleHide }) => {
 };
 
 export const LanguageBar = ({ dir, largeText, showBack, handleHide }) => {
-  const props = { dir, largeText, showBack, handleHide };
+  const { i18n } = useTranslation();
+  const { language: langCode } = i18n;
+
+  const langFull = Object.keys(types.languageCodes).find(
+    (key) => types.languageCodes[key] === langCode
+  );
+
+  const flag = langFull.charAt(0).toLowerCase() + langFull.slice(1);
+
+  const props = {
+    dir,
+    largeText,
+    showBack,
+    handleHide,
+    flag,
+    langFull,
+    langCode,
+  };
+
   const isTablet = useMediaQuery({
     query: `(max-width: ${theme.breakpoints.tablet})`,
   });
