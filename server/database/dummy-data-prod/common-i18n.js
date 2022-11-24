@@ -53,7 +53,7 @@ const addCommonI18n = async () => {
           description: 'انظر النصيحة',
         },
         stressedOrOverwhelmed: {
-          title: 'انظر النصيحة',
+          title: 'الشعور بالتوتر أو الإرهاق',
         },
       },
     },

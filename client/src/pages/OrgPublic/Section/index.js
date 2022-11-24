@@ -13,10 +13,11 @@ import StillNeedHelp from '../../../components/StillNeedHelp';
 import { navRoutes } from '../../../constants';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../../helpers';
 
 const Section = () => {
   const { i18n, t } = useTranslation();
-  const { language: lng } = i18n;
+  const { lng } = useLanguage();
   const { publicOrg } = usePublicOrg();
   const { id } = useParams();
   const navigate = useNavigate();

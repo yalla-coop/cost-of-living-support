@@ -4,6 +4,6 @@ import getCommon from './get-common';
 
 const router = Router();
 
-router.get('/', getCommon);
+router.get('/common', getCommon);
 
 export default router;

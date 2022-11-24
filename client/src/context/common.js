@@ -1,17 +1,18 @@
 import { useState, useEffect, createContext, useContext } from 'react';
-import { Common } from '../api-calls';
+import { Translations } from '../api-calls';
 import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../helpers';
 
 export const CommonContextData = createContext(null);
 
 const CommonProvider = ({ children }) => {
   const { i18n } = useTranslation();
-  const { language: lng } = i18n;
+  const { lng } = useLanguage();
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchCommon = async () => {
-      const { data, error } = await Common.getCommon({
+      const { data, error } = await Translations.getCommon({
         lng,
       });
       const common = data[0].content;

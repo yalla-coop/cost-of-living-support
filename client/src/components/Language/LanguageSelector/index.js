@@ -26,16 +26,16 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       : types.languageCodes.length;
 
   const languages = Object.entries(types.languageCodes).filter(
-    ([lang, code]) => {
+    ([lng, code]) => {
       return (
         code.toLowerCase().includes(search.toLowerCase()) ||
-        lang.toLowerCase().includes(search.toLowerCase())
+        lng.toLowerCase().includes(search.toLowerCase())
       );
     }
   );
 
-  const changeLanguage = ({ lang }) => {
-    i18n.changeLanguage(types.languageCodes[lang]);
+  const changeLanguage = ({ lng }) => {
+    i18n.changeLanguage(types.languageCodes[lng]);
     handleHide();
   };
 
@@ -53,14 +53,14 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         {languages
-          .map(([lang]) => {
-            const lng = lang.toLowerCase();
+          .map(([lng]) => {
+            const _lng = lng.toLowerCase();
             return (
-              <S.Button>
+              <S.Button onClick={() => changeLanguage({ lng })}>
                 <TextWithIcon
-                  handleClick={() => changeLanguage({ lang })}
-                  text={lang}
-                  icon={FlagMap[lng] !== undefined ? lng : null}
+                  text={lng}
+                  icon={FlagMap[_lng] !== undefined ? _lng : null}
+                  pointer
                   {...props}
                 />
               </S.Button>

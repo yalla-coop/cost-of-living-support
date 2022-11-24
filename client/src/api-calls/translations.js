@@ -1,11 +1,11 @@
 import axios from 'axios';
 import handleError from './format-error';
 
-const COMMON_BASE = '/common';
+const TRANSLATION_BASE = 'translations/';
 
 const getCommon = async ({ options, lng }) => {
   try {
-    const { data } = await axios.get(`${COMMON_BASE}/`, {
+    const { data } = await axios.get(`${TRANSLATION_BASE}/common`, {
       params: { lng },
     });
 

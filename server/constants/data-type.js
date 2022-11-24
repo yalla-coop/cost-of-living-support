@@ -46,16 +46,16 @@ export const organisationTypes = {
 };
 
 export const languageCodes = {
-  ENGLISH: 'EN',
-  FRENCH: 'FR',
-  GERMAN: 'DE',
-  SPANISH: 'ES',
-  URDU: 'UR',
-  ITALIAN: 'IT',
-  POLISH: 'PL',
-  HINDI: 'HI',
-  RUSSIAN: 'RU',
-  ARABIC: 'AR',
-  PORTUGUESE: 'PT',
-  WELSH: 'CY',
+  ENGLISH: 'en',
+  FRENCH: 'fr',
+  GERMAN: 'de',
+  SPANISH: 'es',
+  URDU: 'ur',
+  ITALIAN: 'it',
+  POLISH: 'pl',
+  HINDI: 'hi',
+  RUSSIAN: 'ru',
+  ARABIC: 'ar',
+  PORTUGUESE: 'pt',
+  WELSH: 'cy',
 };
