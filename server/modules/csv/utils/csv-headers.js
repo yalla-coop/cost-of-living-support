@@ -20,7 +20,7 @@ const organisations = [
   { label: 'Email address', value: 'email' },
   { label: 'Backup email', value: 'backup_email' },
   { label: 'Organisation', value: 'organisation_name' },
-  { label: 'type of organisation', value: 'type_of_organisation' },
+  { label: 'Type of organisation', value: 'type_of_organisation' },
   { label: 'Status', value: (row) => statuses[row.organisation_status] },
   {
     label: 'Unique link',
