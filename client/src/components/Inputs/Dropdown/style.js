@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import setMargin from '../../../helpers/set-margin';
+import * as CS from '../style';
 
 export const Field = styled.div`
   ${setMargin};
@@ -12,27 +13,37 @@ export const Field = styled.div`
     border-radius: ${({ theme }) => theme.borders.radius};
 
     width: 100%;
-    height: 100%;
+    height: 40px;
+
+    :focus {
+      outline: none;
+      border-color: ${({ theme }) => theme.colors.secondaryMain};
+    }
+
+    :hover {
+      outline: none;
+      border-color: ${({ theme }) => theme.colors.secondaryMain};
+    }
+
+    ${CS.commonBorderStyle};
   }
 
   // STYLE INPUT CONTAINER
   .ant-select:not(.ant-select-customize-input) .ant-select-selector {
     border: none;
     border-radius: 0;
-    padding: ${({ theme }) => theme.spacings[3]};
+    padding: ${({ theme }) => theme.spacings[1]};
+    padding-left: ${({ theme }) => theme.spacings[3]};
     overflow-x: hidden;
-    border: 1px solid;
-    border-color: ${({ theme, error }) => {
-      if (error) return theme.colors.error;
-      return theme.colors.secondaryMain;
-    }};
+    border-color: transparent;
     border-radius: ${({ theme }) => theme.borders.radius};
     background: ${({ theme }) => theme.colors.white};
   }
 
   .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
     height: 100%;
-    padding: ${({ theme }) => theme.spacings[3]};
+    padding: ${({ theme }) => theme.spacings[1]};
+    padding-left: ${({ theme }) => theme.spacings[3]};
   }
 
   // STYLE SELECTED ITEM IN INPUT FOR MULTIPLE SELECT
@@ -52,14 +63,14 @@ export const Field = styled.div`
   .ant-select-arrow,
   .ant-select-clear,
   .ant-select-selection-item-remove {
-    color: ${({ theme }) => theme.colors.secondaryMain};
-    width: 20px;
+    color: ${({ theme }) => theme.colors.neutralMain};
+    width: 16px;
     display: flex;
     align-items: center;
 
     svg {
-      width: 16px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       transition: all ease 0.5s;
       transform: ${({ open, multi, search }) =>
         open && !multi && !search && 'rotate(180deg)'};

@@ -42,6 +42,7 @@ export const organisationTypes = {
   SOCIAL_ENTERPRISE: 'Social Enterprise',
   SCHOOL: 'School',
   FAITH_ORGANISATION: 'Faith Organisation',
+  HOUSING_ASSOCIATION: 'Housing Association',
 };
 
 export const languageCodes = {

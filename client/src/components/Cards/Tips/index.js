@@ -49,6 +49,7 @@ const Tips = ({ tips = [], startingColor = 0, cols, inner, ...props }) => {
         tip={tip}
         textColor={getColor(index, startingColor).text}
         mb="3"
+        {...props}
       />
     ));
 };
