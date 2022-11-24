@@ -1,9 +1,12 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import * as S from './style';
 import { Row } from '../../Grid';
 import { TextWithIcon } from '../../../components';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
-
+import * as R from '../../../constants/nav-routes';
 const props = {
   weight: 'medium',
   mr: 2,
@@ -12,6 +15,10 @@ const props = {
 };
 
 const Desktop = ({ dir, showBack, largeText, handleHide }) => {
+  const navigate = useNavigate();
+  const [isFontLarge, setIsFontLarge] = useState(() => {
+    return localStorage.getItem('isLarge') || false;
+  });
   const LTR = (
     <Row>
       <S.DesktopWrapper>
@@ -19,16 +26,29 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
           {showBack && (
             <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
           )}
+
           <TextWithIcon
-            handleClick={() => null}
-            text="Accessibility"
-            icon="accessibility"
+            handleClick={() => {
+              if (!isFontLarge) {
+                document.getElementsByTagName('html')[0].style.fontSize =
+                  '1.25rem';
+                localStorage.setItem('isFontLarge', 'true');
+                setIsFontLarge(true);
+              } else {
+                document.getElementsByTagName('html')[0].style.fontSize =
+                  '1rem';
+                localStorage.removeItem('isFontLarge');
+                setIsFontLarge(false);
+              }
+            }}
+            text={isFontLarge ? '- Decrease text size' : '+ Increase text size'}
+            icon="textSize"
             {...props}
           />
           <TextWithIcon
-            handleClick={() => null}
-            text={largeText ? '- Decrease text size' : '+ Increase text size'}
-            icon="textSize"
+            handleClick={() => navigate(R.GENERAL.Accessibility)}
+            text="Accessibility"
+            icon="accessibility"
             {...props}
           />
         </S.ButtonWrapper>
@@ -56,8 +76,19 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => null}
-          text={largeText ? '- Decrease text size' : '+ Increase text size'}
+          handleClick={() => {
+            if (!isFontLarge) {
+              document.getElementsByTagName('html')[0].style.fontSize =
+                '1.25rem';
+              localStorage.setItem('isFontLarge', 'true');
+              setIsFontLarge(true);
+            } else {
+              document.getElementsByTagName('html')[0].style.fontSize = '1rem';
+              localStorage.removeItem('isFontLarge');
+              setIsFontLarge(false);
+            }
+          }}
+          text={isFontLarge ? '- Decrease text size' : '+ Increase text size'}
           icon="textSize"
           {...props}
         />

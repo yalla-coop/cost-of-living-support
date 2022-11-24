@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { Global } from '@emotion/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -18,6 +19,11 @@ import 'antd/dist/antd.css';
 export const history = createBrowserHistory({ basename: window.BASE_URL });
 
 function App() {
+  useEffect(() => {
+    localStorage.getItem('isFontLarge') === 'true'
+      ? (document.getElementsByTagName('html')[0].style.fontSize = '1.25rem')
+      : (document.getElementsByTagName('html')[0].style.fontSize = '1rem');
+  }, []);
   return (
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
       <Global styles={globalStyle} />
@@ -36,6 +42,7 @@ function App() {
                     />
                   }
                 />
+
                 <Route
                   exact
                   path={navRoutes.ADMIN.LOGIN}
@@ -92,7 +99,16 @@ function App() {
                     />
                   }
                 />
-
+                <Route
+                  exact
+                  path={navRoutes.GENERAL.ACCESSIBILITY}
+                  element={
+                    <CustomRoute
+                      Component={Pages.Accessibility}
+                      layout="general"
+                    />
+                  }
+                />
                 {/* ORGS PUBLIC PAGES */}
                 <Route element={<PublicOrgProvider />}>
                   <Route
