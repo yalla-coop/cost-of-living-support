@@ -7,28 +7,28 @@ export const CommonContextData = createContext(null);
 const CommonProvider = ({ children }) => {
   const { i18n } = useTranslation();
   const { language: lng } = i18n;
-  const [common, setCommon] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchCommon = async () => {
       const { data, error } = await Common.getCommon({
         lng,
       });
-      const _data = data[0].content;
+      const common = data[0].content;
       if (error) {
         // message.error('Something went wrong, please try again later');
       } else {
         i18n.addResourceBundle(lng, 'common', {
-          ..._data,
+          common,
         });
-        setCommon(_data);
+        setData(common);
       }
     };
     fetchCommon();
   }, [lng]);
 
   return (
-    <CommonContextData.Provider value={{ common }}>
+    <CommonContextData.Provider value={{ data }}>
       {children}
     </CommonContextData.Provider>
   );

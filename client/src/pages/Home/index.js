@@ -1,8 +1,9 @@
-import { Trans, useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { message } from 'antd';
 import { useParams } from 'react-router-dom';
 import { Sections } from '../../api-calls';
+import { navRoutes, common } from '../../constants';
 import {
   Cards,
   Typography as T,
@@ -10,14 +11,13 @@ import {
   Grid,
   Button,
 } from '../../components';
-import { navRoutes } from '../../constants';
 import LandingContent from './LandingContent';
 import HelpButton from '../../components/HelpButton';
 import * as S from './style';
 const { Col, Row } = Grid;
 
 const Home = () => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
   const { uniqueSlug } = useParams();
@@ -72,20 +72,22 @@ const Home = () => {
       <S.FullSection>
         <S.NeedHelpWrapper>
           <T.H2 color="neutralMain" ta="center" taM="left">
-            <Trans i18nKey="section.helpBudget.title" ns="common">
-              Need help with budgeting?
-            </Trans>
+            {t(
+              'common.section.helpBudget.title',
+              common.section.helpBudget.title
+            )}
           </T.H2>
           <T.P ta="center" mt="4" mb="3" taM="left" color="neutralDark">
-            <Trans i18nKey="section.helpBudget.description" ns="common">
-              Need help with budgeting?
-            </Trans>
+            {t(
+              'common.section.helpBudget.description',
+              common.section.helpBudget.description
+            )}
           </T.P>
           <S.ReadMoreLink to={navRoutes.GENERAL.BUDGETING}>
             <TextWithIcon
               size="large"
               bgColor="neutralLight"
-              text="Read more"
+              text={t('common.buttons.readMore', common.buttons.readMore)}
               icon="forwardArrow"
               iconColor="tertiaryDark"
               jc="center"
@@ -106,13 +108,14 @@ const Home = () => {
               color="neutralMain"
               mb="4"
             >
-              <Trans i18nKey="section.stressedOrOverwhelmed.title">
-                Feeling stressed or overwhelmed
-              </Trans>
+              {t(
+                'common.section.stressedOrOverwhelmed.title',
+                common.section.stressedOrOverwhelmed.title
+              )}
             </T.H2>
             <Button
               variant="primary"
-              text="See advice"
+              text={t('common.buttons.seeAdvice', common.buttons.seeAdvice)}
               mb="6"
               to={
                 uniqueSlug
@@ -124,7 +127,10 @@ const Home = () => {
               }
             />
             <TextWithIcon
-              text="Stuck? Talk to someone"
+              text={t(
+                'common.buttons.stuckTalkToSomeOne',
+                common.buttons.stuckTalkToSomeOne
+              )}
               isButton
               handleClick={() => setStuck(true)}
               underline

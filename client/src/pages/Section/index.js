@@ -1,4 +1,4 @@
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
@@ -8,6 +8,9 @@ import { Sections } from './../../api-calls';
 import { TopicCard } from './../../components/Cards';
 import useTopics from './useTopics';
 import StillNeedHelp from './../../components/StillNeedHelp';
+
+// Uncomment to test language translation
+// import { common } from '../../constants';
 
 const Section = () => {
   const { i18n, t } = useTranslation();
@@ -59,9 +62,11 @@ const Section = () => {
                 resources={content.resources}
               />
             ))}
-            <Trans i18nKey="section.stressedOrOverwhelmed.title" ns="common">
-              Feeling stressed or overwhelmed
-            </Trans>
+            {/* Possible to use common namespace anywhere on site */}
+            {/* {t( */}
+            {/*   'common.section.helpBudget.title', */}
+            {/*   common.section.helpBudget.title */}
+            {/* )} */}
           </S.Topics>
           <S.HelpSection>
             <StillNeedHelp />

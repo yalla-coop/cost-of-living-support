@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { navRoutes } from '../../constants';
 import { Typography as T } from '../../components';
-import { Trans } from 'react-i18next';
 import Logo from '../../components/assets/Logo.png';
+import { common } from '../../constants';
 
 import * as S from './style';
 
 const LandingContent = () => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <S.PageHead showBGImage>
@@ -17,26 +17,26 @@ const LandingContent = () => {
           </S.LogoContainer>
           <S.HeaderText>
             <S.pageTitle ta="center" weight="bold" color="white">
-              <Trans i18nKey="heading.costOfLivingHelper">
-                Cost of Living Helper
-              </Trans>
+              {t(
+                'common.heading.costOfLivingHelper',
+                common.heading.costOfLivingHelper
+              )}
             </S.pageTitle>
           </S.HeaderText>
         </S.HeaderContent>
       </S.PageHead>
       <S.Section mt="8" mtM="5">
         <S.StyledText mb="8" mbM="6">
-          <Trans i18nKey="section.worriedAbout.description">
-            If you are worried about money there is a lot of help out there.
-            Knowing where to start can be tricky, but in this tool you will find
-            advice and handy tips about what you can do. You can also bookmark
-            actions as you look through.
-          </Trans>
+          {t(
+            'common.section.worriedAbout.description',
+            common.section.worriedAbout.description
+          )}
         </S.StyledText>
         <T.H2 color="black" mb="4">
-          <Trans i18nKey="section.worriedAbout.title">
-            I’m worried about...
-          </Trans>
+          {t(
+            'common.section.worriedAbout.title',
+            common.section.worriedAbout.title
+          )}
         </T.H2>
       </S.Section>
     </>
