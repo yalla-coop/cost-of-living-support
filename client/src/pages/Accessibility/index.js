@@ -1,16 +1,15 @@
-import { useState } from 'react';
 import GeneralPaddingSection from '../../components/Layout/GeneralPaddingSection';
 
 import { Typography as T, Grid, Cards as C, Button } from '../../components';
 import { navRoutes as R } from '../../constants';
+import { useAccessibility } from '../../context/accessibility';
 import * as S from './style';
 
 const { Col, Row } = Grid;
 
 const Accessibility = () => {
-  const [isFontLarge, setIsFontLarge] = useState(() => {
-    return localStorage.getItem('isLarge') || false;
-  });
+  const { isFontLarge, setIsFontLarge } = useAccessibility();
+
   return (
     <GeneralPaddingSection>
       <Row jc="space-between">

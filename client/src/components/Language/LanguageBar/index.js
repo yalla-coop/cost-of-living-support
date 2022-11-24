@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAccessibility } from '../../../context/accessibility';
 
 import * as S from './style';
 import { Row } from '../../Grid';
@@ -16,9 +16,8 @@ const props = {
 
 const Desktop = ({ dir, showBack, largeText, handleHide }) => {
   const navigate = useNavigate();
-  const [isFontLarge, setIsFontLarge] = useState(() => {
-    return localStorage.getItem('isLarge') || false;
-  });
+  const { isFontLarge, setIsFontLarge } = useAccessibility();
+
   const LTR = (
     <Row>
       <S.DesktopWrapper>
@@ -110,9 +109,8 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
 
 const Tablet = ({ dir, showBack, handleHide }) => {
   const navigate = useNavigate();
-  const [isFontLarge, setIsFontLarge] = useState(() => {
-    return localStorage.getItem('isLarge') || false;
-  });
+  const { isFontLarge, setIsFontLarge } = useAccessibility();
+
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
