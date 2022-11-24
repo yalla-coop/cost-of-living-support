@@ -10,8 +10,6 @@ import {
 import * as S from './style';
 import { rejectOrganisation as validate } from '../../../validation/schemas';
 import { Organisations } from '../../../api-calls';
-import { useLang } from '../../../context/lang';
-import { t } from '../../../helpers';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { navRoutes } from '../../../constants';
@@ -38,7 +36,6 @@ function reducer(state, newState) {
 }
 
 const ConfirmRejection = () => {
-  const { lang } = useLang();
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
   const {
@@ -111,12 +108,14 @@ const ConfirmRejection = () => {
       <Row>
         <Col w={[4, 12, 12]}>
           <T.H1 mb="42px" weight="bold">
-            {t('confirmRejection.title', lang)}
+            Confirm rejection
           </T.H1>
         </Col>{' '}
         <Col w={[4, 12, 6]}>
           <T.P isSmall color="neutralDark">
-            {t('confirmRejection.subtitle', lang)}
+            Are you sure you wish to reject this organisation? If so, please
+            write a message below that will be emailed to them and click
+            confirm.
           </T.P>
         </Col>
       </Row>
