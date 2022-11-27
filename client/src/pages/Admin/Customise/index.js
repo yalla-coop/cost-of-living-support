@@ -46,6 +46,7 @@ const initialState = {
   tertiaryTextMain: '',
   quartenaryTextMain: '',
   quinaryTextMain: '',
+  useBlockColors: false,
 };
 
 function reducer(state, newState) {
@@ -64,8 +65,6 @@ const Customise = () => {
 
   const [state, setState] = useReducer(reducer, initialState);
   const {
-    mainColor,
-    secondaryColor,
     loading,
     validationErrs,
     httpError,
@@ -74,6 +73,7 @@ const Customise = () => {
     isModalVisible,
     loaded,
     // colors
+    useBlockColors,
     primaryBgMain,
     secondaryBgMain,
     tertiaryBgMain,
@@ -104,6 +104,7 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
+          useBlockColors: colors?.useBlockColors || false,
           primaryBgMain: colors?.primaryBgMain || defaultColors.primaryMainObj,
           secondaryBgMain:
             colors?.secondaryBgMain || defaultColors.primaryMainObj,
@@ -137,7 +138,19 @@ const Customise = () => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mainColor, secondaryColor]);
+  }, [
+    useBlockColors,
+    primaryBgMain,
+    secondaryBgMain,
+    tertiaryBgMain,
+    quartenaryBgMain,
+    quinaryBgMain,
+    primaryTextMain,
+    secondaryTextMain,
+    tertiaryTextMain,
+    quartenaryTextMain,
+    quinaryTextMain,
+  ]);
 
   const validateForm = () => {
     try {
@@ -153,6 +166,7 @@ const Customise = () => {
         tertiaryTextMain,
         quartenaryTextMain,
         quinaryTextMain,
+        useBlockColors,
         logoFile: logoFile.key,
       });
       setState({ validationErrs: { hasError: false } });
@@ -173,6 +187,7 @@ const Customise = () => {
         userId: user.organisationId,
         logoFile,
         colors: {
+          useBlockColors,
           primaryBgMain,
           secondaryBgMain,
           tertiaryBgMain,
@@ -352,31 +367,37 @@ const Customise = () => {
           />
         </Col>
       </Row>
-
-      <Tips
-        cols={[4, 6, 4]}
-        tips={[
-          <T.H3 color="secondaryMain">
-            Tip! Please be mindful of accessibility and testing your colours
-            work. You can find more information{' '}
-            <T.Link
-              color="secondaryMain"
-              to={navRoutes.EXTERNAL.ACCESSABILITY_GUIDELINES}
-              weight={500}
-              underline
-            >
-              here
-            </T.Link>
-          </T.H3>,
-        ]}
-        startingColor={1}
-      />
-
-      <Row
-        mt="7"
-        mtT="6"
-        style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
-      >
+      <Row mb="6">
+        <Col w={[4, 12, 8]}>
+          <Tips
+            tips={[
+              <T.H3 color="secondaryMain">
+                Tip! Please be mindful of accessibility and testing your colours
+                work. You can find more information{' '}
+                <T.Link
+                  color="secondaryMain"
+                  to={navRoutes.EXTERNAL.ACCESSABILITY_GUIDELINES}
+                  weight={500}
+                  underline
+                >
+                  here
+                </T.Link>
+              </T.H3>,
+            ]}
+            startingColor={1}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col w={[4, 4, 4]}>
+          <I.Checkbox
+            label="If you prefer a block colour header to default gradient, tick this box"
+            checked={useBlockColors}
+            handleChange={(checked) => setState({ useBlockColors: checked })}
+          />
+        </Col>
+      </Row>
+      <Row mt="7" style={{ flex: Number(isMobile), alignItems: 'flex-end' }}>
         <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
             <T.P mb="2" color="error">

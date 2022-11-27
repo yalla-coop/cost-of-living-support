@@ -26,10 +26,10 @@ const PublicOrgContext = createContext({
   uniqueSlug: '',
 });
 
-const adjustedTheme = (ancestorTheme, updatedColors) => ({
+const adjustedTheme = (ancestorTheme, updatedColors, useBlockColors) => ({
   ...ancestorTheme,
   colors: updatedColors,
-  gradients: updateGradients(updatedColors),
+  gradients: updateGradients(updatedColors, useBlockColors),
 });
 
 // get help details/logo/colors
@@ -123,6 +123,7 @@ const PublicOrg = (props) => {
           return resource || r;
         }),
         colors: updatedColors(data.colors || defaultColors),
+        useBlockColors: data?.colors?.useBlockColors || false,
       });
     } else {
       _setPublicOrg(initialPublicOrgState);
@@ -142,7 +143,11 @@ const PublicOrg = (props) => {
     uniqueSlug,
   };
   return (
-    <ThemeProvider theme={(theme) => adjustedTheme(theme, publicOrg.colors)}>
+    <ThemeProvider
+      theme={(theme) =>
+        adjustedTheme(theme, publicOrg.colors, publicOrg.useBlockColors)
+      }
+    >
       <PublicOrgContext.Provider value={value} {...props} />
     </ThemeProvider>
   );

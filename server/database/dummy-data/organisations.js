@@ -41,9 +41,6 @@ const createOrganisations = async () => {
     uniqueSlug: 'hyde',
     logoId: null,
     colors: {
-      // main: { h: '10', s: '0.97', l: '0.63' },
-      // secondary: { h: '215', s: '0.35', l: '0.35' },
-      // neutral: { h: '219', s: '0.25', l: '0.14' },
       primaryBgMain: { h: '215', s: '0.35', l: '0.35' },
       secondaryBgMain: { h: '22', s: '0.97', l: '0.66' },
       tertiaryBgMain: { h: '46', s: '0.15', l: '0.83' },
@@ -55,6 +52,7 @@ const createOrganisations = async () => {
       tertiaryTextMain: { h: '219', s: '0.25', l: '0.14' },
       quartenaryTextMain: { h: '219', s: '0.25', l: '0.14' },
       quinaryTextMain: { h: '0', s: '1', l: '1' },
+      useBlockColors: false,
     },
     status: 'APPROVED',
   };
@@ -64,9 +62,6 @@ const createOrganisations = async () => {
     typeOfOrganisation: 'A',
     uniqueSlug: 'orr1-link',
     colors: {
-      // main: { h: '10', s: '0.97', l: '0.63' },
-      // secondary: { h: '215', s: '0.35', l: '0.35' },
-      // neutral: { h: '219', s: '0.25', l: '0.14' },
       primaryBgMain: { h: '215', s: '0.35', l: '0.35' },
       secondaryBgMain: { h: '22', s: '0.97', l: '0.66' },
       tertiaryBgMain: { h: '46', s: '0.15', l: '0.83' },
@@ -78,6 +73,7 @@ const createOrganisations = async () => {
       tertiaryTextMain: { h: '219', s: '0.25', l: '0.14' },
       quartenaryTextMain: { h: '219', s: '0.25', l: '0.14' },
       quinaryTextMain: { h: '0', s: '1', l: '1' },
+      useBlockColors: false,
     },
     status: 'APPROVED',
   };
