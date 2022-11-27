@@ -347,6 +347,7 @@ const EditDetails = () => {
             iconColor="primaryMain"
             text="Delete my account"
             isButton
+            weight="medium"
             pointer
             handleClick={handleDelete}
           />

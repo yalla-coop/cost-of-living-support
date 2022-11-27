@@ -9,10 +9,8 @@ import {
 } from '../../../components';
 import * as S from './style';
 import { Users } from '../../../api-calls';
-import { useLang } from '../../../context/lang';
 import { useAdminOrg } from '../../../context/admin-org';
 import { useAuth } from '../../../context/auth';
-import { t } from '../../../helpers';
 
 import { navRoutes } from '../../../constants';
 
@@ -21,9 +19,8 @@ import { useNavigate } from 'react-router-dom';
 const { Row, Col } = Grid;
 
 const ConfirmDeletion = () => {
-  const { lang } = useLang();
   const { adminOrg } = useAdminOrg();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [slug, setSlug] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,17 +53,18 @@ const ConfirmDeletion = () => {
       <Row>
         <Col w={[4, 12, 12]}>
           <T.H1 mb="6" weight="bold">
-            {t('confirmDeletion.title', lang)}
+            Confirm deletion
           </T.H1>
         </Col>{' '}
         <Col w={[4, 12, 6]}>
-          <T.P isSmall color="neutralDark">
-            {t('confirmDeletion.subtitle', lang)}
+          <T.P color="neutralDark">
+            Are you sure you wish to delete your account? This will permanently
+            remove your profile, log in and all account details.
           </T.P>
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 6, 4]} mt={6}>
+        <Col w={[4, 10, 6]} mt={6}>
           <T.P mb="2" color="neutralMain">
             Type{' '}
             <span style={{ fontWeight: 'bold' }}>{adminOrg.uniqueSlug}</span> to
@@ -82,7 +80,7 @@ const ConfirmDeletion = () => {
       </Row>
 
       <Row mt={6}>
-        <Col w={[4, 6, 4]} style={{ alignItems: 'flex-end' }}>
+        <Col w={[4, 10, 6]} style={{ alignItems: 'flex-end' }}>
           {httpError && (
             <T.P mb={2} color="error">
               {httpError}
@@ -103,7 +101,14 @@ const ConfirmDeletion = () => {
         visible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
         title={'Account deleted'}
-        parentFunc={() => navigate(navRoutes.PUBLIC_ORG.HOME)}
+        parentFunc={() => {
+          logout();
+          navigate(navRoutes.PUBLIC_ORG.HOME);
+        }}
+        onCancel={() => {
+          logout();
+          navigate(navRoutes.PUBLIC_ORG.HOME);
+        }}
         description={'Your account has now been successfully deleted. '}
         btnText="Return home"
       />

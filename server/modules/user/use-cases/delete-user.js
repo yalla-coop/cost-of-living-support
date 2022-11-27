@@ -1,6 +1,8 @@
 import * as User from '../model';
+import * as Organisation from '../../organisation/use-cases';
 
-function deleteUser({ id }) {
+async function deleteUser({ id }) {
+  await Organisation.deleteOrganisation({ id });
   return User.updateUserToDeleted(id);
 }
 

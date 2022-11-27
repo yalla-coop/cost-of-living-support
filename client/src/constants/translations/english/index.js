@@ -58,11 +58,6 @@ export default {
     subtitle:
       'Below you can edit details for your customers such as your adviser contact line',
   },
-  confirmDeletion: {
-    title: 'Confirm deletion',
-    subtitle:
-      'Are you sure you wish to delete your account? This will permanently remove your profile, log in and all account details.',
-  },
 
   contact: {
     title: 'Contact Details',
