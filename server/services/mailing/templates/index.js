@@ -13,6 +13,10 @@ const templates = {
     english: 'TODO: add template id',
     // other langs to go here
   },
+  [templatesId.ORG_APPROVED]: {
+    english: 'TODO: add template id',
+    // other langs to go here
+  },
 };
 
 const getTemplate = (template, language) => {

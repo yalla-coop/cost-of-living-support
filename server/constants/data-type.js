@@ -11,6 +11,11 @@ export const userStatuses = {
   DELETED: 'DELETED',
 };
 
+export const organisationStatuses = {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+};
+
 export const contactLinksTypes = {
   PHONE: 'PHONE',
   WEBCHAT_LINK: 'WEBCHAT_LINK',
