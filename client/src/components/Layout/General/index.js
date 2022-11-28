@@ -7,7 +7,7 @@ import { useAccessibility } from '../../../context/accessibility';
 
 import { OrganisationLogo } from '../../../components';
 import Language from '../../Language';
-
+import SocialBanner from '../../../components/SocialBanner';
 // import Navbar from '../../Navbar';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
@@ -18,6 +18,7 @@ const General = ({
   maxWidth,
   showHelp,
   showBack,
+  showSocialBanner,
   ...props
 }) => {
   const { publicOrg } = usePublicOrg();
@@ -47,7 +48,7 @@ const General = ({
         )}
         {children}
       </S.Content>
-      footer goes here
+      {showSocialBanner && <SocialBanner />}
     </S.Container>
   );
 };
