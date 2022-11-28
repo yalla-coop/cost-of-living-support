@@ -26,15 +26,22 @@ export const MenuWrapper = styled.div`
 `;
 
 export const ContentHalf = styled.div`
+  position: relative;
   flex: 1;
+  display: flex;
   background: ${({ theme }) => theme.colors.white};
-
-  padding: ${({ theme: { spacings: s } }) =>
-    `${s[11]} ${s[10]} ${s[10]} ${s[10]}`};
+  padding: ${({ theme: { spacings: s } }) => s[10]};
   ${({ theme }) => theme.media.tablet} {
     padding: ${({ theme: { spacings } }) =>
       `${spacings[6]} 37px ${spacings[7]} 38px`};
   }
+`;
+
+export const MaxWidth = styled.div`
+  width: 100%;
+  max-width: 935px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Link = styled(RLink)`
