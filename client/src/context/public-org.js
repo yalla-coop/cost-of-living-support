@@ -24,6 +24,8 @@ const PublicOrgContext = createContext({
   setPublicOrg: () => {},
   logout: () => {},
   uniqueSlug: '',
+  pageTitle: '',
+  setPageTitle: () => {},
 });
 
 const adjustedTheme = (ancestorTheme, updatedColors, useBlockColors) => ({
@@ -42,6 +44,7 @@ const PublicOrg = (props) => {
   let { uniqueSlug } = match?.params || {};
   uniqueSlug = uniqueSlug || 'hyde';
   const [publicOrg, setPublicOrg] = useState(initialPublicOrgState);
+  const [pageTitle, setPageTitle] = useState('');
 
   const _setPublicOrg = (data) => {
     // set org in state
@@ -141,6 +144,8 @@ const PublicOrg = (props) => {
     getPublicOrgInfo,
     setPublicOrg: _setPublicOrg,
     uniqueSlug,
+    pageTitle,
+    setPageTitle,
   };
   return (
     <ThemeProvider

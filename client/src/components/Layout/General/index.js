@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 import * as S from './style';
-import { useMediaQuery } from 'react-responsive';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
 import { OrganisationLogo } from '../../../components';
 import Language from '../../Language';
-
+import SocialBanner from '../../../components/SocialBanner';
 // import Navbar from '../../Navbar';
 import GoBack from '../../GoBack';
 import theme from '../../../theme';
 
-const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
+const General = ({
+  children,
+  goBack,
+  maxWidth,
+  showHelp,
+  showSocialBanner,
+  ...props
+}) => {
   const { publicOrg } = usePublicOrg();
   const { adminOrg } = useAdminOrg();
 
@@ -37,7 +43,7 @@ const General = ({ children, goBack, maxWidth, showHelp, ...props }) => {
         )}
         {children}
       </S.Content>
-      footer goes here
+      {showSocialBanner && <SocialBanner />}
     </S.Container>
   );
 };
