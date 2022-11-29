@@ -1,11 +1,14 @@
+import * as S from './style';
+import * as T from '../../Typography';
+import Icon from '../../Icon';
 import SingleTip from './SingleTip';
 
 const colorArray = [
   {
     bg: 'secondaryMain',
-    border: 'white',
-    text: 'white',
-    icon: 'white',
+    border: 'primaryTextMain',
+    text: 'primaryTextMain',
+    icon: 'primaryTextMain',
   },
   {
     bg: 'secondaryLight',
@@ -15,9 +18,9 @@ const colorArray = [
   },
   {
     bg: 'primaryLight',
-    border: 'primaryMain',
+    border: 'primaryDark',
     text: 'neutralMain',
-    icon: 'primaryMain',
+    icon: 'primaryDark',
   },
   {
     bg: 'neutralSurface',

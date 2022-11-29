@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import * as S from './style';
-import { useMediaQuery } from 'react-responsive';
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
 import { OrganisationLogo } from '../../../components';
@@ -25,13 +24,6 @@ const General = ({
     <S.Container>
       <Language />
       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
-      {/* <S.LangButton>
-            <T.P isSmall weight="bold" mr="4px">
-              EN
-            </T.P>
-            <img src={EnglishLang} alt="language" />
-          </S.LangButton> */}
-      {/* <Navbar /> */}
       <S.Content maxWidth={maxWidth}>
         {goBack && (
           <GoBack
