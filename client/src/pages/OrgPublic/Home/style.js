@@ -17,8 +17,8 @@ export const PageHead = styled.header`
   display: flex;
   justify-content: center;
   background: ${({ theme }) => theme.gradients.primary};
-  background-color: ${({ theme }) => theme.gradients.primaryMain};
-  background-image:${({ showBGImage }) =>
+  background-color: ${({ theme }) => theme.gradients.primaryDark};
+  background-image: ${({ showBGImage }) =>
     showBGImage && `url(${backgroundLogo})`};
   background-position: center;
   background-size: cover;
@@ -28,7 +28,7 @@ export const PageHead = styled.header`
 
   ${({ theme }) => theme.media.mobile} {
     padding-top: ${({ theme: { spacings } }) => spacings[6]};
-    padding-bottom: ${({ theme: { spacings } }) => spacings[7]}};
+    padding-bottom: ${({ theme: { spacings } }) => spacings[7]};
     display: flex;
     justify-content: flex-start;
   }
@@ -92,7 +92,7 @@ export const CardsWrapper = styled.div`
 `;
 export const StyledText = styled(T.P)`
   max-width: 585px;
-  color: ${({ theme: { colors } }) => colors.neutralDark};
+  color: ${({ theme: { colors } }) => colors.secondaryTextMain};
 `;
 
 export const LogoContainer = styled(Link)`
@@ -144,10 +144,10 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const pageTitle = styled(T.H1)`
-  font-size: 40px !important;
+  font-size: 2.5rem !important;
   line-height: 55.88px !important;
   ${({ theme }) => theme.media.mobile} {
-    font-size: 22px !important;
+    font-size: 1.375rem !important;
     line-height: 32px !important;
   }
 `;

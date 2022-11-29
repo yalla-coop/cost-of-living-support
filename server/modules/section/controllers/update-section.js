@@ -2,39 +2,16 @@ import * as Sections from '../use-cases';
 
 const updateSection = async (req, res, next) => {
   try {
+    const { title, topics } = req.body;
+    const { id: userId, organisationId: userOrganisationId } = req.user;
     const { id } = req.params;
-    const {
-      stage,
-      title,
-      description,
-      pageTitle,
-      pageDescription,
-      howLongDoesItTake,
-      whereDoYouNeedToGo,
-      thingsYouWillNeed,
-      whatYouWillNeedToKnow,
-      topTip,
-      otherTips,
-      isOptional,
-    } = req.body;
-
-    const { id: userId } = req.user;
 
     const section = await Sections.updateSection({
       id,
-      stage,
       title,
-      description,
-      pageTitle,
-      pageDescription,
-      howLongDoesItTake,
-      whereDoYouNeedToGo,
-      thingsYouWillNeed,
-      whatYouWillNeedToKnow,
-      topTip,
-      otherTips,
-      isOptional,
       userId,
+      topics,
+      userOrganisationId,
     });
 
     res.json(section);

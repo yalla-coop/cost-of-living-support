@@ -5,6 +5,7 @@ const GENERAL = {
   FORGET_PASSWORD: `/forget-password`,
   RESET_PASSWORD: `/reset-password/:token`,
   NOT_FOUND: `/not-found`,
+  ACCESSIBILITY: `/accessibility`,
 };
 
 const PUBLIC_ORG = {
@@ -36,6 +37,8 @@ const ADMIN = {
   ADD_UPDATE_CONTENT: `${admin}/content`,
   SUCCESS_SIGNUP: `${admin}/success-signup`,
   CONFIRM_DELETION: `${admin}/confirm-deletion`,
+  SECTION: `${admin}/section/:id`,
+  SECTION_ADDED: `${admin}/section-added`,
 };
 
 const SUPER_ADMIN = {

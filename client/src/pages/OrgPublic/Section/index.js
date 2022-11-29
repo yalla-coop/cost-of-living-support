@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import GoBack from '../../../components/GoBack';
 import { contentColors } from '../../../constants';
-
 import PageHeader from '../../../components/PageHeader';
 import * as S from './style';
 import { Sections } from '../../../api-calls';
@@ -13,19 +12,25 @@ import useTopics from './useTopics';
 import StillNeedHelp from '../../../components/StillNeedHelp';
 import { navRoutes } from '../../../constants';
 import { message } from 'antd';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../../helpers';
 
 const Section = () => {
-  const { publicOrg } = usePublicOrg();
+  const { i18n, t } = useTranslation();
+  const { lng } = useLanguage();
+  const { publicOrg, setPageTitle } = usePublicOrg();
+
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [sectionData, setSectionData] = useState({});
-  const { topics, toggleMark } = useTopics(id, publicOrg?.resources);
+  const { topics, toggleMark } = useTopics(id, lng, publicOrg?.resources);
 
   useEffect(() => {
     const fetchSectionData = async () => {
       const { data, error } = await Sections.getSectionById({
         id,
+        forPublic: true,
       });
       if (error) {
         if (error.statusCode === 404) {
@@ -34,10 +39,12 @@ const Section = () => {
         message.error('Something went wrong, please try again later');
       } else {
         setSectionData(data);
+        setPageTitle(data.title);
       }
     };
 
     fetchSectionData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, navigate]);
 
   const { title, parentSectionTitle } = sectionData;
@@ -50,6 +57,13 @@ const Section = () => {
   );
 
   const colors = contentColors[id] || contentColors[1];
+
+  i18n.addResourceBundle(lng, 'topicNS', {
+    topics,
+  });
+
+  const _topics = t('topics', { ns: 'topicNS', returnObjects: true });
+
   return (
     <S.Container>
       <PageHeader
@@ -63,7 +77,7 @@ const Section = () => {
       <GeneralPaddingSection>
         <S.Content>
           <S.Topics>
-            {topics.map(({ id, marked, content }, i) => (
+            {_topics.map(({ id, marked, content }, i) => (
               <TopicCard
                 topicIndex={i}
                 key={id}
