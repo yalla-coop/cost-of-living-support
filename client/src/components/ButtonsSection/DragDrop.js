@@ -13,7 +13,7 @@ const getColor = (index, startingColor) => {
   return colorArray[_index];
 };
 
-function DragDrop({ columns, setColumns }) {
+function DragDrop({ columns, setColumns, handleHide, handleEdit }) {
   function handleOnDragEnd(result) {
     if (!result.destination) return;
 
@@ -32,10 +32,11 @@ function DragDrop({ columns, setColumns }) {
             className="buttons"
             {...provided.droppableProps}
             ref={provided.innerRef}
+            style={{ marginBottom: 0 }}
           >
-            {columns.map(({ id, name, hidden }, index) => {
+            {columns.map((item, index) => {
               return (
-                <Draggable key={id} draggableId={id} index={index}>
+                <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
@@ -43,12 +44,16 @@ function DragDrop({ columns, setColumns }) {
                       {...provided.dragHandleProps}
                     >
                       <SingleButton
-                        name={name}
+                        title={item.title}
                         iconColor={getColor(index, 0)}
                         showMenuIcon
-                        handleEdit={() => {}}
-                        handleHide={() => {}}
-                        hidden={hidden}
+                        handleEdit={
+                          item.isCustomSection ? handleEdit(item) : null
+                        }
+                        handleHide={
+                          item.isCustomSection ? null : () => handleHide(item)
+                        }
+                        hidden={item.hidden}
                       />
                     </div>
                   )}

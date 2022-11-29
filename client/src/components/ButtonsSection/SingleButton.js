@@ -2,7 +2,7 @@ import { Icon, TextWithIcon } from '../../components';
 import * as S from './style';
 
 const SingleButton = ({
-  name,
+  title,
   iconColor,
   showMenuIcon,
   handleEdit,
@@ -16,7 +16,7 @@ const SingleButton = ({
         <TextWithIcon
           icon="forwardArrow"
           iconColor={iconColor}
-          text={name}
+          text={title.replace(/\*/g, '')}
           isText
         />
         {(showMenuIcon || handleEdit) && (
@@ -47,6 +47,7 @@ const SingleButton = ({
             isButton
             pointer
             text={hidden ? 'Show' : 'Hide'}
+            handleClick={handleHide}
             mr="1"
           />
         </S.HideWrapper>

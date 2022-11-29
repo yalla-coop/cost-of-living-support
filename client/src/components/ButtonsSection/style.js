@@ -4,7 +4,6 @@ import theme from '../../theme';
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 16px;
   border-radius: 4px;
 `;
 
