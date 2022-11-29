@@ -20,6 +20,7 @@ const getCommon = async ({ lng }) => {
   });
 
   return commonT;
+
 };
 
 export default getCommon;
