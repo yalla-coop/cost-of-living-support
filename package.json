@@ -1,5 +1,5 @@
 {
-  "name": "hyde-universal-credit-support",
+  "name": "hyde-cost-of-living-support",
   "version": "0.0.0",
   "private": false,
   "engines": {
@@ -12,7 +12,7 @@
     "dev:client": "cd client && npm start",
     "storybook": "cd client/ && npm run storybook",
     "start": "cross-env DEBUG=server node dist/index.js",
-    "build:server": "cross-env DEBUG=server babel server --out-dir dist",
+    "build:server": "cd server && npm run build",
     "build": "npm run clean && npm run build:server",
     "migrate:up": "db-migrate -m server/database/migrations up",
     "migrate:down": "db-migrate -m server/database/migrations down",
