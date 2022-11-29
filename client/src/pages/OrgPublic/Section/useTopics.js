@@ -7,6 +7,8 @@ const useTopics = (id, lng, resources) => {
   const [markedTopics, setMarkedTopics] = useState([]);
   useEffect(() => {
     const fetchTopics = async () => {
+      console.log('CHECK --------------');
+      console.log(id, lng);
       const { data, error } = await Sections.getTopics({
         sectionId: id,
         lng,
@@ -14,27 +16,12 @@ const useTopics = (id, lng, resources) => {
       if (error) {
         message.error('Something went wrong, please try again later');
       } else {
-        const replacedData = data.map((topic) => ({
-          ...topic,
-          content: {
-            ...topic.content,
-            resources: topic?.content?.resources
-              ?.map((resource) => {
-                if (resource.type === 'CUSTOM') {
-                  return resources?.find((r) => r.key === resource.key);
-                }
-                return resource;
-              })
-              .filter((r) => !!r),
-          },
-        }));
-
-        setTopics(replacedData);
+        setTopics(data);
       }
     };
 
     fetchTopics();
-  }, [id, lng, resources]);
+  }, [id, lng]);
 
   useEffect(() => {
     const markedTopicsFromStorage =
@@ -49,7 +36,22 @@ const useTopics = (id, lng, resources) => {
     setMarkedTopics(newMarkedTopics);
     localStorage.setItem('markedToggles', JSON.stringify(newMarkedTopics));
   };
-  const topicsWithMarked = topics.map((topic) => ({
+  const replaceTopics = topics?.map((topic) => ({
+    ...topic,
+    content: {
+      ...topic.content,
+      resources: topic?.content?.resources
+        ?.map((resource) => {
+          if (resource.type === 'CUSTOM') {
+            return resources?.find((r) => r.key === resource.key);
+          }
+          return resource;
+        })
+        .filter((r) => !!r),
+    },
+  }));
+
+  const topicsWithMarked = replaceTopics.map((topic) => ({
     ...topic,
     marked: markedTopics.includes(topic.id),
   }));

@@ -6,7 +6,7 @@ import * as S from './style';
 const Language = () => {
   const [hide, setHide] = useState(true);
 
-  const handleHide = () => {
+  const handleHide = (e) => {
     setHide(!hide);
   };
 
