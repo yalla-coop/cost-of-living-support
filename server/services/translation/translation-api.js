@@ -1,9 +1,12 @@
 import { AWSTranslateJSON } from 'aws-translate-json';
+import config from '../../config';
+
+const { awsAccessKeyId, awsSecretAccessKey, awsRegion } = config.aws;
 
 const awsConfig = {
-  // accessKeyId: process.env.AWS_TRANSLATE_ACCESS_KEY_ID,
-  // secretAccessKey: process.env.AWS_TRANSLATE_SECRET_ACCESS_KEY,
-  // region: process.env.AWS_TRANSLATE_REGION,
+  accessKeyId: awsAccessKeyId,
+  secretAccessKey: awsSecretAccessKey,
+  region: awsRegion,
 };
 
 const translate = async ({ source, target, json, id }) => {
