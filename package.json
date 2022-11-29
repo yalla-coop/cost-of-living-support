@@ -11,7 +11,7 @@
     "dev:server": "cd server && npm run start",
     "dev:client": "cd client && npm start",
     "storybook": "cd client/ && npm run storybook",
-    "start": "cross-env DEBUG=server node dist/index.js",
+    "start": "cd server && npm start",
     "build:server": "cd server && npm run build",
     "build": "npm run clean && npm run build:server",
     "migrate:up": "db-migrate -m server/database/migrations up",
