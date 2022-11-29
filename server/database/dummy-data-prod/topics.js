@@ -83,7 +83,7 @@ const addTopics = async ({ sections }) => {
     sectionId: payingForHousingPrivateTenant.id,
     position: 4,
     content: {
-      title: 'Speak to your local authority ',
+      title: 'Speak to your local authority',
       content:
         "If you have no money left for basics like heating and food after you've paid rent, your local council have a duty to help you.",
       tip1: `If you are claiming Universal Credit or housing benefit but you are not receiving enough to cover your housing costs you may be able to claim 'Discretionary Housing Payments' from your local council.`,
@@ -91,7 +91,7 @@ const addTopics = async ({ sections }) => {
         {
           type: 'EXTERNAL',
           label: 'Find local council',
-          url: 'https://www.gov.uk/find-local-council ',
+          url: 'https://www.gov.uk/find-local-council',
         },
       ],
     },
@@ -102,7 +102,7 @@ const addTopics = async ({ sections }) => {
     content: {
       title: 'Seek independent housing advice',
       content:
-        'There are many organisations offering free advice to tenants who are worried about paying rent. Advice is usually given over the phone, and in some cases face-to- face. ',
+        'There are many organisations offering free advice to tenants who are worried about paying rent. Advice is usually given over the phone, and in some cases face-to- face.',
       tip1: `Remember to let your landlord know that you're seeking advice, so that they're aware you trying to resolve your money issues.`,
       resources: [
         {
@@ -127,7 +127,7 @@ const addTopics = async ({ sections }) => {
       content:
         "If you're struggling to pay your rent speak to your landlord as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
       tip1: "Read letters from your landlord and speak to them on the phone if they call you. They'll look for ways to offer you help and support, and advise you about the steps you can take. They'll be able to refer you to specialist advice if needed.",
-      tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out. ',
+      tip2: 'In order to help, a landlord will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
           type: 'CUSTOM',
@@ -295,7 +295,7 @@ const addTopics = async ({ sections }) => {
       content:
         "If you're struggling to pay your rent speak to your mortgage provider as soon as possible, even if you haven't missed a payment yet. There are often many things they can do to help you.",
       tip1: "Read letters from your landlord and mortgage provider, and speak to them on the phone if they call you. They'll look for ways to offer you help and support, and advise you about the steps you can take.",
-      tip2: 'In order to help, your landlord and mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out. ',
+      tip2: 'In order to help, your landlord and mortgage provider will often want to know how much money you have available to spend each month. A budget tool can help you work this out.',
       resources: [
         {
           type: 'CUSTOM',

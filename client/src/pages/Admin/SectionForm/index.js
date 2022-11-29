@@ -309,7 +309,7 @@ const SectionForm = () => {
             errors={validationErrs[`topics[${topicIndex}]`]}
           />
         ))}
-        {topics?.length < 5 && (
+        {topics?.length < 5 && Number(id) !== 1 && (
           <Row>
             <Col w={[4, 4, 4]}>
               <TextWithIcon
