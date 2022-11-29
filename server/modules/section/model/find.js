@@ -58,6 +58,7 @@ const findSectionById = async (id) => {
     SELECT
       s.id,
       s.title,
+      default_position,
       (
         SELECT
         s2.title

@@ -96,7 +96,7 @@ const ResourcesSection = ({
       </Col>
 
       <TextWithIcon
-        text="Remove"
+        text="Remove resource"
         icon="close"
         weight="medium"
         pointer

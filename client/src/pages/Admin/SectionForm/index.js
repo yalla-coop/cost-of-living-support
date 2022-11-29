@@ -58,9 +58,15 @@ const SectionForm = () => {
   useEffect(() => {
     const getSectionData = async () => {
       setState({ loading: true });
-      const { error, data } = await Sections.getSectionById({ id });
+      const { error, data } = await Sections.getSectionById({
+        id,
+        forPublic: false,
+      });
       setState({ loading: false });
       if (error) {
+        if (error.statusCode === 401 || error.statusCode === 404) {
+          return navigate(navRoutes.GENERAL.NOT_FOUND);
+        }
         return setState({ httpError: error.message });
       }
       setState({
@@ -109,7 +115,7 @@ const SectionForm = () => {
       getSectionData();
       fetchTopics();
     }
-  }, [id]);
+  }, [id, navigate]);
 
   useEffect(() => {
     if (submitAttempt.current) {
@@ -336,17 +342,16 @@ const SectionForm = () => {
             </T.P>
           </Col>
         ) : null}
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 12, 6]}>
           <Button
-            text={id === 'new' ? 'Publish' : 'Update'}
+            text={id === 'new' ? 'Publish' : 'Save'}
             handleClick={handleSubmit}
             loading={state.loading}
-            mb="4"
             mt="4"
           />
         </Col>
         {id !== 'new' && (
-          <Col w={[4, 6, 4]}>
+          <Col w={[4, 12, 6]}>
             <Button
               text="Save and preview"
               handleClick={(e) => {

@@ -37,9 +37,11 @@ const updateSectionWithTopics = async ({ options, body, id }) => {
   }
 };
 
-const getSectionById = async ({ options, id }) => {
+const getSectionById = async ({ options, id, forPublic }) => {
   try {
-    const { data } = await axios.get(`${SECTIONS_BASE}/${id}`);
+    const { data } = await axios.get(`${SECTIONS_BASE}/${id}`, {
+      params: { forPublic },
+    });
 
     return { data };
   } catch (error) {

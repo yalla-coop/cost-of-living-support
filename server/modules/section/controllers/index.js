@@ -26,7 +26,7 @@ router.post(
 
 router.get('/sub-sections', getSubSections);
 
-router.get('/:id', getSection);
+router.get('/:id', authenticate(true), getSection);
 router.get('/:id/topics', getTopicsBySectionId);
 
 router.patch(
