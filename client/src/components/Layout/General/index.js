@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import * as S from './style';
-
 import { usePublicOrg } from '../../../context/public-org';
 import { useAdminOrg } from '../../../context/admin-org';
 import { useAccessibility } from '../../../context/accessibility';
@@ -29,13 +28,6 @@ const General = ({
     <S.Container bgColor={layoutColor}>
       <Language showBack={showBack} />
       <OrganisationLogo logoUrl={adminOrg?.logoUrl || publicOrg?.logoUrl} />
-      {/* <S.LangButton>
-            <T.P isSmall weight="bold" mr="4px">
-              EN
-            </T.P>
-            <img src={EnglishLang} alt="language" />
-          </S.LangButton> */}
-      {/* <Navbar /> */}
       <S.Content maxWidth={maxWidth}>
         {goBack && (
           <GoBack
