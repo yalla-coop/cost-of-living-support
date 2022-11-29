@@ -28,10 +28,9 @@ function App() {
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
       <Global styles={globalStyle} />
       <ThemeProvider theme={theme}>
-        <LangProvider>
-          <AccessibilityProvider>
-            <AuthProvider>
-             <CommonProvider>
+        <AccessibilityProvider>
+          <AuthProvider>
+            <CommonProvider>
               <Router basename={process.env.PUBLIC_URL}>
                 <ScrollToTop />
                 <Routes>
@@ -175,10 +174,9 @@ function App() {
                   </Route>
                 </Routes>
               </Router>
-             </CommonProvider>
-            </AuthProvider>
-          </AccessibilityProvider>
-        </LangProvider>
+            </CommonProvider>
+          </AuthProvider>
+        </AccessibilityProvider>
 
         {/* <CookieBot domainGroupId={domainGroupId} /> */}
       </ThemeProvider>

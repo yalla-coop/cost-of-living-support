@@ -26,7 +26,6 @@ const Desktop = ({
 }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-  
   const LTR = (
     <Row>
       <S.DesktopWrapper>
@@ -115,7 +114,6 @@ const Desktop = ({
 
   return lngDir === 'rtl' ? RTL : LTR;
 };
-
 
 const Tablet = ({ lngDir, showBack, handleHide, flag, lng }) => {
   const navigate = useNavigate();
