@@ -166,7 +166,7 @@ const Accessibility = () => {
             />
           </S.Wrapper>
         </Col>
-        <Col w={[4, 4, 4]}>
+        <Col w={[4, 4, 4]} mt="8">
           <S.ShowInDesktop>
             <S.fontInputWrapper>
               <I.Dropdown
