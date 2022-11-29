@@ -16,6 +16,27 @@ const getSections = async ({ options, uniqueSlug, forPublic }) => {
   }
 };
 
+const createSectionWithTopics = async ({ options, body }) => {
+  try {
+    const { data } = await axios.post(`${SECTIONS_BASE}`, body);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+const updateSectionWithTopics = async ({ options, body, id }) => {
+  try {
+    const { data } = await axios.patch(`${SECTIONS_BASE}/${id}`, body);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
 const getSectionById = async ({ options, id }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/${id}`);
@@ -51,4 +72,11 @@ const getTopics = async ({ options, sectionId, lng }) => {
   }
 };
 
-export { getSections, getSectionById, getTopics, getSubSections };
+export {
+  getSections,
+  getSectionById,
+  getTopics,
+  getSubSections,
+  createSectionWithTopics,
+  updateSectionWithTopics,
+};

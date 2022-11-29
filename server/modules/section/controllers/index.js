@@ -5,6 +5,7 @@ import getSubSections from './get-sub-sections';
 import getSection from './get-section';
 import updateSection from './update-section';
 import getTopicsBySectionId from './get-topics-by-section-id';
+import createSection from './create-section';
 
 import {
   authenticate,
@@ -16,6 +17,12 @@ import { userRoles } from '../../../constants';
 const router = Router();
 
 router.get('/', getSections);
+router.post(
+  '/',
+  authenticate(),
+  authorize([userRoles.ADMIN, userRoles.SUPER_ADMIN]),
+  createSection,
+);
 
 router.get('/sub-sections', getSubSections);
 
@@ -26,7 +33,7 @@ router.patch(
   '/:id',
   csrfProtection,
   authenticate(),
-  authorize([userRoles.SUPER_ADMIN]),
+  authorize([userRoles.SUPER_ADMIN, userRoles.ADMIN]),
   updateSection,
 );
 
