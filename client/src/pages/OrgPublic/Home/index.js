@@ -98,10 +98,10 @@ const Home = () => {
           >
             <TextWithIcon
               size="large"
-              bgColor="neutralLight"
               text={t('common.buttons.readMore', common.buttons.readMore)}
+              bgColor="quartenaryBgMain"
               icon="forwardArrow"
-              iconColor="tertiaryDark"
+              iconColor="primaryDark"
               jc="center"
               jcT="flex-start"
               mr="6px"
@@ -141,7 +141,7 @@ const Home = () => {
               isButton
               handleClick={() => setStuck(true)}
               underline
-              iconColor="primaryMain"
+              iconColor="primaryDark"
               weight="medium"
               mr="3"
               jc="center"

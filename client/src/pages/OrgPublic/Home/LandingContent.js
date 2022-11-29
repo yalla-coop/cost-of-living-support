@@ -14,7 +14,7 @@ const LandingContent = () => {
             <img src={Logo} alt="logo" />
           </S.LogoContainer>
           <S.HeaderText>
-            <S.pageTitle ta="center" weight="bold" color="white">
+            <S.pageTitle ta="center" weight="bold" color="primaryTextMain">
               {t(
                 'common.heading.costOfLivingHelper',
                 common.heading.costOfLivingHelper
@@ -30,7 +30,7 @@ const LandingContent = () => {
             common.section.worriedAbout.description
           )}
         </S.StyledText>
-        <T.H2 color="black" mb="4">
+        <T.H2 mb="4">
           {t(
             'common.section.worriedAbout.title',
             common.section.worriedAbout.title

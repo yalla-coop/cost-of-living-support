@@ -45,9 +45,11 @@ const HelpButton = ({
     return (
       <S.Modal adminHelp={adminHelp} {...props}>
         <S.Header>
-          <T.H3 color="white">{adminHelp ? 'Help' : 'Help is here!'}</T.H3>
+          <T.H3 color="primaryTextMain">
+            {adminHelp ? 'Help' : 'Help is here!'}
+          </T.H3>
           <S.CloseButton onClick={handleClose}>
-            <Icon icon="close" color="white" />
+            <Icon icon="close" color="primaryTextMain" />
           </S.CloseButton>
         </S.Header>
         <S.Content>
@@ -99,7 +101,7 @@ const HelpButton = ({
 
   return (
     <S.Button position={position} onClick={() => setIsOpen(true)}>
-      <T.H3 color="white">
+      <T.H3 color="primaryTextMain">
         {t('common.section.helpMe.title', common.section.helpMe.title)}
       </T.H3>
     </S.Button>
