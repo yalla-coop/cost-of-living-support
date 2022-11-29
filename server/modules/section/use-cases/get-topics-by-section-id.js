@@ -1,6 +1,6 @@
 import * as Section from '../model';
 import * as Translation from '../../translations/model';
-import translateContent from '../../../services/translation/translateContent';
+import translateContent from '../../../services/translation/translate-content';
 
 const getTopicsBySectionId = async ({ id, lng }) => {
   const topics = await Section.findTopicsBySectionId(id, lng);

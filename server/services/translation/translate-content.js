@@ -1,4 +1,4 @@
-import { translate } from './translationApi';
+import { translate } from './translation-api';
 
 const translateContent = async ({ lng, contentArray }) => {
   const translations = await Promise.all(

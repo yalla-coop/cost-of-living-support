@@ -1,5 +1,5 @@
 import * as Translation from '../model';
-import translateContent from '../../../services/translation/translateContent';
+import translateContent from '../../../services/translation/translate-content';
 
 const getCommon = async ({ lng }) => {
   const common = await Translation.getCommon(lng);
@@ -20,7 +20,6 @@ const getCommon = async ({ lng }) => {
   });
 
   return commonT;
-
 };
 
 export default getCommon;
