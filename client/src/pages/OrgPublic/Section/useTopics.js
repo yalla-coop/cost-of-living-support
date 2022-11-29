@@ -7,8 +7,6 @@ const useTopics = (id, lng, resources) => {
   const [markedTopics, setMarkedTopics] = useState([]);
   useEffect(() => {
     const fetchTopics = async () => {
-      console.log('CHECK --------------');
-      console.log(id, lng);
       const { data, error } = await Sections.getTopics({
         sectionId: id,
         lng,
@@ -36,6 +34,7 @@ const useTopics = (id, lng, resources) => {
     setMarkedTopics(newMarkedTopics);
     localStorage.setItem('markedToggles', JSON.stringify(newMarkedTopics));
   };
+
   const replaceTopics = topics?.map((topic) => ({
     ...topic,
     content: {

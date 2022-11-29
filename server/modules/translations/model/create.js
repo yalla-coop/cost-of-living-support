@@ -1,8 +1,6 @@
 import { query } from '../../../database';
 
 const createTopicI18n = async ({ topicId, languageCode, content }) => {
-  console.log(' createTopicI18n RUNNING');
-  console.log(topicId, languageCode);
   const sql = `
     INSERT INTO topics_i18n (
       topic_id,

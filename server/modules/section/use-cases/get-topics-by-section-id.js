@@ -12,10 +12,7 @@ const getTopicsBySectionId = async ({ id, lng }) => {
 
   await Promise.all(
     topicsT.map(async (c) => {
-      console.log(c, 'CCCCCC');
-      console.log(c.isTranslated, 'CCCCCC');
       if (!c.isTranslated) {
-        console.log(` ========= INSERTING ${lng} INTO DATABASE ========= `);
         await Translation.createTopicI18n({
           topicId: c.id,
           languageCode: c.languageCode,
