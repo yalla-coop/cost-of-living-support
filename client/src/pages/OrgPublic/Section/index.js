@@ -18,7 +18,8 @@ import { useLanguage } from '../../../helpers';
 const Section = () => {
   const { i18n, t } = useTranslation();
   const { lng } = useLanguage();
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
+
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -37,10 +38,12 @@ const Section = () => {
         message.error('Something went wrong, please try again later');
       } else {
         setSectionData(data);
+        setPageTitle(data.title);
       }
     };
 
     fetchSectionData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, navigate]);
 
   const { title, parentSectionTitle } = sectionData;
