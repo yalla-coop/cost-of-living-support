@@ -15,15 +15,16 @@ const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
     contentArray: topics,
   });
 
-  await Promise.all(
-    topicsT.map(async (c) => {
+  Promise.all(
+    topicsT.map((c) => {
       if (!c.isTranslated) {
-        await Translation.createTopicI18n({
+        return Translation.createTopicI18n({
           topicId: c.id,
           languageCode: c.languageCode,
           content: c.content,
         });
       }
+      return Promise.resolve();
     }),
   );
 
