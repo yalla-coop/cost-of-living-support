@@ -30,6 +30,7 @@ const Section = () => {
     const fetchSectionData = async () => {
       const { data, error } = await Sections.getSectionById({
         id,
+        forPublic: true,
       });
       if (error) {
         if (error.statusCode === 404) {
@@ -61,6 +62,8 @@ const Section = () => {
     topics,
   });
 
+  const _topics = t('topics', { ns: 'topicNS', returnObjects: true });
+
   return (
     <S.Container>
       <PageHeader
@@ -74,7 +77,7 @@ const Section = () => {
       <GeneralPaddingSection>
         <S.Content>
           <S.Topics>
-            {topics.map(({ id, marked, content }, i) => (
+            {_topics.map(({ id, marked, content }, i) => (
               <TopicCard
                 topicIndex={i}
                 key={id}

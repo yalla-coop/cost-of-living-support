@@ -16,22 +16,25 @@ const props = {
   iconColor: 'neutralMain',
 };
 
-const Desktop = ({
-  lngDir,
-  showBack,
-  largeText,
-  handleHide,
-  flag,
-  lngFull,
-}) => {
+const Desktop = ({ dir, showBack, largeText, handleHide, flag, lngFull }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const LTR = (
     <Row>
       <S.DesktopWrapper>
         <S.ButtonWrapper>
           {showBack && (
-            <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+            <TextWithIcon
+              handleClick={goBack}
+              pointer
+              icon="backArrow"
+              iconColor="neutralMain"
+              isButton
+            />
           )}
 
           <TextWithIcon
@@ -106,23 +109,37 @@ const Desktop = ({
           {...props}
         />
         {showBack && (
-          <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
+          <TextWithIcon
+            handleClick={goBack}
+            pointer
+            icon="backArrowRTL"
+            iconColor="neutralMain"
+            isButton
+          />
         )}
       </S.ButtonWrapper>
     </S.DesktopWrapper>
   );
 
-  return lngDir === 'rtl' ? RTL : LTR;
+  return dir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ lngDir, showBack, handleHide, flag, lng }) => {
+const Tablet = ({ dir, showBack, handleHide, flag, lng }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-
+  const goBack = () => {
+    navigate(-1);
+  };
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
-        <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrow"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
       <S.ButtonWrapper>
         <TextWithIcon
@@ -190,19 +207,25 @@ const Tablet = ({ lngDir, showBack, handleHide, flag, lng }) => {
         />
       </S.ButtonWrapper>
       {showBack && (
-        <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrowRTL"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
     </S.TabletWrapperRTL>
   );
 
-  return lngDir === 'rtl' ? RTL : LTR;
+  return dir === 'rtl' ? RTL : LTR;
 };
 
 export const LanguageBar = ({ largeText, showBack, handleHide }) => {
-  const { lngFull, lngUpperCase, flag, lngDir } = useLanguage();
+  const { lngFull, lngUpperCase, flag, dir } = useLanguage();
 
   const props = {
-    lngDir,
+    dir,
     largeText,
     showBack,
     handleHide,
