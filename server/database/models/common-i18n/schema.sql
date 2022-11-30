@@ -4,7 +4,7 @@ CREATE TABLE "common_i18n" (
   "id" SERIAL PRIMARY KEY,
   "common_id" INTEGER REFERENCES common(id),
   "language_code" language_codes NOT NULL,
-  "content_i18n" JSONB,
+  "content" JSONB,
 -- {
 --   "title": "string",
 --   "content": "string",

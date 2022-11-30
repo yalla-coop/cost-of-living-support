@@ -41,7 +41,7 @@ const createTopicI18n = async ({ topicId, languageCode, content }) => {
     INSERT INTO topics_i18n (
       topic_id,
       language_code,
-      content_i18n
+      content
     )
     VALUES(
       $1,

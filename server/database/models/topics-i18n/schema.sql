@@ -4,7 +4,7 @@ CREATE TABLE "topics_i18n" (
   "id" SERIAL PRIMARY KEY,
   "topic_id" INTEGER REFERENCES topics(id),
   "language_code" language_codes NOT NULL,
-  "content_i18n" JSONB,
+  "content" JSONB,
 -- {
 --   "title": "string",
 --   "content": "string",

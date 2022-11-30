@@ -5,7 +5,7 @@ const createTopicI18n = async ({ topicId, languageCode, content }) => {
     INSERT INTO topics_i18n (
       topic_id,
       language_code,
-      content_i18n
+      content
     )
     VALUES(
       $1,
@@ -25,7 +25,7 @@ const createCommonI18n = async ({ commonId, languageCode, content }) => {
     INSERT INTO common_i18n (
       common_id,
       language_code,
-      content_i18n
+      content
     )
     VALUES(
       $1,
