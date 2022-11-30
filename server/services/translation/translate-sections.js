@@ -2,12 +2,11 @@ import { translate } from './translation-api';
 
 const translateSections = async ({ lng, sections }) => {
   const translations = await Promise.all(
-    sections.map(async ({ title, languageCode, id }) => {
+    sections.map(async (section) => {
+      const { title, languageCode, id } = section;
       if (languageCode === lng || lng === 'en') {
         return {
-          id,
-          title,
-          languageCode: lng,
+          ...section,
           isTranslated: true,
         };
       }
@@ -18,7 +17,7 @@ const translateSections = async ({ lng, sections }) => {
         id,
       });
 
-      return { ...res, title: res.content.title };
+      return { ...section, title: res.content.title };
     }),
   );
 
