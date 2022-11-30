@@ -22,6 +22,7 @@ const addCommon = async () => {
         decreaseTextSize: '- Decrease text size',
         increaseTextSize: '+ Increase text size',
       },
+      words: { and: 'and' },
       heading: {
         costOfLivingHelper: 'Cost of Living Helper',
         shareThisPage: 'Share this page',
@@ -65,9 +66,38 @@ const addCommon = async () => {
           description2:
             'Whilst we aim to make this website accessible to all users and achieve a conformance level ‘AAA’; we continually work with stakeholders to ensure that conformance level ‘A’ is adhered to as a minimum.',
           tip1: 'Tip! If you experience any accessibility issue on this site or have any comment, please',
-          tip2: 'Tip! Click increase text size by 25% (e.g. 16px to 20px)',
+
+          tip2: 'Tip! There are many accessibility features on devices, which can be found on links such as',
+          textSizetip:
+            'Tip! Click increase text size by 25% (e.g. 16px to 20px)',
           contactUs: 'contact us',
           adjustTextSize: 'Adjust Text Size',
+          appleAccessibility: 'Apple accessability features',
+          androidAccessibility: 'Android accessibility',
+          internetExplorerTitle: 'Internet Explorer',
+          internetExplorerDescription:
+            'Go to “View” on the menu bar &gt; Select text size / zoom',
+          firefoxTitle: 'Firefox',
+          firefoxDescription:
+            'Go to “View” on the menu bar &gt; Select text size / zoom. Alternatively hold down the “Ctrl” button on your keyboard and press the plus (+) key to increase text size. To reduce the latter hold down the “Ctrl” button and press the minus (-) key. Please note that the above settings may differ depending on the browser version.',
+          textToSpeechTitle: 'Text To Speech',
+          textToSpeechDescription:
+            'Many computers and mobile devices today have built in text-to-speech software. Here are guides for each of the major browsers and devices:',
+          chromeTitle: 'Chrome',
+          googleSpeak: 'Click here to download Google Speak',
+          addSpeakButton: 'and select the Add to Chrome button',
+          windowsEdgeTitle: 'Windows Edge',
+          windowsEdgeDescription:
+            'Open the Edge browser and then click on Read Aloud Option or on your keyboard press Ctrl + Shift + U',
+          androidApps: 'Android Apps',
+          downloadReadAloud: 'Click here to download Read Aloud',
+          forAndroid: 'for Android phones or tablets',
+          appleTitle: 'Apple',
+          downloadVoiceAloud:
+            'Click here to download Voice Aloud Reader for Apple devices.',
+          searchVoiceAloudReader:
+            'Choose your device when you download. Or go to your Apple App store and search Voice Aloud Reader',
+          changeFont: 'Change font',
         },
         stillNeedHelp: {
           title: 'Still need help?',
@@ -99,6 +129,20 @@ const addCommon = async () => {
           samaritansHours: '(Monday to Sunday at any time)',
         },
       },
+      colors: [
+        {
+          label: 'Blue',
+        },
+        {
+          label: 'Green',
+        },
+        {
+          label: 'Yellow',
+        },
+        {
+          label: 'Red',
+        },
+      ],
     },
   });
 
