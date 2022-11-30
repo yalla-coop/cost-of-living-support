@@ -62,10 +62,10 @@ const getSubSections = async ({ options, id, forPublic }) => {
   }
 };
 
-const getTopics = async ({ options, sectionId, lng }) => {
+const getTopics = async ({ options, sectionId, lng, forPublic }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/${sectionId}/topics`, {
-      params: { lng },
+      params: { lng, forPublic },
     });
     return { data };
   } catch (error) {

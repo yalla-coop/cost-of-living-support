@@ -2,8 +2,13 @@ import * as Section from '../model';
 import * as Translation from '../../translations/model';
 import translateContent from '../../../services/translation/translate-content';
 
-const getTopicsBySectionId = async ({ id, lng }) => {
-  const topics = await Section.findTopicsBySectionId(id, lng);
+const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
+  if (!forPublic) {
+    const topics = await Section.findTopicsBySectionId(id);
+    return topics;
+  }
+
+  const topics = await Section.findTopicsWithTranslationBySectionId(id, lng);
 
   const topicsT = await translateContent({
     lng,

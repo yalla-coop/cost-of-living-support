@@ -17,7 +17,11 @@ const createTopics = async ({ sectionId, topics }, client) => {
     SELECT * FROM UNNEST($1::INTEGER[], $2::JSONB[], $3::INTEGER[])
     RETURNING *;
   `;
-  const values = [topics.map(() => sectionId), topics, topics.map((_, i) => i)];
+  const values = [
+    topics.map(() => sectionId),
+    topics.map((e) => e.content),
+    topics.map((_, i) => i),
+  ];
   const res = await query(sql, values, client);
   return res.rows;
 };

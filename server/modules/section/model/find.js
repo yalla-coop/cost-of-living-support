@@ -95,7 +95,19 @@ const findSectionWithOrgId = async ({ sectionId, organisationId }) => {
   return res.rows[0];
 };
 
-const findTopicsBySectionId = async (id, lng) => {
+const findTopicsBySectionId = async (id) => {
+  const sql = `
+  SELECT
+    topics.id,
+    content
+  FROM topics
+  WHERE topics.section_id = $1
+  ORDER BY position ASC`;
+
+  const res = await query(sql, [id]);
+  return res.rows;
+};
+const findTopicsWithTranslationBySectionId = async (id, lng) => {
   const sql = `
   SELECT
     topics.id,
@@ -116,6 +128,7 @@ export {
   getSectionsByOrgSlugForPublic,
   findSectionById,
   findTopicsBySectionId,
+  findTopicsWithTranslationBySectionId,
   getSubSectionsBySectionIdForPublic,
   findSectionWithOrgId,
 };
