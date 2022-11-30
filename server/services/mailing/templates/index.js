@@ -6,8 +6,10 @@ const templates = {
     english: 'd-0b2d3d4307a24cc1a6fcae028656b5f4',
     // other langs to go here
   },
+
+  // paramsObj:  link
   [templatesId.ORG_EMAIL_UPDATED]: {
-    english: 'TODO: add template id',
+    english: 'd-7443bb53124d418898586e9026a90d5f',
   },
 
   // paramsObj: link
@@ -15,7 +17,7 @@ const templates = {
     english: 'd-6588c8eb51ef42299158e6877ea961f3',
   },
 
-  // paramsObj: link
+  // paramsObj: link ,name
   [templatesId.SIGN_UP]: {
     english: 'd-941442404c374bbd99238344f5407f4c',
   },
