@@ -11,11 +11,13 @@ import {
 } from '../../../components';
 import { navRoutes } from '../../../constants';
 import { useNavigate } from 'react-router-dom';
+import UnderReview from './UnderReview';
 
 const { Col, Row } = Grid;
 
 const EditContent = () => {
-  const [buttons, setButtons] = useState([]);
+  const [sections, setSections] = useState([]);
+  const [pendingSections, setPendingSections] = useState([]);
   const navigate = useNavigate();
 
   const { adminOrg } = useAdminOrg();
@@ -26,13 +28,44 @@ const EditContent = () => {
       const hideMessage = message.loading('Loading...');
       const { data, error } = await Sections.getSections({
         uniqueSlug: adminOrg.uniqueSlug,
-        forPublic: true,
       });
       if (mounted) {
         if (error) {
           message.error('Something went wrong, please try again later');
         } else {
-          setButtons(data.map((item) => ({ ...item, id: item.id.toString() })));
+          const { approvedSections, _pendingSections } = data.reduce(
+            (accumulator, section) => {
+              return section.approvalStatus === 'APPROVED'
+                ? {
+                    approvedSections: [
+                      ...accumulator.approvedSections,
+                      section,
+                    ],
+                    _pendingSections: accumulator._pendingSections,
+                  }
+                : {
+                    approvedSections: accumulator.approvedSections,
+                    _pendingSections: [
+                      ...accumulator._pendingSections,
+                      section,
+                    ],
+                  };
+            },
+            {
+              approvedSections: [],
+              _pendingSections: [],
+            }
+          );
+
+          setSections(
+            approvedSections.map((item) => ({
+              ...item,
+              id: item.id.toString(),
+            }))
+          );
+          if (_pendingSections.length > 0) {
+            setPendingSections(_pendingSections);
+          }
         }
         hideMessage();
       }
@@ -45,7 +78,7 @@ const EditContent = () => {
   }, [adminOrg.uniqueSlug]);
 
   const handleHide = (item) => {
-    setButtons((old) =>
+    setSections((old) =>
       old.map((elm) =>
         elm.id === item.id ? { ...elm, hidden: !elm?.hidden } : elm
       )
@@ -53,15 +86,25 @@ const EditContent = () => {
   };
 
   const handleEdit = (item) => {
-    navigate(navRoutes.ADMIN.EDIT_SECTION.replace('id', item.id));
+    navigate(navRoutes.ADMIN.SECTION.replace(':id', item.id));
   };
 
-  const handleSaveChange = () => {
-    // send the updates to backend (order, and hide/show status)
-    const orderedItems = buttons.map((item, index) => ({
+  const handleSaveChange = async () => {
+    const orderedItems = sections.map((item, index) => ({
       ...item,
-      order: index + 1,
+      position: index + 1,
     }));
+
+    message.loading('Loading...');
+    const { error } = await Sections.updateSectionsOrder({
+      body: {
+        sections: orderedItems,
+        uniqueSlug: adminOrg.uniqueSlug,
+      },
+    });
+    if (error) {
+      message.error('Something went wrong, please try again later');
+    }
   };
 
   return (
@@ -83,22 +126,30 @@ const EditContent = () => {
       <Row>
         <Col w={[4, 12, 8]}>
           <ButtonsSection
-            setButtons={setButtons}
-            buttons={buttons}
+            setButtons={setSections}
+            buttons={sections}
             handleHide={handleHide}
             handleEdit={handleEdit}
             m="2"
           />
         </Col>
       </Row>
-      <Row mb="6" mt="5">
-        <Col w={[4, 10, 5]}>
-          <Button variant="secondary" to={navRoutes.ADMIN.ADD_NEW_SECTION}>
-            Add new section
-          </Button>
-        </Col>
-      </Row>
-      <Row>
+      {pendingSections?.length > 0 && (
+        <UnderReview sections={pendingSections} handleEdit={handleEdit} />
+      )}
+      {pendingSections?.length < 2 && (
+        <Row mb="6" mt="5">
+          <Col w={[4, 10, 5]}>
+            <Button
+              variant="secondary"
+              to={navRoutes.ADMIN.SECTION.replace(':id', 'new')}
+            >
+              Add new section
+            </Button>
+          </Col>
+        </Row>
+      )}
+      <Row mt={pendingSections?.length < 2 ? '0' : '5'}>
         <Col w={[4, 10, 5]}>
           <Button handleClick={handleSaveChange}>Save changes</Button>
         </Col>
