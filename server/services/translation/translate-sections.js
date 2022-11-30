@@ -7,6 +7,7 @@ const translateSections = async ({ lng, sections }) => {
       if (languageCode === lng || lng === 'en') {
         return {
           ...section,
+          languageCode: lng,
           isTranslated: true,
         };
       }
@@ -17,7 +18,7 @@ const translateSections = async ({ lng, sections }) => {
         id,
       });
 
-      return { ...section, title: res.content.title };
+      return { ...section, title: res.content.title, languageCode: lng };
     }),
   );
 

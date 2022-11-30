@@ -38,16 +38,17 @@ const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
         resources: Object.values(topicT.content.resources).map(
           (resource, resourceIndex) => {
             const prevResource =
-              topics[topicTIndex].content.resources[resourceIndex];
+              topics[topicTIndex].englishContent.resources[resourceIndex];
             if (prevResource.key) {
               return {
                 type: prevResource.type,
-                key: prevResource.key && prevResource.key,
+                key: prevResource.key,
+                url: prevResource.url,
               };
             }
             return {
               label: resource.label,
-              url: resource.url,
+              url: prevResource.url,
               type: prevResource.type,
             };
           },

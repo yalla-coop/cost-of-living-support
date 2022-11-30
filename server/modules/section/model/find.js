@@ -137,7 +137,8 @@ const findTopicsWithTranslationBySectionId = async (id, lng) => {
   const sql = `
   SELECT
     topics.id,
-    COALESCE (topics_i18n.content, topics.content) AS content,
+    COALESCE(topics_i18n.content, topics.content) AS content,
+    topics.content AS english_content,
     topics_i18n.language_code
   FROM topics
   LEFT OUTER JOIN topics_i18n
