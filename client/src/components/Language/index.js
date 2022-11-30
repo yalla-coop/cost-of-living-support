@@ -13,7 +13,7 @@ const Language = () => {
   return (
     <>
       <S.Wrapper hide={hide}>
-        <LanguageBar handleHide={handleHide} />
+        <LanguageBar handleHide={handleHide} showBack={true} />
         <LanguageSelector hide={hide} handleHide={handleHide} />
       </S.Wrapper>
     </>

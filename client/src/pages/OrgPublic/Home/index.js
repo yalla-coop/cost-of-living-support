@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../../helpers';
 import { message } from 'antd';
 import { navRoutes, common } from '../../../constants';
 import { generatePath, useParams } from 'react-router-dom';
@@ -18,7 +19,8 @@ import * as S from './style';
 const { Col, Row } = Grid;
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const { lng } = useLanguage();
   const [stuck, setStuck] = useState(false);
   const [cardsData, setCardsData] = useState([]);
   const { publicOrg } = usePublicOrg();
@@ -31,6 +33,7 @@ const Home = () => {
       const { data, error } = await Sections.getSections({
         uniqueSlug,
         forPublic: true,
+        lng,
       });
       if (mounted) {
         if (error) {
@@ -48,12 +51,18 @@ const Home = () => {
     };
   }, [uniqueSlug]);
 
+  i18n.addResourceBundle(lng, 'cardsDataNS', {
+    cardsData,
+  });
+
+  const _cardsData = t('cardsData', { ns: 'cardsDataNS', returnObjects: true });
+
   return (
     <S.Container>
       <LandingContent />
       <S.Section>
         <S.CardsWrapper>
-          {cardsData.map((item) => {
+          {_cardsData.map((item) => {
             return (
               <Cards.SectionCard
                 key={item.id}
