@@ -20,13 +20,14 @@ const SingleButton = ({
           isText
         />
         {(showMenuIcon || handleEdit) && (
-          <S.ButtonWrapper>
+          <S.IconsWrapper>
             {handleEdit && (
               <TextWithIcon
                 icon="edit"
                 iconColor="primaryDark"
                 pointer
                 isButton
+                handleClick={handleEdit}
                 text="Edit"
                 mr="1"
               />
@@ -36,7 +37,7 @@ const SingleButton = ({
                 <Icon icon="menu2" />
               </S.MenuButton>
             )}
-          </S.ButtonWrapper>
+          </S.IconsWrapper>
         )}
       </S.ButtonContent>
       {handleHide && (

@@ -1,6 +1,7 @@
-import React from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import SingleButton from './SingleButton';
+import { useAuth } from '../../context/auth';
+import userRoles from '../../constants/roles';
 
 const colorArray = [
   'primaryDark',
@@ -14,9 +15,10 @@ const getColor = (index, startingColor) => {
 };
 
 function DragDrop({ columns, setColumns, handleHide, handleEdit }) {
+  const { user } = useAuth();
+
   function handleOnDragEnd(result) {
     if (!result.destination) return;
-
     const items = Array.from(columns);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
@@ -48,7 +50,10 @@ function DragDrop({ columns, setColumns, handleHide, handleEdit }) {
                         iconColor={getColor(index, 0)}
                         showMenuIcon
                         handleEdit={
-                          item.isCustomSection ? handleEdit(item) : null
+                          user.role === userRoles.SUPER_ADMIN ||
+                          !item.defaultPosition
+                            ? () => handleEdit(item)
+                            : null
                         }
                         handleHide={
                           item.isCustomSection ? null : () => handleHide(item)
