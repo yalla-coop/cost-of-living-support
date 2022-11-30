@@ -50,7 +50,7 @@ const common = {
       description1:
         'Accessibility on this website is guided by government standards and the Web Content Accessibility Guidelines WCAG are widely accepted as the international standard for accessibility on the web.',
       description2:
-        'Whilst we aim to make this website accessible to all users and achieve a conformance level ‘AAA’; we continually work with stakeholders to ensure that conformance level ‘A’ is adhered to as a minimum.',
+        "Whilst we aim to make this website accessible to all users and achieve a conformance level 'AAA' we continually work with stakeholders to ensure that conformance level 'A' is adhered to as a minimum.",
       tip1: 'Tip! If you experience any accessibility issue on this site or have any comment, please',
 
       tip2: 'Tip! There are many accessibility features on devices, which can be found on links such as',
@@ -61,10 +61,10 @@ const common = {
       androidAccessibility: 'Android accessibility',
       internetExplorerTitle: 'Internet Explorer',
       internetExplorerDescription:
-        'Go to “View” on the menu bar &gt; Select text size / zoom',
+        'Go to “View” on the menu bar - Select text size / zoom',
       firefoxTitle: 'Firefox',
       firefoxDescription:
-        'Go to “View” on the menu bar &gt; Select text size / zoom. Alternatively hold down the “Ctrl” button on your keyboard and press the plus (+) key to increase text size. To reduce the latter hold down the “Ctrl” button and press the minus (-) key. Please note that the above settings may differ depending on the browser version.',
+        'Go to “View” on the menu bar - Select text size / zoom. Alternatively hold down the “Ctrl” button on your keyboard and press the plus (+) key to increase text size. To reduce the latter hold down the “Ctrl” button and press the minus (-) key. Please note that the above settings may differ depending on the browser version.',
       textToSpeechTitle: 'Text To Speech',
       textToSpeechDescription:
         'Many computers and mobile devices today have built in text-to-speech software. Here are guides for each of the major browsers and devices:',
