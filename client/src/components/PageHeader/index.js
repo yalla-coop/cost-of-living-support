@@ -3,9 +3,9 @@ import * as S from './style';
 
 const PageHeader = ({
   title,
-  textColor = 'white',
+  textColor = 'primaryTextMain',
   bgColor = 'secondaryMain',
-  borderColor = 'white',
+  borderColor = 'primaryTextMain',
 }) => {
   return (
     <S.Wrapper bgColor={bgColor}>
@@ -15,7 +15,7 @@ const PageHeader = ({
             text={title}
             customStyles={{
               p: {
-                fontSize: '32px',
+                fontSize: '2rem',
                 fontSizeM: '24px',
                 lineHeight: '44px',
                 lineHeightM: '33.544px',

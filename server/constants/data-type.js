@@ -12,6 +12,8 @@ export const userStatuses = {
 };
 
 export const organisationStatuses = {
+  DELETED: 'DELETED',
+  AWAITING_APPROVAL: 'AWAITING_APPROVAL',
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED',
 };
@@ -48,4 +50,19 @@ export const organisationTypes = {
   SCHOOL: 'School',
   FAITH_ORGANISATION: 'Faith Organisation',
   HOUSING_ASSOCIATION: 'Housing Association',
+};
+
+export const languageCodes = {
+  ENGLISH: 'en',
+  FRENCH: 'fr',
+  GERMAN: 'de',
+  SPANISH: 'es',
+  URDU: 'ur',
+  ITALIAN: 'it',
+  POLISH: 'pl',
+  HINDI: 'hi',
+  RUSSIAN: 'ru',
+  ARABIC: 'ar',
+  PORTUGUESE: 'pt',
+  WELSH: 'cy',
 };

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import GeneralPaddingSection from '../../../components/Layout/GeneralPaddingSection';
 import {
   Typography as T,
@@ -9,24 +10,27 @@ import {
   StillNeedHelp,
 } from '../../../components';
 import { usePublicOrg } from '../../../context/public-org';
-
 import * as S from './style';
 
 const { Row, Col } = Grid;
 const { SingleTip } = Cards;
 const BudgetingPage = () => {
-  const { publicOrg } = usePublicOrg();
+  const { publicOrg, setPageTitle } = usePublicOrg();
   const stillNeedHelp = publicOrg?.resources?.find(
     (resource) => resource.key === 'STILL_NEED_HELP'
   );
 
+  useEffect(() => {
+    setPageTitle('Budgeting');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <S.Container>
       <PageHeader
         title="**Budgeting**"
         textColor="secondaryMain"
         bgColor="neutralLight"
-        borderColor="white"
+        borderColor="primaryTextMain"
       />
       <GeneralPaddingSection>
         <S.Content>
@@ -52,26 +56,26 @@ const BudgetingPage = () => {
               <Col w={[4, 12, 12]}>
                 <SingleTip
                   bgColor="secondaryMain"
-                  borderColor="white"
-                  iconColor="white"
+                  borderColor="primaryTextMain"
+                  iconColor="primaryTextMain"
                   tip={
                     <div>
-                      <T.H3 color="white">Tip!</T.H3>
-                      <S.TipList ml="5" color="white">
+                      <T.H3 color="primaryTextMain">Tip!</T.H3>
+                      <S.TipList ml="5" color="primaryTextMain">
                         <li>
-                          <T.H3 color="white">
+                          <T.H3 color="primaryTextMain">
                             When doing your budget be as honest and accurate as
                             possible.
                           </T.H3>
                         </li>
                         <li>
-                          <T.H3 color="white">
+                          <T.H3 color="primaryTextMain">
                             Put down what you actually spend, as opposed to what
                             you think you should or could spend.{' '}
                           </T.H3>
                         </li>
                         <li>
-                          <T.H3 color="white">
+                          <T.H3 color="primaryTextMain">
                             By creating an accurate budget you get the best
                             possible starting point for making the most of your
                             money, talking to creditors, or getting money or

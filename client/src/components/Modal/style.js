@@ -15,15 +15,15 @@ export const Modal = styled(AntModal)`
   }
 
   .ant-modal-title {
-    color: ${({ theme }) => theme.colors.white};
-    font-family: font-family: 'hero-new-hairline', sans-serif;
+    color: ${({ theme }) => theme.colors.primaryTextMain};
+    font-family: 'new-hero', sans-serif;
     font-weight: 500;
     padding-top: 5px;
   }
 
   .ant-modal-close {
-    color: ${({ theme }) => theme.colors.white};
-    svg { 
+    color: ${({ theme }) => theme.colors.primaryTextMain};
+    svg {
       margin-top: 22px;
       width: 20px;
       height: 20px;

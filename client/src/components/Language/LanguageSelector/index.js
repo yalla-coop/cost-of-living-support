@@ -5,7 +5,8 @@ import { BasicInput } from '../../Inputs/index';
 import * as S from './style';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
-import { types } from '../../../constants/';
+import { useTranslation } from 'react-i18next';
+import { types } from '../../../constants';
 
 const props = {
   weight: 'medium',
@@ -14,6 +15,7 @@ const props = {
 };
 
 export const LanguageSelector = ({ hide, handleHide }) => {
+  const { i18n } = useTranslation();
   const [search, setSearch] = useState('');
 
   const sliceTo =
@@ -24,23 +26,22 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       : types.languageCodes.length;
 
   const languages = Object.entries(types.languageCodes).filter(
-    ([lang, code]) => {
+    ([lng, code]) => {
       return (
         code.toLowerCase().includes(search.toLowerCase()) ||
-        lang.toLowerCase().includes(search.toLowerCase())
+        lng.toLowerCase().includes(search.toLowerCase())
       );
     }
   );
 
-  const changeLanguage = ({ code, lang }) => {
-    // i18n language changer
-    console.log('Language changed to: ' + lang);
+  const changeLanguage = ({ lng }) => {
+    i18n.changeLanguage(types.languageCodes[lng]);
     handleHide();
   };
 
   const Selector = (
-    <S.Wrapper>
-      <S.ButtonWrapper>
+    <S.Wrapper onClick={handleHide}>
+      <S.ButtonWrapper onClick={(e) => e.stopPropagation()}>
         <BasicInput
           handleChange={(val) => setSearch(val)}
           label="Search Language"
@@ -52,14 +53,14 @@ export const LanguageSelector = ({ hide, handleHide }) => {
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         {languages
-          .map(([lang, code]) => {
-            const lng = lang.toLowerCase();
+          .map(([lng, code]) => {
+            const _lng = lng.toLowerCase();
             return (
-              <S.Button>
+              <S.Button onClick={() => changeLanguage({ lng })} key={code}>
                 <TextWithIcon
-                  handleClick={() => changeLanguage({ lang })}
-                  text={lang}
-                  icon={FlagMap[lng] !== undefined ? lng : null}
+                  text={lng}
+                  icon={FlagMap[_lng] !== undefined ? _lng : null}
+                  pointer
                   {...props}
                 />
               </S.Button>

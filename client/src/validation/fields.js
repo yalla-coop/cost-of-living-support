@@ -226,6 +226,12 @@ export const hexColorOptional = string().when((value, schema) => {
 
 export const hexColor = string().required(errMsgs.DEFAULT_REQUIRED);
 
+export const hslColor = object().shape({
+  h: string().required(),
+  s: string().required(),
+  l: string().required(),
+});
+
 export const resourceObjLink = object().shape({
   label: requiredText,
   value: urlRequired,
@@ -234,3 +240,18 @@ export const resourceObjPhone = object().shape({
   label: requiredText,
   value: phoneNumber,
 });
+
+export const topics = array().of(
+  object().shape({
+    title: requiredText,
+    content: requiredText,
+    tip1: optionalText,
+    tip2: optionalText,
+    resources: array().of(
+      object().shape({
+        label: requiredText,
+        url: urlRequired,
+      })
+    ),
+  })
+);

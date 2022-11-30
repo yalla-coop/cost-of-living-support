@@ -17,7 +17,11 @@ const getSectionsByOrgSlugForPublic = async (uniqueSlug) => {
       ON o.id = oso.organisation_id
     INNER JOIN sections AS s
       ON oso.section_id = s.id
-    WHERE o.unique_slug = $1 AND oso.hidden = false AND s.parent_section_id IS NULL
+    WHERE o.unique_slug = $1
+      AND oso.hidden = false
+      AND s.parent_section_id IS NULL
+      AND oso.approval_status = 'APPROVED'
+      AND NOT oso.hidden
     ORDER BY oso.position ASC
   `;
 
@@ -54,6 +58,7 @@ const findSectionById = async (id) => {
     SELECT
       s.id,
       s.title,
+      default_position,
       (
         SELECT
         s2.title
@@ -67,17 +72,43 @@ const findSectionById = async (id) => {
   const res = await query(sql, [id]);
   return res.rows[0];
 };
-const findTopicsBySectionId = async (id) => {
+
+const findSectionWithOrgId = async ({ sectionId, organisationId }) => {
   const sql = `
     SELECT
-      id,
-      content
-    FROM topics
-    WHERE section_id = $1
-    ORDER BY position ASC
+      s.id,
+      s.title,
+      (
+        SELECT
+          ARRAY_AGG(id)
+        FROM topics AS t
+        WHERE t.section_id = s.id
+      ) AS topics_ids
+    FROM sections AS s
+    INNER JOIN organisations_sections_orders AS oso
+      ON s.id = oso.section_id
+    WHERE s.id = $1
+      AND oso.organisation_id = $2
   `;
 
-  const res = await query(sql, [id]);
+  const res = await query(sql, [sectionId, organisationId]);
+  return res.rows[0];
+};
+
+const findTopicsBySectionId = async (id, lng) => {
+  const sql = `
+  SELECT
+    topics.id,
+    COALESCE (topics_i18n.content_i18n, topics.content) AS content,
+    topics_i18n.language_code
+  FROM topics
+  LEFT OUTER JOIN topics_i18n
+    ON topics.id = topics_i18n.topic_id 
+   AND topics_i18n.language_code = $2
+  WHERE topics.section_id = $1
+  ORDER BY position ASC`;
+
+  const res = await query(sql, [id, lng]);
   return res.rows;
 };
 
@@ -86,4 +117,5 @@ export {
   findSectionById,
   findTopicsBySectionId,
   getSubSectionsBySectionIdForPublic,
+  findSectionWithOrgId,
 };

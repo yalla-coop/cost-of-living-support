@@ -1,8 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+import { useAccessibility } from '../../../context/accessibility';
+
 import * as S from './style';
 import { Row } from '../../Grid';
 import { TextWithIcon } from '../../../components';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
+import { useLanguage } from '../../../helpers';
+import * as R from '../../../constants/nav-routes';
 
 const props = {
   weight: 'medium',
@@ -11,32 +16,57 @@ const props = {
   iconColor: 'neutralMain',
 };
 
-const Desktop = ({ dir, showBack, largeText, handleHide }) => {
+const Desktop = ({ dir, showBack, largeText, handleHide, flag, lngFull }) => {
+  const navigate = useNavigate();
+  const { isFontLarge, setIsFontLarge } = useAccessibility();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const LTR = (
     <Row>
       <S.DesktopWrapper>
         <S.ButtonWrapper>
           {showBack && (
-            <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+            <TextWithIcon
+              handleClick={goBack}
+              pointer
+              icon="backArrow"
+              iconColor="neutralMain"
+              isButton
+            />
           )}
+
           <TextWithIcon
-            handleClick={() => null}
-            text="Accessibility"
-            icon="accessibility"
+            handleClick={() => {
+              if (!isFontLarge) {
+                document.getElementsByTagName('html')[0].style.fontSize =
+                  '1.25rem';
+                localStorage.setItem('isFontLarge', 'true');
+                setIsFontLarge(true);
+              } else {
+                document.getElementsByTagName('html')[0].style.fontSize =
+                  '1rem';
+                localStorage.removeItem('isFontLarge');
+                setIsFontLarge(false);
+              }
+            }}
+            text={isFontLarge ? '- Decrease text size' : '+ Increase text size'}
+            icon="textSize"
             {...props}
           />
           <TextWithIcon
-            handleClick={() => null}
-            text={largeText ? '- Decrease text size' : '+ Increase text size'}
-            icon="textSize"
+            handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+            text="Accessibility"
+            icon="accessibility"
             {...props}
           />
         </S.ButtonWrapper>
         <S.ButtonWrapper>
           <TextWithIcon
             handleClick={handleHide}
-            text="English"
-            icon="english"
+            text={lngFull}
+            icon={flag}
             {...props}
           />
         </S.ButtonWrapper>
@@ -49,26 +79,43 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text="Arabic"
-          icon="arabic"
+          text={lngFull}
+          icon={flag}
           {...props}
         />
       </S.ButtonWrapper>
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => null}
-          text={largeText ? '- Decrease text size' : '+ Increase text size'}
+          handleClick={() => {
+            if (!isFontLarge) {
+              document.getElementsByTagName('html')[0].style.fontSize =
+                '1.25rem';
+              localStorage.setItem('isFontLarge', 'true');
+              setIsFontLarge(true);
+            } else {
+              document.getElementsByTagName('html')[0].style.fontSize = '1rem';
+              localStorage.removeItem('isFontLarge');
+              setIsFontLarge(false);
+            }
+          }}
+          text={isFontLarge ? '- Decrease text size' : '+ Increase text size'}
           icon="textSize"
           {...props}
         />
         <TextWithIcon
-          handleClick={() => null}
+          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text="نموذج"
           icon="accessibility"
           {...props}
         />
         {showBack && (
-          <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
+          <TextWithIcon
+            handleClick={goBack}
+            pointer
+            icon="backArrowRTL"
+            iconColor="neutralMain"
+            isButton
+          />
         )}
       </S.ButtonWrapper>
     </S.DesktopWrapper>
@@ -77,24 +124,50 @@ const Desktop = ({ dir, showBack, largeText, handleHide }) => {
   return dir === 'rtl' ? RTL : LTR;
 };
 
-const Tablet = ({ dir, showBack, handleHide }) => {
+const Tablet = ({ dir, showBack, handleHide, flag, lng }) => {
+  const navigate = useNavigate();
+  const { isFontLarge, setIsFontLarge } = useAccessibility();
+  const goBack = () => {
+    navigate(-1);
+  };
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
-        <TextWithIcon icon="backArrow" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrow"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => null}
+          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text="Accessibility"
           icon="accessibility"
           {...props}
         />
-        <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
+        <TextWithIcon
+          handleClick={() => {
+            if (!isFontLarge) {
+              document.getElementsByTagName('html')[0].style.fontSize =
+                '1.25rem';
+              localStorage.setItem('isFontLarge', 'true');
+              setIsFontLarge(true);
+            } else {
+              document.getElementsByTagName('html')[0].style.fontSize = '1rem';
+              localStorage.removeItem('isFontLarge');
+              setIsFontLarge(false);
+            }
+          }}
+          icon="textSize"
+          {...props}
+        />
         <TextWithIcon
           handleClick={handleHide}
-          text="EN"
-          icon="english"
+          text={lng}
+          icon={flag}
           {...props}
         />
       </S.ButtonWrapper>
@@ -106,20 +179,41 @@ const Tablet = ({ dir, showBack, handleHide }) => {
       <S.ButtonWrapper>
         <TextWithIcon
           handleClick={handleHide}
-          text="AR"
-          icon="arabic"
+          text={lng}
+          icon={flag}
           {...props}
         />
-        <TextWithIcon handleClick={() => null} icon="textSize" {...props} />
+        <TextWithIcon
+          handleClick={() => {
+            if (!isFontLarge) {
+              document.getElementsByTagName('html')[0].style.fontSize =
+                '1.25rem';
+              localStorage.setItem('isFontLarge', 'true');
+              setIsFontLarge(true);
+            } else {
+              document.getElementsByTagName('html')[0].style.fontSize = '1rem';
+              localStorage.removeItem('isFontLarge');
+              setIsFontLarge(false);
+            }
+          }}
+          icon="textSize"
+          {...props}
+        />
         <TextWithIcon
           text="نموذج"
-          handleClick={() => null}
+          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           icon="accessibility"
           {...props}
         />
       </S.ButtonWrapper>
       {showBack && (
-        <TextWithIcon icon="backArrowRTL" iconColor="neutralMain" isButton />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrowRTL"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
     </S.TabletWrapperRTL>
   );
@@ -127,10 +221,22 @@ const Tablet = ({ dir, showBack, handleHide }) => {
   return dir === 'rtl' ? RTL : LTR;
 };
 
-export const LanguageBar = ({ dir, largeText, showBack, handleHide }) => {
-  const props = { dir, largeText, showBack, handleHide };
+export const LanguageBar = ({ largeText, showBack, handleHide }) => {
+  const { lngFull, lngUpperCase, flag, dir } = useLanguage();
+
+  const props = {
+    dir,
+    largeText,
+    showBack,
+    handleHide,
+    flag,
+    lngFull,
+    lng: lngUpperCase,
+  };
+
   const isTablet = useMediaQuery({
     query: `(max-width: ${theme.breakpoints.tablet})`,
   });
+
   return isTablet ? <Tablet {...props} /> : <Desktop {...props} />;
 };
