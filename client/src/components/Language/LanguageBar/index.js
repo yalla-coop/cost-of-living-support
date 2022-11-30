@@ -29,15 +29,21 @@ const Desktop = ({
 }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const LTR = (
     <Row>
       <S.DesktopWrapper>
         <S.ButtonWrapper>
           {showBack && (
-            <GoBack
-              languageBarIcon="backArrow"
+            <TextWithIcon
+              handleClick={goBack}
+              pointer
+              icon="backArrow"
               iconColor="neutralMain"
-              noText
+              isButton
             />
           )}
 
@@ -113,10 +119,12 @@ const Desktop = ({
           {...props}
         />
         {showBack && (
-          <GoBack
-            languageBarIcon="backArrowRTL"
+          <TextWithIcon
+            handleClick={goBack}
+            pointer
+            icon="backArrowRTL"
             iconColor="neutralMain"
-            noText
+            isButton
           />
         )}
       </S.ButtonWrapper>
@@ -129,11 +137,19 @@ const Desktop = ({
 const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-
+  const goBack = () => {
+    navigate(-1);
+  };
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
-        <GoBack languageBarIcon="backArrow" iconColor="neutralMain" noText />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrow"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
       <S.ButtonWrapper>
         <TextWithIcon
@@ -201,7 +217,13 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
         />
       </S.ButtonWrapper>
       {showBack && (
-        <GoBack languageBarIcon="backArrowRTL" iconColor="neutralMain" noText />
+        <TextWithIcon
+          handleClick={goBack}
+          pointer
+          icon="backArrowRTL"
+          iconColor="neutralMain"
+          isButton
+        />
       )}
     </S.TabletWrapperRTL>
   );
