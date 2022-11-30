@@ -18,7 +18,9 @@ const buildTables = async () => {
   await models.organisationsSectionsOrders.createTable();
   await models.organisationsResources.createTable();
   await models.contentAuditLog.createTable();
+
   await models.contentAuditLog.createTriggers();
+  await models.topics.createTriggers();
 };
 
 export default buildTables;
