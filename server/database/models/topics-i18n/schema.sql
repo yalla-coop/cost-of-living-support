@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS "topics_i18n" CASCADE;
 
 CREATE TABLE "topics_i18n" (
   "id" SERIAL PRIMARY KEY,
-  "topic_id" INTEGER REFERENCES topics(id),
+  "topic_id" INTEGER NOT NULL REFERENCES topics(id) ON DELETE CASCADE,
   "language_code" language_codes NOT NULL,
   "content" JSONB,
 -- {

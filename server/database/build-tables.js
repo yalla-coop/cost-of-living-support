@@ -13,6 +13,7 @@ const buildTables = async () => {
   await models.organisations.createTable();
   await models.users.createTable();
   await models.sections.createTable();
+  await models.sectionsI18n.createTable();
   await models.topics.createTable();
   await models.topicsI18n.createTable();
   await models.organisationsSectionsOrders.createTable();
@@ -21,6 +22,8 @@ const buildTables = async () => {
 
   await models.contentAuditLog.createTriggers();
   await models.topics.createTriggers();
+  await models.sections.createTriggers();
+  await models.common.createTriggers();
 };
 
 export default buildTables;

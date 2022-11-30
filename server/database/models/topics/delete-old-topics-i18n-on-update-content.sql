@@ -1,4 +1,4 @@
--- trgger to delete old topics translations if the english content is updated or topic is deleted
+-- trgger to delete old topics translations if the english content is updated
 
 CREATE OR REPLACE FUNCTION delete_old_topics_i18n_on_update_content_fn()
 RETURNS TRIGGER AS $$
@@ -11,7 +11,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER delete_old_topics_i18n_on_update_content_tr
-  AFTER UPDATE OF content OR DELETE ON topics
+  AFTER UPDATE OF content ON topics
     FOR EACH ROW
       EXECUTE PROCEDURE delete_old_topics_i18n_on_update_content_fn();
 
