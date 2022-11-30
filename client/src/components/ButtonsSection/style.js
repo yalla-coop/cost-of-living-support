@@ -25,6 +25,11 @@ export const buttonStyle = {
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  width: 100%;
+  cursor: pointer;
+`;
+export const IconsWrapper = styled.div`
+  display: flex;
 `;
 export const ButtonContent = styled.div`
   background: ${({ theme }) => theme.colors.neutralSurface};
