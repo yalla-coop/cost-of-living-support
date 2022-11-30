@@ -29,6 +29,38 @@ const getSectionsByOrgSlugForPublic = async (uniqueSlug) => {
   return res.rows;
 };
 
+const getSectionsByOrgSlug = async (uniqueSlug) => {
+  const sql = `
+    SELECT
+      s.id,
+      s.title,
+      s.default_position,
+      o.id AS organisation_id,
+      oso.position AS position,
+      oso.hidden AS hidden,
+      oso.approval_status AS approval_status,
+      (
+        SELECT
+          COUNT(*)
+        FROM
+          sections AS s2
+        WHERE s2.parent_section_id = s.id
+      ) > 0 AS has_sub_sections
+    FROM organisations AS o
+    INNER JOIN organisations_sections_orders AS oso
+      ON o.id = oso.organisation_id
+    INNER JOIN sections AS s
+      ON oso.section_id = s.id
+    WHERE o.unique_slug = $1
+      AND s.parent_section_id IS NULL
+    ORDER BY oso.position ASC
+  `;
+
+  const res = await query(sql, [uniqueSlug]);
+
+  return res.rows;
+};
+
 const getSubSectionsBySectionIdForPublic = async (id) => {
   const sql = `
     SELECT 
@@ -118,4 +150,5 @@ export {
   findTopicsBySectionId,
   getSubSectionsBySectionIdForPublic,
   findSectionWithOrgId,
+  getSectionsByOrgSlug,
 };
