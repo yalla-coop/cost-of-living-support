@@ -9,15 +9,10 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
-resource "aws_ecr_repository" "shannon-trust-repository" {
-  name = "${local.aws_ecr_repository_name}"
-}
-
-resource "aws_cloudformation_stack" "network" {
-  name = "${local.aws_vpc_stack_name}"
-  template_body = "${file("cloudformation-templates/network.yml")}"
+resource "aws_cloudformation_stack" "bucket" {
+  name = "cost-of-living-support-staging"
+  template_body = "${file("cloudformation-templates/s3_bucket.yml")}"
   parameters = {
-    ECSClusterName = "${local.aws_ecs_cluster_name}"
     DomainName = "${local.api_domain}"
     HostedZoneId = "${var.HOSTED_ZONE_ID}"
     ServiceDiscoveryNamespace = "${local.service_discovery_namespace}"
