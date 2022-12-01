@@ -48,8 +48,8 @@ Resources:
         Properties:
           UserName: !Ref UserName
 
-Outputs:
-  AccessKeyID:
-    Value: !Ref S3UserAccessKey
-  SecretAccessKey: 
-    Value: !GetAtt S3UserAccessKey.SecretAccessKey
+#Outputs:
+  #AccessKeyID:
+  #  Value: !Ref S3UserAccessKey
+  #SecretAccessKey: 
+  #  Value: !GetAtt S3UserAccessKey.SecretAccessKey
