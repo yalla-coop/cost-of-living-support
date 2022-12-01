@@ -41,6 +41,14 @@ const templates = {
   [templatesId.SECTION_REJECTED]: {
     english: 'd-5703cff3449a469491fc6de68e28c524',
   },
+  [templatesId.ORG_REJECTED]: {
+    english: 'TODO: add template id',
+    // other langs to go here
+  },
+  [templatesId.ORG_APPROVED]: {
+    english: 'TODO: add template id',
+    // other langs to go here
+  },
 };
 
 const getTemplate = (template, language) => {

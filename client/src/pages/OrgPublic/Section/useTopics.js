@@ -5,11 +5,13 @@ import { message } from 'antd';
 const useTopics = (id, lng, resources) => {
   const [topics, setTopics] = useState([]);
   const [markedTopics, setMarkedTopics] = useState([]);
+
   useEffect(() => {
     const fetchTopics = async () => {
       const { data, error } = await Sections.getTopics({
         sectionId: id,
         lng,
+        forPublic: true,
       });
       if (error) {
         message.error('Something went wrong, please try again later');
