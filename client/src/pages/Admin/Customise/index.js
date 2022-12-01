@@ -275,8 +275,31 @@ const Customise = () => {
         <Col w={[4, 12, 6]}>
           <T.H2>Colours</T.H2>
         </Col>
+        <Col w={[4, 12, 12]}>
+          <T.P color="neutralDark" mt="4">
+            The default main header is a gradient background. If you would like
+            to change it to your main brand colour you can do that below.
+          </T.P>
+        </Col>
       </Row>
-
+      <Row my="4">
+        <Col w={[4, 6, 4]}>
+          <I.ColorPicker
+            color={mainHeaderBgColor || ''}
+            onChange={(v) => setState({ mainHeaderBgColor: v })}
+            label="Main header background colour"
+            error={validationErrs.mainHeaderBgColor}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col w={[4, 12, 12]}>
+          <T.P color="neutralDark" mt="6">
+            To change the main section cards on the landing page and each
+            section header, please select your brand colours below
+          </T.P>
+        </Col>
+      </Row>
       <Row w mb="6">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker

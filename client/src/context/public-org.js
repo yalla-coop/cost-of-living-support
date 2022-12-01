@@ -61,22 +61,6 @@ const PublicOrg = (props) => {
     section4TextColor,
     section5TextColor,
   }) => {
-    if (
-      ![
-        section1BgColor,
-        section2BgColor,
-        section3BgColor,
-        section4BgColor,
-        section5BgColor,
-        section1TextColor,
-        section2TextColor,
-        section3TextColor,
-        section4TextColor,
-        section5TextColor,
-      ].every((i) => i)
-    ) {
-      return colors;
-    }
     const updated = {
       ...colors,
       mainHeaderBgColor: mainHeaderBgColor && formatColor(mainHeaderBgColor),
