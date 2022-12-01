@@ -1,5 +1,6 @@
 import { useEffect, createContext, useState, useContext } from 'react';
 import { ThemeProvider } from '@emotion/react';
+import formatColor from '../helpers/format-color';
 import { Organisations } from '../api-calls';
 import { matchPath, useLocation, Outlet } from 'react-router-dom';
 
@@ -62,7 +63,6 @@ const PublicOrg = (props) => {
   }) => {
     if (
       ![
-        mainHeaderBgColor,
         section1BgColor,
         section2BgColor,
         section3BgColor,
@@ -77,22 +77,20 @@ const PublicOrg = (props) => {
     ) {
       return colors;
     }
-
     const updated = {
       ...colors,
-      mainHeaderBgColor,
-      section1BgColor,
-      section2BgColor,
-      section3BgColor,
-      section4BgColor,
-      section5BgColor,
-      section1TextColor,
-      section2TextColor,
-      section3TextColor,
-      section4TextColor,
-      section5TextColor,
+      mainHeaderBgColor: mainHeaderBgColor && formatColor(mainHeaderBgColor),
+      section1BgColor: section1BgColor && formatColor(section1BgColor),
+      section2BgColor: section2BgColor && formatColor(section2BgColor),
+      section3BgColor: section3BgColor && formatColor(section3BgColor),
+      section4BgColor: section4BgColor && formatColor(section4BgColor),
+      section5BgColor: section5BgColor && formatColor(section5BgColor),
+      section1TextColor: section1TextColor && formatColor(section1TextColor),
+      section2TextColor: section2TextColor && formatColor(section2TextColor),
+      section3TextColor: section3TextColor && formatColor(section3TextColor),
+      section4TextColor: section4TextColor && formatColor(section4TextColor),
+      section5TextColor: section5TextColor && formatColor(section5TextColor),
     };
-
     return updated;
   };
 
@@ -109,7 +107,6 @@ const PublicOrg = (props) => {
           return resource || r;
         }),
         colors: updatedColors(data.colors || defaultColors),
-        useBlockColors: data?.colors?.useBlockColors || false,
       });
     } else {
       _setPublicOrg(initialPublicOrgState);
@@ -131,11 +128,7 @@ const PublicOrg = (props) => {
     setPageTitle,
   };
   return (
-    <ThemeProvider
-      theme={(theme) =>
-        adjustedTheme(theme, publicOrg.colors, publicOrg.useBlockColors)
-      }
-    >
+    <ThemeProvider theme={(theme) => adjustedTheme(theme, publicOrg.colors)}>
       <PublicOrgContext.Provider value={value} {...props} />
     </ThemeProvider>
   );
