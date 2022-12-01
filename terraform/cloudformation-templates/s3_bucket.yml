@@ -31,6 +31,8 @@ Resources:
   S3User:
     Type: AWS::IAM::User
     Properties:
+      UserName: 
+        !Ref UserName
       Policies:
         - PolicyName: bucket-access
           PolicyDocument:
