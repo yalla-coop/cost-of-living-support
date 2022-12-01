@@ -14,6 +14,7 @@ resource "aws_cloudformation_stack" "bucket" {
   template_body = "${file("../cloudformation-templates/s3_bucket.yml")}"
   parameters = {
     BucketName = "${local.aws_bucket_name}"
+    UserName = "${local.aws_bucket_user_name}"
   }
   # capabilities = ["CAPABILITY_IAM"]
 }
