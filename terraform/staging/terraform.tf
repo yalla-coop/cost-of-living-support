@@ -16,5 +16,5 @@ resource "aws_cloudformation_stack" "bucket" {
     BucketName = "${local.aws_bucket_name}"
     UserName = "${local.aws_bucket_user_name}"
   }
-  # capabilities = ["CAPABILITY_IAM"]
+  capabilities = ["CAPABILITY_IAM"]
 }
