@@ -7,7 +7,7 @@ variable "aws_resource_prefix" {
 variable "environment" {
   description = "Active environment - production / staging"
   validation {
-    condition     = contains(["production", "staging"], var.input_parameter)
+    condition     = contains(["production", "staging"], var.environment)
     error_message = "Allowed values for environment are \"production\" or \"staging\"."
   }
 }
