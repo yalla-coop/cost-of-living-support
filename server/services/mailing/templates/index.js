@@ -23,12 +23,12 @@ const templates = {
   },
 
   // paramsObj: link
-  [templatesId.PROFILE_APPROVED]: {
+  [templatesId.ORG_APPROVED]: {
     english: 'd-1e195950b55e408093f30f2829f5ad48',
   },
 
   // paramsObj: rejection_reasons
-  [templatesId.PROFILE_REJECTED]: {
+  [templatesId.ORG_REJECTED]: {
     english: 'd-75319eb88b9f496185fd895b621bb97d',
   },
 
@@ -40,14 +40,6 @@ const templates = {
   // paramsObj: section_title , content_link ,feedback
   [templatesId.SECTION_REJECTED]: {
     english: 'd-5703cff3449a469491fc6de68e28c524',
-  },
-  [templatesId.ORG_REJECTED]: {
-    english: 'TODO: add template id',
-    // other langs to go here
-  },
-  [templatesId.ORG_APPROVED]: {
-    english: 'TODO: add template id',
-    // other langs to go here
   },
 };
 
