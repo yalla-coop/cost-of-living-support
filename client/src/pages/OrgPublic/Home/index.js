@@ -16,6 +16,7 @@ import {
 import LandingContent from './LandingContent';
 import HelpButton from '../../../components/HelpButton';
 import * as S from './style';
+
 const { Col, Row } = Grid;
 
 const Home = () => {
