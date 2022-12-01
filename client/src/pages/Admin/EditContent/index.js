@@ -95,7 +95,7 @@ const EditContent = () => {
       position: index + 1,
     }));
 
-    message.loading('Loading...');
+    const hideMessage = message.loading('Loading...');
     const { error } = await Sections.updateSectionsOrder({
       body: {
         sections: orderedItems,
@@ -105,6 +105,7 @@ const EditContent = () => {
     if (error) {
       message.error('Something went wrong, please try again later');
     }
+    hideMessage();
   };
 
   return (
@@ -124,7 +125,7 @@ const EditContent = () => {
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 12, 8]}>
+        <Col w={[4, 12, 12]}>
           <ButtonsSection
             setButtons={setSections}
             buttons={sections}

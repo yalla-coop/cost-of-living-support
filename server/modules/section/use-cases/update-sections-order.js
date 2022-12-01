@@ -10,7 +10,7 @@ const updateSectionsOrder = async ({
 }) => {
   const updatedSectionsIds = sections.map(({ id }) => id);
 
-  const existingSections = await Sections.getSectionsByOrgSlug(uniqueSlug);
+  const existingSections = await Sections.findSectionsByOrgSlug(uniqueSlug);
   // check if the user is the owner of the sections
   const isOwner = updatedSectionsIds.every((sectionId) => {
     return existingSections.find(

@@ -1,5 +1,3 @@
-import { organisationStatuses } from '../../../constants';
-import { addDefaultSectionsForOrganisation } from '../../section/model';
 import { updateOrganisationStatus as updateOrganisationStatusUseCase } from '../use-cases';
 
 const updateOrganisationStatus = async (req, res, next) => {
@@ -12,10 +10,6 @@ const updateOrganisationStatus = async (req, res, next) => {
       status,
       explanation,
     });
-
-    if (status === organisationStatuses.APPROVED) {
-      await addDefaultSectionsForOrganisation({ organisationId: id });
-    }
 
     res.json(organisations);
   } catch (error) {

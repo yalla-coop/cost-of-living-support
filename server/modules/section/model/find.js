@@ -1,6 +1,6 @@
 import { query } from '../../../database';
 
-const getSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
+const findSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
   const sql = `
     SELECT
       s.id,
@@ -32,7 +32,7 @@ const getSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
   return res.rows;
 };
 
-const getSectionsByOrgSlug = async (uniqueSlug) => {
+const findSectionsByOrgSlug = async (uniqueSlug) => {
   const sql = `
     SELECT
       s.id,
@@ -184,12 +184,12 @@ const findTopicsWithTranslationBySectionId = async (id, lng) => {
 };
 
 export {
-  getSectionsByOrgSlugForPublic,
+  findSectionsByOrgSlugForPublic,
   findSectionById,
   findTopicsBySectionId,
   findTopicsWithTranslationBySectionId,
   getSubSectionsBySectionIdForPublic,
   findSectionWithOrgId,
-  getSectionsByOrgSlug,
+  findSectionsByOrgSlug,
   findSectionWithTranslationById,
 };

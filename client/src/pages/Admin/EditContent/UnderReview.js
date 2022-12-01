@@ -19,7 +19,7 @@ const UnderReview = ({ sections = [], handleEdit }) => {
         <T.H2 mb="4">Under review</T.H2>
       </Col>
       {sections.map((item, index) => (
-        <Col w={[4, 12, 7]} key={item.id}>
+        <Col w={[4, 12, 8]} key={item.id}>
           <SingleButton
             title={item.title}
             iconColor={getColor(index, 0)}

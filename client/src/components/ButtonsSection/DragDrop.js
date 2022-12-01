@@ -49,6 +49,7 @@ function DragDrop({ columns, setColumns, handleHide, handleEdit }) {
                         title={item.title}
                         iconColor={getColor(index, 0)}
                         showMenuIcon
+                        cursor="move"
                         handleEdit={
                           user.role === userRoles.SUPER_ADMIN ||
                           !item.defaultPosition

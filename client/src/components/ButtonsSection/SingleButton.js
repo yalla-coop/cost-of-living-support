@@ -8,10 +8,11 @@ const SingleButton = ({
   handleEdit,
   handleHide,
   hidden,
+  cursor,
   ...props
 }) => {
   return (
-    <S.ButtonWrapper {...props}>
+    <S.ButtonWrapper cursor={cursor} {...props}>
       <S.ButtonContent>
         <TextWithIcon
           icon="forwardArrow"
@@ -34,7 +35,7 @@ const SingleButton = ({
             )}
             {showMenuIcon && (
               <S.MenuButton>
-                <Icon icon="menu2" />
+                <Icon icon="menu2" pointer />
               </S.MenuButton>
             )}
           </S.IconsWrapper>

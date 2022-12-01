@@ -19,8 +19,9 @@ const updateSectionOrder = async (
 ) => {
   const sql = `
     UPDATE organisations_sections_orders
-    SET position = $2,
-    hidden = $3
+    SET
+      position = $2,
+      hidden = $3
     WHERE section_id = $1 AND organisation_id = $4
     RETURNING *;
   `;
