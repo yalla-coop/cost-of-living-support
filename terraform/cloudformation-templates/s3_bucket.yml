@@ -46,7 +46,7 @@ Resources:
         Type:
           AWS::IAM::AccessKey
         Properties:
-          UserName: !Ref S3User
+          UserName: !Ref UserName
 
 Outputs:
   AccessKeyID:
