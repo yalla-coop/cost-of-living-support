@@ -28,25 +28,26 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
 
-  #S3User:
-  #  Type: AWS::IAM::User
-  #  Properties:
-  #    Policies:
-  #      - PolicyName: bucket-access
-  #    PolicyDocument:
-  #    Version: '2012-10-17'
-  #    Statement:
-  #      - Effect: Allow
-  #    Action:
-  #      - s3:*
-  #    Resource:
-  #      - !Sub arn:aws:s3:::${S3Bucket}
-  #      - !Sub arn:aws:s3:::${S3Bucket}/*
-  #    S3UserAccessKey:
-  #      Type:
-  #        AWS::IAM::AccessKey
-  #      Properties:
-  #        UserName: !Ref UserName
+  S3User:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+        - PolicyName: bucket-access
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:*
+                Resource:
+                  - !Sub arn:aws:s3:::${S3Bucket}
+                  - !Sub arn:aws:s3:::${S3Bucket}/*
+
+  S3UserAccessKey:
+    Type:
+      AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref UserName
 
 #Outputs:
   #AccessKeyID:
