@@ -24,7 +24,7 @@ const SingleButton = ({
             {handleEdit && (
               <TextWithIcon
                 icon="edit"
-                iconColor="primaryDark"
+                iconColor="primaryMain"
                 pointer
                 isButton
                 text="Edit"
@@ -43,7 +43,7 @@ const SingleButton = ({
         <S.HideWrapper ml="2" mb="2">
           <TextWithIcon
             icon="hide"
-            iconColor="primaryDark"
+            iconColor="primaryMain"
             isButton
             pointer
             text={hidden ? 'Show' : 'Hide'}
