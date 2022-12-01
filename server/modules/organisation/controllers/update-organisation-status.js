@@ -5,11 +5,12 @@ import { updateOrganisationStatus as updateOrganisationStatusUseCase } from '../
 const updateOrganisationStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
+    const { status, explanation } = req.body;
 
     const organisations = await updateOrganisationStatusUseCase({
       id,
       status,
+      explanation,
     });
 
     if (status === organisationStatuses.APPROVED) {
