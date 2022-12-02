@@ -2,29 +2,28 @@ import * as Organisation from '../model';
 import sendEmail from '../../../services/mailing';
 import * as templatesId from '../../../services/mailing/templates/templates-constants';
 import { addDefaultSectionsForOrganisation } from '../../section/model';
-import * as User from '../../user/model';
 import { organisationStatuses } from '../../../constants';
 
+// id is the organisation id NOT user's
 const updateOrganisationStatus = async ({ id, status, explanation }) => {
   await Organisation.updateOrganisationStatus({ id, status });
 
-  const user = await User.findUserWithOrgDetails(id);
+  const organisation = await Organisation.findOrganisationsWithUserByOrgId(id);
   if (status === organisationStatuses.APPROVED) {
     await addDefaultSectionsForOrganisation({ organisationId: id });
-
     sendEmail(
       templatesId.ORG_APPROVED,
-      { to: user.email },
+      { to: organisation.userEmail },
       {
-        name: user.firstName,
+        name: organisation.userFirstName,
       },
     );
   } else if (status === organisationStatuses.REJECTED) {
     sendEmail(
       templatesId.ORG_REJECTED,
-      { to: user.email },
+      { to: organisation.userEmail },
       {
-        name: user.firstName,
+        name: organisation.userFirstName,
         explanation,
       },
     );

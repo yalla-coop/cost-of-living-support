@@ -19,6 +19,14 @@ const templates = {
     english: 'TODO: add template id',
     // other langs to go here
   },
+  [templatesId.SECTION_REJECTED]: {
+    english: 'TODO: add template id',
+    // other langs to go here
+  },
+  [templatesId.SECTION_APPROVED]: {
+    english: 'TODO: add template id',
+    // other langs to go here
+  },
 };
 
 const getTemplate = (template, language) => {
