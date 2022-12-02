@@ -41,11 +41,12 @@ const CommonLogic = ({ children }) => {
 
   useEffect(() => {
     setDirection(dir);
+    console.log('dir', dir);
     return () => {
       setDirection('ltr');
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [lng]);
 
   return (
     <CommonContextData.Provider value={{ data }}>

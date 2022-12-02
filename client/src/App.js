@@ -98,20 +98,21 @@ function App() {
                     />
                   }
                 />
-                <Route
-                  exact
-                  path={navRoutes.GENERAL.ACCESSIBILITY}
-                  element={
-                    <CustomRoute
-                      Component={Pages.Accessibility}
-                      layout="general"
-                      showBack
-                    />
-                  }
-                />
+
                 {/* ORGS PUBLIC PAGES */}
                 <Route element={<PublicOrgProvider />}>
                   <Route element={<CommonProvider />}>
+                    <Route
+                      exact
+                      path={navRoutes.GENERAL.ACCESSIBILITY}
+                      element={
+                        <CustomRoute
+                          Component={Pages.Accessibility}
+                          layout="general"
+                          showBack
+                        />
+                      }
+                    />
                     <Route
                       exact
                       path={navRoutes.PUBLIC_ORG.SECTION}
