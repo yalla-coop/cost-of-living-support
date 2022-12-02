@@ -2,27 +2,63 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compiler } from 'markdown-to-jsx';
 import * as T from '../Typography';
+import * as S from './style';
+
+const bold = (text) => {
+  const boldRgx = /\*\*(.*?)\*\*/gm;
+  const html = text.replace(boldRgx, '<strong>$1</strong>');
+  return html;
+};
 
 const Markdown = ({
   text,
+  color,
   customStyles = {
     h1: {},
     h2: {},
     h3: {},
     p: {},
+    link: {},
   },
   customRender = {},
 }) => {
   const overrides = {
-    h1: (props) => <T.P {...customStyles.p} {...props} />,
-    h2: (props) => <T.P {...customStyles.p} {...props} />,
-    h3: (props) => <T.P {...customStyles.p} {...props} />,
+    a: (props) => {
+      return (
+        <T.Link
+          external={true}
+          color={customStyles.color}
+          {...customStyles.link}
+          {...props}
+        />
+      );
+    },
+    h3: (props) => (
+      <T.H3
+        color={customStyles.color || color}
+        {...customStyles.h3}
+        {...props}
+      />
+    ),
     p: (props) =>
       customRender?.p ? (
         customRender.p({ ...props })
       ) : (
-        <T.P {...customStyles.p} {...props} />
+        <T.P
+          color={customStyles.color || color}
+          {...customStyles.p}
+          {...props}
+        />
       ),
+    li: (props) => (
+      <li>
+        <T.H3
+          color={customStyles.color || color}
+          {...customStyles.li}
+          {...props}
+        />
+      </li>
+    ),
   };
 
   if (typeof text !== 'string') {
@@ -32,11 +68,15 @@ const Markdown = ({
     );
     return null;
   }
-  return compiler(text, {
-    overrides,
-    forceBlock: true,
-    wrapper: React.Fragment,
-  });
+  return (
+    <S.Wrapper color={color}>
+      {compiler(bold(text), {
+        overrides,
+        forceBlock: true,
+        // wrapper: React.Fragment,
+      })}
+    </S.Wrapper>
+  );
 };
 
 Markdown.propTypes = {

@@ -116,9 +116,9 @@ export const P = styled(({ isSmall, ...props }) => {
     isSmall ? '1.25rem !important' : '1.5rem !important'};
 `;
 
-const AntdLink = ({ to, external = false, underline, ...props }) => {
+const AntdLink = ({ to, href, external = false, underline, ...props }) => {
   return external ? (
-    <Typography.Link target="_blank" href={to} {...props} />
+    <Typography.Link target="_blank" href={href || to} {...props} />
   ) : (
     <RouterLink to={to} {...props}>
       {props.children}
