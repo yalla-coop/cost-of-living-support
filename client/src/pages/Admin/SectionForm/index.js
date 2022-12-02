@@ -318,7 +318,7 @@ const SectionForm = () => {
                 handleClick={addNewTopic}
                 mb={'57px'}
                 iconProps={{
-                  color: 'primaryDark',
+                  color: 'primaryMain',
                   icon: 'add',
                 }}
               />

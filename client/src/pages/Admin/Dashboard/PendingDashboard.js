@@ -25,8 +25,8 @@ const PendingDashboard = () => {
           <SingleTip
             style={{ width: '100%' }}
             bgColor="primaryLight"
-            borderColor="primaryDark"
-            iconColor="primaryDark"
+            borderColor="primaryMain"
+            iconColor="primaryMain"
             mt={6}
             mb="0"
             tip={
@@ -45,7 +45,7 @@ const PendingDashboard = () => {
                 ai="flex-start"
                 isText
                 iconProps={{
-                  color: 'primaryDark',
+                  color: 'primaryMain',
                   icon: 'forwardArrow',
                 }}
               />
@@ -75,7 +75,7 @@ const PendingDashboard = () => {
                 mr="6px"
                 isText
                 iconProps={{
-                  color: 'primaryDark',
+                  color: 'tertiaryMain',
                   icon: 'forwardArrow',
                 }}
               />

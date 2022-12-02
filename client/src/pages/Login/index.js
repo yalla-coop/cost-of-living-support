@@ -168,7 +168,7 @@ const Login = () => {
             text="Don’t have an account? Sign up"
             mr="4px"
             iconProps={{
-              color: 'primaryDark',
+              color: 'primaryMain',
               icon: 'forwardArrow',
             }}
           />

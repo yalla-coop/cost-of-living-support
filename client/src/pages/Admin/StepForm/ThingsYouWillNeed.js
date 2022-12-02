@@ -58,7 +58,7 @@ const ThingsYouWillNeed = ({ state, setState, errors }) => {
             weight="semi"
             disabled={!state.every((item) => item.title)}
             iconProps={{
-              color: 'primaryDark',
+              color: 'primaryMain',
               icon: 'add',
             }}
           />

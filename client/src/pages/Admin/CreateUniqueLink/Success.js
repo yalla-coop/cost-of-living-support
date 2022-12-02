@@ -30,7 +30,7 @@ function CreateUniqueLinkSuccess({ uniqueSlug }) {
               external
               underline
               iconProps={{
-                color: 'primaryDark',
+                color: 'primaryMain',
                 icon: 'open',
               }}
             />

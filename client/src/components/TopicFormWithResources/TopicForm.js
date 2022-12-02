@@ -100,7 +100,7 @@ const TopicForm = ({
                 error={errors?.tip1}
                 iconProps={{
                   icon: 'add',
-                  color: 'primaryDark',
+                  color: 'primaryMain',
                 }}
               />
             )}
@@ -118,7 +118,7 @@ const TopicForm = ({
         ai="center"
         iconProps={{
           icon: 'close',
-          color: 'primaryDark',
+          color: 'primaryMain',
           pointer: true,
         }}
       />

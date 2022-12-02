@@ -81,7 +81,7 @@ const InputCMS = ({
           handleClick={handleRemove}
           weight="semi"
           iconProps={{
-            color: 'primaryDark',
+            color: 'primaryMain',
             icon: 'close',
           }}
         />

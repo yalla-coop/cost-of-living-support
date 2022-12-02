@@ -70,7 +70,7 @@ const Dashboard = () => {
               external
               underline
               iconProps={{
-                color: 'primaryDark',
+                color: 'primaryMain',
                 icon: 'open',
               }}
             />
@@ -81,7 +81,7 @@ const Dashboard = () => {
               to={R.ADMIN.EDIT_ACCOUNT_DETAILS}
               text="Edit my organisation details"
               iconProps={{
-                color: 'primaryDark',
+                color: 'primaryMain',
                 icon: 'forwardArrow',
               }}
             />

@@ -77,7 +77,7 @@ const InputArray = ({
                 disabled={disabled || (values.length === 1 && index === 0)}
                 onClick={() => removeValue(index)}
               >
-                <Icon icon="close" color="primaryDark" ml="4" />
+                <Icon icon="close" color="primaryMain" ml="4" />
               </S.Button>
             </S.InputField>
           </Container>
@@ -94,7 +94,7 @@ const InputArray = ({
           disabled || values[values.length - 1] === '' || !values.length
         }
         iconProps={{
-          color: 'primaryDark',
+          color: 'primaryMain',
           icon: 'add',
         }}
       />

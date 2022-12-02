@@ -76,7 +76,7 @@ const Changes = () => {
                 text={change.title}
                 to={R.SUPER_ADMIN.EDIT_STEP.replace(':id', change.stepId)}
                 iconProps={{
-                  color: 'primaryDark',
+                  color: 'primaryMain',
                   icon: 'forwardArrow',
                 }}
               />

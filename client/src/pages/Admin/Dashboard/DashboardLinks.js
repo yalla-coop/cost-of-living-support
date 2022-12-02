@@ -15,7 +15,7 @@ const DashboardLinks = () => {
             ai="flex-start"
             isText
             iconProps={{
-              color: 'primaryDark',
+              color: 'primaryMain',
               icon: 'forwardArrow',
             }}
           />
@@ -47,7 +47,7 @@ const DashboardLinks = () => {
             mr="6px"
             isText
             iconProps={{
-              color: 'primaryMain',
+              color: 'tertiaryMain',
               icon: 'forwardArrow',
             }}
           />

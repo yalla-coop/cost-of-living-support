@@ -107,7 +107,7 @@ const TopicFormWithResources = ({
             mb={'57px'}
             iconProps={{
               icon: 'add',
-              color: 'primaryDark',
+              color: 'primaryMain',
             }}
           />
         </Col>

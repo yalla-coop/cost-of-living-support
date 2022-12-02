@@ -2,19 +2,22 @@ import { Icon, TextWithIcon } from '../../components';
 import * as S from './style';
 
 const SingleButton = ({
-  name,
+  title,
   iconColor,
   showMenuIcon,
   handleEdit,
   handleHide,
   hidden,
+  cursor,
   ...props
 }) => {
   return (
-    <S.ButtonWrapper {...props}>
+    <S.ButtonWrapper cursor={cursor} {...props}>
       <S.ButtonContent>
         <TextWithIcon
-          text={name}
+          icon="forwardArrow"
+          iconColor={iconColor}
+          text={title.replace(/\*/g, '')}
           isText
           iconProps={{
             color: iconColor,
@@ -22,14 +25,15 @@ const SingleButton = ({
           }}
         />
         {(showMenuIcon || handleEdit) && (
-          <S.ButtonWrapper>
+          <S.IconsWrapper>
             {handleEdit && (
               <TextWithIcon
                 isButton
+                handleClick={handleEdit}
                 text="Edit"
                 mr="1"
                 iconProps={{
-                  color: 'primaryDark',
+                  color: 'primaryMain',
                   icon: 'edit',
                   pointer: true,
                 }}
@@ -37,10 +41,10 @@ const SingleButton = ({
             )}
             {showMenuIcon && (
               <S.MenuButton>
-                <Icon icon="menu2" />
+                <Icon icon="menu2" pointer />
               </S.MenuButton>
             )}
-          </S.ButtonWrapper>
+          </S.IconsWrapper>
         )}
       </S.ButtonContent>
       {handleHide && (
@@ -48,9 +52,10 @@ const SingleButton = ({
           <TextWithIcon
             isButton
             text={hidden ? 'Show' : 'Hide'}
+            handleClick={handleHide}
             mr="1"
             iconProps={{
-              color: 'primaryDark',
+              color: 'primaryMain',
               icon: 'hide',
               pointer: true,
             }}
