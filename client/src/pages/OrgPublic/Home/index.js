@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../helpers';
 import { message } from 'antd';
 import { navRoutes, common } from '../../../constants';
-import { generatePath, useParams } from 'react-router-dom';
+import { generatePath } from 'react-router-dom';
 import { Sections } from '../../../api-calls';
 import { usePublicOrg } from '../../../context/public-org';
 import {
@@ -50,12 +50,12 @@ const Home = () => {
     return () => {
       mounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uniqueSlug]);
 
   i18n.addResourceBundle(lng, 'cardsDataNS', {
     cardsData,
   });
-
   const _cardsData = t('cardsData', { ns: 'cardsDataNS', returnObjects: true });
 
   return (
@@ -109,9 +109,9 @@ const Home = () => {
             <TextWithIcon
               size="large"
               text={t('common.buttons.readMore', common.buttons.readMore)}
-              bgColor="quartenaryBgMain"
+              bgColor="neutralLight"
               icon="forwardArrow"
-              iconColor="primaryDark"
+              iconColor="tertiaryDark"
               jc="center"
               jcT="flex-start"
               mr="6px"
@@ -151,7 +151,7 @@ const Home = () => {
               isButton
               handleClick={() => setStuck(true)}
               underline
-              iconColor="primaryDark"
+              iconColor="primaryMain"
               weight="medium"
               mr="3"
               jc="center"

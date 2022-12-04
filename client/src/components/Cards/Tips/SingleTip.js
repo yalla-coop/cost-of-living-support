@@ -3,7 +3,7 @@ import Icon from '../../Icon';
 import Markdown from '../../Markdown';
 
 const SingleTip = ({
-  bgColor = 'primaryDark',
+  bgColor = 'primaryMain',
   icon = 'bulb',
   iconColor,
   tip,
