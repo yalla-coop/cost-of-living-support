@@ -19,7 +19,7 @@ const AdminHelp = () => {
         external
         underline
         iconProps={{
-          color: 'primarprimaryMainyDark',
+          color: 'primaryMain',
           icon: 'open',
         }}
       />
