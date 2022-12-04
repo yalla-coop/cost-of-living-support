@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Users, Organisations as OrgsAPI } from '../../../api-calls';
-import { Typography as T, Grid, Inputs, Modal } from '../../../components';
+import { Typography as T, Grid } from '../../../components';
 import * as S from './style';
 
 import { navRoutes } from '../../../constants';

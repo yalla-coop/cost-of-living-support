@@ -3,9 +3,7 @@ import { Sections } from '../../../api-calls';
 import { Typography as T, Grid } from '../../../components';
 import { useAuth } from '../../../context/auth';
 import Loading from '../../../components/Loading';
-import Button from '../../../components/Button';
 import ContentRow from './ContentRow';
-import useCsvDownload from '../../../Hooks/useCsvDownload';
 
 const { Row, Col } = Grid;
 
@@ -81,7 +79,7 @@ const ContentReview = () => {
       ) : (
         <Row mt="10">
           <Col w={[4, 12, 12]}>
-            <T.P color=" " mb="6" weight="regular">
+            <T.P mb="6" weight="regular">
               No content to review currently.
             </T.P>
           </Col>

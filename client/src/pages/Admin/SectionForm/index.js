@@ -13,7 +13,8 @@ import { defaultResources } from '../../../constants/resources';
 import { useAdminOrg } from '../../../context/admin-org';
 import { Section as validate } from '../../../validation/schemas';
 import { Sections } from '../../../api-calls';
-import { navRoutes } from '../../../constants';
+import { navRoutes, roles } from '../../../constants';
+import { useAuth } from '../../../context/auth';
 
 const { Row, Col } = Grid;
 
@@ -67,7 +68,7 @@ const SectionForm = ({ review }) => {
   const urlQuery = new URLSearchParams(location.search);
   const uniqueSlug = urlQuery.get('uniqueSlug');
   const organisationId = urlQuery.get('organisationId');
-
+  const { user } = useAuth();
   const [isUpdateModalVisible, setIsUpdateModalVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -400,20 +401,22 @@ const SectionForm = ({ review }) => {
           </Col>
         )}
       </Row>
-      <TextWithIcon
-        text="Reject section"
-        icon="close"
-        color="neutralMain"
-        iconColor="primaryDark"
-        to={`${navRoutes.SUPER_ADMIN.REJECT_SECTION.replace(
-          ':id',
-          id
-        )}?organisationId=${organisationId}`}
-        weight="medium"
-        m={{
-          mt: 4,
-        }}
-      />
+      {user.role === roles.SUPER_ADMIN && (
+        <TextWithIcon
+          text="Reject section"
+          icon="close"
+          color="neutralMain"
+          iconColor="primaryDark"
+          to={`${navRoutes.SUPER_ADMIN.REJECT_SECTION.replace(
+            ':id',
+            id
+          )}?organisationId=${organisationId}`}
+          weight="medium"
+          m={{
+            mt: 4,
+          }}
+        />
+      )}
       <Modal
         visible={isUpdateModalVisible}
         setIsModalVisible={setIsUpdateModalVisible}
