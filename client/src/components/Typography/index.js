@@ -136,3 +136,17 @@ export const Link = styled(AntdLink)`
     underline ? 'underline' : 'none'} !important;
   display: ${({ display }) => display || 'inline'} !important;
 `;
+
+export const Pre = styled((props) => <pre {...props} />)`
+  ${setMargin};
+  ${commonStyle};
+  font-size: ${({ fontSize }) => fontSize || '1rem'} !important;
+  line-height: 24px !important;
+  font-weight: ${({ weight }) => (weight ? weights[weight] : '400 !important')};
+  display: ${({ display }) => display || 'block'};
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+`;

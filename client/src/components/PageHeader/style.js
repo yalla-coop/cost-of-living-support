@@ -26,7 +26,7 @@ export const Border = styled.div`
 export const markDownContainer = styled.div`
   margin-left: 11.94vw;
   flex-basis: 100%;
-  div > div {
+  div {
     font-size: 2rem !important;
     line-height: 44px !important;
     font-style: italic !important;
@@ -40,7 +40,7 @@ export const markDownContainer = styled.div`
     flex-basis: max-content;
 
     margin-left: 0;
-    div > div {
+    div {
       font-size: 1.5rem !important;
       line-height: 33.5px !important;
       text-align: center !important;

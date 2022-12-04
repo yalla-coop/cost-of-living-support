@@ -16,6 +16,7 @@ const TipInput = ({ content, id, setTip, removeTip }) => {
           optional
           rows="3"
           value={content}
+          placeholder={`Tips...`}
           onChange={(value) => setTip(value, id)}
         />
       ) : (

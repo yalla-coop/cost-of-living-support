@@ -19,6 +19,7 @@ const Markdown = ({
     h3: {},
     p: {},
     link: {},
+    pre: {},
   },
   customRender = {},
 }) => {
@@ -40,6 +41,16 @@ const Markdown = ({
         {...props}
       />
     ),
+    div: (props) =>
+      customRender?.p ? (
+        customRender.p({ ...props })
+      ) : (
+        <T.P
+          color={customStyles.color || color}
+          {...customStyles.p}
+          {...props}
+        />
+      ),
     p: (props) =>
       customRender?.p ? (
         customRender.p({ ...props })
@@ -59,6 +70,15 @@ const Markdown = ({
         />
       </li>
     ),
+    strong: (props) => (
+      <S.Strong
+        color={customStyles.color || color}
+        {...customStyles.li}
+        {...props}
+        style={{ marginInlineEnd: 4 }}
+      />
+    ),
+    pre: (props) => <T.Pre {...customStyles.pre} {...props} />,
   };
 
   if (typeof text !== 'string') {
