@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { compiler } from 'markdown-to-jsx';
 import * as T from '../Typography';
 import * as S from './style';
@@ -93,15 +91,9 @@ const Markdown = ({
       {compiler(bold(text), {
         overrides,
         forceBlock: true,
-        // wrapper: React.Fragment,
       })}
     </S.Wrapper>
   );
-};
-
-Markdown.propTypes = {
-  text: PropTypes.string.isRequired,
-  customStyles: PropTypes.object,
 };
 
 export default Markdown;

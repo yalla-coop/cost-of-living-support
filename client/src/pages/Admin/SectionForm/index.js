@@ -14,8 +14,6 @@ import { useAdminOrg } from '../../../context/admin-org';
 import { Section as validate } from '../../../validation/schemas';
 import { Sections } from '../../../api-calls';
 import { navRoutes } from '../../../constants';
-import { useAuth } from '../../../context/auth';
-import userRoles from '../../../constants/roles';
 
 const { Row, Col } = Grid;
 
@@ -28,7 +26,7 @@ const initialState = {
 };
 
 // to send the same body in the edit and create requests
-const formatTopics = ({ topics: _topics, role }) => {
+const formatTopics = ({ topics: _topics }) => {
   return _topics.map((t) => ({
     id: t.id,
     content: {
@@ -48,10 +46,7 @@ const formatTopics = ({ topics: _topics, role }) => {
           type: 'EXTERNAL',
         };
       }),
-      tip1:
-        role === userRoles.ADMIN
-          ? `**${t.tips[0]?.content}**`
-          : t.tips[0]?.content,
+      tip1: t.tips[0]?.content,
       tip2: t.tips[1]?.content,
     },
     new: t.new,
@@ -72,7 +67,6 @@ const SectionForm = () => {
 
   const navigate = useNavigate();
   const saveForPreview = useRef(false);
-  const { user } = useAuth();
   const submitAttempt = useRef(false);
   const [state, setState] = useReducer(reducer, initialState);
   const [topics, setTopics] = useState([
@@ -190,7 +184,7 @@ const SectionForm = () => {
       id: id,
       body: {
         title,
-        topics: formatTopics({ topics, role: user.role }),
+        topics: formatTopics({ topics }),
       },
     });
 
@@ -218,7 +212,7 @@ const SectionForm = () => {
     const { error } = await Sections.createSectionWithTopics({
       body: {
         title,
-        topics: formatTopics({ topics, role: user.role }),
+        topics: formatTopics({ topics }),
       },
     });
 

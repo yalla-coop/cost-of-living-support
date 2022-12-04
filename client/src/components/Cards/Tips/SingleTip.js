@@ -27,6 +27,7 @@ const SingleTip = ({
               link: {
                 style: { display: 'inline' },
                 color: textColor,
+                weight: 'bold',
                 underline: true,
               },
             }}
