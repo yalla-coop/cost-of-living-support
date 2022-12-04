@@ -41,7 +41,6 @@ const CommonLogic = ({ children }) => {
 
   useEffect(() => {
     setDirection(dir);
-    console.log('dir', dir);
     return () => {
       setDirection('ltr');
     };

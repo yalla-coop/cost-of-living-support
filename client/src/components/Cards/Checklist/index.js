@@ -4,6 +4,8 @@ import * as T from '../../Typography';
 import { Checkbox } from '../../Inputs';
 import TextWithIcon from '../../TextWithIcon';
 import Tips from '../Tips';
+import { useTranslation } from 'react-i18next';
+import { common } from '../../../constants';
 
 const Checklist = ({
   title,
@@ -15,6 +17,12 @@ const Checklist = ({
   completed,
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
+
+  const seeMore = t('common.buttons.seeMore', common.buttons.seeMore);
+  const seeLess = t('common.buttons.seeLess', common.buttons.seeLess);
+  const seeMoreOrLess = expanded ? seeLess : seeMore;
+
   return (
     <>
       <S.Section mb="3">
@@ -32,12 +40,15 @@ const Checklist = ({
           />
           {(description || thisCanInclude?.length > 0 || tips?.length > 0) && (
             <TextWithIcon
-              text={expanded ? 'See less' : 'See more'}
+              text={seeMoreOrLess}
               isButton
               mt="4"
               color="neutralDark"
-              iconProps={{ color: 'neutralDark', icon: 'circleArrow' }}
-              direction={expanded ? 'up' : 'down'}
+              iconProps={{
+                color: 'neutralDark',
+                icon: 'circleArrow',
+                direction: expanded ? 'up' : 'down',
+              }}
               handleClick={() => setExpanded(!expanded)}
               mb={'5'}
               ml="6"

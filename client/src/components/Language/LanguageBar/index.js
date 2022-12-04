@@ -1,8 +1,8 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAccessibility } from '../../../context/accessibility';
 import * as S from './style';
 import { Row } from '../../Grid';
-import { TextWithIcon, GoBack } from '../../../components';
+import { TextWithIcon } from '../../../components';
 import { useMediaQuery } from 'react-responsive';
 import theme from '../../../theme';
 import { useLanguage } from '../../../helpers';
@@ -267,7 +267,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
   return dir === 'rtl' ? RTL : LTR;
 };
 
-export const LanguageBar = ({ largeText, handleHide }) => {
+export const LanguageBar = ({ largeText, handleHide, showBack }) => {
   const { t } = useTranslation();
 
   const accessibility = t(
@@ -283,8 +283,6 @@ export const LanguageBar = ({ largeText, handleHide }) => {
     common.buttons.decreaseTextSize
   );
 
-  const location = useLocation();
-  const showBack = location === '' ? true : false;
   const { lngFull, lngUpperCase, flag, dir } = useLanguage();
 
   const props = {
