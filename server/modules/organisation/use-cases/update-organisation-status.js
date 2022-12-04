@@ -3,10 +3,15 @@ import sendEmail from '../../../services/mailing';
 import * as templatesId from '../../../services/mailing/templates/templates-constants';
 import { addDefaultSectionsForOrganisation } from '../../section/model';
 import { organisationStatuses } from '../../../constants';
+import config from '../../../config';
 
 // id is the organisation id NOT user's
 const updateOrganisationStatus = async ({ id, status, explanation }) => {
-  await Organisation.updateOrganisationStatus({ id, status });
+  const { uniqueSlug } = await Organisation.updateOrganisationStatus({
+    id,
+    status,
+  });
+  const { appUrl } = config.common;
 
   const organisation = await Organisation.findOrganisationsWithUserByOrgId(id);
   if (status === organisationStatuses.APPROVED) {
@@ -16,6 +21,7 @@ const updateOrganisationStatus = async ({ id, status, explanation }) => {
       { to: organisation.userEmail },
       {
         name: organisation.userFirstName,
+        link: `${appUrl}/${uniqueSlug}`,
       },
     );
   } else if (status === organisationStatuses.REJECTED) {
@@ -25,6 +31,7 @@ const updateOrganisationStatus = async ({ id, status, explanation }) => {
       {
         name: organisation.userFirstName,
         explanation,
+        rejection_reasons: explanation,
       },
     );
   }
