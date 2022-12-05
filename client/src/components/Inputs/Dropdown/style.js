@@ -37,7 +37,7 @@ export const Field = styled.div`
     overflow-x: hidden;
     border-color: transparent;
     border-radius: ${({ theme }) => theme.borders.radius};
-    background: ${({ theme }) => theme.colors.primaryTextMain};
+    background: ${({ theme }) => theme.colors.white};
   }
 
   .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
@@ -83,7 +83,7 @@ export const Field = styled.div`
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.neutralDark};
     padding-left: ${({ theme }) => theme.spacings[3]};
-    text-align: left;
+    text-align: start;
   }
 
   // STYLE SELECTED ITEM IN SINGLE DROPDOWN

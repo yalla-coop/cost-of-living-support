@@ -11,6 +11,7 @@ i18n
     defaultNS: 'common',
     fallbacklng: 'en',
     debug: false,
+    preload: true,
     interpolation: {
       escapeValue: false,
     },

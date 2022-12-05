@@ -23,6 +23,8 @@ const Section = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const topicNS = 'topicNS' + id;
+
   const [sectionData, setSectionData] = useState({});
   const { topics, toggleMark } = useTopics(id, lng, publicOrg?.resources);
 
@@ -30,6 +32,8 @@ const Section = () => {
     const fetchSectionData = async () => {
       const { data, error } = await Sections.getSectionById({
         id,
+        forPublic: true,
+        lng,
       });
       if (error) {
         if (error.statusCode === 404) {
@@ -41,12 +45,25 @@ const Section = () => {
         setPageTitle(data.title);
       }
     };
-
     fetchSectionData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, navigate]);
+  }, [id, navigate, lng]);
 
-  const { title, parentSectionTitle } = sectionData;
+  i18n.addResourceBundle(lng, topicNS, {
+    topics,
+  });
+
+  i18n.addResourceBundle(lng, 'sectionDataNS', {
+    sectionData,
+  });
+
+  const _topics = t('topics', { ns: topicNS, returnObjects: true });
+
+  const { title, parentSectionTitle } = t('sectionData', {
+    ns: 'sectionDataNS',
+    returnObjects: true,
+  });
+
   const pageTitle = parentSectionTitle
     ? `${parentSectionTitle.replace(/\*\*/g, '')} **${title}**`
     : title;
@@ -56,10 +73,6 @@ const Section = () => {
   );
 
   const colors = contentColors[id] || contentColors[1];
-
-  i18n.addResourceBundle(lng, 'topicNS', {
-    topics,
-  });
 
   return (
     <S.Container>
@@ -74,7 +87,7 @@ const Section = () => {
       <GeneralPaddingSection>
         <S.Content>
           <S.Topics>
-            {topics.map(({ id, marked, content }, i) => (
+            {_topics.map(({ id, marked, content }, i) => (
               <TopicCard
                 topicIndex={i}
                 key={id}

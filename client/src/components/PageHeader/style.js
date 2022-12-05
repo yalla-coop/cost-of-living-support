@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 export const Border = styled.div`
-  border: ${({ theme, borderColor = 'primaryTextMain' }) =>
+  border: ${({ theme, borderColor = 'white' }) =>
     `3px solid ${theme.colors[borderColor]}`};
   flex: 1;
   display: flex;
@@ -24,9 +24,15 @@ export const Border = styled.div`
 `;
 
 export const markDownContainer = styled.div`
-  margin-left: 11.94vw;
+  margin-inline-start: 11.94vw;
   flex-basis: 100%;
   div {
+    font-size: 2rem !important;
+    line-height: 44px !important;
+    font-style: italic !important;
+  }
+
+  div > div {
     font-size: 2rem !important;
     line-height: 44px !important;
     font-style: italic !important;
@@ -41,6 +47,11 @@ export const markDownContainer = styled.div`
 
     margin-left: 0;
     div {
+      font-size: 1.5rem !important;
+      line-height: 33.5px !important;
+      text-align: center !important;
+    }
+    div > div {
       font-size: 1.5rem !important;
       line-height: 33.5px !important;
       text-align: center !important;

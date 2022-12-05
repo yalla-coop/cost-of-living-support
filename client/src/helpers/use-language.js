@@ -21,9 +21,13 @@ const useLanguage = () => {
 
   const flag = lngFull?.charAt(0)?.toLowerCase() + lngFull?.slice(1);
 
-  const lngDir = lng === 'ar' || lng === 'ur' ? 'rtl' : 'ltr';
+  const dir = i18n.dir();
 
-  return { lng, lngUpperCase, lngFull, flag, lngDir };
+  const hasNamespace = (namespace) => {
+    return i18n.hasResourceBundle(lng, namespace);
+  };
+
+  return { lng, lngUpperCase, lngFull, flag, dir, hasNamespace };
 };
 
 export default useLanguage;

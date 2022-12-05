@@ -3,10 +3,10 @@ import handleError from './format-error';
 
 const SECTIONS_BASE = '/sections';
 
-const getSections = async ({ options, uniqueSlug, forPublic }) => {
+const getSections = async ({ options, uniqueSlug, lng, forPublic }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}`, {
-      params: { uniqueSlug, forPublic },
+      params: { uniqueSlug, forPublic, lng },
     });
 
     return { data };
@@ -16,9 +16,9 @@ const getSections = async ({ options, uniqueSlug, forPublic }) => {
   }
 };
 
-const getSectionById = async ({ options, id }) => {
+const getAwaitingSections = async ({ options }) => {
   try {
-    const { data } = await axios.get(`${SECTIONS_BASE}/${id}`);
+    const { data } = await axios.get(`${SECTIONS_BASE}/awaiting-review`);
 
     return { data };
   } catch (error) {
@@ -27,10 +27,55 @@ const getSectionById = async ({ options, id }) => {
   }
 };
 
-const getSubSections = async ({ options, id, forPublic }) => {
+const updateSectionsOrder = async ({ options, body }) => {
+  try {
+    const { data } = await axios.patch(`${SECTIONS_BASE}/order`, body);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+const createSectionWithTopics = async ({ options, body }) => {
+  try {
+    const { data } = await axios.post(`${SECTIONS_BASE}`, body);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+const updateSectionWithTopics = async ({ options, body, id }) => {
+  try {
+    const { data } = await axios.patch(`${SECTIONS_BASE}/${id}`, body);
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+const getSectionById = async ({ options, id, forPublic, lng }) => {
+  try {
+    const { data } = await axios.get(`${SECTIONS_BASE}/${id}`, {
+      params: { forPublic, lng },
+    });
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+const getSubSections = async ({ options, id, forPublic, lng }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/sub-sections`, {
-      params: { id, forPublic },
+      params: { id, forPublic, lng },
     });
     return { data };
   } catch (error) {
@@ -39,10 +84,10 @@ const getSubSections = async ({ options, id, forPublic }) => {
   }
 };
 
-const getTopics = async ({ options, sectionId, lng }) => {
+const getTopics = async ({ options, sectionId, lng, forPublic }) => {
   try {
     const { data } = await axios.get(`${SECTIONS_BASE}/${sectionId}/topics`, {
-      params: { lng },
+      params: { lng, forPublic },
     });
     return { data };
   } catch (error) {
@@ -51,4 +96,35 @@ const getTopics = async ({ options, sectionId, lng }) => {
   }
 };
 
-export { getSections, getSectionById, getTopics, getSubSections };
+const updateSectionStatus = async ({
+  id,
+  options,
+  status,
+  explanation,
+  organisationId,
+}) => {
+  try {
+    const { data } = await axios.patch(`${SECTIONS_BASE}/${id}/status`, {
+      status,
+      explanation,
+      organisationId,
+    });
+
+    return { data };
+  } catch (error) {
+    const err = handleError(error, options);
+    return { error: err };
+  }
+};
+
+export {
+  getSections,
+  getSectionById,
+  getTopics,
+  getSubSections,
+  createSectionWithTopics,
+  updateSectionWithTopics,
+  updateSectionsOrder,
+  getAwaitingSections,
+  updateSectionStatus,
+};

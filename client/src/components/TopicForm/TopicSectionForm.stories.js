@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ActionCard from '.';
+import ActionCard from './TipInput';
 import * as T from '../Typography';
 import TextWithIcon from '../TextWithIcon';
 import { BasicInput } from '../Inputs';
@@ -82,7 +82,7 @@ const TopicForm = ({ topic, topicIndex, setTopics }) => {
             icon="add"
             isButton
             mt="9px"
-            iconColor="primaryDark"
+            iconColor="primaryMain"
             handleClick={() =>
               setResources((old) => [...old, { link: '', value: '' }])
             }
@@ -125,10 +125,8 @@ const TopicSectionFormExamples = (args) => {
         <Col w={[4, 4, 4]}>
           <TextWithIcon
             text="Add another topic"
-            icon="add"
             isButton
             mt="33px"
-            iconColor="primaryDark"
             handleClick={() =>
               setTopics((old) => [
                 ...old,
@@ -141,6 +139,10 @@ const TopicSectionFormExamples = (args) => {
               ])
             }
             mb={'57px'}
+            iconProps={{
+              icon: 'add',
+              color: 'primaryMain',
+            }}
           />
         </Col>
       </Row>

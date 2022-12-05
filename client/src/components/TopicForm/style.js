@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 export const Section = styled.div`
   ${setMargin};
   width: 100%;
-
   background: linear-gradient(white, white) padding-box,
     ${({ theme }) => theme.gradients.primary} border-box;
   border-radius: ${({ theme: { borders } }) => borders.radius};

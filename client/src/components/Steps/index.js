@@ -26,7 +26,7 @@ const renderChild = (isCompleted, title) => {
   return (
     <T.H2
       weight="bold"
-      color={isCompleted ? 'neutralMain' : 'primaryTextMain'}
+      color={isCompleted ? 'neutralMain' : 'white'}
       ta="center"
     >
       {title}
@@ -75,11 +75,13 @@ const Card = forwardRef(
                 {description}
               </T.P>
               <TextWithIcon
-                icon="forwardArrow"
                 text="Check here"
-                iconColor="primaryDark"
                 color="neutralMain"
                 to={to}
+                iconProps={{
+                  color: 'primaryMain',
+                  icon: 'forwardArrow',
+                }}
               />
             </S.OptionalContainer>
           </S.StyledLink>
