@@ -404,9 +404,11 @@ const SectionForm = ({ review }) => {
       {user.role === roles.SUPER_ADMIN && (
         <TextWithIcon
           text="Reject section"
-          icon="close"
           color="neutralMain"
-          iconColor="primaryDark"
+          iconProps={{
+            color: 'primaryMain',
+            icon: 'close',
+          }}
           to={`${navRoutes.SUPER_ADMIN.REJECT_SECTION.replace(
             ':id',
             id
