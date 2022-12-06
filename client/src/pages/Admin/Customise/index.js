@@ -102,7 +102,9 @@ const Customise = () => {
             fileName: data.fileName,
             url: data.logoUrl,
           },
-          mainHeaderBgColor: colors?.mainHeaderBgColor,
+          mainHeaderBgColor: colors?.mainHeaderBgColor
+            ? formatColor(colors.mainHeaderBgColor)
+            : '',
           section1BgColor:
             colors?.section1BgColor ||
             formatColor(defaultColors.section1BgColor),
@@ -296,11 +298,7 @@ const Customise = () => {
       <Row my="4">
         <Col w={[4, 6, 4]}>
           <I.ColorPicker
-            color={
-              mainHeaderBgColor || defaultColors.mainHeaderBgColor
-                ? formatColor(defaultColors.mainHeaderBgColor)
-                : ''
-            }
+            color={mainHeaderBgColor || ''}
             onChange={(v) => setState({ mainHeaderBgColor: v })}
             label="Main header background colour"
             error={validationErrs.mainHeaderBgColor}
