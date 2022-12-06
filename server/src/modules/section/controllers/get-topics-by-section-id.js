@@ -13,6 +13,7 @@ const getTopicsBySectionId = async (req, res, next) => {
 
     res.json(topics);
   } catch (error) {
+    console.log('Get topics by section id controller error:', error);
     next(error);
   }
 };

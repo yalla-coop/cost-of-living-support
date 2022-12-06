@@ -14,7 +14,9 @@ const useTopics = (id, lng, resources) => {
         forPublic: true,
       });
       if (error) {
-        message.error('Something went wrong, please try again later');
+        message.error(
+          'Something went wrong fetching topics, please try again later'
+        );
       } else {
         setTopics(data);
       }

@@ -39,7 +39,9 @@ const Section = () => {
         if (error.statusCode === 404) {
           return navigate(navRoutes.GENERAL.NOT_FOUND);
         }
-        message.error('Something went wrong, please try again later');
+        message.error(
+          'Something went wrong fetching section data, please try again later'
+        );
       } else {
         setSectionData(data);
         setPageTitle(data.title);
