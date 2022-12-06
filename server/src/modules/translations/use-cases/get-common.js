@@ -9,15 +9,18 @@ const getCommon = async ({ lng }) => {
     contentArray: common,
   });
 
-  commonT.forEach((c) => {
-    if (!c.isTranslated) {
-      Translation.createCommonI18n({
-        commonId: c.id,
-        languageCode: c.languageCode,
-        content: c.content,
-      });
-    }
-  });
+  await Promise.all(
+    commonT.map((c) => {
+      if (!c.isTranslated) {
+        return Translation.createCommonI18n({
+          commonId: c.id,
+          languageCode: c.languageCode,
+          content: c.content,
+        });
+      }
+      return Promise.resolve();
+    }),
+  );
 
   return commonT;
 };

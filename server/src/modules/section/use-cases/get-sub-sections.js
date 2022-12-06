@@ -24,7 +24,7 @@ const getSubSections = async ({ id, forPublic, lng }) => {
       sections,
     });
 
-    Promise.all(
+    await Promise.all(
       sectionsT.map((c) => {
         if (!c.isTranslated) {
           return Translation.createSectionI18n({

@@ -15,7 +15,7 @@ const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
     contentArray: topics,
   });
 
-  Promise.all(
+  await Promise.all(
     topicsT.map((c) => {
       if (!c.isTranslated) {
         return Translation.createTopicI18n({
@@ -28,7 +28,7 @@ const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
     }),
   );
 
-  const topicsTranslated = topicsT.map((topicT, topicTIndex) => {
+  return topicsT.map((topicT, topicTIndex) => {
     return {
       id: topicT.id,
       languageCode: topicT.languageCode,
@@ -56,8 +56,6 @@ const getTopicsBySectionId = async ({ id, lng, forPublic }) => {
       },
     };
   });
-
-  return topicsTranslated;
 };
 
 export default getTopicsBySectionId;

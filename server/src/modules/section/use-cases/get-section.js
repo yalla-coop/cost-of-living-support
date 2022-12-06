@@ -48,7 +48,7 @@ const getSection = async ({ id, lng, forPublic, role }) => {
     sections,
   });
 
-  Promise.all(
+  await Promise.all(
     sectionsT.map((c) => {
       if (!c.isTranslated) {
         return Translation.createSectionI18n({

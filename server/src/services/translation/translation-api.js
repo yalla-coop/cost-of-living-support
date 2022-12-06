@@ -10,11 +10,10 @@ const awsConfig = {
   region: awsRegion,
 };
 
-const translate = async ({ source, target, json, id }) => {
+const translateAPI = async ({ source, target, json, id }) => {
   const { translateJSON } = new AWSTranslateJSON(awsConfig, source, target);
   const value = await translateJSON(removeNullsAndEmptyArraysAndObjects(json));
-  const res = { id, content: { ...value[target] }, languageCode: target[0] };
-  return res;
+  return { id, content: { ...value[target] }, languageCode: target[0] };
 };
 
-export { translate };
+export default translateAPI;

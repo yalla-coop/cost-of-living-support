@@ -14,7 +14,7 @@ const getSections = async ({ lng, uniqueSlug = 'hyde', forPublic }) => {
       sections,
     });
 
-    Promise.all(
+    await Promise.all(
       sectionsT.map((c) => {
         if (!c.isTranslated) {
           return Translation.createSectionI18n({
