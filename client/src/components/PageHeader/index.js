@@ -21,6 +21,7 @@ const PageHeader = ({
                 lineHeightM: '33.544px',
                 color: textColor,
               },
+              color: textColor,
             }}
           />
         </S.markDownContainer>
