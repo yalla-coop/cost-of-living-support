@@ -25,11 +25,13 @@ const Section = () => {
 
   const topicNS = 'topicNS' + id;
 
+  const [loading, setLoading] = useState(false);
   const [sectionData, setSectionData] = useState({});
   const { topics, toggleMark } = useTopics(id, lng, publicOrg?.resources);
 
   useEffect(() => {
     const fetchSectionData = async () => {
+      setLoading(true);
       const { data, error } = await Sections.getSectionById({
         id,
         forPublic: true,
@@ -44,6 +46,7 @@ const Section = () => {
         setSectionData(data);
         setPageTitle(data.title);
       }
+      setLoading(false);
     };
     fetchSectionData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,6 +79,7 @@ const Section = () => {
 
   return (
     <S.Container>
+      {loading && message.loading('...loading')}
       <PageHeader
         title={pageTitle}
         bgColor={colors.bg}
