@@ -31,6 +31,5 @@
   "dependencies": {
     "concurrently": "^6.5.1",
     "cross-env": "^7.0.3"
-  },
-  "devDependencies": {}
+  }
 }
