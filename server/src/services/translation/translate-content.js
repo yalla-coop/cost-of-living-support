@@ -2,7 +2,7 @@ import { translate } from './translation-api';
 
 const translateContent = async ({ lng, contentArray }) => {
   const translations = await Promise.all(
-    contentArray.map(async ({ content, languageCode, id }) => {
+    contentArray.map(({ content, languageCode, id }) => {
       if (languageCode === lng || lng === 'en') {
         return {
           id,

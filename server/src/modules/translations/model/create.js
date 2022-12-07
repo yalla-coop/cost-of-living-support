@@ -31,7 +31,9 @@ const createCommonI18n = async ({ commonId, languageCode, content }) => {
       $1,
       $2,
       $3
-    ) RETURNING *
+    )
+    ON CONFLICT (common_id, language_code) DO NOTHING
+    RETURNING *
   `;
 
   const values = [commonId, languageCode, content];

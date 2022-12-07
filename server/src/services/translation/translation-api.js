@@ -75,7 +75,7 @@ const translate = async ({ source, target, json, id }) => {
   }
 
   const value = await translateJSON({
-    obj: removeNullsAndEmptyArraysAndObjects(json),
+    obj: json,
     targetLang: target[0],
     sourceLang: source,
   });
