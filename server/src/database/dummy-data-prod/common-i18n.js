@@ -54,7 +54,7 @@ const addCommonI18n = async () => {
       section: {
         helpMe: {
           title: 'مساعدة!',
-          govPhone: '0800 328 5644 (اختر الخيار 3)',
+          govPhone: '0800 138 7777 (اختر الخيار 3)',
           subtitle: 'المساعدة هنا!',
           description:
             'نحتاج جميعًا إلى التحدث إلى شخص ما في بعض الأحيان! استخدم أيًا من تفاصيل الاتصال أدناه للعثور على شخص للدردشة معه.',
@@ -148,7 +148,7 @@ const addCommonI18n = async () => {
           samaritansHelpline: 'خط مساعدة السامريين:',
         },
         stressedOrOverwhelmed: {
-          title: 'الشعور بالتوتر أو الإرهاق',
+          title: 'الشعور بالتوتر أو الإرهاق؟',
         },
       },
     },

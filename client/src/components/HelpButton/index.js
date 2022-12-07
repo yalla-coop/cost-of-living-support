@@ -53,7 +53,7 @@ const HelpButton = ({
                 )}
           </T.H3>
           <S.CloseButton onClick={handleClose}>
-            <Icon icon="close" color="white" />
+            <Icon icon="close" color="white" pointer />
           </S.CloseButton>
         </S.Header>
         <S.Content>
