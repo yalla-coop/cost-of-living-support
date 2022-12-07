@@ -3,6 +3,7 @@
 /* eslint-disable guard-for-in */
 import AWS from 'aws-sdk';
 import config from '../../config';
+import { Sentry } from '../error-handler';
 import { removeNullsAndEmptyArraysAndObjects } from '../../helpers';
 
 const { awsAccessKeyId, awsSecretAccessKey, awsRegion } = config.aws;
@@ -56,7 +57,7 @@ const translateJSON = async ({
         word = await translateText({ text: obj[key], sourceLang, targetLang });
       }
     } catch (error) {
-      console.error('translateJSON API error:', error);
+      Sentry.captureException('translateJSON API error:', error);
       word = '';
     }
     if (displayLang) {
@@ -75,7 +76,7 @@ const translate = async ({ source, target, json, id }) => {
   }
 
   const value = await translateJSON({
-    obj: json,
+    obj: removeNullsAndEmptyArraysAndObjects(json),
     targetLang: target[0],
     sourceLang: source,
   });

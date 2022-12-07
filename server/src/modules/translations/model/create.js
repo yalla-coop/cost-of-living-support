@@ -11,7 +11,9 @@ const createTopicI18n = async ({ topicId, languageCode, content }) => {
       $1,
       $2,
       $3
-    ) RETURNING *
+    )
+    ON CONFLICT (topic_id, language_code) DO NOTHING
+    RETURNING *
   `;
 
   const values = [topicId, languageCode, content];
@@ -53,7 +55,9 @@ const createSectionI18n = async ({ sectionId, languageCode, title }) => {
       $1,
       $2,
       $3
-    ) RETURNING *
+    )
+    ON CONFLICT (section_id, language_code) DO NOTHING
+    RETURNING *
   `;
   const values = [sectionId, languageCode, title];
 
