@@ -401,7 +401,7 @@ const SectionForm = ({ review }) => {
           </Col>
         )}
       </Row>
-      {user.role === roles.SUPER_ADMIN && (
+      {user.role === roles.SUPER_ADMIN && id !== 'new' && (
         <TextWithIcon
           text="Reject section"
           color="neutralMain"
