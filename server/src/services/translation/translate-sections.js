@@ -18,7 +18,12 @@ const translateSections = async ({ lng, sections }) => {
         id,
       });
 
-      return { ...section, title: res.content.title, languageCode: lng };
+      if (res) {
+        return { ...section, title: res.content.title, languageCode: lng };
+      }
+      throw new Error(
+        'translate sections service: could not translate this section',
+      );
     }),
   );
 

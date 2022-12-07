@@ -27,8 +27,9 @@ const translate = async ({ source, target, json, id }) => {
         languageCode: target[0],
       };
     } catch (error) {
+      console.log('translation api reached catch with retry:>> ', _retries);
       if (_retries > 3) {
-        throw error;
+        throw new Error('translation api catch error: ', error);
       } else {
         return translateJSON(_retries + 1);
       }
@@ -37,7 +38,10 @@ const translate = async ({ source, target, json, id }) => {
 
   try {
     const res = await translateJSON(0);
-    return res;
+    if (res) {
+      return res;
+    }
+    throw new Error();
   } catch (error) {
     throw new Error('translation api error: ', error);
   }
