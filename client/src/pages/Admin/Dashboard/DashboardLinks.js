@@ -10,7 +10,7 @@ const DashboardLinks = () => {
           <TextWithIcon
             size="large"
             bgColor="neutralSurface"
-            text={'Change or add to the layout of the tool'}
+            text={'Add or edit content of the tool'}
             mr="6px"
             ai="flex-start"
             isText
