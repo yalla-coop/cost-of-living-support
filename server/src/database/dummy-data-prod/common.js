@@ -51,11 +51,6 @@ const addCommon = async () => {
         helpMe: {
           title: 'Help!',
           subtitle: 'Help is here!',
-          description:
-            'We all need to speak to someone sometimes! Use any of the contact details below to find a person to chat with.',
-          govHelpline: 'Goverment Helpline',
-          govOpeningTimes: 'Monday to Friday, 8am to 6pm',
-          govPhone: '0800 138 7777 (choose Option 3)',
         },
         helpBudget: {
           title: 'Need help with budgeting?',
