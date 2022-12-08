@@ -19,7 +19,7 @@ const fontsOptions = [
   { value: 'Roboto', label: 'Roboto' },
   { value: 'Heebo', label: 'Heebo' },
   { value: 'Comic Neue', label: 'Comic Neue' },
-  { value: '', label: 'none' },
+  { value: '', label: 'default' },
 ];
 
 const Accessibility = () => {
@@ -258,8 +258,8 @@ const Accessibility = () => {
             <S.fontInputWrapper>
               <I.Dropdown
                 label={t(
-                  'common.section.accessibility.textToSpeechTitle',
-                  common.section.accessibility.textToSpeechTitle
+                  'common.section.accessibility.changeFont',
+                  common.section.accessibility.changeFont
                 )}
                 options={fontsOptions}
                 selected={layoutFontFamily}
