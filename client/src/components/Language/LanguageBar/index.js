@@ -19,16 +19,17 @@ const props = {
 
 const useBack = (navigate) => {
   const location = useLocation();
-  const locAccessibility = location.pathname === R.GENERAL.ACCESSIBILITY;
-  const goBackMinusOne = () => {
+  const _location = location.pathname === R.GENERAL.ACCESSIBILITY;
+
+  const navigateToAccessibility = _location
+    ? null
+    : () => navigate(R.GENERAL.ACCESSIBILITY);
+
+  const goBack = () => {
     navigate(-1);
   };
-  const goBackHome = () => {
-    navigate(R.PUBLIC_ORG.HOME);
-  };
 
-  const goBack = locAccessibility ? goBackHome : goBackMinusOne;
-  return { goBack };
+  return { goBack, navigateToAccessibility };
 };
 
 const Desktop = ({
@@ -43,7 +44,7 @@ const Desktop = ({
 }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-  const { goBack } = useBack(navigate);
+  const { goBack, navigateToAccessibility } = useBack(navigate);
 
   const LTR = (
     <Row>
@@ -82,7 +83,7 @@ const Desktop = ({
             {...props}
           />
           <TextWithIcon
-            handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+            handleClick={navigateToAccessibility}
             text={accessibility}
             iconProps={{
               icon: 'accessibility',
@@ -139,7 +140,7 @@ const Desktop = ({
           {...props}
         />
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          handleClick={navigateToAccessibility}
           text={accessibility}
           iconProps={{
             icon: 'accessibility',
@@ -167,7 +168,7 @@ const Desktop = ({
 const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-  const { goBack } = useBack(navigate);
+  const { goBack, navigateToAccessibility } = useBack(navigate);
 
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
@@ -184,7 +185,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
       )}
       <S.ButtonWrapper>
         <TextWithIcon
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          handleClick={navigateToAccessibility}
           text={accessibility}
           iconProps={{
             icon: 'accessibility',
@@ -254,7 +255,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
         />
         <TextWithIcon
           text={accessibility}
-          handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
+          handleClick={navigateToAccessibility}
           iconProps={{
             icon: 'accessibility',
           }}
