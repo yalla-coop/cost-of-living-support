@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAccessibility } from '../../../context/accessibility';
 import * as S from './style';
 import { Row } from '../../Grid';
@@ -17,6 +17,20 @@ const props = {
   iconColor: 'neutralMain',
 };
 
+const useBack = (navigate) => {
+  const location = useLocation();
+  const locAccessibility = location.pathname === R.GENERAL.ACCESSIBILITY;
+  const goBackMinusOne = () => {
+    navigate(-1);
+  };
+  const goBackHome = () => {
+    navigate(R.PUBLIC_ORG.HOME);
+  };
+
+  const goBack = locAccessibility ? goBackHome : goBackMinusOne;
+  return { goBack };
+};
+
 const Desktop = ({
   dir,
   handleHide,
@@ -29,9 +43,7 @@ const Desktop = ({
 }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-  const goBack = () => {
-    navigate(-1);
-  };
+  const { goBack } = useBack(navigate);
 
   const LTR = (
     <Row>
@@ -155,9 +167,8 @@ const Desktop = ({
 const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
   const navigate = useNavigate();
   const { isFontLarge, setIsFontLarge } = useAccessibility();
-  const goBack = () => {
-    navigate(-1);
-  };
+  const { goBack } = useBack(navigate);
+
   const LTR = (
     <S.TabletWrapperLTR showBack={showBack}>
       {showBack && (
@@ -176,7 +187,7 @@ const Tablet = ({ dir, showBack, handleHide, flag, lng, accessibility }) => {
           handleClick={() => navigate(R.GENERAL.ACCESSIBILITY)}
           text={accessibility}
           iconProps={{
-            icon: 'backArrow',
+            icon: 'accessibility',
           }}
           {...props}
         />
