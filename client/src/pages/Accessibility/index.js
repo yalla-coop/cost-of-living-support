@@ -28,7 +28,11 @@ const Accessibility = () => {
     useAccessibility();
 
   const handleSelect = (value) => {
-    localStorage.setItem('layoutFontFamily', value);
+    if (value === 'default') {
+      localStorage.setItem('layoutFontFamily', '');
+    } else {
+      localStorage.setItem('layoutFontFamily', value);
+    }
     setLayoutFontFamily(value);
   };
 
@@ -209,7 +213,7 @@ const Accessibility = () => {
                   common.section.accessibility.changeFont
                 )}
                 options={fontsOptions}
-                selected={layoutFontFamily}
+                selected={layoutFontFamily || 'default'}
                 handleChange={handleSelect}
                 allowClear={false}
               />
@@ -263,7 +267,7 @@ const Accessibility = () => {
                   common.section.accessibility.changeFont
                 )}
                 options={fontsOptions}
-                selected={layoutFontFamily}
+                selected={layoutFontFamily || 'default'}
                 handleChange={(selectValue) => setLayoutFontFamily(selectValue)}
                 allowClear={false}
               />
