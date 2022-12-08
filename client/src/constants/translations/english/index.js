@@ -56,7 +56,7 @@ export default {
   editDetails: {
     title: 'Edit account details',
     subtitle:
-      'Below you can edit the details of your account. add a back up email account; change your unique link, or delete the account.',
+      'Below you can edit the details of your account; add a back up email account; change your unique link, or delete the account.',
   },
 
   contact: {
