@@ -6,7 +6,7 @@ const DashboardLinks = () => {
   return (
     <>
       <S.ButtonsContainer>
-        <S.ButtonWrapper to={R.ADMIN.CUSTOMISE}>
+        <S.ButtonWrapper to={R.ADMIN.ADD_UPDATE_CONTENT}>
           <TextWithIcon
             size="large"
             bgColor="neutralSurface"
