@@ -54,8 +54,6 @@ const addCommon = async () => {
         },
         helpBudget: {
           title: 'Need help with budgeting?',
-          description:
-            'You know how much is going in and out but if you need a hand, we can help you work it out.',
         },
         stressedOrOverwhelmed: {
           title: 'Feeling stressed or overwhelmed?',
