@@ -111,6 +111,8 @@ import UK from './icons/UK';
 import UR from './icons/UR';
 import UZ from './icons/UZ';
 import VI from './icons/VI';
+import CY from './icons/CY';
+
 export const FlagMap = {
   af: AF,
   sq: SQ,
@@ -178,6 +180,7 @@ export const FlagMap = {
   ur: UR,
   uz: UZ,
   vi: VI,
+  cy: CY,
 };
 
 export const IconMap = {
