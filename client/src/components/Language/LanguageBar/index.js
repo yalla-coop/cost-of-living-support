@@ -77,7 +77,6 @@ const Desktop = ({
             }}
             {...props}
             isButton={false}
-            isText
           />
         </S.ButtonWrapper>
         <S.ButtonWrapper>
