@@ -102,79 +102,93 @@ const Login = () => {
   };
 
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <T.H1 weight="bold">Log in</T.H1>
-      <Row mt="7">
-        <Col w={[4, 11, 6]}>
-          <I.BasicInput
-            label="Email address"
-            placeholder="Type your email..."
-            margins={{ mt: '2', mb: '1' }}
-            type="email"
-            value={email}
-            autoFocus
-            handleChange={(input) => setState({ email: input })}
-            error={validationErrs.email}
-          />
-        </Col>
-      </Row>
-      <Row mt="7" mtT="6">
-        <Col w={[4, 11, 6]}>
-          <I.BasicInput
-            label="Password"
-            placeholder="Type your password..."
-            margins={{ mt: '2', mb: '1' }}
-            type="password"
-            value={password}
-            handleChange={(input) => setState({ password: input })}
-            error={validationErrs.password}
-          />
-          <T.Link
-            to={R.GENERAL.FORGET_PASSWORD}
-            color="neutralDark"
-            style={{ display: 'block' }}
-            mt="10px"
-            ml="13px"
-            fontSize="0.875rem"
-          >
-            Forget password?
-          </T.Link>
-        </Col>
-      </Row>
-      <Row
-        mt="7"
-        mtT="6"
-        style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
-      >
-        <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
-          {httpError && (
-            <T.P mb="2" color="error">
-              {httpError}
-            </T.P>
-          )}
-          <Button
-            variant="primary"
-            disabled={false}
-            loading={loading}
-            text="Log in"
-            type="submit"
-          />
-        </Col>
-      </Row>
-      <Row mt="5">
-        <Col w={[4, 11, 6]}>
-          <TextWithIcon
-            to={R.ADMIN.WELCOME}
-            text="Don’t have an account? Sign up"
-            mr="4px"
-            iconProps={{
-              color: 'primaryMain',
-              icon: 'forwardArrow',
-            }}
-          />
-        </Col>
-      </Row>
-    </S.Form>
+    <>
+      <iframe
+        src="https://stories.workingclasshistory.com/on-this-day"
+        style="border:0px #ffffff none;"
+        name="myiFrame"
+        scrolling="no"
+        frameborder="1"
+        marginheight="300px"
+        marginwidth="300px"
+        height="400px"
+        width="600px"
+        allowfullscreen
+      ></iframe>
+      <S.Form onSubmit={handleSubmit}>
+        <T.H1 weight="bold">Log in</T.H1>
+        <Row mt="7">
+          <Col w={[4, 11, 6]}>
+            <I.BasicInput
+              label="Email address"
+              placeholder="Type your email..."
+              margins={{ mt: '2', mb: '1' }}
+              type="email"
+              value={email}
+              autoFocus
+              handleChange={(input) => setState({ email: input })}
+              error={validationErrs.email}
+            />
+          </Col>
+        </Row>
+        <Row mt="7" mtT="6">
+          <Col w={[4, 11, 6]}>
+            <I.BasicInput
+              label="Password"
+              placeholder="Type your password..."
+              margins={{ mt: '2', mb: '1' }}
+              type="password"
+              value={password}
+              handleChange={(input) => setState({ password: input })}
+              error={validationErrs.password}
+            />
+            <T.Link
+              to={R.GENERAL.FORGET_PASSWORD}
+              color="neutralDark"
+              style={{ display: 'block' }}
+              mt="10px"
+              ml="13px"
+              fontSize="0.875rem"
+            >
+              Forget password?
+            </T.Link>
+          </Col>
+        </Row>
+        <Row
+          mt="7"
+          mtT="6"
+          style={{ flex: Number(isMobile), alignItems: 'flex-end' }}
+        >
+          <Col w={[4, 11, 6]} style={{ alignItems: 'flex-end' }}>
+            {httpError && (
+              <T.P mb="2" color="error">
+                {httpError}
+              </T.P>
+            )}
+            <Button
+              variant="primary"
+              disabled={false}
+              loading={loading}
+              text="Log in"
+              type="submit"
+            />
+          </Col>
+        </Row>
+        <Row mt="5">
+          <Col w={[4, 11, 6]}>
+            <TextWithIcon
+              to={R.ADMIN.WELCOME}
+              text="Don’t have an account? Sign up"
+              mr="4px"
+              iconProps={{
+                color: 'primaryMain',
+                icon: 'forwardArrow',
+              }}
+            />
+          </Col>
+        </Row>
+      </S.Form>
+    </>
   );
 };
 
