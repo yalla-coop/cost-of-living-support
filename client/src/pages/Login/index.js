@@ -103,17 +103,14 @@ const Login = () => {
 
   return (
     <>
+      <h1>HELLO</h1>
       <iframe
+        title="iframe"
+        loading="lazy"
         src="https://stories.workingclasshistory.com/on-this-day"
-        style="border:0px #ffffff none;"
-        name="myiFrame"
-        scrolling="no"
-        frameborder="1"
-        marginheight="300px"
-        marginwidth="300px"
-        height="400px"
-        width="600px"
-        allowfullscreen
+        name="Working Class History On This Day"
+        height="500px"
+        width="100%"
       ></iframe>
       <S.Form onSubmit={handleSubmit}>
         <T.H1 weight="bold">Log in</T.H1>
