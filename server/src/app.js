@@ -33,6 +33,10 @@ app.use(logger('dev'));
 app.use(cors());
 
 if (config.common.env === PRODUCTION) {
+  if (config.server.host === 'HEROKU') {
+    // set header response for preflight CORS requests (option request handling)
+    app.options('*', cors());
+  }
   app.use(helmet);
   app.use(requireHTTPS);
 }
@@ -48,10 +52,6 @@ if (config.common.env !== TEST) {
 app.use('/api', router);
 
 if (config.common.env === PRODUCTION) {
-  if (config.server.host === 'HEROKU') {
-    // set header response for preflight CORS requests (option request handling)
-    app.options('*', cors());
-  }
   app.use(express.static(path.join(__dirname, '..', '..', 'client', 'build')));
   app.use(
     favicon(path.join(__dirname, '..', '..', 'client', 'build', 'favicon.ico')),

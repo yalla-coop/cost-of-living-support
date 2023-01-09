@@ -8,7 +8,7 @@ const envVarsSchema = yup
     DOMAIN: isProduction ? yup.string().required() : yup.string().nullable(),
     SECRET: yup.string().required(),
     HOST: isProduction
-      ? yup.string().oneOf(['HEROKU', 'AWS']).required().required()
+      ? yup.string().oneOf(['HEROKU', 'AWS']).required()
       : yup.string().nullable(), // to equal 'HEROKU' OR AWS
   })
   .required();
