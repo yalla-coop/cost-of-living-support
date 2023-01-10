@@ -15,6 +15,8 @@ import { Section as validate } from '../../../validation/schemas';
 import { Sections } from '../../../api-calls';
 import { navRoutes, roles } from '../../../constants';
 import { useAuth } from '../../../context/auth';
+import { message } from 'antd';
+import ContentSection from '../EditContent/ContentSection';
 
 const { Row, Col } = Grid;
 
@@ -83,6 +85,7 @@ const SectionForm = ({ review }) => {
       id: 0,
     },
   ]);
+  const [subSections, setSubSections] = useState();
   const { title, httpError, validationErrs } = state;
 
   const { id } = useParams();
@@ -145,9 +148,31 @@ const SectionForm = ({ review }) => {
       }
     };
 
+    async function fetchData() {
+      const hideMessage = message.loading('Loading...');
+      const { data, error } = await Sections.getSubSections({
+        id,
+        forPublic: false,
+      });
+
+      if (error) {
+        message.error('Something went wrong, please try again later');
+      } else {
+        setSubSections(
+          data?.childrenSections.map(({ id, title }) => {
+            return { id, title };
+          })
+        );
+      }
+      hideMessage();
+    }
+
     if (id !== 'new') {
       getSectionData();
       fetchTopics();
+      if (Number(id) === 1) {
+        fetchData();
+      }
     }
   }, [id, navigate]);
 
@@ -183,10 +208,16 @@ const SectionForm = ({ review }) => {
     }
   };
 
-  const previewPage = navRoutes.PUBLIC_ORG.SECTION.replace(
-    ':uniqueSlug',
-    uniqueSlug || adminOrg.uniqueSlug
-  ).replace(':id', id);
+  const previewPage =
+    Number(id) === 1
+      ? navRoutes.PUBLIC_ORG.SUBSECTIONS.replace(
+          ':uniqueSlug',
+          uniqueSlug || adminOrg.uniqueSlug
+        ).replace(':id', id)
+      : navRoutes.PUBLIC_ORG.SECTION.replace(
+          ':uniqueSlug',
+          uniqueSlug || adminOrg.uniqueSlug
+        ).replace(':id', id);
 
   const handleEditSection = async () => {
     setState({ loading: true });
@@ -342,6 +373,15 @@ const SectionForm = ({ review }) => {
           </Row>
         )}
       </>
+
+      {Number(id) === 1 && subSections?.length && (
+        <ContentSection
+          sections={subSections}
+          title="Sub-sections"
+          mt={7}
+          allowEdit
+        />
+      )}
 
       <Row
         style={{
