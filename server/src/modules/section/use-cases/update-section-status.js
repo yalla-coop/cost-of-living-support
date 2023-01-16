@@ -2,7 +2,7 @@ import * as Section from '../model';
 import sendEmail from '../../../services/mailing';
 import * as templatesId from '../../../services/mailing/templates/templates-constants';
 import * as Organisation from '../../organisation/model';
-import { SectionStatuses } from '../../../constants';
+import { SectionStatuses, appLinks } from '../../../constants';
 
 const updateSectionStatus = async ({
   id,
@@ -34,6 +34,7 @@ const updateSectionStatus = async ({
       {
         name: user.firstName,
         explanation,
+        link: appLinks.ADMIN_CONTENT,
       },
     );
   }
