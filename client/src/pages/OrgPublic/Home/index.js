@@ -12,6 +12,7 @@ import {
   TextWithIcon,
   Grid,
   Button,
+  Image,
 } from '../../../components';
 import LandingContent from './LandingContent';
 import HelpButton from '../../../components/HelpButton';
@@ -29,6 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     let mounted = true;
+
     async function fetchData() {
       const hideMessage = message.loading('Loading...');
       const { data, error } = await Sections.getSections({
@@ -52,7 +54,6 @@ const Home = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uniqueSlug, lng]);
-
   i18n.addResourceBundle(lng, 'cardsDataNS', {
     cardsData,
   });
@@ -68,7 +69,7 @@ const Home = () => {
               <Cards.SectionCard
                 key={item.id}
                 id={item.id}
-                text={item.title.replaceAll('*', '')}
+                text={item.title.replace(/\*/g, '')}
                 to={
                   item.hasSubSections
                     ? generatePath(navRoutes.PUBLIC_ORG.SUBSECTIONS, {
@@ -154,6 +155,11 @@ const Home = () => {
         </Col>
       </Row>
       <HelpButton parentState={stuck} parentFunc={() => setStuck(false)} />
+      <Image
+        image="mayorOfLondon"
+        width={'300px'}
+        customStyle={{ paddingTop: '40px' }}
+      />
     </S.Container>
   );
 };
