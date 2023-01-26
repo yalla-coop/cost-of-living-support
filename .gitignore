@@ -109,3 +109,6 @@ server/database/dummy-data-prod/prod-data-local.js
 server/database/dummy-data-prod/users-local.js
 
 .DS_Store
+/test-results/
+/playwright-report/
+/playwright/.cache/
