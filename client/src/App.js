@@ -38,7 +38,7 @@ function App({ ReactGA }) {
       : (document.getElementsByTagName('html')[0].style.fontSize = '1rem');
   }, []);
   useEffect(() => {
-    if (ReactGA?.isInitialized()) {
+    if (ReactGA?.isInitialized) {
       ReactGA.send({
         hitType: 'pageview',
         page: window.location.pathname + window.location.search,
