@@ -19,14 +19,13 @@ if (process.env.NODE_ENV === 'production') {
 
   // GOOGLE ANALYTICS
   ReactGA.initialize(process.env.REACT_APP_ANALYTICS_ID);
-  ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ErrorBoundary>
     {/* <React.StrictMode> */}
-    <App />
+    <App ReactGA={ReactGA} />
     {/* </React.StrictMode> */}
   </ErrorBoundary>
 );
