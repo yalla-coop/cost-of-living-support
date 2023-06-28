@@ -12,6 +12,7 @@ import { PublicOrgProvider } from './context/public-org';
 import { createBrowserHistory } from 'history';
 import AccessibilityProvider from './context/accessibility';
 import hotJarConfig from './hotJarConfig';
+import GoogleAnalytics from './GoogleAnalytics';
 import 'antd/dist/antd.css';
 import CookieBot from 'react-cookiebot';
 const domainGroupId = 'c3a532f5-4d84-4594-a389-41aa105c1da2';
@@ -37,15 +38,6 @@ function App({ ReactGA }) {
       ? (document.getElementsByTagName('html')[0].style.fontSize = '1.25rem')
       : (document.getElementsByTagName('html')[0].style.fontSize = '1rem');
   }, []);
-  useEffect(() => {
-    if (ReactGA?.isInitialized) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: window.location.pathname + window.location.search,
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.pathname, window.location.search, ReactGA]);
 
   return (
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
@@ -54,6 +46,7 @@ function App({ ReactGA }) {
         <AccessibilityProvider>
           <AuthProvider>
             <Router basename={process.env.PUBLIC_URL}>
+              <GoogleAnalytics isProduction={isProduction} ReactGA={ReactGA} />
               <ScrollToTop />
               <Routes>
                 <Route
