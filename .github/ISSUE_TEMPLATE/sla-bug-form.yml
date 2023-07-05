@@ -3,7 +3,7 @@ description: "File a bug/issue."
 title: "Replace with Your Title"
 labels: [bug, sla]
 assignees:
-  - cyberteenie
+  - RamyAlshurafa
   - yalla-coop-sla
 body:
   - type: dropdown
