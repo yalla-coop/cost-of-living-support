@@ -5,6 +5,7 @@ labels: [enhancement, sla]
 assignees:
   - RamyAlshurafa
   - yalla-coop-sla
+  - cyberteenie
 body:
   - type: textarea
     attributes:
