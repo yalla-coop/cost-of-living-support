@@ -12,6 +12,7 @@ import { PublicOrgProvider } from './context/public-org';
 import { createBrowserHistory } from 'history';
 import AccessibilityProvider from './context/accessibility';
 import hotJarConfig from './hotJarConfig';
+import GoogleAnalytics from './GoogleAnalytics';
 import 'antd/dist/antd.css';
 import CookieBot from 'react-cookiebot';
 const domainGroupId = 'c3a532f5-4d84-4594-a389-41aa105c1da2';
@@ -20,7 +21,7 @@ export const history = createBrowserHistory({ basename: window.BASE_URL });
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-function App() {
+function App({ ReactGA }) {
   useEffect(() => {
     if (isProduction) {
       hotJarConfig(
@@ -37,6 +38,7 @@ function App() {
       ? (document.getElementsByTagName('html')[0].style.fontSize = '1.25rem')
       : (document.getElementsByTagName('html')[0].style.fontSize = '1rem');
   }, []);
+
   return (
     <div className="app" style={{ minHeight: '100vh', display: 'flex' }}>
       <Global styles={globalStyle} />
@@ -44,6 +46,7 @@ function App() {
         <AccessibilityProvider>
           <AuthProvider>
             <Router basename={process.env.PUBLIC_URL}>
+              <GoogleAnalytics isProduction={isProduction} ReactGA={ReactGA} />
               <ScrollToTop />
               <Routes>
                 <Route
