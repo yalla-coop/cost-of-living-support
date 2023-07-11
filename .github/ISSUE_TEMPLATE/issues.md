@@ -1,6 +1,6 @@
 ---
 name: Issues
-about: This is to create issues for development work
+about: This is to create issues for development work. Not for client use.
 title: ''
 labels: ''
 assignees: ''
