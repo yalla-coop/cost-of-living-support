@@ -43,6 +43,7 @@ export const LanguageSelector = ({ hide, handleHide }) => {
         category: 'Language',
         action: 'change_language',
         label: lng,
+        selected_language: lng,
       });
     }
 
