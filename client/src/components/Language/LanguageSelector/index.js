@@ -40,9 +40,6 @@ export const LanguageSelector = ({ hide, handleHide }) => {
 
     if (process.env.NODE_ENV === 'production') {
       ReactGA.event('change_language', {
-        // category: 'Language',
-        // action: 'change_language',
-        // label: lng,
         selected_language: lng,
       });
     }
