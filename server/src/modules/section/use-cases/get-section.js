@@ -68,6 +68,7 @@ const getSection = async ({ id, lng, forPublic, role }) => {
   return {
     id: section.id,
     title: sectionsT[0].title,
+    themeKey: section.themeKey,
     parentSectionTitle: sectionsT[1] && sectionsT[1].title,
   };
 };

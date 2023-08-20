@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS "sections" CASCADE;
 CREATE TABLE "sections" (
   "id" SERIAL PRIMARY KEY,
   "parent_section_id" INTEGER,
+  "theme_key" INTEGER, -- not null for default sections
   "title" VARCHAR(255),
   "default_position" INTEGER, -- not null for default sections
 

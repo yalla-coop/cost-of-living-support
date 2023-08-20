@@ -17,12 +17,13 @@ import { navRoutes, roles } from '../../../constants';
 import { useAuth } from '../../../context/auth';
 import { message } from 'antd';
 import ContentSection from '../EditContent/ContentSection';
+import SelectIcon from './SelectIcon';
 
 const { Row, Col } = Grid;
 
 const initialState = {
   title: '',
-
+  themeKey: null,
   httpError: '',
   validationErrs: {},
   loading: false,
@@ -86,7 +87,7 @@ const SectionForm = ({ review }) => {
     },
   ]);
   const [subSections, setSubSections] = useState();
-  const { title, httpError, validationErrs } = state;
+  const { title, httpError, validationErrs, themeKey } = state;
 
   const { id } = useParams();
   const { adminOrg } = useAdminOrg();
@@ -181,12 +182,13 @@ const SectionForm = ({ review }) => {
       validateForm();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, topics]);
+  }, [title, topics, themeKey]);
 
   const validateForm = () => {
     try {
       validate({
         title,
+        themeKey,
         topics: topics.map((t) => ({
           title: t.title,
           content: t.content,
@@ -226,6 +228,7 @@ const SectionForm = ({ review }) => {
       id: id,
       body: {
         title,
+        themeKey,
         topics: formatTopics({ topics }),
         approved: review || null,
       },
@@ -249,6 +252,7 @@ const SectionForm = ({ review }) => {
     const { error } = await Sections.createSectionWithTopics({
       body: {
         title,
+        themeKey,
         topics: formatTopics({ topics }),
       },
     });
@@ -339,6 +343,10 @@ const SectionForm = ({ review }) => {
             value={title}
             handleChange={(input) => setState({ title: input })}
           />
+        </Col>
+
+        <Col w={[4, 6, 4]}>
+          <SelectIcon themeKey={themeKey} setState={setState} />
         </Col>
       </Row>
 

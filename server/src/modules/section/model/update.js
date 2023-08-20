@@ -1,15 +1,16 @@
 import { query } from '../../../database';
 
-const updateSection = async ({ id, title, updatedBy }, client) => {
+const updateSection = async ({ id, title, updatedBy, themeKey }, client) => {
   const sql = `
     UPDATE sections
     SET title = $2,
-    updated_by = $3
+        updated_by = $3,
+        theme_key = $4
     WHERE id = $1
     RETURNING *;
   `;
 
-  const res = await query(sql, [id, title, updatedBy], client);
+  const res = await query(sql, [id, title, updatedBy, themeKey], client);
   return res.rows[0];
 };
 
@@ -17,7 +18,6 @@ const updateSectionOrder = async (
   { id, organisationId, position, hidden, approvalStatus },
   client,
 ) => {
-  console.log({ id, organisationId, position, hidden, approvalStatus });
   const sql = `
     UPDATE organisations_sections_orders
     SET

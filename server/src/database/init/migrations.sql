@@ -7,5 +7,6 @@ CREATE TABLE "migrations" (
 );
 
 
--- INSERT INTO "migrations" ("name") VALUES
-  -- ('/name_of_the_file_goes_here')
+INSERT INTO "migrations" ("name") VALUES
+  ('/20230820095929-add-icon-to-section-table');
+

@@ -12,7 +12,13 @@ import { errorMsgs } from '../../../services/error-handler';
 
 const { ADMIN_REVIEW_SECTION } = appLinks;
 
-const createSection = async ({ title, userId, topics, userOrganisationId }) => {
+const createSection = async ({
+  title,
+  themeKey,
+  userId,
+  topics,
+  userOrganisationId,
+}) => {
   if (!title || !userId || !topics.length || !userOrganisationId) {
     throw Boom.badRequest(errorMsgs.VALIDATION_ERROR);
   }
@@ -22,7 +28,7 @@ const createSection = async ({ title, userId, topics, userOrganisationId }) => {
     await client.query('BEGIN');
 
     const section = await Sections.createSection(
-      { title, createdBy: userId },
+      { title, themeKey, createdBy: userId },
       client,
     );
 

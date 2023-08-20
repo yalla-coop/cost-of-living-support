@@ -81,6 +81,7 @@ const Home = () => {
                         id: item.id,
                       })
                 }
+                themeKey={item.themeKey}
                 mb={2}
                 mbM={'0'}
               />

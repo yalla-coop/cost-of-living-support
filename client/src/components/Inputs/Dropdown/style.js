@@ -13,7 +13,7 @@ export const Field = styled.div`
     border-radius: ${({ theme }) => theme.borders.radius};
 
     width: 100%;
-    height: 40px;
+    height: ${({ height }) => height || '40px'};
 
     :focus {
       outline: none;
