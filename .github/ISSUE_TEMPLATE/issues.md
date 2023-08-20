@@ -1,6 +1,6 @@
 ---
 name: Issues
-about: This is to create issues for development work. Not for client use.
+about: Not for client use. This is to create issues for sprint development work that falls outside of SLA.
 title: ''
 labels: ''
 assignees: ''
