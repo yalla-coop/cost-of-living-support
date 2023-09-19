@@ -99,8 +99,8 @@ export const StyledText = styled(T.P)`
 `;
 
 export const LogoContainer = styled(Link)`
-  width: 72px;
-  height: 30px;
+  width: 100px;
+  height: 50px;
   margin: 0;
   margin-bottom: ${({ theme }) => theme.spacings[7]};
   ${({ theme }) => theme.media.mobile} {
