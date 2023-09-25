@@ -333,7 +333,7 @@ const SectionForm = ({ review }) => {
         </Col>
       </Row>
       <Row>
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 6]}>
           <I.BasicInput
             name="title"
             placeholder="Type title here..."
@@ -345,7 +345,7 @@ const SectionForm = ({ review }) => {
           />
         </Col>
 
-        <Col w={[4, 6, 4]}>
+        <Col w={[4, 6, 6]}>
           <SelectIcon themeKey={themeKey} setState={setState} />
         </Col>
       </Row>

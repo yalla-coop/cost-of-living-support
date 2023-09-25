@@ -92,7 +92,6 @@ const AdminOrgProvider = (props) => {
     setAdminOrg: _setAdminOrg,
   };
 
-  // return <AdminContext.Provider value={value} {...props} />;
   return (
     <ThemeProvider
       theme={{
