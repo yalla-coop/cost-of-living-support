@@ -1,13 +1,13 @@
 import { query } from '../../../database';
 
-const createSection = async ({ title, createdBy }, client) => {
+const createSection = async ({ title, themeKey, createdBy }, client) => {
   const sql = `
-    INSERT INTO sections (title, created_by)
-    VALUES ($1, $2)
+    INSERT INTO sections (title, theme_key, created_by)
+    VALUES ($1, $2, $3)
     RETURNING *;
   `;
 
-  const res = await query(sql, [title, createdBy], client);
+  const res = await query(sql, [title, themeKey, createdBy], client);
   return res.rows[0];
 };
 

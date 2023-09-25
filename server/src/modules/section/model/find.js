@@ -5,6 +5,7 @@ const findSectionsByOrgSlugForPublic = async (uniqueSlug, lng) => {
     SELECT
       s.id,
       COALESCE (s_i18n.title, s.title) AS title,
+      s.theme_key,
       (
         SELECT
           COUNT(*)
@@ -37,6 +38,7 @@ const findSectionsByOrgSlug = async (uniqueSlug) => {
     SELECT
       s.id,
       s.title,
+      s.theme_key,
       s.default_position,
       o.id AS organisation_id,
       oso.position AS position,
@@ -100,6 +102,7 @@ const findSectionById = async (id) => {
       s.id,
       s.title,
       default_position,
+      theme_key,
       (
         SELECT
         s2.title
@@ -119,6 +122,7 @@ const findSectionWithTranslationById = async (id, lng) => {
     SELECT
       s.id,
       COALESCE (s_i18n.title, s.title) AS title,
+      s.theme_key,
       s.parent_section_id,
       s_i18n.language_code
     FROM sections AS s

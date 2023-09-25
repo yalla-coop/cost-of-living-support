@@ -14,6 +14,7 @@ const updateSection = async ({
   userOrganisationId,
   role,
   approved,
+  themeKey,
 }) => {
   const topicsToUpdate = topics
     .filter((t) => !t.new)
@@ -46,6 +47,7 @@ const updateSection = async ({
       {
         id,
         title,
+        themeKey,
         updatedBy: userId,
       },
       client,

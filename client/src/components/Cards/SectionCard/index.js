@@ -3,8 +3,8 @@ import Icon from '../../Icon';
 import * as T from '../../Typography';
 import { contentColors } from '../../../constants';
 
-const SectionCard = ({ id = 1, to = '/', text, ...props }) => {
-  const item = contentColors[id] || contentColors[1];
+const SectionCard = ({ id = 1, themeKey, to = '/', text, ...props }) => {
+  const item = contentColors[id] || contentColors[themeKey || 1];
   return (
     <S.Wrapper to={to} {...props}>
       <S.CardHead bg={item.bg}>

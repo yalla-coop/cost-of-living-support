@@ -29,6 +29,7 @@ const Dropdown = ({
   optional,
   customFont,
   allowClear = true,
+  height,
 }) => {
   const [open, setOpen] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -115,6 +116,7 @@ const Dropdown = ({
       error={error}
       search={search}
       dir={i18n.dir()}
+      height={height}
       {...m}
     >
       {label && (
