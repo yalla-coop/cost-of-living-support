@@ -5,6 +5,8 @@ import http from 'http';
 import app from './app';
 import config from './config';
 
+import initDB from './database/initDb';
+
 const debug = Debug('server');
 
 process.on('uncaughtException', (err) => {
@@ -79,6 +81,17 @@ function onListening() {
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+
+const listener = async () => {
+  try {
+    await initDB();
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
+  } catch (error) {
+    console.log(error);
+    process.exit(-1);
+  }
+};
+
+listener();
