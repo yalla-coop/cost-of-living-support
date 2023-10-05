@@ -30,7 +30,7 @@ const translateText = async ({ text = '', sourceLang, targetLang }) => {
     const translationData = await translateAWS.translateText(params).promise();
     return translationData.TranslatedText;
   } catch (error) {
-    throw new Error('translateText API error :>> ', error);
+    throw Error(error);
   }
 };
 
@@ -86,4 +86,4 @@ const translate = async ({ source, target, json, id }) => {
   throw new Error('translation API error');
 };
 
-export { translate };
+export { translate, translateText, translateJSON };
