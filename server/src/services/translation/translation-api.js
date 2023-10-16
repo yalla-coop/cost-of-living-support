@@ -30,7 +30,8 @@ const translateText = async ({ text = '', sourceLang, targetLang }) => {
     const translationData = await translateAWS.translateText(params).promise();
     return translationData.TranslatedText;
   } catch (error) {
-    throw new Error('translateText API error :>> ', error);
+    Sentry.captureException(error);
+    throw new Error(error);
   }
 };
 
@@ -83,6 +84,9 @@ const translate = async ({ source, target, json, id }) => {
   if (value) {
     return { id, content: { ...value[target] }, languageCode: target[0] };
   }
+  Sentry.captureException('translation API error', {
+    extra: { source, target, json, id },
+  });
   throw new Error('translation API error');
 };
 
