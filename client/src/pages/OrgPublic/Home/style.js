@@ -98,10 +98,15 @@ export const StyledText = styled(T.P)`
   color: ${({ theme: { colors } }) => colors.neutralDark};
 `;
 
+const commonStyle = `
+min-width: 100px;
+min-height: 100px;
+max-width: 200px;
+max-height: 150px;
+`;
+
 export const LogoContainer = styled(Link)`
-  width: 100px;
-  height: 50px;
-  margin: 0;
+  ${commonStyle}
   margin-bottom: ${({ theme }) => theme.spacings[7]};
   ${({ theme }) => theme.media.mobile} {
     margin-left: 37px;
@@ -109,9 +114,9 @@ export const LogoContainer = styled(Link)`
   }
 
   img {
-    width: 100%;
-    height: 100%;
+    ${commonStyle}
     object-fit: contain;
+    float: left;
   }
 `;
 
