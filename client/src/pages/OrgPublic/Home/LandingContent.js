@@ -19,7 +19,7 @@ const LandingContent = () => {
               publicOrg.uniqueSlug
             )}
           >
-            <img src={publicOrg?.logoUrl || Logo} alt="logo" />
+            {!!publicOrg && <img src={publicOrg?.logoUrl || Logo} alt="logo" />}
           </S.LogoContainer>
           <S.HeaderText>
             <S.pageTitle ta="center" weight="bold">
