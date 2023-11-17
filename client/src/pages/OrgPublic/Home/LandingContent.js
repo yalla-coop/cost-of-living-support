@@ -9,6 +9,7 @@ import * as S from './style';
 const LandingContent = () => {
   const { t } = useTranslation();
   const { publicOrg } = usePublicOrg();
+  const logo = publicOrg?.logoUrl ?? Logo;
   return (
     <>
       <S.PageHead showBGImage={!!publicOrg?.logoUrl}>
@@ -19,7 +20,7 @@ const LandingContent = () => {
               publicOrg.uniqueSlug
             )}
           >
-            <img src={publicOrg?.logoUrl || Logo} alt="logo" />
+            {logo && <img src={logo} alt="logo" />}
           </S.LogoContainer>
           <S.HeaderText>
             <S.pageTitle ta="center" weight="bold">
