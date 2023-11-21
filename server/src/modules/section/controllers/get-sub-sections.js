@@ -2,7 +2,7 @@ import * as Sections from '../use-cases';
 
 const getSubSections = async (req, res, next) => {
   try {
-    const { id, forPublic, lng } = req.query;
+    const { id, forPublic, lng = 'en' } = req.query;
 
     const sections = await Sections.getSubSections({
       id,
