@@ -28,7 +28,7 @@ const initDB = async () => {
   if (config.common.env === PRODUCTION) {
     await initDBProd();
   } else {
-    await initDBDev();
+    // await initDBDev();
   }
 };
 
