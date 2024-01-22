@@ -8,5 +8,6 @@ CREATE TABLE "migrations" (
 
 
 INSERT INTO "migrations" ("name") VALUES
-  ('/20230820095929-add-icon-to-section-table');
+  ('/20230820095929-add-icon-to-section-table'),
+  ('/20240122124732-delete-duplicate-sections');
 
